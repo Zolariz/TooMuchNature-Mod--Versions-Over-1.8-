@@ -1,0 +1,37 @@
+item.orange.name=Orange
+item.cherry.name=Cherry
+item.kangaroo_skin.name=Kangaroo Hide
+item.raw_kangaroo.name=Raw Kangaroo Meat
+item.cooked_kangaroo.name=Cooked Kangaroo Meat
+item.kangaroo_helmet.name=Kangaroo Helmet
+item.kangaroo_chestplate.name=Kangaroo Chestplate
+item.kangaroo_leggings.name=Kangaroo Leggings
+item.kangaroo_boots.name=Kangaroo Boots
+item.cherry_door.name=Cherry Door
+item.raw_longhorn_beef.name=Raw Longhorn Beef
+item.cooked_longhorn_beef.name=Raw Longhorn Beef
+item.tmn.spawn_egg.name=Spawn
+item.seeds_cherry.name=Cherry Seeds
+
+tile.null.name=Null
+tile.log_cherry.cherry.name=Cherry Wood
+tile.cherry_leaf.cherry.name=Cherry Leaves
+tile.cherry_sapling.cherry.name=Cherry Sapling
+tile.cherry_planks.name=Cherry Wood Planks
+tile.cherry_slab.cherry.name=Cherry Wood Slab
+tile.double_cherry_slab.name=Double Cherry Wood Slab
+tile.cherry_fence.name=Cherry Fence
+tile.cherry_fence_gate.name=Cherry Fence Gate
+tile.cherries.name=Cherries
+
+tile.fenceGate.name=Oak Fence Gate
+tile.fence.name=Oak Fence
+
+entity.tmn.kangaroo.name=Kangaroo
+entity.tmn.texas_longhorn.name=Texas Longhorn
+entity.tmn.zebra.name=Zebra
+entity.tmn.hippo.name=Hippopotamus
+
+itemGroup.tmnblocks=Too Much Nature Blocks
+itemGroup.tmnitems=Too Much Nature Items
+itemGroup.tmnmobs=Too Much Nature Mobs

@@ -1,0 +1,44 @@
+{
+    "kangaroosay": {
+        "category": "neutral",
+        "sounds": [
+            "kangaroosay1",
+            "kangaroosay2",
+            "kangaroosay3"
+        ]
+    },
+    "kangaroohurt": {
+        "category": "neutral",
+        "sounds": [
+            "kangaroohurt1",
+            "kangaroohurt2"
+        ]
+    },
+    "kangaroodeath": {
+        "category": "neutral",
+        "sounds": [
+            "kangaroodeath"
+        ]
+    },
+    "hipposay": {
+        "category": "neutral",
+        "sounds": [
+            "hipposay1",
+            "hipposay2",
+            "hipposay3",
+            "hipposay4"
+        ]
+    },
+    "hippohit": {
+        "category": "neutral",
+        "sounds": [
+            "hippohit1"
+        ]
+    },
+    "hippodeath": {
+        "category": "neutral",
+        "sounds": [
+            "hippodeath"
+        ]
+    }
+}
