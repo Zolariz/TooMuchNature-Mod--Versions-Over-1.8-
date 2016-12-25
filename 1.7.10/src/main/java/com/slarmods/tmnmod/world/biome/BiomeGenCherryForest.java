@@ -21,6 +21,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class BiomeGenCherryForest extends BiomeGenBase {
 
+	public static int treesPerChunk;
+	private static int grassPerChunk;
+
 	public BiomeGenCherryForest(int id) {
 		super(id);
 
@@ -29,8 +32,7 @@ public class BiomeGenCherryForest extends BiomeGenBase {
 		this.setTemperatureRainfall(0.7F, 0.8F);
 		this.isEqualTo(forest);
 
-		this.theBiomeDecorator.treesPerChunk = 5;
-		this.theBiomeDecorator.grassPerChunk = 7;
+		BiomeGenCherryForest.treesPerChunk = 5;
 	}
 
 	@Override

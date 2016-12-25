@@ -1,9 +1,14 @@
 package com.slarmods.tmnmod.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.slarmods.tmnmod.TooMuchNature;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -12,13 +17,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import com.slarmods.tmnmod.TooMuchNature;
 
 public class BlockCherryGrass extends Block implements IGrowable {
 	private static final Logger logger = LogManager.getLogger();
@@ -26,13 +26,14 @@ public class BlockCherryGrass extends Block implements IGrowable {
 	private IIcon field_149991_b;
 	@SideOnly(Side.CLIENT)
 	private IIcon field_149993_M;
-	@SideOnly(Side.CLIENT)
-	private IIcon field_149994_N;
 
-	public BlockCherryGrass() {
+	private static String textureModID = "tutorial:";
+
+	public BlockCherryGrass(Material material) {
 		super(Material.grass);
 		this.setTickRandomly(true);
 		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setStepSound(Block.soundTypeGrass);
 	}
 
 	/**
@@ -56,12 +57,12 @@ public class BlockCherryGrass extends Block implements IGrowable {
 					int i1 = x + random.nextInt(3) - 1;
 					int j1 = y + random.nextInt(5) - 3;
 					int k1 = z + random.nextInt(3) - 1;
-					Block block = world.getBlock(i1, j1 + 1, k1);
+					// Block block = p_149674_1_.getBlock(i1, j1 + 1, k1);
 
 					if (world.getBlock(i1, j1, k1) == Blocks.dirt && world.getBlockMetadata(i1, j1, k1) == 0
 							&& world.getBlockLightValue(i1, j1 + 1, k1) >= 4
 							&& world.getBlockLightOpacity(i1, j1 + 1, k1) <= 2) {
-						world.setBlock(i1, j1, k1, TooMuchNature.cherry_grass);
+						world.setBlock(i1, j1, k1, Blocks.dirt);
 					}
 				}
 			}
@@ -72,7 +73,7 @@ public class BlockCherryGrass extends Block implements IGrowable {
 		return Blocks.dirt.getItemDropped(0, random, fortune);
 	}
 
-	public boolean func_149851_a(World world, int x, int y, int z, boolean p_149851_5_) {
+	public boolean func_149851_a(World world, int x, int y, int z, boolean isGrowing) {
 		return true;
 	}
 
@@ -100,8 +101,6 @@ public class BlockCherryGrass extends Block implements IGrowable {
 				.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_top");
 		this.field_149993_M = iconRegister
 				.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_side_snowed");
-		this.field_149994_N = iconRegister
-				.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_side_overlay");
 	}
 
 	public void func_149853_b(World world, Random random, int x, int y, int z) {

@@ -47,6 +47,7 @@ import com.slarmods.tmnmod.item.ItemCherryDoor;
 import com.slarmods.tmnmod.item.spawnegg.ItemTMNSpawnEgg;
 import com.slarmods.tmnmod.proxy.CommonProxy;
 import com.slarmods.tmnmod.world.biome.BiomesTMN;
+import com.slarmods.tmnmod.world.gen.TMNWorldGen;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -76,6 +77,7 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 
 @Mod(modid = TooMuchNature.modid, version = TooMuchNature.version)
@@ -241,7 +243,7 @@ public class TooMuchNature {
 
 		crops_cherry = new BlockCherryCrops().setBlockName("cherries").setStepSound(Block.soundTypeGrass);
 
-		cherry_grass = new BlockCherryGrass().setBlockName("cherry_flower_grass")
+		cherry_grass = new BlockCherryGrass(Material.grass).setBlockName("cherry_flower_grass").setHardness(0.2F)
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGrass);
 
 		// Seeds
@@ -276,6 +278,14 @@ public class TooMuchNature {
 
 		// Spawn Eggs
 		tmn_spawn_egg = new ItemTMNSpawnEgg().setUnlocalizedName("tmn_spawn_egg");
+
+		// WorldGen
+		TMNWorldGen eventWorldGen = new TMNWorldGen();
+
+		// Events
+		/*
+		 * MinecraftForge.EVENT_BUS();
+		 */
 
 		// Registers
 		// Items
@@ -345,6 +355,9 @@ public class TooMuchNature {
 		TMNEntityList.addMapping(EntitySheep.class, "buffalo", 0x000000, 0xFFFFFF);
 		TMNEntityList.addMapping(EntityPig.class, "bear", 0x000000, 0xFFFFFF);
 		TMNEntityList.addMapping(EntityCow.class, "electrical_eel", 0x000000, 0xFFFFFF);
+
+		// WorldGen
+		GameRegistry.registerWorldGenerator(eventWorldGen, 0);
 	}
 
 	@EventHandler
