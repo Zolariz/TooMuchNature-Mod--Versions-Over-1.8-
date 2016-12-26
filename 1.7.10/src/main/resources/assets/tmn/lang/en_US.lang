@@ -24,6 +24,8 @@ tile.cherry_fence.name=Cherry Fence
 tile.cherry_fence_gate.name=Cherry Fence Gate
 tile.cherries.name=Cherries
 tile.cherry_flower_grass.name=Cherry Grass Block
+tile.cherry_stairs.name=Cherry Wood Stairs
+tile.end_obsidian.name=End Obsidian
 
 tile.fenceGate.name=Oak Fence Gate
 tile.fence.name=Oak Fence
@@ -33,6 +35,7 @@ entity.tmn.texas_longhorn.name=Texas Longhorn
 entity.tmn.zebra.name=Zebra
 entity.tmn.hippo.name=Hippopotamus
 
-itemGroup.tmnblocks=Too Much Nature Blocks
-itemGroup.tmnitems=Too Much Nature Items
-itemGroup.tmnmobs=Too Much Nature Mobs
+itemGroup.tmnblocks=TMN Blocks
+itemGroup.tmndecoblocks=TMN Decorations
+itemGroup.tmnitems=TMN Items
+itemGroup.tmnmobs=TMN Mobs

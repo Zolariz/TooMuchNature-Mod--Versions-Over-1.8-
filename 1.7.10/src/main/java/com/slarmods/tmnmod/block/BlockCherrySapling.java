@@ -41,7 +41,7 @@ import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class BlockCherrySapling extends BlockBush implements IGrowable {
+public class BlockCherrySapling extends BlockTMNBush implements IGrowable {
 
 	public static final String[] sapling = new String[] { "cherry" };
 	private static final IIcon[] iconLength = new IIcon[sapling.length];
@@ -130,8 +130,8 @@ public class BlockCherrySapling extends BlockBush implements IGrowable {
 		}
 	}
 
-	public boolean func_149880_a(World world, int x, int y, int z, int p_149880_5_) {
-		return world.getBlock(x, y, z) == this && (world.getBlockMetadata(x, y, z) & 7) == p_149880_5_;
+	public boolean func_149880_a(World world, int x, int y, int z, int metadata) {
+		return world.getBlock(x, y, z) == this && (world.getBlockMetadata(x, y, z) & 7) == metadata;
 	}
 
 	public int damageDropped(int p_149692_1_) {
@@ -152,18 +152,15 @@ public class BlockCherrySapling extends BlockBush implements IGrowable {
 		}
 	}
 
-	public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_,
-			boolean p_149851_5_) {
+	public boolean func_149851_a(World world, int x, int y, int z, boolean isGrowing) {
 		return true;
 	}
 
-	public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_,
-			int p_149852_5_) {
-		return (double) p_149852_1_.rand.nextFloat() < 0.45D;
+	public boolean func_149852_a(World world, Random random, int x, int y, int z) {
+		return (double) world.rand.nextFloat() < 0.45D;
 	}
 
-	public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_,
-			int p_149853_5_) {
-		this.func_149879_c(p_149853_1_, p_149853_3_, p_149853_4_, p_149853_5_, p_149853_2_);
+	public void func_149853_b(World world, Random random, int x, int y, int z) {
+		this.func_149879_c(world, x, y, z, random);
 	}
 }

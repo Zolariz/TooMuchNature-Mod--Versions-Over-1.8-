@@ -218,19 +218,18 @@ public class WorldGenCherryTree extends WorldGenAbstractTree {
 		}
 	}
 
-	private void growVines(World world, int p_76529_2_, int p_76529_3_, int p_76529_4_, int p_76529_5_) {
-		this.setBlockAndNotifyAdequately(world, p_76529_2_, p_76529_3_, p_76529_4_, Blocks.vine, p_76529_5_);
+	private void growVines(World world, int x, int y, int z, int vinesGrow) {
+		this.setBlockAndNotifyAdequately(world, x, y, z, Blocks.vine, vinesGrow);
 		int i1 = 4;
 
 		while (true) {
-			--p_76529_3_;
+			--y;
 
-			if (!world.getBlock(p_76529_2_, p_76529_3_, p_76529_4_).isAir(world, p_76529_2_, p_76529_3_, p_76529_4_)
-					|| i1 <= 0) {
+			if (!world.getBlock(x, y, z).isAir(world, x, y, z) || i1 <= 0) {
 				return;
 			}
 
-			this.setBlockAndNotifyAdequately(world, p_76529_2_, p_76529_3_, p_76529_4_, Blocks.vine, p_76529_5_);
+			this.setBlockAndNotifyAdequately(world, x, y, z, Blocks.vine, vinesGrow);
 			--i1;
 		}
 	}

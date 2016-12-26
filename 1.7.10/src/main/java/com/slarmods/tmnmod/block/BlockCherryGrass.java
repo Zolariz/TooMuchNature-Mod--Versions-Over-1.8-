@@ -27,8 +27,6 @@ public class BlockCherryGrass extends Block implements IGrowable {
 	@SideOnly(Side.CLIENT)
 	private IIcon field_149993_M;
 
-	private static String textureModID = "tutorial:";
-
 	public BlockCherryGrass(Material material) {
 		super(Material.grass);
 		this.setTickRandomly(true);
