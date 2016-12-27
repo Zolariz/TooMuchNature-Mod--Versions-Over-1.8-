@@ -12,6 +12,7 @@ item.raw_longhorn_beef.name=Raw Longhorn Beef
 item.cooked_longhorn_beef.name=Raw Longhorn Beef
 item.tmn.spawn_egg.name=Spawn
 item.seeds_cherry.name=Cherry Seeds
+item.flint_and_endstone.name=Flint and Endstone
 
 tile.null.name=Null
 tile.log_cherry.cherry.name=Cherry Wood
@@ -26,6 +27,8 @@ tile.cherries.name=Cherries
 tile.cherry_flower_grass.name=Cherry Grass Block
 tile.cherry_stairs.name=Cherry Wood Stairs
 tile.end_obsidian.name=End Obsidian
+tile.end_stone_smooth.name=Smooth End Stone
+tile.end_fire.name=End Fire
 
 tile.fenceGate.name=Oak Fence Gate
 tile.fence.name=Oak Fence

@@ -38,26 +38,25 @@ public class ItemCherryDoor extends Item {
 		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 	}
 
-	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int par4, int par5,
-			int par6, int par7, float par8, float par9, float par10) {
-		if (par7 != 1) {
+	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,
+			float hitX, float hitY, float hitZ) {
+		if (side != 1) {
 			return false;
 		} else {
-			++par5;
+			++y;
 			Block block = TooMuchNature.cherry_door_block;
 
 			if (this.doorMaterial == Material.wood) {
 				block = TooMuchNature.cherry_door_block;
 			}
 
-			if (player.canPlayerEdit(par4, par5, par6, par7, itemstack)
-					&& player.canPlayerEdit(par4, par5 + 1, par6, par7, itemstack)) {
-				if (!block.canPlaceBlockAt(world, par4, par5, par6)) {
+			if (player.canPlayerEdit(x, y, z, side, itemstack) && player.canPlayerEdit(x, y + 1, z, side, itemstack)) {
+				if (!block.canPlaceBlockAt(world, x, y, z)) {
 					return false;
 				} else {
-					int i1 = MathHelper
-							.floor_double((double) ((player.rotationYaw + 180.0F) * 4.0F / 360.0F) - 0.5D) & 3;
-					placeDoorBlock(world, par4, par5, par6, i1, block);
+					int i1 = MathHelper.floor_double((double) ((player.rotationYaw + 180.0F) * 4.0F / 360.0F) - 0.5D)
+							& 3;
+					placeDoorBlock(world, x, y, z, i1, block);
 					--itemstack.stackSize;
 					return true;
 				}

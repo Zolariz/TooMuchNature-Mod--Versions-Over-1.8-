@@ -30,7 +30,6 @@ public class BlockCherryGrass extends Block implements IGrowable {
 	public BlockCherryGrass(Material material) {
 		super(Material.grass);
 		this.setTickRandomly(true);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 		this.setStepSound(Block.soundTypeGrass);
 	}
 

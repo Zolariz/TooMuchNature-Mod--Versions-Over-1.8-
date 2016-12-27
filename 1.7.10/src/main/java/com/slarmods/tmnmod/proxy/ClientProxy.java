@@ -17,6 +17,7 @@
 
 package com.slarmods.tmnmod.proxy;
 
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndFire;
 import com.slarmods.tmnmod.client.renderer.entity.RenderHippopotamus;
 import com.slarmods.tmnmod.client.renderer.entity.RenderKangaroo;
 import com.slarmods.tmnmod.client.renderer.entity.RenderLonghorn;
@@ -46,7 +47,8 @@ public class ClientProxy extends CommonProxy {
 				new RenderHippopotamus(new ModelHippopotamus(), 0.3F));
 
 		// Blocks
-
+		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
+		
 		// Tile Entities
 	}
 }

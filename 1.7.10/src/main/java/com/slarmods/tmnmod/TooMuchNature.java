@@ -30,7 +30,9 @@ import com.slarmods.tmnmod.block.BlockCherrySapling;
 import com.slarmods.tmnmod.block.BlockCherrySlab;
 import com.slarmods.tmnmod.block.BlockCherryStairs;
 import com.slarmods.tmnmod.block.BlockCherryWood;
+import com.slarmods.tmnmod.block.BlockEndFire;
 import com.slarmods.tmnmod.block.BlockEndObsidian;
+import com.slarmods.tmnmod.block.BlockLowerEndPortal;
 import com.slarmods.tmnmod.block.BlockSmoothEndStone;
 import com.slarmods.tmnmod.block.BlockCherryGrass;
 import com.slarmods.tmnmod.block.BlockCherryCrops;
@@ -46,6 +48,7 @@ import com.slarmods.tmnmod.item.ItemBlockCherryLog;
 import com.slarmods.tmnmod.item.ItemBlockCherrySapling;
 import com.slarmods.tmnmod.item.ItemBlockCherrySlab;
 import com.slarmods.tmnmod.item.ItemCherryDoor;
+import com.slarmods.tmnmod.item.ItemFlintAndEndstone;
 import com.slarmods.tmnmod.item.spawnegg.ItemTMNSpawnEgg;
 import com.slarmods.tmnmod.proxy.CommonProxy;
 import com.slarmods.tmnmod.world.biome.BiomesTMN;
@@ -130,6 +133,8 @@ public class TooMuchNature {
 
 	public static Item cherry_seeds;
 
+	public static Item flint_and_endstone;
+
 	// Blocks
 	public static Block cherry_log;
 	public static Block cherry_leaf;
@@ -164,6 +169,8 @@ public class TooMuchNature {
 	public static Block cherry_grass;
 	public static Block end_obsidian;
 	public static Block end_stone_smooth;
+	public static Block end_fire;
+	public static Block lower_end_portal;
 
 	private int modEntityID;
 
@@ -213,6 +220,10 @@ public class TooMuchNature {
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
 				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
 
+		flint_and_endstone = new ItemFlintAndEndstone().setUnlocalizedName("flint_and_endstone")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
+				.setTextureName(TooMuchNature.modid + ":" + "flint_and_endstone");
+
 		// Trees
 		cherry_log = new BlockCherryLog(Material.wood).setBlockName("log_cherry")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
@@ -256,7 +267,12 @@ public class TooMuchNature {
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_obsidian");
 
 		end_stone_smooth = new BlockSmoothEndStone().setBlockName("smooth_end_stone")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "smooth_end_stone");
+				.setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_smooth");
+
+		end_fire = new BlockEndFire(Material.fire).setBlockName("end_fire");
+
+		lower_end_portal = new BlockLowerEndPortal().setBlockName("lower_end_portal")
+				.setBlockTextureName(TooMuchNature.modid + ":" + "lower_end_portal");
 
 		// Seeds
 		cherry_seeds = new ItemSeeds(crops_cherry, Blocks.farmland).setUnlocalizedName("seeds_cherry")
@@ -311,6 +327,8 @@ public class TooMuchNature {
 
 		GameRegistry.registerItem(cherry_seeds, cherry_seeds.getUnlocalizedName().substring(5));
 
+		GameRegistry.registerItem(flint_and_endstone, flint_and_endstone.getUnlocalizedName().substring(5));
+
 		// Blocks
 		GameRegistry.registerBlock(cherry_log, ItemBlockCherryLog.class, cherry_log.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(cherry_leaf, ItemBlockCherryLeaf.class,
@@ -332,6 +350,8 @@ public class TooMuchNature {
 		GameRegistry.registerBlock(cherry_grass, cherry_grass.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_obsidian, end_obsidian.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_stone_smooth, end_stone_smooth.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(end_fire, end_fire.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(lower_end_portal, lower_end_portal.getUnlocalizedName().substring(5));
 
 		// Smelting
 		GameRegistry.addSmelting(TooMuchNature.raw_kangaroo, new ItemStack(TooMuchNature.cooked_kangaroo, 1), 5);

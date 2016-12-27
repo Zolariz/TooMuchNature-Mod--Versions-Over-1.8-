@@ -41,7 +41,7 @@ import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class BlockCherrySapling extends BlockTMNBush implements IGrowable {
+public class BlockCherrySapling extends BlockBush implements IGrowable {
 
 	public static final String[] sapling = new String[] { "cherry" };
 	private static final IIcon[] iconLength = new IIcon[sapling.length];
