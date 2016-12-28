@@ -52,10 +52,8 @@ public class BlockCherryLog extends BlockLog {
 		this.field_150166_b = new IIcon[logs.length];
 
 		for (int i = 0; i < this.field_150167_a.length; i++) {
-			this.field_150167_a[i] = iconRegister
-					.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23));
-			this.field_150166_b[i] = iconRegister
-					.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_top");
+			this.field_150167_a[i] = iconRegister.registerIcon(this.getTextureName() + "_" + logs[i]);
+			this.field_150166_b[i] = iconRegister.registerIcon(this.getTextureName() + "_" + logs[i] + "_top");
 		}
 	}
 }

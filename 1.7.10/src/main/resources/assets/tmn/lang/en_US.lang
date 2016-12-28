@@ -29,6 +29,9 @@ tile.cherry_stairs.name=Cherry Wood Stairs
 tile.end_obsidian.name=End Obsidian
 tile.end_stone_smooth.name=Smooth End Stone
 tile.end_fire.name=End Fire
+tile.lower_end_portal.name=The Enderlands Portal
+tile.end_grass.name=Ender Grass
+tile.end_dirt.name=Ender Dirt
 
 tile.fenceGate.name=Oak Fence Gate
 tile.fence.name=Oak Fence

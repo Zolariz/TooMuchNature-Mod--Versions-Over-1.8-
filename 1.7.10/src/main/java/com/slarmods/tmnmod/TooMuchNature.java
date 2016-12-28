@@ -30,7 +30,9 @@ import com.slarmods.tmnmod.block.BlockCherrySapling;
 import com.slarmods.tmnmod.block.BlockCherrySlab;
 import com.slarmods.tmnmod.block.BlockCherryStairs;
 import com.slarmods.tmnmod.block.BlockCherryWood;
+import com.slarmods.tmnmod.block.BlockEndDirt;
 import com.slarmods.tmnmod.block.BlockEndFire;
+import com.slarmods.tmnmod.block.BlockEndGrass;
 import com.slarmods.tmnmod.block.BlockEndObsidian;
 import com.slarmods.tmnmod.block.BlockLowerEndPortal;
 import com.slarmods.tmnmod.block.BlockSmoothEndStone;
@@ -43,14 +45,20 @@ import com.slarmods.tmnmod.entity.EntityKangaroo;
 import com.slarmods.tmnmod.entity.EntityLonghorn;
 import com.slarmods.tmnmod.entity.EntityZebra;
 import com.slarmods.tmnmod.entity.list.TMNEntityList;
+import com.slarmods.tmnmod.item.ItemAcaciaDoor;
+import com.slarmods.tmnmod.item.ItemBirchDoor;
 import com.slarmods.tmnmod.item.ItemBlockCherryLeaf;
 import com.slarmods.tmnmod.item.ItemBlockCherryLog;
 import com.slarmods.tmnmod.item.ItemBlockCherrySapling;
 import com.slarmods.tmnmod.item.ItemBlockCherrySlab;
 import com.slarmods.tmnmod.item.ItemCherryDoor;
+import com.slarmods.tmnmod.item.ItemDarkOakDoor;
 import com.slarmods.tmnmod.item.ItemFlintAndEndstone;
+import com.slarmods.tmnmod.item.ItemJungleDoor;
+import com.slarmods.tmnmod.item.ItemSpruceDoor;
 import com.slarmods.tmnmod.item.spawnegg.ItemTMNSpawnEgg;
 import com.slarmods.tmnmod.proxy.CommonProxy;
+import com.slarmods.tmnmod.world.TMNDimensions;
 import com.slarmods.tmnmod.world.biome.BiomesTMN;
 import com.slarmods.tmnmod.world.gen.TMNWorldGen;
 
@@ -110,30 +118,34 @@ public class TooMuchNature {
 	public static Item white_cherry;
 
 	public static Item kangaroo_skin;
-
-	public static Item kangaroo_helm;
-	public static Item kangaroo_chest;
-	public static Item kangaroo_leggings;
-	public static Item kangaroo_boots;
-
-	public static int kangaroo_helm_ID;
-	public static int kangaroo_chest_ID;
-	public static int kangaroo_leggings_ID;
-	public static int kangaroo_boots_ID;
+	public static Item flint_and_endstone;
+	public static Item tmn_spawn_egg;
+	public static Item ruby;
+	public static Item sapphire;
+	public static Item titanium_ingot;
+	public static Item platinum_ingot;
 
 	public static Item item_cherry_door;
-
 	public static Item item_spruce_door;
 	public static Item item_birch_door;
 	public static Item item_jungle_door;
 	public static Item item_acacia_door;
 	public static Item item_dark_oak_door;
-
-	public static Item tmn_spawn_egg;
+	public static Item item_ender_door;
 
 	public static Item cherry_seeds;
 
-	public static Item flint_and_endstone;
+	// Armor
+	public static Item kangaroo_helm;
+	public static Item kangaroo_chest;
+	public static Item kangaroo_leggings;
+	public static Item kangaroo_boots;
+
+	// Armor ID
+	public static int kangaroo_helm_ID;
+	public static int kangaroo_chest_ID;
+	public static int kangaroo_leggings_ID;
+	public static int kangaroo_boots_ID;
 
 	// Blocks
 	public static Block cherry_log;
@@ -158,6 +170,7 @@ public class TooMuchNature {
 	public static Block jungle_fence_gate;
 	public static Block acacia_fence_gate;
 	public static Block dark_oak_fence_gate;
+
 	public static Block spruce_door;
 	public static Block birch_door;
 	public static Block jungle_door;
@@ -171,6 +184,8 @@ public class TooMuchNature {
 	public static Block end_stone_smooth;
 	public static Block end_fire;
 	public static Block lower_end_portal;
+	public static Block end_grass;
+	public static Block end_dirt;
 
 	private int modEntityID;
 
@@ -219,14 +234,44 @@ public class TooMuchNature {
 		item_cherry_door = new ItemCherryDoor(Material.wood).setUnlocalizedName("cherry_door")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
 				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
+		item_spruce_door = new ItemSpruceDoor(Material.wood).setUnlocalizedName("spruce_door")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
+		item_birch_door = new ItemBirchDoor(Material.wood).setUnlocalizedName("birch_door")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
+		item_jungle_door = new ItemJungleDoor(Material.wood).setUnlocalizedName("jungle_door")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
+		item_acacia_door = new ItemAcaciaDoor(Material.wood).setUnlocalizedName("acacia_door")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
+		item_dark_oak_door = new ItemDarkOakDoor(Material.wood).setUnlocalizedName("dark_oak_door")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
 
 		flint_and_endstone = new ItemFlintAndEndstone().setUnlocalizedName("flint_and_endstone")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
 				.setTextureName(TooMuchNature.modid + ":" + "flint_and_endstone");
 
+		ruby = new Item().setUnlocalizedName("ruby").setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
+				.setTextureName("ruby");
+
+		sapphire = new Item().setUnlocalizedName("sapphire").setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
+				.setTextureName(TooMuchNature.modid + ":" + "sapphire");
+
+		titanium_ingot = new Item().setUnlocalizedName("titanium_ingot")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
+				.setTextureName(TooMuchNature.modid + ":" + "titanium_ingot");
+
+		platinum_ingot = new Item().setUnlocalizedName("platinum_ingot")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
+				.setTextureName(TooMuchNature.modid + ":" + "platinum_ingot");
+
 		// Trees
 		cherry_log = new BlockCherryLog(Material.wood).setBlockName("log_cherry")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "log");
 		cherry_leaf = new BlockCherryLeaf(Material.leaves).setBlockName("cherry_leaf")
 				.setCreativeTab(tabTooMuchNatureBlocks).setBlockTextureName(TooMuchNature.modid + ":" + "leaves");
 		cherry_sapling = new BlockCherrySapling().setBlockName("cherry_sapling")
@@ -249,7 +294,8 @@ public class TooMuchNature {
 				.setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
 				.setBlockName("cherry_fence_gate").setBlockTextureName(TooMuchNature.modid + ":" + "planks");
 		cherry_door_block = new BlockCherryDoor(Material.wood).setBlockName("door_cherry")
-				.setStepSound(Block.soundTypeWood).setHardness(3.0F);
+				.setStepSound(Block.soundTypeWood).setHardness(3.0F)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "door_cherry");
 		Block blockWood = new BlockCherryWood(Material.wood).setHardness(2.0F).setResistance(5.0F)
 				.setStepSound(Block.soundTypeWood).setBlockName("wood").setBlockTextureName("planks");
 		cherry_stairs = new BlockCherryStairs(blockWood, 0).setBlockName("cherry_stairs")
@@ -265,14 +311,19 @@ public class TooMuchNature {
 				.setResistance(2000.0F).setStepSound(Block.soundTypePiston)
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_obsidian");
-
 		end_stone_smooth = new BlockSmoothEndStone().setBlockName("smooth_end_stone")
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_smooth");
+		end_fire = new BlockEndFire(Material.fire).setBlockName("end_fire")
+				.setBlockTextureName(TooMuchNature.modid + ":" + "end_fire");
+		lower_end_portal = new BlockLowerEndPortal().setBlockName("lower_end_portal").setHardness(-1.0F)
+				.setStepSound(Block.soundTypeGlass).setBlockTextureName(TooMuchNature.modid + ":" + "lower_end_portal");
 
-		end_fire = new BlockEndFire(Material.fire).setBlockName("end_fire");
-
-		lower_end_portal = new BlockLowerEndPortal().setBlockName("lower_end_portal")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "lower_end_portal");
+		end_grass = new BlockEndGrass(Material.grass).setBlockName("end_grass").setHardness(0.2F)
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGrass)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "end_grass");
+		end_dirt = new BlockEndDirt(Material.ground).setBlockName("end_dirt").setHardness(0.2F)
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGravel)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "end_dirt");
 
 		// Seeds
 		cherry_seeds = new ItemSeeds(crops_cherry, Blocks.farmland).setUnlocalizedName("seeds_cherry")
@@ -307,8 +358,10 @@ public class TooMuchNature {
 		// Spawn Eggs
 		tmn_spawn_egg = new ItemTMNSpawnEgg().setUnlocalizedName("tmn_spawn_egg");
 
-		// Registers
-		// Items
+		// Dimensions
+		TMNDimensions.registerWorldProvider();
+
+		// Items Registries
 		GameRegistry.registerItem(orange, orange.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(cherry, cherry.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(raw_kangaroo, raw_kangaroo.getUnlocalizedName().substring(5));
@@ -316,6 +369,12 @@ public class TooMuchNature {
 		GameRegistry.registerItem(white_cherry, white_cherry.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerItem(kangaroo_skin, kangaroo_skin.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(tmn_spawn_egg, tmn_spawn_egg.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(flint_and_endstone, flint_and_endstone.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(ruby, ruby.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(sapphire, sapphire.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(titanium_ingot, titanium_ingot.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(platinum_ingot, platinum_ingot.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerItem(kangaroo_helm, kangaroo_helm.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(kangaroo_chest, kangaroo_chest.getUnlocalizedName().substring(5));
@@ -323,13 +382,15 @@ public class TooMuchNature {
 		GameRegistry.registerItem(kangaroo_boots, kangaroo_boots.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerItem(item_cherry_door, item_cherry_door.getUnlocalizedName().substring(5));
-		GameRegistry.registerItem(tmn_spawn_egg, tmn_spawn_egg.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_spruce_door, item_spruce_door.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_birch_door, item_birch_door.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_jungle_door, item_jungle_door.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_acacia_door, item_acacia_door.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_dark_oak_door, item_dark_oak_door.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerItem(cherry_seeds, cherry_seeds.getUnlocalizedName().substring(5));
 
-		GameRegistry.registerItem(flint_and_endstone, flint_and_endstone.getUnlocalizedName().substring(5));
-
-		// Blocks
+		// Block Registries
 		GameRegistry.registerBlock(cherry_log, ItemBlockCherryLog.class, cherry_log.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(cherry_leaf, ItemBlockCherryLeaf.class,
 				cherry_leaf.getUnlocalizedName().substring(5));
@@ -352,14 +413,16 @@ public class TooMuchNature {
 		GameRegistry.registerBlock(end_stone_smooth, end_stone_smooth.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_fire, end_fire.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(lower_end_portal, lower_end_portal.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(end_grass, end_grass.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(end_dirt, end_dirt.getUnlocalizedName().substring(5));
 
-		// Smelting
+		// Smelting Registries
 		GameRegistry.addSmelting(TooMuchNature.raw_kangaroo, new ItemStack(TooMuchNature.cooked_kangaroo, 1), 5);
 
-		// Biomes
+		// Biome Registries
 		BiomesTMN.init();
 
-		// Entities
+		// Entity Registries
 		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++modEntityID, TooMuchNature.instance, 80, 3,
 				false);
 		EntityRegistry.registerModEntity(EntityLonghorn.class, "texas_longhorn", ++modEntityID, TooMuchNature.instance,
@@ -371,7 +434,7 @@ public class TooMuchNature {
 		EntityRegistry.registerModEntity(EntityHippopotamus.class, "hippo", ++modEntityID, TooMuchNature.instance, 80,
 				3, false);
 
-		// Spawn Eggs
+		// Spawn Egg Registries
 		TMNEntityList.addMapping(EntityKangaroo.class, "kangaroo", 0x000000, 0xFFFFFF);
 		TMNEntityList.addMapping(EntityLonghorn.class, "texas_longhorn", 0xEB7900, 0xADADAD);
 		TMNEntityList.addMapping(EntityZebra.class, "zebra", 0xFFFFFF, 0x212121);
@@ -380,8 +443,11 @@ public class TooMuchNature {
 		TMNEntityList.addMapping(EntityPig.class, "bear", 0x000000, 0xFFFFFF);
 		TMNEntityList.addMapping(EntityCow.class, "electrical_eel", 0x000000, 0xFFFFFF);
 
-		// WorldGen
+		// WorldGen Registries
 		GameRegistry.registerWorldGenerator(new TMNWorldGen(), 0);
+		
+		// Dimension Registry
+		TMNDimensions.registerDimensions();
 	}
 
 	@EventHandler
@@ -403,7 +469,7 @@ public class TooMuchNature {
 
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event) {
-		// Commands
+		// Command Registries
 		event.registerServerCommand(new CommandSummonTMN());
 	}
 

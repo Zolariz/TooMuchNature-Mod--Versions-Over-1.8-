@@ -5,11 +5,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.world.DimensionIDs;
+import com.slarmods.tmnmod.world.teleporter.EnderlandsDimensionTeleporter;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
@@ -20,7 +23,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockLowerEndPortal extends BlockBreakable {
-	public static final int[][] portal = new int[][] { new int[0], { 3, 1 }, { 2, 0 } };
+	public static final int[][] field_150001_a = new int[][] { new int[0], { 3, 1 }, { 2, 0 } };
+	private static final String __OBFID = "CL_00000284";
 
 	public BlockLowerEndPortal() {
 		super(TooMuchNature.modid + ":" + "lower_end_portal", Material.portal, false);
@@ -196,10 +200,21 @@ public class BlockLowerEndPortal extends BlockBreakable {
 	 * Triggered whenever an entity collides with this block (enters into the
 	 * block). Args: world, x, y, z, entity
 	 */
-	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_,
-			Entity p_149670_5_) {
-		if (p_149670_5_.ridingEntity == null && p_149670_5_.riddenByEntity == null) {
-			p_149670_5_.setInPortal();
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
+		if ((entity.ridingEntity == null) && (entity.riddenByEntity == null) && ((entity instanceof EntityPlayerMP))) {
+			EntityPlayerMP thePlayer = (EntityPlayerMP) entity;
+			if (thePlayer.timeUntilPortal > 0) {
+				thePlayer.timeUntilPortal = 10;
+			} else if (thePlayer.dimension != DimensionIDs.ENDERLANDSDIMENSION) {
+				thePlayer.timeUntilPortal = 10;
+				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer,
+						DimensionIDs.ENDERLANDSDIMENSION, new EnderlandsDimensionTeleporter(
+								thePlayer.mcServer.worldServerForDimension(DimensionIDs.ENDERLANDSDIMENSION)));
+			} else {
+				thePlayer.timeUntilPortal = 10;
+				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0,
+						new EnderlandsDimensionTeleporter(thePlayer.mcServer.worldServerForDimension(0)));
+			}
 		}
 	}
 
@@ -274,8 +289,8 @@ public class BlockLowerEndPortal extends BlockBreakable {
 		public Size(World p_i45415_1_, int p_i45415_2_, int p_i45415_3_, int p_i45415_4_, int p_i45415_5_) {
 			this.field_150867_a = p_i45415_1_;
 			this.field_150865_b = p_i45415_5_;
-			this.field_150863_d = BlockLowerEndPortal.portal[p_i45415_5_][0];
-			this.field_150866_c = BlockLowerEndPortal.portal[p_i45415_5_][1];
+			this.field_150863_d = BlockLowerEndPortal.field_150001_a[p_i45415_5_][0];
+			this.field_150866_c = BlockLowerEndPortal.field_150001_a[p_i45415_5_][1];
 
 			for (int i1 = p_i45415_3_; p_i45415_3_ > i1 - 21 && p_i45415_3_ > 0 && this
 					.func_150857_a(p_i45415_1_.getBlock(p_i45415_2_, p_i45415_3_ - 1, p_i45415_4_)); --p_i45415_3_) {
@@ -338,9 +353,9 @@ public class BlockLowerEndPortal extends BlockBreakable {
 
 				for (j = 0; j < this.field_150868_h; ++j) {
 					k = this.field_150861_f.posX
-							+ j * Direction.offsetX[BlockLowerEndPortal.portal[this.field_150865_b][1]];
+							+ j * Direction.offsetX[BlockLowerEndPortal.field_150001_a[this.field_150865_b][1]];
 					l = this.field_150861_f.posZ
-							+ j * Direction.offsetZ[BlockLowerEndPortal.portal[this.field_150865_b][1]];
+							+ j * Direction.offsetZ[BlockLowerEndPortal.field_150001_a[this.field_150865_b][1]];
 					Block block = this.field_150867_a.getBlock(k, i, l);
 
 					if (!this.func_150857_a(block)) {
@@ -353,16 +368,16 @@ public class BlockLowerEndPortal extends BlockBreakable {
 
 					if (j == 0) {
 						block = this.field_150867_a.getBlock(
-								k + Direction.offsetX[BlockLowerEndPortal.portal[this.field_150865_b][0]], i,
-								l + Direction.offsetZ[BlockLowerEndPortal.portal[this.field_150865_b][0]]);
+								k + Direction.offsetX[BlockLowerEndPortal.field_150001_a[this.field_150865_b][0]], i,
+								l + Direction.offsetZ[BlockLowerEndPortal.field_150001_a[this.field_150865_b][0]]);
 
 						if (block != TooMuchNature.end_obsidian) {
 							break label56;
 						}
 					} else if (j == this.field_150868_h - 1) {
 						block = this.field_150867_a.getBlock(
-								k + Direction.offsetX[BlockLowerEndPortal.portal[this.field_150865_b][1]], i,
-								l + Direction.offsetZ[BlockLowerEndPortal.portal[this.field_150865_b][1]]);
+								k + Direction.offsetX[BlockLowerEndPortal.field_150001_a[this.field_150865_b][1]], i,
+								l + Direction.offsetZ[BlockLowerEndPortal.field_150001_a[this.field_150865_b][1]]);
 
 						if (block != TooMuchNature.end_obsidian) {
 							break label56;
@@ -373,10 +388,10 @@ public class BlockLowerEndPortal extends BlockBreakable {
 
 			for (i = 0; i < this.field_150868_h; ++i) {
 				j = this.field_150861_f.posX
-						+ i * Direction.offsetX[BlockLowerEndPortal.portal[this.field_150865_b][1]];
+						+ i * Direction.offsetX[BlockLowerEndPortal.field_150001_a[this.field_150865_b][1]];
 				k = this.field_150861_f.posY + this.field_150862_g;
 				l = this.field_150861_f.posZ
-						+ i * Direction.offsetZ[BlockLowerEndPortal.portal[this.field_150865_b][1]];
+						+ i * Direction.offsetZ[BlockLowerEndPortal.field_150001_a[this.field_150865_b][1]];
 
 				if (this.field_150867_a.getBlock(j, k, l) != TooMuchNature.end_obsidian) {
 					this.field_150862_g = 0;

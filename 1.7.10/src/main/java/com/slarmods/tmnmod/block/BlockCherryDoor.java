@@ -104,9 +104,9 @@ public class BlockCherryDoor extends Block {
 		this.field_150017_a = new IIcon[2];
 		this.field_150016_b = new IIcon[2];
 		this.field_150017_a[0] = iconRegister
-				.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_upper");
+				.registerIcon(this.getTextureName() + "_upper");
 		this.field_150016_b[0] = iconRegister
-				.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_lower");
+				.registerIcon(this.getTextureName() + "_lower");
 		this.field_150017_a[1] = new IconFlipped(this.field_150017_a[0], true, false);
 		this.field_150016_b[1] = new IconFlipped(this.field_150016_b[0], true, false);
 	}

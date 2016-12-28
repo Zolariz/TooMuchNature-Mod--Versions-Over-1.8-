@@ -251,7 +251,7 @@ public class BlockEndFire extends Block {
 	 */
 	public void onBlockAdded(World world, int x, int y, int z) {
 		if (world.provider.dimensionId > 0
-				|| !((BlockLowerEndPortal) TooMuchNature.lower_end_portal).func_150000_e(world, x, y, z)) {
+				|| !((BlockLowerEndPortal) TooMuchNature.lower_end_portal).canPlaceBlockAt(world, x, y, z)) {
 			if (!World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && !this.canNeighborBurn(world, x, y, z)) {
 				world.setBlockToAir(x, y, z);
 			} else {
@@ -334,10 +334,8 @@ public class BlockEndFire extends Block {
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.fireIcon = new IIcon[] {
-				iconRegister.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_layer_0"),
-				iconRegister
-						.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_layer_1") };
+		this.fireIcon = new IIcon[] { iconRegister.registerIcon(this.getTextureName() + "_layer_0"),
+				iconRegister.registerIcon(this.getTextureName() + "_layer_1") };
 	}
 
 	@SideOnly(Side.CLIENT)
