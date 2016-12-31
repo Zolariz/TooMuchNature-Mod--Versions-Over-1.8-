@@ -28,8 +28,9 @@ public class WorldProviderEnderlands extends WorldProvider {
 	@Override
 	/** tells Minecraft to use our new WorldChunkManager **/
 	public void registerWorldChunkManager() {
-		this.worldChunkMgr = new WorldChunkManagerHell(BiomesTMN.enderlands, 0.0F);
+		this.worldChunkMgr = new WorldChunkManagerEnderlands(worldObj.getSeed(), terrainType);
 		this.dimensionId = DimensionIDs.ENDERLANDSDIMENSION;
+		this.hasNoSky = true;
 	}
 
 	/** Get Provider for Dimension **/
@@ -80,14 +81,13 @@ public class WorldProviderEnderlands extends WorldProvider {
 	@SideOnly(Side.CLIENT)
 	/** should the end sky be rendered or the overworld sky? */
 	public boolean renderEndSky() {
-		return false;
+		return true;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
 	/**
 	 * @return the sky color
 	 */
+	@SideOnly(Side.CLIENT)
 	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks) {
 		return worldObj.getSkyColorBody(cameraEntity, partialTicks);
 	}
@@ -95,7 +95,7 @@ public class WorldProviderEnderlands extends WorldProvider {
 	@SideOnly(Side.CLIENT)
 	/** should a color for the sky be rendered? */
 	public boolean isSkyColored() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -147,10 +147,10 @@ public class WorldProviderEnderlands extends WorldProvider {
 		return super.drawClouds(partialTicks);
 	}
 
-	@Override
 	@SideOnly(Side.CLIENT)
-	public Vec3 getFogColor(float par1, float par2) {
-		float f2 = MathHelper.cos(par1 * (float) Math.PI * 2.0F) * 2.0F + 0.5F;
+	public Vec3 getFogColor(float p_76562_1_, float p_76562_2_) {
+		int i = 10518688;
+		float f2 = MathHelper.cos(p_76562_1_ * (float) Math.PI * 2.0F) * 2.0F + 0.5F;
 
 		if (f2 < 0.0F) {
 			f2 = 0.0F;
@@ -160,12 +160,12 @@ public class WorldProviderEnderlands extends WorldProvider {
 			f2 = 1.0F;
 		}
 
-		float f3 = 0.7529412F;
-		float f4 = 0.84705883F;
-		float f5 = 1.0F;
-		f3 *= f2 * 0.94F + 0.06F;
-		f4 *= f2 * 0.94F + 0.06F;
-		f5 *= f2 * 0.91F + 0.09F;
+		float f3 = (float) (i >> 16 & 255) / 255.0F;
+		float f4 = (float) (i >> 8 & 255) / 255.0F;
+		float f5 = (float) (i & 255) / 255.0F;
+		f3 *= f2 * 0.0F + 0.15F;
+		f4 *= f2 * 0.0F + 0.15F;
+		f5 *= f2 * 0.0F + 0.15F;
 		return Vec3.createVectorHelper((double) f3, (double) f4, (double) f5);
 	}
 }

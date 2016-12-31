@@ -33,6 +33,7 @@ public class BlockEndGrass extends Block implements IGrowable {
 		super(Material.grass);
 		this.setTickRandomly(true);
 		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setHarvestLevel("shovel", 0);
 	}
 
 	@SideOnly(Side.CLIENT)

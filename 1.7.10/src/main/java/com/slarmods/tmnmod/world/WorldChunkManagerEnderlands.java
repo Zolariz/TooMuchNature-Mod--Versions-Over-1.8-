@@ -6,8 +6,6 @@ import java.util.Random;
 
 import com.slarmods.tmnmod.world.genlayer.EnderlandsGenLayer;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.util.ReportedException;
@@ -19,6 +17,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldChunkManagerEnderlands extends WorldChunkManager {
 
@@ -30,14 +30,14 @@ public class WorldChunkManagerEnderlands extends WorldChunkManager {
 	/** A list of biomes that the player can spawn in. */
 	private List<BiomeGenBase> biomesToSpawnIn;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public WorldChunkManagerEnderlands() {
 		this.biomeCache = new BiomeCache(this);
 		this.biomesToSpawnIn = new ArrayList();
 		this.biomesToSpawnIn.addAll(allowedBiomes);
 	}
 
-	public WorldChunkManagerEnderlands(long seed, WorldType worldType)
-	{
+	public WorldChunkManagerEnderlands(long seed, WorldType worldType) {
 		this();
 		// i changed this to my GenLayerTutorial
 		GenLayer[] agenlayer = EnderlandsGenLayer.makeTheWorld(seed, worldType);
@@ -46,8 +46,7 @@ public class WorldChunkManagerEnderlands extends WorldChunkManager {
 		this.biomeIndexLayer = agenlayer[1];
 	}
 
-	public WorldChunkManagerEnderlands(World world)
-	{
+	public WorldChunkManagerEnderlands(World world) {
 		this(world.getSeed(), world.getWorldInfo().getTerrainType());
 	}
 
@@ -189,6 +188,7 @@ public class WorldChunkManagerEnderlands extends WorldChunkManager {
 	 * checks given Chunk's Biomes against List of allowed ones
 	 */
 	@Override
+	@SuppressWarnings("rawtypes")
 	public boolean areBiomesViable(int x, int y, int z, List par4List) {
 		IntCache.resetIntCache();
 		int l = x - z >> 2;
@@ -227,7 +227,6 @@ public class WorldChunkManagerEnderlands extends WorldChunkManager {
 	 * positions.
 	 */
 	@Override
-	@SuppressWarnings("rawtypes")
 	public ChunkPosition findBiomePosition(int x, int y, int z, List par4List, Random random) {
 		IntCache.resetIntCache();
 		int l = x - z >> 2;

@@ -41,7 +41,7 @@ public class BlockEndFire extends Block {
 
 	}
 
-	@Deprecated // Use setFireInfo
+	@Deprecated
 	public void func_149842_a(int x, int y, int z) {
 		this.setFireInfo((Block) Block.blockRegistry.getObjectById(x), y, z);
 	}
@@ -385,10 +385,6 @@ public class BlockEndFire extends Block {
 
 	public void rebuildFireInfo() {
 		for (int x = 0; x < 4096; x++) {
-			// If we care.. we could detect changes in here and make sure we
-			// keep them, however
-			// it's my thinking that anyone who hacks into the private variables
-			// should DIAF and we don't care about them.
 			field_149849_a[x] = 0;
 			field_149848_b[x] = 0;
 		}

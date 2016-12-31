@@ -27,7 +27,6 @@ public class BiomesTMN {
 
 	public static BiomeGenBase cherryForest;
 	public static BiomeGenBase rainforest;
-	public static BiomeGenBase enderlands;
 
 	public static void init() {
 		BiomesTMN.registerBiomes();
@@ -42,10 +41,5 @@ public class BiomesTMN {
 		rainforest = new BiomeGenRainforest(41).setBiomeName("Rainforest");
 		BiomeDictionary.registerBiomeType(rainforest, Type.FOREST);
 		BiomeManager.warmBiomes.add(new BiomeEntry(rainforest, 10));
-
-		enderlands = new BiomeGenEnderlands(42).setBiomeName("The Enderlands");
-		BiomeDictionary.registerBiomeType(enderlands, Type.PLAINS);
-		BiomeManager.warmBiomes.add(new BiomeEntry(enderlands, 10));
-
 	}
 }

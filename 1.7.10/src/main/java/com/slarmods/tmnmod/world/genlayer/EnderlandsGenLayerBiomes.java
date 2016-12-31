@@ -1,6 +1,6 @@
 package com.slarmods.tmnmod.world.genlayer;
 
-import com.slarmods.tmnmod.world.biome.BiomesTMN;
+import com.slarmods.tmnmod.world.biome.EnderBiomes;
 
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
@@ -8,7 +8,7 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class EnderlandsGenLayerBiomes extends GenLayer {
 
-	protected BiomeGenBase[] allowedBiomes = { BiomesTMN.enderlands, };
+	protected BiomeGenBase[] allowedBiomes = { EnderBiomes.enderlands, EnderBiomes.enderlandsRiver, };
 
 	public EnderlandsGenLayerBiomes(long seed) {
 		super(seed);

@@ -26,6 +26,7 @@ public class BlockEndDirt extends Block {
 	public BlockEndDirt(Material material) {
 		super(Material.ground);
 		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setHarvestLevel("shovel", 0);
 	}
 
 	public int damageDropped(int damage) {

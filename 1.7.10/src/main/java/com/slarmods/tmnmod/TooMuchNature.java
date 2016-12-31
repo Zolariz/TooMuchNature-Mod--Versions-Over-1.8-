@@ -34,12 +34,14 @@ import com.slarmods.tmnmod.block.BlockEndDirt;
 import com.slarmods.tmnmod.block.BlockEndFire;
 import com.slarmods.tmnmod.block.BlockEndGrass;
 import com.slarmods.tmnmod.block.BlockEndObsidian;
+import com.slarmods.tmnmod.block.BlockEnderaldOre;
 import com.slarmods.tmnmod.block.BlockLowerEndPortal;
 import com.slarmods.tmnmod.block.BlockSmoothEndStone;
 import com.slarmods.tmnmod.block.BlockCherryGrass;
 import com.slarmods.tmnmod.block.BlockCherryCrops;
 import com.slarmods.tmnmod.command.server.CommandSummonTMN;
 import com.slarmods.tmnmod.crafting.TMNCrafting;
+import com.slarmods.tmnmod.creativetabs.TMNCreativeTabs;
 import com.slarmods.tmnmod.entity.EntityHippopotamus;
 import com.slarmods.tmnmod.entity.EntityKangaroo;
 import com.slarmods.tmnmod.entity.EntityLonghorn;
@@ -58,9 +60,12 @@ import com.slarmods.tmnmod.item.ItemJungleDoor;
 import com.slarmods.tmnmod.item.ItemSpruceDoor;
 import com.slarmods.tmnmod.item.spawnegg.ItemTMNSpawnEgg;
 import com.slarmods.tmnmod.proxy.CommonProxy;
+import com.slarmods.tmnmod.world.DimensionIDs;
 import com.slarmods.tmnmod.world.TMNDimensions;
 import com.slarmods.tmnmod.world.biome.BiomesTMN;
+import com.slarmods.tmnmod.world.biome.EnderBiomes;
 import com.slarmods.tmnmod.world.gen.TMNWorldGen;
+import com.slarmods.tmnmod.world.teleporter.EnderlandsDimensionTeleporter;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -76,12 +81,16 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCompressed;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -89,6 +98,7 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
@@ -120,10 +130,15 @@ public class TooMuchNature {
 	public static Item kangaroo_skin;
 	public static Item flint_and_endstone;
 	public static Item tmn_spawn_egg;
+
 	public static Item ruby;
 	public static Item sapphire;
 	public static Item titanium_ingot;
 	public static Item platinum_ingot;
+	public static Item enderald;
+	
+	public static Item enderald_bucket;
+	public static Item enderald_ender_water_bucket;
 
 	public static Item item_cherry_door;
 	public static Item item_spruce_door;
@@ -135,7 +150,7 @@ public class TooMuchNature {
 
 	public static Item cherry_seeds;
 
-	// Armor
+	// Armor Item
 	public static Item kangaroo_helm;
 	public static Item kangaroo_chest;
 	public static Item kangaroo_leggings;
@@ -148,6 +163,13 @@ public class TooMuchNature {
 	public static int kangaroo_boots_ID;
 
 	// Blocks
+	public static Block enderald_ore;
+	public static Block ruby_ore;
+	public static Block sapphire_ore;
+
+	public static Block enderald_block;
+	public static Block ruby_block;
+
 	public static Block cherry_log;
 	public static Block cherry_leaf;
 	public static Block cherry_sapling;
@@ -186,13 +208,14 @@ public class TooMuchNature {
 	public static Block lower_end_portal;
 	public static Block end_grass;
 	public static Block end_dirt;
+	public static Block ender_water;
 
 	private int modEntityID;
 
 	public static final String modid = "tmn";
 	public static final String version = "Alpha v0.1";
 
-	@SidedProxy(clientSide = "com.slarmods.tmnmod.proxy.ClientProxy", serverSide = "com.slarmods.tmnmod.proxy.CommonProxy")
+	@SidedProxy(clientSide = "com.slarmods.tmnmod.proxy.ClientProxy", serverSide = "com.slarmods.tmnmod.proxy.ServerProxy")
 	public static CommonProxy proxy;
 
 	@EventHandler
@@ -227,10 +250,12 @@ public class TooMuchNature {
 			}
 		};
 
-		// Items
+		// Animal Items
 		kangaroo_skin = new Item().setUnlocalizedName("kangaroo_skin")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
 				.setTextureName(TooMuchNature.modid + ":" + "kangaroo_hide");
+
+		// Door Items
 		item_cherry_door = new ItemCherryDoor(Material.wood).setUnlocalizedName("cherry_door")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
 				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
@@ -250,23 +275,28 @@ public class TooMuchNature {
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
 				.setTextureName(TooMuchNature.modid + ":" + "cherry_door");
 
+		// Dimension-Related Items
 		flint_and_endstone = new ItemFlintAndEndstone().setUnlocalizedName("flint_and_endstone")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
 				.setTextureName(TooMuchNature.modid + ":" + "flint_and_endstone");
 
+		// Items
 		ruby = new Item().setUnlocalizedName("ruby").setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
 				.setTextureName("ruby");
 
 		sapphire = new Item().setUnlocalizedName("sapphire").setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "sapphire");
+				.setTextureName(TooMuchNature.modid + ":" + "spawn_egg");
 
 		titanium_ingot = new Item().setUnlocalizedName("titanium_ingot")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "titanium_ingot");
+				.setTextureName(TooMuchNature.modid + ":" + "spawn_egg");
 
 		platinum_ingot = new Item().setUnlocalizedName("platinum_ingot")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "platinum_ingot");
+				.setTextureName(TooMuchNature.modid + ":" + "spawn_egg");
+
+		enderald = new Item().setUnlocalizedName("enderald").setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
+				.setTextureName(TooMuchNature.modid + ":" + "enderald");
 
 		// Trees
 		cherry_log = new BlockCherryLog(Material.wood).setBlockName("log_cherry")
@@ -293,37 +323,53 @@ public class TooMuchNature {
 		cherry_fence_gate = new BlockCherryFenceGate().setHardness(2.0F).setResistance(5.0F)
 				.setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
 				.setBlockName("cherry_fence_gate").setBlockTextureName(TooMuchNature.modid + ":" + "planks");
-		cherry_door_block = new BlockCherryDoor(Material.wood).setBlockName("door_cherry")
-				.setStepSound(Block.soundTypeWood).setHardness(3.0F)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "door_cherry");
 		Block blockWood = new BlockCherryWood(Material.wood).setHardness(2.0F).setResistance(5.0F)
 				.setStepSound(Block.soundTypeWood).setBlockName("wood").setBlockTextureName("planks");
 		cherry_stairs = new BlockCherryStairs(blockWood, 0).setBlockName("cherry_stairs")
 				.setBlockTextureName(TooMuchNature.modid + ":" + "planks");
 
+		// Door Blocks
+		cherry_door_block = new BlockCherryDoor(Material.wood).setBlockName("door_cherry")
+				.setStepSound(Block.soundTypeWood).setHardness(3.0F)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "door_cherry");
+
 		// Crops
 		crops_cherry = new BlockCherryCrops().setBlockName("cherries").setStepSound(Block.soundTypeGrass);
 
-		// Blocks
-		cherry_grass = new BlockCherryGrass(Material.grass).setBlockName("cherry_flower_grass").setHardness(0.2F)
+		// Dimension-Related Blocks
+		cherry_grass = new BlockCherryGrass(Material.grass).setBlockName("cherry_flower_grass").setHardness(0.6F)
 				.setStepSound(Block.soundTypeGrass);
 		end_obsidian = new BlockEndObsidian(Material.rock).setBlockName("end_obsidian").setHardness(50.0F)
 				.setResistance(2000.0F).setStepSound(Block.soundTypePiston)
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_obsidian");
-		end_stone_smooth = new BlockSmoothEndStone().setBlockName("smooth_end_stone")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_smooth");
+		end_stone_smooth = new BlockSmoothEndStone().setBlockName("smooth_end_stone").setHardness(1.5F)
+				.setResistance(10.0F).setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_smooth");
 		end_fire = new BlockEndFire(Material.fire).setBlockName("end_fire")
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_fire");
-		lower_end_portal = new BlockLowerEndPortal().setBlockName("lower_end_portal").setHardness(-1.0F)
-				.setStepSound(Block.soundTypeGlass).setBlockTextureName(TooMuchNature.modid + ":" + "lower_end_portal");
+		lower_end_portal = new BlockLowerEndPortal().setBlockName("lower_end_portal").setBlockUnbreakable()
+				.setLightLevel(0.75F).setStepSound(Block.soundTypeGlass)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "lower_end_portal");
 
-		end_grass = new BlockEndGrass(Material.grass).setBlockName("end_grass").setHardness(0.2F)
+		end_grass = new BlockEndGrass(Material.grass).setBlockName("end_grass").setHardness(0.6F)
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGrass)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_grass");
-		end_dirt = new BlockEndDirt(Material.ground).setBlockName("end_dirt").setHardness(0.2F)
+		end_dirt = new BlockEndDirt(Material.ground).setBlockName("end_dirt").setHardness(0.5F)
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGravel)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_dirt");
+
+		// Blocks
+		enderald_block = new BlockCompressed(MapColor.cyanColor).setBlockName("enderald_block").setHardness(5.0F)
+				.setResistance(10.0F).setStepSound(Block.soundTypeMetal)
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
+				.setBlockTextureName(modid + ":" + "enderald_block");
+
+		enderald_ore = new BlockEnderaldOre(Material.rock).setBlockName("enderald_ore").setHardness(3.0F)
+				.setResistance(5.0F).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "enderald_ore");
+		
+		// Circuit Blocks
+		
 
 		// Seeds
 		cherry_seeds = new ItemSeeds(crops_cherry, Blocks.farmland).setUnlocalizedName("seeds_cherry")
@@ -358,8 +404,9 @@ public class TooMuchNature {
 		// Spawn Eggs
 		tmn_spawn_egg = new ItemTMNSpawnEgg().setUnlocalizedName("tmn_spawn_egg");
 
-		// Dimensions
-		TMNDimensions.registerWorldProvider();
+		/**
+		 * // Dimensions TMNDimensions.registerWorldProvider();
+		 */
 
 		// Items Registries
 		GameRegistry.registerItem(orange, orange.getUnlocalizedName().substring(5));
@@ -375,6 +422,7 @@ public class TooMuchNature {
 		GameRegistry.registerItem(sapphire, sapphire.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(titanium_ingot, titanium_ingot.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(platinum_ingot, platinum_ingot.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(enderald, enderald.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerItem(kangaroo_helm, kangaroo_helm.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(kangaroo_chest, kangaroo_chest.getUnlocalizedName().substring(5));
@@ -391,6 +439,10 @@ public class TooMuchNature {
 		GameRegistry.registerItem(cherry_seeds, cherry_seeds.getUnlocalizedName().substring(5));
 
 		// Block Registries
+		GameRegistry.registerBlock(enderald_ore, enderald_ore.getUnlocalizedName().substring(5));
+
+		GameRegistry.registerBlock(enderald_block, enderald_block.getUnlocalizedName().substring(5));
+
 		GameRegistry.registerBlock(cherry_log, ItemBlockCherryLog.class, cherry_log.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(cherry_leaf, ItemBlockCherryLeaf.class,
 				cherry_leaf.getUnlocalizedName().substring(5));
@@ -421,6 +473,7 @@ public class TooMuchNature {
 
 		// Biome Registries
 		BiomesTMN.init();
+		EnderBiomes.init();
 
 		// Entity Registries
 		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++modEntityID, TooMuchNature.instance, 80, 3,
@@ -435,7 +488,7 @@ public class TooMuchNature {
 				3, false);
 
 		// Spawn Egg Registries
-		TMNEntityList.addMapping(EntityKangaroo.class, "kangaroo", 0x000000, 0xFFFFFF);
+		TMNEntityList.addMapping(EntityKangaroo.class, "kangaroo", 0x558299, 0x997256);
 		TMNEntityList.addMapping(EntityLonghorn.class, "texas_longhorn", 0xEB7900, 0xADADAD);
 		TMNEntityList.addMapping(EntityZebra.class, "zebra", 0xFFFFFF, 0x212121);
 		TMNEntityList.addMapping(EntityHippopotamus.class, "hippo", 0xBB9FC4, 0x8E7B94);
@@ -445,9 +498,10 @@ public class TooMuchNature {
 
 		// WorldGen Registries
 		GameRegistry.registerWorldGenerator(new TMNWorldGen(), 0);
-		
-		// Dimension Registry
-		TMNDimensions.registerDimensions();
+
+		/**
+		 * // Dimension Registry TMNDimensions.registerDimensions();
+		 */
 	}
 
 	@EventHandler

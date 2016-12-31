@@ -16,6 +16,7 @@ public class BlockEndObsidian extends BlockStone {
 	public BlockEndObsidian(Material material) {
 		super();
 		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setHarvestLevel("pickaxe", 3);
 	}
 
 	public int quantityDropped(Random random) {
