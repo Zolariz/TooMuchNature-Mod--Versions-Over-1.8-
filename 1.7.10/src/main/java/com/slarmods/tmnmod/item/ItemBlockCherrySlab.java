@@ -24,6 +24,7 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.item.ItemSlab;
 
 public class ItemBlockCherrySlab extends ItemSlab {
+	
 	public ItemBlockCherrySlab(Block block) {
 		super(block, (BlockSlab) TooMuchNature.cherry_slab, (BlockSlab) TooMuchNature.cherry_double_slab, false);
 		this.setMaxDamage(0);

@@ -7,7 +7,6 @@ import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChunkCoordinates;
@@ -19,38 +18,38 @@ import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
 public class EnderlandsDimensionTeleporter extends Teleporter {
-
 	private final WorldServer worldServerInstance;
+
 	/** A private Random() function in Teleporter */
 	private final Random random;
+
 	/** Stores successful portal placement locations for rapid lookup. */
 	private final LongHashMap destinationCoordinateCache = new LongHashMap();
+
 	/**
 	 * A list of valid keys for the destinationCoordainteCache. These are based
 	 * on the X & Z of the players initial location.
 	 */
+
 	private final List destinationCoordinateKeys = new ArrayList();
 
-	public EnderlandsDimensionTeleporter(WorldServer p_i1963_1_) {
-		super(p_i1963_1_);
-		this.worldServerInstance = p_i1963_1_;
-		this.random = new Random(p_i1963_1_.getSeed());
+	public EnderlandsDimensionTeleporter(WorldServer worldServer) {
+		super(worldServer);
+		this.worldServerInstance = worldServer;
+		this.random = new Random(worldServer.getSeed());
 	}
 
-	/**
-	 * Place an entity in a nearby portal, creating one if necessary.
-	 */
-	public void placeInPortal(Entity p_77185_1_, double p_77185_2_, double p_77185_4_, double p_77185_6_,
-			float p_77185_8_) {
+	@Override
+	public void placeInPortal(Entity entity, double dx, double dy, double dz, float teleport) {
 		if (this.worldServerInstance.provider.dimensionId != 1) {
-			if (!this.placeInExistingPortal(p_77185_1_, p_77185_2_, p_77185_4_, p_77185_6_, p_77185_8_)) {
-				this.makePortal(p_77185_1_);
-				this.placeInExistingPortal(p_77185_1_, p_77185_2_, p_77185_4_, p_77185_6_, p_77185_8_);
+			if (!this.placeInExistingPortal(entity, dx, dy, dz, teleport)) {
+				this.makePortal(entity);
+				this.placeInExistingPortal(entity, dx, dy, dz, teleport);
 			}
 		} else {
-			int i = MathHelper.floor_double(p_77185_1_.posX);
-			int j = MathHelper.floor_double(p_77185_1_.posY) - 1;
-			int k = MathHelper.floor_double(p_77185_1_.posZ);
+			int i = MathHelper.floor_double(entity.posX);
+			int j = MathHelper.floor_double(entity.posY) - 1;
+			int k = MathHelper.floor_double(entity.posZ);
 			byte b0 = 1;
 			byte b1 = 0;
 
@@ -66,31 +65,31 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 				}
 			}
 
-			p_77185_1_.setLocationAndAngles((double) i, (double) j, (double) k, p_77185_1_.rotationYaw, 0.0F);
-			p_77185_1_.motionX = p_77185_1_.motionY = p_77185_1_.motionZ = 0.0D;
+			entity.setLocationAndAngles((double) i, (double) j, (double) k, entity.rotationYaw, 0.0F);
+			entity.motionX = entity.motionY = entity.motionZ = 0.0D;
 		}
 	}
 
 	/**
 	 * Place an entity in a nearby portal which already exists.
 	 */
-	public boolean placeInExistingPortal(Entity p_77184_1_, double p_77184_2_, double p_77184_4_, double p_77184_6_,
-			float p_77184_8_) {
+
+	@Override
+	public boolean placeInExistingPortal(Entity entity, double par2, double par4, double par6, float par8) {
 		short short1 = 128;
 		double d3 = -1.0D;
 		int i = 0;
 		int j = 0;
 		int k = 0;
-		int l = MathHelper.floor_double(p_77184_1_.posX);
-		int i1 = MathHelper.floor_double(p_77184_1_.posZ);
+		int l = MathHelper.floor_double(entity.posX);
+		int i1 = MathHelper.floor_double(entity.posZ);
 		long j1 = ChunkCoordIntPair.chunkXZ2Int(l, i1);
 		boolean flag = true;
-		double d7;
-		int l3;
+		double d4;
+		int k1;
 
 		if (this.destinationCoordinateCache.containsItem(j1)) {
-			EnderlandsDimensionTeleporter.PortalPosition portalposition = (EnderlandsDimensionTeleporter.PortalPosition) this.destinationCoordinateCache
-					.getValueByKey(j1);
+			PortalPosition portalposition = (PortalPosition) this.destinationCoordinateCache.getValueByKey(j1);
 			d3 = 0.0D;
 			i = portalposition.posX;
 			j = portalposition.posY;
@@ -98,25 +97,25 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 			portalposition.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
 			flag = false;
 		} else {
-			for (l3 = l - short1; l3 <= l + short1; ++l3) {
-				double d4 = (double) l3 + 0.5D - p_77184_1_.posX;
+			for (k1 = l - short1; k1 <= l + short1; ++k1) {
+				double d5 = (double) k1 + 0.5D - entity.posX;
 
 				for (int l1 = i1 - short1; l1 <= i1 + short1; ++l1) {
-					double d5 = (double) l1 + 0.5D - p_77184_1_.posZ;
+					double d6 = (double) l1 + 0.5D - entity.posZ;
 
 					for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2) {
-						if (this.worldServerInstance.getBlock(l3, i2, l1) == TooMuchNature.lower_end_portal) {
-							while (this.worldServerInstance.getBlock(l3, i2 - 1,
+						if (this.worldServerInstance.getBlock(k1, i2, l1) == TooMuchNature.lower_end_portal) {
+							while (this.worldServerInstance.getBlock(k1, i2 - 1,
 									l1) == TooMuchNature.lower_end_portal) {
 								--i2;
 							}
 
-							d7 = (double) i2 + 0.5D - p_77184_1_.posY;
-							double d8 = d4 * d4 + d7 * d7 + d5 * d5;
+							d4 = (double) i2 + 0.5D - entity.posY;
+							double d7 = d5 * d5 + d4 * d4 + d6 * d6;
 
-							if (d3 < 0.0D || d8 < d3) {
-								d3 = d8;
-								i = l3;
+							if (d3 < 0.0D || d7 < d3) {
+								d3 = d7;
+								i = k1;
 								j = i2;
 								k = l1;
 							}
@@ -128,61 +127,60 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 
 		if (d3 >= 0.0D) {
 			if (flag) {
-				this.destinationCoordinateCache.add(j1, new EnderlandsDimensionTeleporter.PortalPosition(i, j, k,
-						this.worldServerInstance.getTotalWorldTime()));
+				this.destinationCoordinateCache.add(j1,
+						new PortalPosition(i, j, k, this.worldServerInstance.getTotalWorldTime()));
 				this.destinationCoordinateKeys.add(Long.valueOf(j1));
-				System.out.println("Location " + j1);
 			}
 
-			double d11 = (double) i + 0.5D;
-			double d6 = (double) j + 0.5D;
-			d7 = (double) k + 0.5D;
-			int i4 = -1;
+			double d8 = (double) i + 0.5D;
+			double d9 = (double) j + 0.5D;
+			d4 = (double) k + 0.5D;
+			int j2 = -1;
 
 			if (this.worldServerInstance.getBlock(i - 1, j, k) == TooMuchNature.lower_end_portal) {
-				i4 = 2;
+				j2 = 2;
 			}
 
 			if (this.worldServerInstance.getBlock(i + 1, j, k) == TooMuchNature.lower_end_portal) {
-				i4 = 0;
+				j2 = 0;
 			}
 
 			if (this.worldServerInstance.getBlock(i, j, k - 1) == TooMuchNature.lower_end_portal) {
-				i4 = 3;
+				j2 = 3;
 			}
 
 			if (this.worldServerInstance.getBlock(i, j, k + 1) == TooMuchNature.lower_end_portal) {
-				i4 = 1;
+				j2 = 1;
 			}
 
-			int j2 = p_77184_1_.getTeleportDirection();
+			int k2 = entity.getTeleportDirection();
 
-			if (i4 > -1) {
-				int k2 = Direction.rotateLeft[i4];
-				int l2 = Direction.offsetX[i4];
-				int i3 = Direction.offsetZ[i4];
-				int j3 = Direction.offsetX[k2];
-				int k3 = Direction.offsetZ[k2];
-				boolean flag1 = !this.worldServerInstance.isAirBlock(i + l2 + j3, j, k + i3 + k3)
-						|| !this.worldServerInstance.isAirBlock(i + l2 + j3, j + 1, k + i3 + k3);
-				boolean flag2 = !this.worldServerInstance.isAirBlock(i + l2, j, k + i3)
-						|| !this.worldServerInstance.isAirBlock(i + l2, j + 1, k + i3);
+			if (j2 > -1) {
+				int l2 = Direction.rotateLeft[j2];
+				int i3 = Direction.offsetX[j2];
+				int j3 = Direction.offsetZ[j2];
+				int k3 = Direction.offsetX[l2];
+				int l3 = Direction.offsetZ[l2];
+				boolean flag1 = !this.worldServerInstance.isAirBlock(i + i3 + k3, j, k + j3 + l3)
+						|| !this.worldServerInstance.isAirBlock(i + i3 + k3, j + 1, k + j3 + l3);
+				boolean flag2 = !this.worldServerInstance.isAirBlock(i + i3, j, k + j3)
+						|| !this.worldServerInstance.isAirBlock(i + i3, j + 1, k + j3);
 
 				if (flag1 && flag2) {
-					i4 = Direction.rotateOpposite[i4];
-					k2 = Direction.rotateOpposite[k2];
-					l2 = Direction.offsetX[i4];
-					i3 = Direction.offsetZ[i4];
-					j3 = Direction.offsetX[k2];
-					k3 = Direction.offsetZ[k2];
-					l3 = i - j3;
-					d11 -= (double) j3;
-					int k1 = k - k3;
-					d7 -= (double) k3;
-					flag1 = !this.worldServerInstance.isAirBlock(l3 + l2 + j3, j, k1 + i3 + k3)
-							|| !this.worldServerInstance.isAirBlock(l3 + l2 + j3, j + 1, k1 + i3 + k3);
-					flag2 = !this.worldServerInstance.isAirBlock(l3 + l2, j, k1 + i3)
-							|| !this.worldServerInstance.isAirBlock(l3 + l2, j + 1, k1 + i3);
+					j2 = Direction.rotateOpposite[j2];
+					l2 = Direction.rotateOpposite[l2];
+					i3 = Direction.offsetX[j2];
+					j3 = Direction.offsetZ[j2];
+					k3 = Direction.offsetX[l2];
+					l3 = Direction.offsetZ[l2];
+					k1 = i - k3;
+					d8 -= (double) k3;
+					int i4 = k - l3;
+					d4 -= (double) l3;
+					flag1 = !this.worldServerInstance.isAirBlock(k1 + i3 + k3, j, i4 + j3 + l3)
+							|| !this.worldServerInstance.isAirBlock(k1 + i3 + k3, j + 1, i4 + j3 + l3);
+					flag2 = !this.worldServerInstance.isAirBlock(k1 + i3, j, i4 + j3)
+							|| !this.worldServerInstance.isAirBlock(k1 + i3, j + 1, i4 + j3);
 				}
 
 				float f1 = 0.5F;
@@ -196,20 +194,20 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 					f2 = 0.0F;
 				}
 
-				d11 += (double) ((float) j3 * f1 + f2 * (float) l2);
-				d7 += (double) ((float) k3 * f1 + f2 * (float) i3);
+				d8 += (double) ((float) k3 * f1 + f2 * (float) i3);
+				d4 += (double) ((float) l3 * f1 + f2 * (float) j3);
 				float f3 = 0.0F;
 				float f4 = 0.0F;
 				float f5 = 0.0F;
 				float f6 = 0.0F;
 
-				if (i4 == j2) {
+				if (j2 == k2) {
 					f3 = 1.0F;
 					f4 = 1.0F;
-				} else if (i4 == Direction.rotateOpposite[j2]) {
+				} else if (j2 == Direction.rotateOpposite[k2]) {
 					f3 = -1.0F;
 					f4 = -1.0F;
-				} else if (i4 == Direction.rotateRight[j2]) {
+				} else if (j2 == Direction.rotateRight[k2]) {
 					f5 = 1.0F;
 					f6 = -1.0F;
 				} else {
@@ -217,28 +215,29 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 					f6 = 1.0F;
 				}
 
-				double d9 = p_77184_1_.motionX;
-				double d10 = p_77184_1_.motionZ;
-				p_77184_1_.motionX = d9 * (double) f3 + d10 * (double) f6;
-				p_77184_1_.motionZ = d9 * (double) f5 + d10 * (double) f4;
-				p_77184_1_.rotationYaw = p_77184_8_ - (float) (j2 * 90) + (float) (i4 * 90);
+				double d10 = entity.motionX;
+				double d11 = entity.motionZ;
+				entity.motionX = d10 * (double) f3 + d11 * (double) f6;
+				entity.motionZ = d10 * (double) f5 + d11 * (double) f4;
+				entity.rotationYaw = par8 - (float) (k2 * 90) + (float) (j2 * 90);
 			} else {
-				p_77184_1_.motionX = p_77184_1_.motionY = p_77184_1_.motionZ = 0.0D;
+				entity.motionX = entity.motionY = entity.motionZ = 0.0D;
 			}
 
-			p_77184_1_.setLocationAndAngles(d11, d6, d7, p_77184_1_.rotationYaw, p_77184_1_.rotationPitch);
+			entity.setLocationAndAngles(d8, d9, d4, entity.rotationYaw, entity.rotationPitch);
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public boolean makePortal(Entity p_85188_1_) {
+	@Override
+	public boolean makePortal(Entity entity) {
 		byte b0 = 16;
 		double d0 = -1.0D;
-		int i = MathHelper.floor_double(p_85188_1_.posX);
-		int j = MathHelper.floor_double(p_85188_1_.posY);
-		int k = MathHelper.floor_double(p_85188_1_.posZ);
+		int i = MathHelper.floor_double(entity.posX);
+		int j = MathHelper.floor_double(entity.posY);
+		int k = MathHelper.floor_double(entity.posZ);
 		int l = i;
 		int i1 = j;
 		int j1 = k;
@@ -246,8 +245,10 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 		int l1 = this.random.nextInt(4);
 		int i2;
 		double d1;
-		int k2;
 		double d2;
+		int j2;
+		int k2;
+		int l2;
 		int i3;
 		int j3;
 		int k3;
@@ -255,59 +256,57 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 		int i4;
 		int j4;
 		int k4;
-		int l4;
-		int i5;
 		double d3;
 		double d4;
 
 		for (i2 = i - b0; i2 <= i + b0; ++i2) {
-			d1 = (double) i2 + 0.5D - p_85188_1_.posX;
+			d1 = (double) i2 + 0.5D - entity.posX;
 
-			for (k2 = k - b0; k2 <= k + b0; ++k2) {
-				d2 = (double) k2 + 0.5D - p_85188_1_.posZ;
+			for (j2 = k - b0; j2 <= k + b0; ++j2) {
+				d2 = (double) j2 + 0.5D - entity.posZ;
 				label274:
 
-				for (i3 = this.worldServerInstance.getActualHeight() - 1; i3 >= 0; --i3) {
-					if (this.worldServerInstance.isAirBlock(i2, i3, k2)) {
-						while (i3 > 0 && this.worldServerInstance.isAirBlock(i2, i3 - 1, k2)) {
-							--i3;
+				for (k2 = this.worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2) {
+					if (this.worldServerInstance.isAirBlock(i2, k2, j2)) {
+						while (k2 > 0 && this.worldServerInstance.isAirBlock(i2, k2 - 1, j2)) {
+							--k2;
 						}
 
-						for (j3 = l1; j3 < l1 + 4; ++j3) {
-							k3 = j3 % 2;
-							l3 = 1 - k3;
+						for (i3 = l1; i3 < l1 + 4; ++i3) {
+							l2 = i3 % 2;
+							k3 = 1 - l2;
 
-							if (j3 % 4 >= 2) {
+							if (i3 % 4 >= 2) {
+								l2 = -l2;
 								k3 = -k3;
-								l3 = -l3;
 							}
 
-							for (i4 = 0; i4 < 3; ++i4) {
-								for (j4 = 0; j4 < 4; ++j4) {
-									for (k4 = -1; k4 < 4; ++k4) {
-										l4 = i2 + (j4 - 1) * k3 + i4 * l3;
-										i5 = i3 + k4;
-										int j5 = k2 + (j4 - 1) * l3 - i4 * k3;
+							for (j3 = 0; j3 < 3; ++j3) {
+								for (i4 = 0; i4 < 4; ++i4) {
+									for (l3 = -1; l3 < 4; ++l3) {
+										k4 = i2 + (i4 - 1) * l2 + j3 * k3;
+										j4 = k2 + l3;
+										int l4 = j2 + (i4 - 1) * k3 - j3 * l2;
 
-										if (k4 < 0
-												&& !this.worldServerInstance.getBlock(l4, i5, j5).getMaterial()
+										if (l3 < 0
+												&& !this.worldServerInstance.getBlock(k4, j4, l4).getMaterial()
 														.isSolid()
-												|| k4 >= 0 && !this.worldServerInstance.isAirBlock(l4, i5, j5)) {
+												|| l3 >= 0 && !this.worldServerInstance.isAirBlock(k4, j4, l4)) {
 											continue label274;
 										}
 									}
 								}
 							}
 
-							d3 = (double) i3 + 0.5D - p_85188_1_.posY;
-							d4 = d1 * d1 + d3 * d3 + d2 * d2;
+							d4 = (double) k2 + 0.5D - entity.posY;
+							d3 = d1 * d1 + d4 * d4 + d2 * d2;
 
-							if (d0 < 0.0D || d4 < d0) {
-								d0 = d4;
+							if (d0 < 0.0D || d3 < d0) {
+								d0 = d3;
 								l = i2;
-								i1 = i3;
-								j1 = k2;
-								k1 = j3 % 4;
+								i1 = k2;
+								j1 = j2;
+								k1 = i3 % 4;
 							}
 						}
 					}
@@ -317,46 +316,46 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 
 		if (d0 < 0.0D) {
 			for (i2 = i - b0; i2 <= i + b0; ++i2) {
-				d1 = (double) i2 + 0.5D - p_85188_1_.posX;
+				d1 = (double) i2 + 0.5D - entity.posX;
 
-				for (k2 = k - b0; k2 <= k + b0; ++k2) {
-					d2 = (double) k2 + 0.5D - p_85188_1_.posZ;
+				for (j2 = k - b0; j2 <= k + b0; ++j2) {
+					d2 = (double) j2 + 0.5D - entity.posZ;
 					label222:
 
-					for (i3 = this.worldServerInstance.getActualHeight() - 1; i3 >= 0; --i3) {
-						if (this.worldServerInstance.isAirBlock(i2, i3, k2)) {
-							while (i3 > 0 && this.worldServerInstance.isAirBlock(i2, i3 - 1, k2)) {
-								--i3;
+					for (k2 = this.worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2) {
+						if (this.worldServerInstance.isAirBlock(i2, k2, j2)) {
+							while (k2 > 0 && this.worldServerInstance.isAirBlock(i2, k2 - 1, j2)) {
+								--k2;
 							}
 
-							for (j3 = l1; j3 < l1 + 2; ++j3) {
-								k3 = j3 % 2;
-								l3 = 1 - k3;
+							for (i3 = l1; i3 < l1 + 2; ++i3) {
+								l2 = i3 % 2;
+								k3 = 1 - l2;
 
-								for (i4 = 0; i4 < 4; ++i4) {
-									for (j4 = -1; j4 < 4; ++j4) {
-										k4 = i2 + (i4 - 1) * k3;
-										l4 = i3 + j4;
-										i5 = k2 + (i4 - 1) * l3;
+								for (j3 = 0; j3 < 4; ++j3) {
+									for (i4 = -1; i4 < 4; ++i4) {
+										l3 = i2 + (j3 - 1) * l2;
+										k4 = k2 + i4;
+										j4 = j2 + (j3 - 1) * k3;
 
-										if (j4 < 0
-												&& !this.worldServerInstance.getBlock(k4, l4, i5).getMaterial()
+										if (i4 < 0
+												&& !this.worldServerInstance.getBlock(l3, k4, j4).getMaterial()
 														.isSolid()
-												|| j4 >= 0 && !this.worldServerInstance.isAirBlock(k4, l4, i5)) {
+												|| i4 >= 0 && !this.worldServerInstance.isAirBlock(l3, k4, j4)) {
 											continue label222;
 										}
 									}
 								}
 
-								d3 = (double) i3 + 0.5D - p_85188_1_.posY;
-								d4 = d1 * d1 + d3 * d3 + d2 * d2;
+								d4 = (double) k2 + 0.5D - entity.posY;
+								d3 = d1 * d1 + d4 * d4 + d2 * d2;
 
-								if (d0 < 0.0D || d4 < d0) {
-									d0 = d4;
+								if (d0 < 0.0D || d3 < d0) {
+									d0 = d3;
 									l = i2;
-									i1 = i3;
-									j1 = k2;
-									k1 = j3 % 2;
+									i1 = k2;
+									j1 = j2;
+									k1 = i3 % 2;
 								}
 							}
 						}
@@ -365,15 +364,15 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 			}
 		}
 
-		int k5 = l;
-		int j2 = i1;
-		k2 = j1;
-		int l5 = k1 % 2;
-		int l2 = 1 - l5;
+		int i5 = l;
+		int j5 = i1;
+		j2 = j1;
+		int k5 = k1 % 2;
+		int l5 = 1 - k5;
 
 		if (k1 % 4 >= 2) {
+			k5 = -k5;
 			l5 = -l5;
-			l2 = -l2;
 		}
 
 		boolean flag;
@@ -387,40 +386,40 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 				i1 = this.worldServerInstance.getActualHeight() - 10;
 			}
 
-			j2 = i1;
+			j5 = i1;
 
-			for (i3 = -1; i3 <= 1; ++i3) {
-				for (j3 = 1; j3 < 3; ++j3) {
-					for (k3 = -1; k3 < 3; ++k3) {
-						l3 = k5 + (j3 - 1) * l5 + i3 * l2;
-						i4 = j2 + k3;
-						j4 = k2 + (j3 - 1) * l2 - i3 * l5;
-						flag = k3 < 0;
-						this.worldServerInstance.setBlock(l3, i4, j4, flag ? TooMuchNature.end_obsidian : Blocks.air);
+			for (k2 = -1; k2 <= 1; ++k2) {
+				for (i3 = 1; i3 < 3; ++i3) {
+					for (l2 = -1; l2 < 3; ++l2) {
+						k3 = i5 + (i3 - 1) * k5 + k2 * l5;
+						j3 = j5 + l2;
+						i4 = j2 + (i3 - 1) * l5 - k2 * k5;
+						flag = l2 < 0;
+						this.worldServerInstance.setBlock(k3, j3, i4, flag ? TooMuchNature.end_obsidian : Blocks.air);
 					}
 				}
 			}
 		}
 
-		for (i3 = 0; i3 < 4; ++i3) {
-			for (j3 = 0; j3 < 4; ++j3) {
-				for (k3 = -1; k3 < 4; ++k3) {
-					l3 = k5 + (j3 - 1) * l5;
-					i4 = j2 + k3;
-					j4 = k2 + (j3 - 1) * l2;
-					flag = j3 == 0 || j3 == 3 || k3 == -1 || k3 == 3;
-					this.worldServerInstance.setBlock(l3, i4, j4,
-							(Block) (flag ? TooMuchNature.end_obsidian : TooMuchNature.lower_end_portal), 0, 2);
+		for (k2 = 0; k2 < 4; ++k2) {
+			for (i3 = 0; i3 < 4; ++i3) {
+				for (l2 = -1; l2 < 4; ++l2) {
+					k3 = i5 + (i3 - 1) * k5;
+					j3 = j5 + l2;
+					i4 = j2 + (i3 - 1) * l5;
+					flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
+					this.worldServerInstance.setBlock(k3, j3, i4,
+							flag ? TooMuchNature.end_obsidian : TooMuchNature.lower_end_portal, 0, 2);
 				}
 			}
 
-			for (j3 = 0; j3 < 4; ++j3) {
-				for (k3 = -1; k3 < 4; ++k3) {
-					l3 = k5 + (j3 - 1) * l5;
-					i4 = j2 + k3;
-					j4 = k2 + (j3 - 1) * l2;
-					this.worldServerInstance.notifyBlocksOfNeighborChange(l3, i4, j4,
-							this.worldServerInstance.getBlock(l3, i4, j4));
+			for (i3 = 0; i3 < 4; ++i3) {
+				for (l2 = -1; l2 < 4; ++l2) {
+					k3 = i5 + (i3 - 1) * k5;
+					j3 = j5 + l2;
+					i4 = j2 + (i3 - 1) * l5;
+					this.worldServerInstance.notifyBlocksOfNeighborChange(k3, j3, i4,
+							this.worldServerInstance.getBlock(k3, j3, i4));
 				}
 			}
 		}
@@ -432,14 +431,16 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 	 * called periodically to remove out-of-date portal locations from the cache
 	 * list. Argument par1 is a WorldServer.getTotalWorldTime() value.
 	 */
-	public void removeStalePortalLocations(long p_85189_1_) {
-		if (p_85189_1_ % 100L == 0L) {
+
+	@Override
+	public void removeStalePortalLocations(long par1) {
+		if (par1 % 100L == 0L) {
 			Iterator iterator = this.destinationCoordinateKeys.iterator();
-			long j = p_85189_1_ - 600L;
+			long j = par1 - 600L;
 
 			while (iterator.hasNext()) {
 				Long olong = (Long) iterator.next();
-				EnderlandsDimensionTeleporter.PortalPosition portalposition = (EnderlandsDimensionTeleporter.PortalPosition) this.destinationCoordinateCache
+				PortalPosition portalposition = (PortalPosition) this.destinationCoordinateCache
 						.getValueByKey(olong.longValue());
 
 				if (portalposition == null || portalposition.lastUpdateTime < j) {
@@ -454,9 +455,9 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 		/** The worldtime at which this PortalPosition was last verified */
 		public long lastUpdateTime;
 
-		public PortalPosition(int p_i1962_2_, int p_i1962_3_, int p_i1962_4_, long p_i1962_5_) {
-			super(p_i1962_2_, p_i1962_3_, p_i1962_4_);
-			this.lastUpdateTime = p_i1962_5_;
+		public PortalPosition(int par2, int par3, int par4, long par5) {
+			super(par2, par3, par4);
+			this.lastUpdateTime = par5;
 		}
 	}
 }

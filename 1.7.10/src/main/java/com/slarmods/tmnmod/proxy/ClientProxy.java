@@ -18,6 +18,9 @@
 package com.slarmods.tmnmod.proxy;
 
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndFire;
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderstoneDiode;
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderstoneRepeater;
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderstoneWire;
 import com.slarmods.tmnmod.client.renderer.entity.RenderHippopotamus;
 import com.slarmods.tmnmod.client.renderer.entity.RenderKangaroo;
 import com.slarmods.tmnmod.client.renderer.entity.RenderLonghorn;
@@ -48,7 +51,16 @@ public class ClientProxy extends CommonProxy {
 
 		// Blocks
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
-		
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneWire());
+		/**
+		 * Screw dis, I can't do this!
+		 * 
+		 * RenderingRegistry.registerBlockHandler(new
+		 * RenderBlockEnderstoneDiode());
+		 * RenderingRegistry.registerBlockHandler(new
+		 * RenderBlockEnderstoneRepeater());
+		 */
+
 		// Tile Entities
 	}
 }

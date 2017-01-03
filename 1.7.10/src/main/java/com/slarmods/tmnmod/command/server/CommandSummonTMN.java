@@ -38,7 +38,7 @@ import net.minecraft.world.World;
 public class CommandSummonTMN extends CommandBase implements ICommand {
 
 	public String getCommandName() {
-		return "summontmn";
+		return "tmnspawn";
 	}
 
 	/**
@@ -49,12 +49,12 @@ public class CommandSummonTMN extends CommandBase implements ICommand {
 	}
 
 	public String getCommandUsage(ICommandSender commandsender) {
-		return "commands.summontmn.usage";
+		return "commands.tmnspawn.usage";
 	}
 
 	public void processCommand(ICommandSender commandsender, String[] p_71515_2_) {
 		if (p_71515_2_.length < 1) {
-			throw new WrongUsageException("commands.summontmn.usage", new Object[0]);
+			throw new WrongUsageException("commands.tmnspawn.usage", new Object[0]);
 		} else {
 			String s = p_71515_2_[0];
 			double d0 = (double) commandsender.getPlayerCoordinates().posX + 0.5D;
