@@ -49,7 +49,7 @@ tile.end_stone_brick.mossy.name=Mossy End Stone Bricks
 tile.end_stone_brick.cracked.name=Cracked End Stone Bricks
 tile.end_stone_brick.carved.name=Chiseled End Stone Bricks
 tile.enderald_block.name=Enderald Block
-tile.enderand_ore.name=Enderald Ore
+tile.enderald_ore.name=Enderald Ore
 
 tile.fenceGate.name=Oak Fence Gate
 tile.fence.name=Oak Fence
@@ -65,3 +65,6 @@ itemGroup.tmnblocks=TMN Blocks
 itemGroup.tmndecoblocks=TMN Decorations
 itemGroup.tmnitems=TMN Items
 itemGroup.tmnmobs=TMN Mobs
+
+container.end_wood_chest=End Wood Chest
+container.end_wood_chest_double=Large End Wood Chest

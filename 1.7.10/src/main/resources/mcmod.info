@@ -1,14 +1,14 @@
 [
 {
   "modid": "tmn",
-  "name": "TooMuchNature Mod",
+  "name": "TooMuchNatventure Mod",
   "description": "This mod adds a new dimension and makes nature somewhat better. It adds cherry trees, planks, enderalds, ender grass and dirt, kangaroo armor, new mobs, and more stuff.",
-  "version": "Alpha v0.1-beta1",
+  "version": "v1.0-b1",
   "mcversion": "${mcversion}",
   "url": "https://theslarfab.jimdo.com/mods/toomuchnature-mod",
   "updateUrl": "",
   "authorList": ["TheSlarFab"],
-  "credits": "The Forge and FML guys, for making this example",
+  "credits": "meeeeeeeeeeee!",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
