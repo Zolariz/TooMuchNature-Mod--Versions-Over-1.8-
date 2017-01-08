@@ -1,3 +1,20 @@
+/**
+	Copyright (C) <2016>  <TheSlarFab>
+
+    This file is part of the TheSlarFab TooMuchNatventure Mod; as such, 
+    you can redistribute it and/or modify it under the terms of the GNU
+    General Public License as published by the Free Software Foundation,
+    either version 3 of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package com.slarmods.tmnmod.client.renderer.block;
 
 import com.slarmods.tmnmod.TooMuchNature;
@@ -8,6 +25,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneWire;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
@@ -28,7 +46,8 @@ public class RenderBlockEnderstoneWire implements ISimpleBlockRenderingHandler {
 		IIcon iicon1 = BlockRedstoneWire.getRedstoneWireIcon("line");
 		IIcon iicon2 = BlockRedstoneWire.getRedstoneWireIcon("cross_overlay");
 		IIcon iicon3 = BlockRedstoneWire.getRedstoneWireIcon("line_overlay");
-		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
+		tessellator.setBrightness(
+				block.getMixedBrightnessForBlock(world, x, y, z));
 		float f = (float) l / 15.0F;
 		float f1 = f * 0.6F + 0.4F;
 
@@ -50,37 +69,49 @@ public class RenderBlockEnderstoneWire implements ISimpleBlockRenderingHandler {
 		tessellator.setColorOpaque_F(f1, f2, f3);
 		double d0 = 0.015625D;
 		double d1 = 0.015625D;
-		boolean flag = BlockEnderstoneWire.isPowerProviderOrWire(world, x - 1, y, z, 1)
+		boolean flag = BlockEnderstoneWire.isPowerProviderOrWire(world, x - 1, y,
+				z, 1)
 				|| !world.getBlock(x - 1, y, z).isBlockNormalCube()
-						&& BlockEnderstoneWire.isPowerProviderOrWire(world, x - 1, y - 1, z, -1);
-		boolean flag1 = BlockEnderstoneWire.isPowerProviderOrWire(world, x + 1, y, z, 3)
+						&& BlockEnderstoneWire.isPowerProviderOrWire(world, x - 1, y - 1,
+								z, -1);
+		boolean flag1 = BlockEnderstoneWire.isPowerProviderOrWire(world, x + 1, y,
+				z, 3)
 				|| !world.getBlock(x + 1, y, z).isBlockNormalCube()
-						&& BlockEnderstoneWire.isPowerProviderOrWire(world, x + 1, y - 1, z, -1);
-		boolean flag2 = BlockEnderstoneWire.isPowerProviderOrWire(world, x, y, z - 1, 2)
+						&& BlockEnderstoneWire.isPowerProviderOrWire(world, x + 1, y - 1,
+								z, -1);
+		boolean flag2 = BlockEnderstoneWire.isPowerProviderOrWire(world, x, y,
+				z - 1, 2)
 				|| !world.getBlock(x, y, z - 1).isBlockNormalCube()
-						&& BlockEnderstoneWire.isPowerProviderOrWire(world, x, y - 1, z - 1, -1);
-		boolean flag3 = BlockEnderstoneWire.isPowerProviderOrWire(world, x, y, z + 1, 0)
+						&& BlockEnderstoneWire.isPowerProviderOrWire(world, x, y - 1,
+								z - 1, -1);
+		boolean flag3 = BlockEnderstoneWire.isPowerProviderOrWire(world, x, y,
+				z + 1, 0)
 				|| !world.getBlock(x, y, z + 1).isBlockNormalCube()
-						&& BlockEnderstoneWire.isPowerProviderOrWire(world, x, y - 1, z + 1, -1);
+						&& BlockEnderstoneWire.isPowerProviderOrWire(world, x, y - 1,
+								z + 1, -1);
 
 		if (!world.getBlock(x, y + 1, z).isBlockNormalCube()) {
 			if (world.getBlock(x - 1, y, z).isBlockNormalCube()
-					&& BlockEnderstoneWire.isPowerProviderOrWire(world, x - 1, y + 1, z, -1)) {
+					&& BlockEnderstoneWire.isPowerProviderOrWire(world, x - 1, y + 1,
+							z, -1)) {
 				flag = true;
 			}
 
 			if (world.getBlock(x + 1, y, z).isBlockNormalCube()
-					&& BlockEnderstoneWire.isPowerProviderOrWire(world, x + 1, y + 1, z, -1)) {
+					&& BlockEnderstoneWire.isPowerProviderOrWire(world, x + 1, y + 1,
+							z, -1)) {
 				flag1 = true;
 			}
 
 			if (world.getBlock(x, y, z - 1).isBlockNormalCube()
-					&& BlockEnderstoneWire.isPowerProviderOrWire(world, x, y + 1, z - 1, -1)) {
+					&& BlockEnderstoneWire.isPowerProviderOrWire(world, x, y + 1,
+							z - 1, -1)) {
 				flag2 = true;
 			}
 
 			if (world.getBlock(x, y, z + 1).isBlockNormalCube()
-					&& BlockEnderstoneWire.isPowerProviderOrWire(world, x, y + 1, z + 1, -1)) {
+					&& BlockEnderstoneWire.isPowerProviderOrWire(world, x, y + 1,
+							z + 1, -1)) {
 				flag3 = true;
 			}
 		}
@@ -156,134 +187,155 @@ public class RenderBlockEnderstoneWire implements ISimpleBlockRenderingHandler {
 			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7,
 					(double) iicon2.getInterpolatedU((double) j1), (double) iicon2.getInterpolatedV((double) i2));
 		} else if (i1 == 1) {
-			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f7, (double) iicon1.getMaxU(),
-					(double) iicon1.getMaxV());
-			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f6, (double) iicon1.getMaxU(),
-					(double) iicon1.getMinV());
-			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f6, (double) iicon1.getMinU(),
-					(double) iicon1.getMinV());
-			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7, (double) iicon1.getMinU(),
-					(double) iicon1.getMaxV());
+			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f7,
+					(double) iicon1.getMaxU(), (double) iicon1.getMaxV());
+			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f6,
+					(double) iicon1.getMaxU(), (double) iicon1.getMinV());
+			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f6,
+					(double) iicon1.getMinU(), (double) iicon1.getMinV());
+			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7,
+					(double) iicon1.getMinU(), (double) iicon1.getMaxV());
 			tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f7, (double) iicon3.getMaxU(),
-					(double) iicon3.getMaxV());
-			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f6, (double) iicon3.getMaxU(),
-					(double) iicon3.getMinV());
-			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f6, (double) iicon3.getMinU(),
-					(double) iicon3.getMinV());
-			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7, (double) iicon3.getMinU(),
-					(double) iicon3.getMaxV());
+			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f7,
+					(double) iicon3.getMaxU(), (double) iicon3.getMaxV());
+			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f6,
+					(double) iicon3.getMaxU(), (double) iicon3.getMinV());
+			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f6,
+					(double) iicon3.getMinU(), (double) iicon3.getMinV());
+			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7,
+					(double) iicon3.getMinU(), (double) iicon3.getMaxV());
 		} else {
-			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f7, (double) iicon1.getMaxU(),
-					(double) iicon1.getMaxV());
-			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f6, (double) iicon1.getMinU(),
-					(double) iicon1.getMaxV());
-			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f6, (double) iicon1.getMinU(),
-					(double) iicon1.getMinV());
-			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7, (double) iicon1.getMaxU(),
-					(double) iicon1.getMinV());
+			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f7,
+					(double) iicon1.getMaxU(), (double) iicon1.getMaxV());
+			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f6,
+					(double) iicon1.getMinU(), (double) iicon1.getMaxV());
+			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f6,
+					(double) iicon1.getMinU(), (double) iicon1.getMinV());
+			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7,
+					(double) iicon1.getMaxU(), (double) iicon1.getMinV());
 			tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f7, (double) iicon3.getMaxU(),
-					(double) iicon3.getMaxV());
-			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f6, (double) iicon3.getMinU(),
-					(double) iicon3.getMaxV());
-			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f6, (double) iicon3.getMinU(),
-					(double) iicon3.getMinV());
-			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7, (double) iicon3.getMaxU(),
-					(double) iicon3.getMinV());
+			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f7,
+					(double) iicon3.getMaxU(), (double) iicon3.getMaxV());
+			tessellator.addVertexWithUV((double) f5, (double) y + 0.015625D, (double) f6,
+					(double) iicon3.getMinU(), (double) iicon3.getMaxV());
+			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f6,
+					(double) iicon3.getMinU(), (double) iicon3.getMinV());
+			tessellator.addVertexWithUV((double) f4, (double) y + 0.015625D, (double) f7,
+					(double) iicon3.getMaxU(), (double) iicon3.getMinV());
 		}
 
 		if (!world.getBlock(x, y + 1, z).isBlockNormalCube()) {
 			float f8 = 0.021875F;
 
 			if (world.getBlock(x - 1, y, z).isBlockNormalCube()
-					&& world.getBlock(x - 1, y + 1, z) == TooMuchNature.enderstone_wire) {
+					&& world.getBlock(x - 1, y + 1,
+							z) == TooMuchNature.enderstone_wire) {
 				tessellator.setColorOpaque_F(f1, f2, f3);
-				tessellator.addVertexWithUV((double) x + 0.015625D, (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 1), (double) iicon1.getMaxU(), (double) iicon1.getMinV());
-				tessellator.addVertexWithUV((double) x + 0.015625D, (double) (y + 0), (double) (z + 1),
-						(double) iicon1.getMinU(), (double) iicon1.getMinV());
-				tessellator.addVertexWithUV((double) x + 0.015625D, (double) (y + 0), (double) (z + 0),
-						(double) iicon1.getMinU(), (double) iicon1.getMaxV());
-				tessellator.addVertexWithUV((double) x + 0.015625D, (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 0), (double) iicon1.getMaxU(), (double) iicon1.getMaxV());
+				tessellator.addVertexWithUV((double) x + 0.015625D,
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 1),
+						(double) iicon1.getMaxU(), (double) iicon1.getMinV());
+				tessellator.addVertexWithUV((double) x + 0.015625D, (double) (y + 0),
+						(double) (z + 1), (double) iicon1.getMinU(), (double) iicon1.getMinV());
+				tessellator.addVertexWithUV((double) x + 0.015625D, (double) (y + 0),
+						(double) (z + 0), (double) iicon1.getMinU(), (double) iicon1.getMaxV());
+				tessellator.addVertexWithUV((double) x + 0.015625D,
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 0),
+						(double) iicon1.getMaxU(), (double) iicon1.getMaxV());
 				tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-				tessellator.addVertexWithUV((double) x + 0.015625D, (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 1), (double) iicon3.getMaxU(), (double) iicon3.getMinV());
-				tessellator.addVertexWithUV((double) x + 0.015625D, (double) (y + 0), (double) (z + 1),
-						(double) iicon3.getMinU(), (double) iicon3.getMinV());
-				tessellator.addVertexWithUV((double) x + 0.015625D, (double) (y + 0), (double) (z + 0),
-						(double) iicon3.getMinU(), (double) iicon3.getMaxV());
-				tessellator.addVertexWithUV((double) x + 0.015625D, (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 0), (double) iicon3.getMaxU(), (double) iicon3.getMaxV());
+				tessellator.addVertexWithUV((double) x + 0.015625D,
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 1),
+						(double) iicon3.getMaxU(), (double) iicon3.getMinV());
+				tessellator.addVertexWithUV((double) x + 0.015625D, (double) (y + 0),
+						(double) (z + 1), (double) iicon3.getMinU(), (double) iicon3.getMinV());
+				tessellator.addVertexWithUV((double) x + 0.015625D, (double) (y + 0),
+						(double) (z + 0), (double) iicon3.getMinU(), (double) iicon3.getMaxV());
+				tessellator.addVertexWithUV((double) x + 0.015625D,
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 0),
+						(double) iicon3.getMaxU(), (double) iicon3.getMaxV());
 			}
 
 			if (world.getBlock(x + 1, y, z).isBlockNormalCube()
-					&& world.getBlock(x + 1, y + 1, z) == TooMuchNature.enderstone_wire) {
+					&& world.getBlock(x + 1, y + 1,
+							z) == TooMuchNature.enderstone_wire) {
 				tessellator.setColorOpaque_F(f1, f2, f3);
-				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) (y + 0), (double) (z + 1),
-						(double) iicon1.getMinU(), (double) iicon1.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 1), (double) iicon1.getMaxU(), (double) iicon1.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 0), (double) iicon1.getMaxU(), (double) iicon1.getMinV());
-				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) (y + 0), (double) (z + 0),
-						(double) iicon1.getMinU(), (double) iicon1.getMinV());
+				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) (y + 0),
+						(double) (z + 1), (double) iicon1.getMinU(), (double) iicon1.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D,
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 1),
+						(double) iicon1.getMaxU(), (double) iicon1.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D,
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 0),
+						(double) iicon1.getMaxU(), (double) iicon1.getMinV());
+				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) (y + 0),
+						(double) (z + 0), (double) iicon1.getMinU(), (double) iicon1.getMinV());
 				tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) (y + 0), (double) (z + 1),
-						(double) iicon3.getMinU(), (double) iicon3.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 1), (double) iicon3.getMaxU(), (double) iicon3.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 0), (double) iicon3.getMaxU(), (double) iicon3.getMinV());
-				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) (y + 0), (double) (z + 0),
-						(double) iicon3.getMinU(), (double) iicon3.getMinV());
+				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) (y + 0),
+						(double) (z + 1), (double) iicon3.getMinU(), (double) iicon3.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D,
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 1),
+						(double) iicon3.getMaxU(), (double) iicon3.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D,
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 0),
+						(double) iicon3.getMaxU(), (double) iicon3.getMinV());
+				tessellator.addVertexWithUV((double) (x + 1) - 0.015625D, (double) (y + 0),
+						(double) (z + 0), (double) iicon3.getMinU(), (double) iicon3.getMinV());
 			}
 
 			if (world.getBlock(x, y, z - 1).isBlockNormalCube()
-					&& world.getBlock(x, y + 1, z - 1) == TooMuchNature.enderstone_wire) {
+					&& world.getBlock(x, y + 1,
+							z - 1) == TooMuchNature.enderstone_wire) {
 				tessellator.setColorOpaque_F(f1, f2, f3);
-				tessellator.addVertexWithUV((double) (x + 1), (double) (y + 0), (double) z + 0.015625D,
-						(double) iicon1.getMinU(), (double) iicon1.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 1), (double) ((float) (y + 1) + 0.021875F),
-						(double) z + 0.015625D, (double) iicon1.getMaxU(), (double) iicon1.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 0), (double) ((float) (y + 1) + 0.021875F),
-						(double) z + 0.015625D, (double) iicon1.getMaxU(), (double) iicon1.getMinV());
-				tessellator.addVertexWithUV((double) (x + 0), (double) (y + 0), (double) z + 0.015625D,
-						(double) iicon1.getMinU(), (double) iicon1.getMinV());
+				tessellator.addVertexWithUV((double) (x + 1), (double) (y + 0),
+						(double) z + 0.015625D, (double) iicon1.getMinU(), (double) iicon1.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 1),
+						(double) ((float) (y + 1) + 0.021875F), (double) z + 0.015625D,
+						(double) iicon1.getMaxU(), (double) iicon1.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 0),
+						(double) ((float) (y + 1) + 0.021875F), (double) z + 0.015625D,
+						(double) iicon1.getMaxU(), (double) iicon1.getMinV());
+				tessellator.addVertexWithUV((double) (x + 0), (double) (y + 0),
+						(double) z + 0.015625D, (double) iicon1.getMinU(), (double) iicon1.getMinV());
 				tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-				tessellator.addVertexWithUV((double) (x + 1), (double) (y + 0), (double) z + 0.015625D,
-						(double) iicon3.getMinU(), (double) iicon3.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 1), (double) ((float) (y + 1) + 0.021875F),
-						(double) z + 0.015625D, (double) iicon3.getMaxU(), (double) iicon3.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 0), (double) ((float) (y + 1) + 0.021875F),
-						(double) z + 0.015625D, (double) iicon3.getMaxU(), (double) iicon3.getMinV());
-				tessellator.addVertexWithUV((double) (x + 0), (double) (y + 0), (double) z + 0.015625D,
-						(double) iicon3.getMinU(), (double) iicon3.getMinV());
+				tessellator.addVertexWithUV((double) (x + 1), (double) (y + 0),
+						(double) z + 0.015625D, (double) iicon3.getMinU(), (double) iicon3.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 1),
+						(double) ((float) (y + 1) + 0.021875F), (double) z + 0.015625D,
+						(double) iicon3.getMaxU(), (double) iicon3.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 0),
+						(double) ((float) (y + 1) + 0.021875F), (double) z + 0.015625D,
+						(double) iicon3.getMaxU(), (double) iicon3.getMinV());
+				tessellator.addVertexWithUV((double) (x + 0), (double) (y + 0),
+						(double) z + 0.015625D, (double) iicon3.getMinU(), (double) iicon3.getMinV());
 			}
 
 			if (world.getBlock(x, y, z + 1).isBlockNormalCube()
-					&& world.getBlock(x, y + 1, z + 1) == TooMuchNature.enderstone_wire) {
+					&& world.getBlock(x, y + 1,
+							z + 1) == TooMuchNature.enderstone_wire) {
 				tessellator.setColorOpaque_F(f1, f2, f3);
-				tessellator.addVertexWithUV((double) (x + 1), (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 1) - 0.015625D, (double) iicon1.getMaxU(), (double) iicon1.getMinV());
-				tessellator.addVertexWithUV((double) (x + 1), (double) (y + 0), (double) (z + 1) - 0.015625D,
-						(double) iicon1.getMinU(), (double) iicon1.getMinV());
-				tessellator.addVertexWithUV((double) (x + 0), (double) (y + 0), (double) (z + 1) - 0.015625D,
-						(double) iicon1.getMinU(), (double) iicon1.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 0), (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 1) - 0.015625D, (double) iicon1.getMaxU(), (double) iicon1.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 1),
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 1) - 0.015625D,
+						(double) iicon1.getMaxU(), (double) iicon1.getMinV());
+				tessellator.addVertexWithUV((double) (x + 1), (double) (y + 0),
+						(double) (z + 1) - 0.015625D, (double) iicon1.getMinU(), (double) iicon1.getMinV());
+				tessellator.addVertexWithUV((double) (x + 0), (double) (y + 0),
+						(double) (z + 1) - 0.015625D, (double) iicon1.getMinU(), (double) iicon1.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 0),
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 1) - 0.015625D,
+						(double) iicon1.getMaxU(), (double) iicon1.getMaxV());
 				tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-				tessellator.addVertexWithUV((double) (x + 1), (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 1) - 0.015625D, (double) iicon3.getMaxU(), (double) iicon3.getMinV());
-				tessellator.addVertexWithUV((double) (x + 1), (double) (y + 0), (double) (z + 1) - 0.015625D,
-						(double) iicon3.getMinU(), (double) iicon3.getMinV());
-				tessellator.addVertexWithUV((double) (x + 0), (double) (y + 0), (double) (z + 1) - 0.015625D,
-						(double) iicon3.getMinU(), (double) iicon3.getMaxV());
-				tessellator.addVertexWithUV((double) (x + 0), (double) ((float) (y + 1) + 0.021875F),
-						(double) (z + 1) - 0.015625D, (double) iicon3.getMaxU(), (double) iicon3.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 1),
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 1) - 0.015625D,
+						(double) iicon3.getMaxU(), (double) iicon3.getMinV());
+				tessellator.addVertexWithUV((double) (x + 1), (double) (y + 0),
+						(double) (z + 1) - 0.015625D, (double) iicon3.getMinU(), (double) iicon3.getMinV());
+				tessellator.addVertexWithUV((double) (x + 0), (double) (y + 0),
+						(double) (z + 1) - 0.015625D, (double) iicon3.getMinU(), (double) iicon3.getMaxV());
+				tessellator.addVertexWithUV((double) (x + 0),
+						(double) ((float) (y + 1) + 0.021875F), (double) (z + 1) - 0.015625D,
+						(double) iicon3.getMaxU(), (double) iicon3.getMaxV());
 			}
 		}
+
 		return true;
 	}
 

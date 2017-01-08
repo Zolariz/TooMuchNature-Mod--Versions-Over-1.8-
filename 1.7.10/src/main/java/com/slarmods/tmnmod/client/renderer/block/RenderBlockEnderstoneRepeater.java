@@ -1,6 +1,21 @@
 /**
- * Screw dis!!
- */
+	Copyright (C) <2016>  <TheSlarFab>
+
+    This file is part of the TheSlarFab TooMuchNatventure Mod; as such, 
+    you can redistribute it and/or modify it under the terms of the GNU
+    General Public License as published by the Free Software Foundation,
+    either version 3 of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+// Ugghhhh! Screw dis!
 
 package com.slarmods.tmnmod.client.renderer.block;
 
@@ -101,7 +116,7 @@ public class RenderBlockEnderstoneRepeater implements ISimpleBlockRenderingHandl
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 		renderer.renderTorchAtAngle(block, (double) x + d3, (double) y + d0, (double) z + d4, 0.0D, 0.0D, 0);
-		//this.renderBlockRedstoneDiode(block, x, y, z);
+		// this.renderBlockRedstoneDiode(block, x, y, z);
 		return true;
 	}
 

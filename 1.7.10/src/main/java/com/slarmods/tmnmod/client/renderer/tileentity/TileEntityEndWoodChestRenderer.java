@@ -1,3 +1,20 @@
+/**
+	Copyright (C) <2016>  <TheSlarFab>
+
+    This file is part of the TheSlarFab TooMuchNatventure Mod; as such, 
+    you can redistribute it and/or modify it under the terms of the GNU
+    General Public License as published by the Free Software Foundation,
+    either version 3 of the License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package com.slarmods.tmnmod.client.renderer.tileentity;
 
 import java.util.Calendar;
@@ -22,19 +39,19 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderBlockEndWoodChest extends TileEntitySpecialRenderer {
+public class TileEntityEndWoodChestRenderer extends TileEntitySpecialRenderer {
 	private static final ResourceLocation tripleChestTexture = new ResourceLocation(
-			TooMuchNature.modid + ":textures/entity/chest/TripleBlockEndWoodChest.png");
+			TooMuchNature.modid + ":" + "textures/entity/chest/end_wood_chest_triple.png");
 	private static final ResourceLocation doubleChestTexture = new ResourceLocation(
-			TooMuchNature.modid + ":textures/entity/chest/LargeBlockEndWoodChest.png");
+			TooMuchNature.modid + ":" + "textures/entity/chest/end_wood_chest_double.png");
 	private static final ResourceLocation chestTexture = new ResourceLocation(
-			TooMuchNature.modid + ":textures/entity/chest/BlockEndWoodChest.png");
+			TooMuchNature.modid + ":" + "textures/entity/chest/end_wood_chest.png");
 	private ModelChest singleChest = new ModelChest();
 	private ModelChest doubleChest = new ModelLargeChest();
 	private ModelChest tripleChest = new ModelTripleChest();
 	private boolean field_147509_j;
 
-	public RenderBlockEndWoodChest() {
+	public TileEntityEndWoodChestRenderer() {
 		Calendar calendar = Calendar.getInstance();
 
 		if (calendar.get(2) + 1 == 12 && calendar.get(5) >= 24 && calendar.get(5) <= 26) {

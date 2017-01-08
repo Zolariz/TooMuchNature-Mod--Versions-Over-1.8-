@@ -3,12 +3,16 @@ package com.slarmods.tmnmod.block;
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.tileentity.TileEntityEndWoodTable;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockEndWoodTable extends BlockContainer {
+public class BlockEndWoodTable extends Block {
 
 	public BlockEndWoodTable(Material material) {
 		super(material);
@@ -31,7 +35,13 @@ public class BlockEndWoodTable extends BlockContainer {
 	}
 	
 	@Override
-	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityEndWoodTable();
+	public boolean shouldSideBeRendered(IBlockAccess blockaccess, int x, int y, int z, int side) {
+		return true;
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public String getItemIconName()
+    {
+        return TooMuchNature.modid + ":" + "end_wood_table";
+    }
 }

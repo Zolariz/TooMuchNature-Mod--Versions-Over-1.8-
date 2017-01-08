@@ -18,6 +18,7 @@
 package com.slarmods.tmnmod.proxy;
 
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndFire;
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndPlanksTable;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderstoneDiode;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderstoneRepeater;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderstoneWire;
@@ -25,9 +26,10 @@ import com.slarmods.tmnmod.client.renderer.entity.RenderHippopotamus;
 import com.slarmods.tmnmod.client.renderer.entity.RenderKangaroo;
 import com.slarmods.tmnmod.client.renderer.entity.RenderLonghorn;
 import com.slarmods.tmnmod.client.renderer.entity.RenderZebra;
+import com.slarmods.tmnmod.client.renderer.item.block.ItemBlockEndWoodTableRenderer;
+import com.slarmods.tmnmod.client.renderer.item.block.ItemRenderBlockEndWoodChest;
 import com.slarmods.tmnmod.client.renderer.item.block.ItemRenderBlockEndWoodTable;
-import com.slarmods.tmnmod.client.renderer.tileentity.RenderBlockEndWoodChest;
-import com.slarmods.tmnmod.client.renderer.tileentity.RenderBlockEndWoodTable;
+import com.slarmods.tmnmod.client.renderer.tileentity.TileEntityEndWoodChestRenderer;
 import com.slarmods.tmnmod.entity.EntityHippopotamus;
 import com.slarmods.tmnmod.entity.EntityKangaroo;
 import com.slarmods.tmnmod.entity.EntityLonghorn;
@@ -62,14 +64,17 @@ public class ClientProxy extends CommonProxy {
 		// Block
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneWire());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEndPlanksTable());
+
+		// ItemBlock
+		/**
+		 * MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(TooMuchNature.end_wood_table),
+		 * new ItemBlockEndWoodTableRenderer());
+		 */
 
 		// TileEntity
-		TileEntitySpecialRenderer renderEndWoodTable = new RenderBlockEndWoodTable();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEndWoodTable.class, renderEndWoodTable);
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(TooMuchNature.end_wood_table),
-				new ItemRenderBlockEndWoodTable(renderEndWoodTable, new TileEntityEndWoodTable()));
-
-		TileEntitySpecialRenderer renderEndWoodChest = new RenderBlockEndWoodChest();
+		TileEntitySpecialRenderer renderEndWoodChest = new TileEntityEndWoodChestRenderer();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEndWoodChest.class, renderEndWoodChest);
+
 	}
 }
