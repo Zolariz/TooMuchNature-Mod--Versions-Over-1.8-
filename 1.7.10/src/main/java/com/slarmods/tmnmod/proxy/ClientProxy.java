@@ -64,6 +64,9 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneWire());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndPlanksTable());
+		// RenderingRegistry.registerBlockHandler(new
+		// RenderBlockEnderstoneDiode());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneRepeater());
 
 		// TileEntity
 		TileEntitySpecialRenderer renderEndWoodChest = new TileEntityEndWoodChestRenderer();

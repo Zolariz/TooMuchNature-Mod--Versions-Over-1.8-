@@ -58,6 +58,7 @@ import com.slarmods.tmnmod.entity.EntityKangaroo;
 import com.slarmods.tmnmod.entity.EntityLonghorn;
 import com.slarmods.tmnmod.entity.EntityZebra;
 import com.slarmods.tmnmod.entity.list.TMNEntityList;
+import com.slarmods.tmnmod.entity.projectile.EntityEnderGunBullet;
 import com.slarmods.tmnmod.item.ItemAcaciaDoor;
 import com.slarmods.tmnmod.item.ItemBirchDoor;
 import com.slarmods.tmnmod.item.ItemBlockCherryLeaf;
@@ -71,6 +72,7 @@ import com.slarmods.tmnmod.item.ItemBlockEndWoodPlanks;
 import com.slarmods.tmnmod.item.ItemCherryDoor;
 import com.slarmods.tmnmod.item.ItemDarkOakDoor;
 import com.slarmods.tmnmod.item.ItemEndWoodTable;
+import com.slarmods.tmnmod.item.ItemEnderGun;
 import com.slarmods.tmnmod.item.ItemEnderstone;
 import com.slarmods.tmnmod.item.ItemFlintAndEndstone;
 import com.slarmods.tmnmod.item.ItemJungleDoor;
@@ -135,33 +137,43 @@ public class TooMuchNature {
 	@Instance(TooMuchNature.modid)
 	public static TooMuchNature instance;
 
+	/** Creative Tabs */
 	public static CreativeTabs tabTooMuchNatureBlocks;
 	public static CreativeTabs tabTooMuchNatureDecoBlocks;
 	public static CreativeTabs tabTooMuchNatureItems;
 	public static CreativeTabs tabTooMuchNatureMobs;
+	public static CreativeTabs tabTooMuchNatureWeapons;
 
+	/** Armor Materials */
 	public static ArmorMaterial KangarooArmorMaterial = EnumHelper.addArmorMaterial("KangarooArmorMaterial", 14,
 			new int[] { 2, 5, 4, 2 }, 10);
 
-	// Items
+	/** Blocks */
+	// Food Items
 	public static Item orange;
 	public static Item cherry;
 	public static Item raw_kangaroo;
 	public static Item cooked_kangaroo;
 	public static Item white_cherry;
 
+	// Mob Drop Items
 	public static Item kangaroo_skin;
+
+	// Functional Items
 	public static Item flint_and_endstone;
 	public static Item tmn_spawn_egg;
 
+	// Basic Items 1
 	public static Item ruby;
 	public static Item sapphire;
 	public static Item titanium_ingot;
 	public static Item platinum_ingot;
 	public static Item enderald;
 
+	// Fluid Items
 	public static Item ender_water_bucket;
 
+	// Door Items
 	public static Item item_cherry_door;
 	public static Item item_spruce_door;
 	public static Item item_birch_door;
@@ -170,8 +182,10 @@ public class TooMuchNature {
 	public static Item item_dark_oak_door;
 	public static Item item_ender_door;
 
+	// Crop Seeds
 	public static Item cherry_seeds;
 
+	// Circuit Item
 	public static Item enderstone_dust;
 	public static Item enderstone_repeater;
 	public static Item enderstone_comparator;
@@ -190,18 +204,28 @@ public class TooMuchNature {
 	public static int kangaroo_leggings_ID;
 	public static int kangaroo_boots_ID;
 
-	// Blocks
+	// Shooting Weapons
+	public static Item ender_pistol;
+
+	// Melee Weapons
+	public static Item enderald_sword;
+
+	/** Blocks */
+	// Ore Blocks
 	public static Block enderald_ore;
 	public static Block ruby_ore;
 	public static Block sapphire_ore;
 
+	// Basic Blocks
 	public static Block enderald_block;
 	public static Block ruby_block;
 
+	// Tree Blocks
 	public static Block cherry_log;
 	public static Block cherry_leaf;
 	public static Block cherry_sapling;
 
+	// Cherry Wood Blocks
 	public static Block cherry_planks;
 	public static Block cherry_double_slab;
 	public static Block cherry_slab;
@@ -210,6 +234,7 @@ public class TooMuchNature {
 	public static Block cherry_fence_gate;
 	public static Block cherry_door_block;
 
+	// Fence | Fence Gate Blocks
 	public static Block spruce_fence;
 	public static Block birch_fence;
 	public static Block jungle_fence;
@@ -221,14 +246,17 @@ public class TooMuchNature {
 	public static Block acacia_fence_gate;
 	public static Block dark_oak_fence_gate;
 
+	// Door Blocks
 	public static Block spruce_door;
 	public static Block birch_door;
 	public static Block jungle_door;
 	public static Block acacia_door;
 	public static Block dark_oak_door;
 
+	// Crop Blocks
 	public static Block crops_cherry;
 
+	// Enderlands Dimension Blocks
 	public static Block cherry_grass;
 	public static Block end_obsidian;
 	public static Block end_stone_smooth;
@@ -246,6 +274,7 @@ public class TooMuchNature {
 	public static Block end_wood_table;
 	public static Block end_wood_planks;
 
+	// Circuit Blocks
 	public static Block enderstone_wire;
 	public static Block enderstone_block;
 	public static Block enderstone_torch;
@@ -255,7 +284,7 @@ public class TooMuchNature {
 	public static Block end_wood_chest;
 
 	private int modEntityID;
-	private int blockEntityID;
+	private int chestBlockID;
 
 	public static final String modid = "tmn";
 	public static final String version = "v1.0-b1";
@@ -292,6 +321,13 @@ public class TooMuchNature {
 			@SideOnly(Side.CLIENT)
 			public Item getTabIconItem() {
 				return TooMuchNature.tmn_spawn_egg;
+			}
+		};
+
+		tabTooMuchNatureWeapons = new CreativeTabs("tmnweapons") {
+			@SideOnly(Side.CLIENT)
+			public Item getTabIconItem() {
+				return TooMuchNature.ender_pistol;
 			}
 		};
 
@@ -351,6 +387,9 @@ public class TooMuchNature {
 		ender_water_bucket = new ItemTMNBucket(TooMuchNature.ender_water_dynamic)
 				.setUnlocalizedName("ender_water_bucket").setTextureName("stick");
 		enderald_bucket = new ItemTMNBucket(Blocks.air).setUnlocalizedName("enderald_bucket").setTextureName("bucket");
+
+		// Weapons
+		ender_pistol = new ItemEnderGun().setUnlocalizedName("ender_gun").setTextureName(TooMuchNature.modid + ":" + "ender_pistol");
 
 		// Trees
 		cherry_log = new BlockCherryLog(Material.wood).setBlockName("log_cherry")
@@ -453,7 +492,7 @@ public class TooMuchNature {
 				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_repeater_on");
 
 		// Container Blocks
-		end_wood_chest = new BlockEndWoodChest(++blockEntityID).setBlockName("end_wood_chest")
+		end_wood_chest = new BlockEndWoodChest(++chestBlockID).setBlockName("end_wood_chest")
 				.setStepSound(Block.soundTypeWood).setBlockTextureName(TooMuchNature.modid + ":" + "planks_end_oak");
 
 		// Seeds
@@ -463,18 +502,20 @@ public class TooMuchNature {
 
 		// Food
 		orange = new ItemFood(4, 0.5F, false).setUnlocalizedName("orange")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems).setTextureName(TooMuchNature.modid + ":orange");
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
+				.setTextureName(TooMuchNature.modid + ":" + "orange");
 		cherry = new ItemFood(2, 0.4F, false).setUnlocalizedName("cherry")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems).setTextureName(TooMuchNature.modid + ":cherry");
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
+				.setTextureName(TooMuchNature.modid + ":" + "cherry");
 		raw_kangaroo = new ItemFood(5, 0.5F, true).setUnlocalizedName("raw_kangaroo")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":kangaroo_meat_raw");
+				.setTextureName(TooMuchNature.modid + ":" + "kangaroo_meat_raw");
 		cooked_kangaroo = new ItemFood(12, 0.8F, true).setUnlocalizedName("cooked_kangaroo")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":kangaroo_meat_cooked");
+				.setTextureName(TooMuchNature.modid + ":" + "kangaroo_meat_cooked");
 		white_cherry = new ItemFood(2, 0.3F, false).setUnlocalizedName("white_cherry")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":cherry_white");
+				.setTextureName(TooMuchNature.modid + ":" + "cherry_white");
 
 		// Armor
 		kangaroo_helm = new KangarooArmor(KangarooArmorMaterial, kangaroo_helm_ID, 0)
@@ -523,6 +564,8 @@ public class TooMuchNature {
 
 		GameRegistry.registerItem(enderald_bucket, enderald_bucket.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(ender_water_bucket, ender_water_bucket.getUnlocalizedName().substring(5));
+
+		GameRegistry.registerItem(ender_pistol, ender_pistol.getUnlocalizedName().substring(5));
 
 		// Block Registers
 		GameRegistry.registerBlock(enderald_ore, enderald_ore.getUnlocalizedName().substring(5));
@@ -584,16 +627,13 @@ public class TooMuchNature {
 		EnderBiomes.init();
 
 		// Entity Registers
-		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++modEntityID, TooMuchNature.instance, 80, 3,
+		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++modEntityID, this.instance, 80, 3, false);
+		EntityRegistry.registerModEntity(EntityLonghorn.class, "texas_longhorn", ++modEntityID, this.instance, 80, 3,
 				false);
-		EntityRegistry.registerModEntity(EntityLonghorn.class, "texas_longhorn", ++modEntityID, TooMuchNature.instance,
+		EntityRegistry.registerModEntity(EntityZebra.class, "zebra", ++modEntityID, this.instance, 80, 3, false);
+		EntityRegistry.registerModEntity(EntityHippopotamus.class, "hippo", ++modEntityID, this.instance, 80, 3, false);
+		EntityRegistry.registerModEntity(EntityEnderGunBullet.class, "ender_gun_bullet", ++modEntityID, this.instance,
 				80, 3, false);
-
-		EntityRegistry.registerModEntity(EntityZebra.class, "zebra", ++modEntityID, TooMuchNature.instance, 80, 3,
-				false);
-
-		EntityRegistry.registerModEntity(EntityHippopotamus.class, "hippo", ++modEntityID, TooMuchNature.instance, 80,
-				3, false);
 
 		// Spawn Egg Registers
 		TMNEntityList.addMapping(EntityKangaroo.class, "kangaroo", 0x558299, 0x997256);

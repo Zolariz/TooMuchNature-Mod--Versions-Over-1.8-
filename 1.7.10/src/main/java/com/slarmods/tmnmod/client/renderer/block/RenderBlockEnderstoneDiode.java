@@ -32,8 +32,10 @@ public class RenderBlockEnderstoneDiode implements ISimpleBlockRenderingHandler 
 
 	}
 
-	public void renderBlockRedstoneDiodeMetadata(IBlockAccess world, int x, int y, int z, Block block, int modelId,
+	@Override
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
 			RenderBlocks renderer) {
+
 		boolean standardBlock = renderer.renderStandardBlock(block, x, y, z);
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
@@ -76,12 +78,7 @@ public class RenderBlockEnderstoneDiode implements ISimpleBlockRenderingHandler 
 		tessellator.addVertexWithUV(d7, d13, d11, d0, d3);
 		tessellator.addVertexWithUV(d6, d13, d10, d1, d3);
 		tessellator.addVertexWithUV(d5, d13, d9, d1, d2);
-	}
-	
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
-			RenderBlocks renderer) {
-		return false;
+		return true;
 	}
 
 	@Override

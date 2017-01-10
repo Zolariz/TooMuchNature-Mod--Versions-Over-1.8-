@@ -33,53 +33,26 @@ public class RenderBlockEndPlanksTable implements ISimpleBlockRenderingHandler {
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
 			RenderBlocks renderer) {
 
-		int l = world.getBlockMetadata(x, y, z);
-		switch (l) {
-		case 0:
-			/** Platform of Table */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
-			renderer.setRenderBounds(0.0D, 0.8125D, 0.0D, 1.0D, 1.0D, 1.0D);
-			renderer.renderStandardBlock(block, x, y, z);
-			/** Table Leg 1 */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
-			renderer.setRenderBounds(0.0625D, 0.0D, 0.0625D, 0.1875D, 0.8125D, 0.1875D);
-			renderer.renderStandardBlock(block, x, y, z);
-			/** Table Leg 2 */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
-			renderer.setRenderBounds(0.8125D, 0.0D, 0.8125D, 0.9375D, 0.8125D, 0.9375D);
-			renderer.renderStandardBlock(block, x, y, z);
-			/** Table Leg 3 */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
-			renderer.setRenderBounds(0.8125D, 0.0D, 0.0625D, 0.9375D, 0.8125D, 0.1875D);
-			renderer.renderStandardBlock(block, x, y, z);
-			/** Table Leg 4 */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
-			renderer.setRenderBounds(0.0625D, 0.0D, 0.8125D, 0.1875D, 0.8125D, 0.9375D);
-			renderer.renderStandardBlock(block, x, y, z);
-			break;
-		case 1:
-			/** Platform of Table */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.diamond_block));
-			renderer.setRenderBounds(0.0D, 0.8125D, 0.0D, 1.0D, 1.0D, 1.0D);
-			renderer.renderStandardBlock(block, x, y, z);
-			/** Table Leg 1 */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.diamond_block));
-			renderer.setRenderBounds(0.0625D, 0.0D, 0.0625D, 0.1875D, 0.8125D, 0.1875D);
-			renderer.renderStandardBlock(block, x, y, z);
-			/** Table Leg 2 */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.diamond_block));
-			renderer.setRenderBounds(0.8125D, 0.0D, 0.8125D, 0.9375D, 0.8125D, 0.9375D);
-			renderer.renderStandardBlock(block, x, y, z);
-			/** Table Leg 3 */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.diamond_block));
-			renderer.setRenderBounds(0.8125D, 0.0D, 0.0625D, 0.9375D, 0.8125D, 0.1875D);
-			renderer.renderStandardBlock(block, x, y, z);
-			/** Table Leg 4 */
-			renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.diamond_block));
-			renderer.setRenderBounds(0.0625D, 0.0D, 0.8125D, 0.1875D, 0.8125D, 0.9375D);
-			renderer.renderStandardBlock(block, x, y, z);
-			break;
-		}
+		/** Platform of Table */
+		renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
+		renderer.setRenderBounds(0.0D, 0.8125D, 0.0D, 1.0D, 1.0D, 1.0D);
+		renderer.renderStandardBlock(block, x, y, z);
+		/** Table Leg 1 */
+		renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
+		renderer.setRenderBounds(0.0625D, 0.0D, 0.0625D, 0.1875D, 0.8125D, 0.1875D);
+		renderer.renderStandardBlock(block, x, y, z);
+		/** Table Leg 2 */
+		renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
+		renderer.setRenderBounds(0.8125D, 0.0D, 0.8125D, 0.9375D, 0.8125D, 0.9375D);
+		renderer.renderStandardBlock(block, x, y, z);
+		/** Table Leg 3 */
+		renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
+		renderer.setRenderBounds(0.8125D, 0.0D, 0.0625D, 0.9375D, 0.8125D, 0.1875D);
+		renderer.renderStandardBlock(block, x, y, z);
+		/** Table Leg 4 */
+		renderer.setOverrideBlockTexture(renderer.getBlockIcon(TooMuchNature.end_wood_planks));
+		renderer.setRenderBounds(0.0625D, 0.0D, 0.8125D, 0.1875D, 0.8125D, 0.9375D);
+		renderer.renderStandardBlock(block, x, y, z);
 
 		renderer.clearOverrideBlockTexture();
 		return true;

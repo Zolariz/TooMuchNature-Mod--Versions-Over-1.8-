@@ -20,20 +20,19 @@
 package com.slarmods.tmnmod.client.renderer.block;
 
 import com.slarmods.tmnmod.block.BlockEnderstoneDiode;
+import com.slarmods.tmnmod.block.BlockEnderstoneRepeater;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRedstoneDiode;
-import net.minecraft.block.BlockRedstoneRepeater;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.init.Blocks;
+import net.minecraft.src.FMLRenderAccessLibrary;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
 public class RenderBlockEnderstoneRepeater implements ISimpleBlockRenderingHandler {
-
+	
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
 
@@ -58,19 +57,19 @@ public class RenderBlockEnderstoneRepeater implements ISimpleBlockRenderingHandl
 		switch (i1) {
 		case 0:
 			d4 = -0.3125D;
-			d2 = BlockRedstoneRepeater.repeaterTorchOffset[j1];
+			d2 = BlockEnderstoneRepeater.repeaterTorchOffset[j1];
 			break;
 		case 1:
 			d3 = 0.3125D;
-			d1 = -BlockRedstoneRepeater.repeaterTorchOffset[j1];
+			d1 = -BlockEnderstoneRepeater.repeaterTorchOffset[j1];
 			break;
 		case 2:
 			d4 = 0.3125D;
-			d2 = -BlockRedstoneRepeater.repeaterTorchOffset[j1];
+			d2 = -BlockEnderstoneRepeater.repeaterTorchOffset[j1];
 			break;
 		case 3:
 			d3 = -0.3125D;
-			d1 = BlockRedstoneRepeater.repeaterTorchOffset[j1];
+			d1 = BlockEnderstoneRepeater.repeaterTorchOffset[j1];
 		}
 
 		if (!flag) {
@@ -116,7 +115,7 @@ public class RenderBlockEnderstoneRepeater implements ISimpleBlockRenderingHandl
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 		renderer.renderTorchAtAngle(block, (double) x + d3, (double) y + d0, (double) z + d4, 0.0D, 0.0D, 0);
-		// this.renderBlockRedstoneDiode(block, x, y, z);
+		//this.renderWorldBlock(world, x, y, z, block, modelId, renderer);
 		return true;
 	}
 
@@ -129,5 +128,4 @@ public class RenderBlockEnderstoneRepeater implements ISimpleBlockRenderingHandl
 	public int getRenderId() {
 		return 1943;
 	}
-
 }
