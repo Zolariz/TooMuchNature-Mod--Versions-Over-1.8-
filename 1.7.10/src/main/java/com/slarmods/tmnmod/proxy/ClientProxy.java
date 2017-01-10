@@ -28,7 +28,6 @@ import com.slarmods.tmnmod.client.renderer.entity.RenderLonghorn;
 import com.slarmods.tmnmod.client.renderer.entity.RenderZebra;
 import com.slarmods.tmnmod.client.renderer.item.block.ItemBlockEndWoodTableRenderer;
 import com.slarmods.tmnmod.client.renderer.item.block.ItemRenderBlockEndWoodChest;
-import com.slarmods.tmnmod.client.renderer.item.block.ItemRenderBlockEndWoodTable;
 import com.slarmods.tmnmod.client.renderer.tileentity.TileEntityEndWoodChestRenderer;
 import com.slarmods.tmnmod.entity.EntityHippopotamus;
 import com.slarmods.tmnmod.entity.EntityKangaroo;
@@ -65,12 +64,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneWire());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndPlanksTable());
-
-		// ItemBlock
-		/**
-		 * MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(TooMuchNature.end_wood_table),
-		 * new ItemBlockEndWoodTableRenderer());
-		 */
 
 		// TileEntity
 		TileEntitySpecialRenderer renderEndWoodChest = new TileEntityEndWoodChestRenderer();

@@ -67,8 +67,10 @@ import com.slarmods.tmnmod.item.ItemBlockCherrySapling;
 import com.slarmods.tmnmod.item.ItemBlockCherrySlab;
 import com.slarmods.tmnmod.item.ItemBlockEndStoneBrick;
 import com.slarmods.tmnmod.item.ItemBlockEndStoneSlab;
+import com.slarmods.tmnmod.item.ItemBlockEndWoodPlanks;
 import com.slarmods.tmnmod.item.ItemCherryDoor;
 import com.slarmods.tmnmod.item.ItemDarkOakDoor;
+import com.slarmods.tmnmod.item.ItemEndWoodTable;
 import com.slarmods.tmnmod.item.ItemEnderstone;
 import com.slarmods.tmnmod.item.ItemFlintAndEndstone;
 import com.slarmods.tmnmod.item.ItemJungleDoor;
@@ -422,7 +424,7 @@ public class TooMuchNature {
 				.setBlockName("end_stone_brick_stairs")
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_bricks");
 		end_wood_table = new BlockEndWoodTable(Material.wood).setBlockName("end_wood_table")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "planks_end_oak");
+				.setBlockTextureName(TooMuchNature.modid + ":" + "planks");
 
 		end_wood_planks = new BlockEndWood(Material.wood).setBlockName("end_wood_planks")
 				.setStepSound(Block.soundTypeWood).setBlockTextureName(TooMuchNature.modid + ":" + "planks");
@@ -559,10 +561,12 @@ public class TooMuchNature {
 		GameRegistry.registerBlock(end_stone_bricks, ItemBlockEndStoneBrick.class,
 				end_stone_bricks.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_stone_brick_stairs, end_stone_brick_stairs.getUnlocalizedName().substring(5));
-		GameRegistry.registerBlock(end_wood_table, end_wood_table.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(end_wood_table, ItemEndWoodTable.class,
+				end_wood_table.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(ender_water_dynamic, ender_water_dynamic.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(ender_water_static, ender_water_static.getUnlocalizedName().substring(5));
-		GameRegistry.registerBlock(end_wood_planks, end_wood_planks.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(end_wood_planks, ItemBlockEndWoodPlanks.class,
+				end_wood_planks.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerBlock(enderstone_wire, enderstone_wire.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(TooMuchNature.enderstone_repeater_unpowered,
