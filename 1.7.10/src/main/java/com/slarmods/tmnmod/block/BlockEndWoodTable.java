@@ -3,7 +3,6 @@ package com.slarmods.tmnmod.block;
 import java.util.List;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.tileentity.TileEntityEndWoodTable;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

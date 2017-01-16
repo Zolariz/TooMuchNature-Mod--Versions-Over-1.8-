@@ -4,14 +4,19 @@ import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class BlockEnderWaterDynamic extends BlockLiquid {
+public class BlockEnderWaterDynamic extends BlockEnderWaterLiquid {
 
+	private IIcon[] field_149806_a;
 	int liquid;
 	boolean[] isFlowing = new boolean[4];
 	int[] blockModel = new int[4];

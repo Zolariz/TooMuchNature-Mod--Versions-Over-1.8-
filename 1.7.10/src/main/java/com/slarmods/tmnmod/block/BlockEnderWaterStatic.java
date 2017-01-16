@@ -8,7 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class BlockEnderWaterStatic extends BlockLiquid {
+public class BlockEnderWaterStatic extends BlockEnderWaterLiquid {
 
 	public BlockEnderWaterStatic(Material material) {
 		super(material);

@@ -28,7 +28,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderZebra extends RenderLiving {
+public class RenderZebra extends RenderLiving {//RenderArrow
 
 	private static final ResourceLocation texture = new ResourceLocation(
 			TooMuchNature.modid + ":" + "textures/entity/horse/zebra.png");

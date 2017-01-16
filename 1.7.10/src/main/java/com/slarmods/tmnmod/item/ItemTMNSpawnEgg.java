@@ -15,7 +15,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.slarmods.tmnmod.item.spawnegg;
+package com.slarmods.tmnmod.item;
 
 import java.util.Iterator;
 import java.util.List;

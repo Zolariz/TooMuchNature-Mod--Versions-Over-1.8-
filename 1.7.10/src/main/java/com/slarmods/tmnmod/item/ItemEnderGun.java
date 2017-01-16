@@ -3,6 +3,8 @@ package com.slarmods.tmnmod.item;
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.entity.projectile.EntityEnderGunBullet;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -15,22 +17,25 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 public class ItemEnderGun extends Item {
 
 	public ItemEnderGun() {
 		super();
-		setMaxDamage(600);
+		setMaxDamage(0);
 		maxStackSize = 1;
 		setCreativeTab(TooMuchNature.tabTooMuchNatureWeapons);
 	}
-
-	public int getMaxItemUseDuration(ItemStack itemStack) {
-		return 72000;
+	
+	@SideOnly(Side.CLIENT)
+	public boolean isFull3D() {
+		return true;
 	}
-
+	
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, final EntityPlayer entityPlayer) {
 
+		ArrowNockEvent event = new ArrowNockEvent(entityPlayer, itemStack);
 		boolean flag = entityPlayer.capabilities.isCreativeMode
 				|| EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, itemStack) > 0;
 
@@ -75,8 +80,9 @@ public class ItemEnderGun extends Item {
 			entityarrow.setDamage(1.9);
 			entityarrow.setKnockbackStrength(1);
 
-			itemStack.damageItem(1, entityPlayer);
+			itemStack.damageItem(0, entityPlayer);
 			world.playSoundAtEntity(entityPlayer, "random.explode", 1.0F, 2.0F);
+			world.playSoundAtEntity(entityPlayer, "mob.blaze.hit", 1.0F, 1.0F);
 
 			if (flag) {
 				entityarrow.canBePickedUp = 2;

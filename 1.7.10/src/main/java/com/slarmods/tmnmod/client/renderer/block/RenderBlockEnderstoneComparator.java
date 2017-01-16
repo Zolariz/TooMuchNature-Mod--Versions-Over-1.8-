@@ -17,15 +17,19 @@
 
 package com.slarmods.tmnmod.client.renderer.block;
 
+import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.BlockEnderstoneComparator;
+
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneDiode;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
-public class RenderBlockEnderstoneDiode implements ISimpleBlockRenderingHandler {
+public class RenderBlockEnderstoneComparator implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
@@ -36,11 +40,67 @@ public class RenderBlockEnderstoneDiode implements ISimpleBlockRenderingHandler 
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
 			RenderBlocks renderer) {
 
-		boolean standardBlock = renderer.renderStandardBlock(block, x, y, z);
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
 		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
-		int i1 = world.getBlockMetadata(x, y, z);
+		int l = world.getBlockMetadata(x, y, z);
+		int i1 = l & 3;
+		double d0 = 0.0D;
+		double d1 = -0.1875D;
+		double d2 = 0.0D;
+		double d3 = 0.0D;
+		double d4 = 0.0D;
+		IIcon iicon;
+
+		if (BlockEnderstoneComparator.func_149969_d(l)) {
+			iicon = TooMuchNature.lit_enderstone_torch.getBlockTextureFromSide(0);
+		} else {
+			d1 -= 0.1875D;
+			iicon = TooMuchNature.unlit_enderstone_torch.getBlockTextureFromSide(0);
+		}
+
+		switch (i1) {
+		case 0:
+			d2 = -0.3125D;
+			d4 = 1.0D;
+			break;
+		case 1:
+			d0 = 0.3125D;
+			d3 = -1.0D;
+			break;
+		case 2:
+			d2 = 0.3125D;
+			d4 = -1.0D;
+			break;
+		case 3:
+			d0 = -0.3125D;
+			d3 = 1.0D;
+		}
+
+		renderer.renderTorchAtAngle(block, (double) x + 0.25D * d3 + 0.1875D * d4, (double) ((float) y - 0.1875F),
+				(double) z + 0.25D * d4 + 0.1875D * d3, 0.0D, 0.0D, l);
+		renderer.renderTorchAtAngle(block, (double) x + 0.25D * d3 + -0.1875D * d4, (double) ((float) y - 0.1875F),
+				(double) z + 0.25D * d4 + -0.1875D * d3, 0.0D, 0.0D, l);
+		renderer.setOverrideBlockTexture(iicon);
+		renderer.renderTorchAtAngle(block, (double) x + d0, (double) y + d1, (double) z + d2, 0.0D, 0.0D, l);
+		renderer.clearOverrideBlockTexture();
+		this.renderBlockEnderstoneDiode(block, x, y, z, renderer);
+		return true;
+	}
+
+	public boolean renderBlockEnderstoneDiode(Block block, int x, int y, int z, RenderBlocks renderer) {
+		Tessellator tessellator = Tessellator.instance;
+		this.renderBlockEnderstoneDiodeMetadata(block, x, y, z, renderer.blockAccess.getBlockMetadata(x, y, z) & 3,
+				renderer);
+		return true;
+	}
+
+	public void renderBlockEnderstoneDiodeMetadata(Block block, int x, int y, int z, int side, RenderBlocks renderer) {
+		renderer.renderStandardBlock(block, x, y, z);
+		Tessellator tessellator = Tessellator.instance;
+		tessellator.setBrightness(block.getMixedBrightnessForBlock(renderer.blockAccess, x, y, z));
+		tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
+		int i1 = renderer.blockAccess.getBlockMetadata(x, y, z);
 		IIcon iicon = renderer.getBlockIconFromSideAndMetadata(block, 1, i1);
 		double d0 = (double) iicon.getMinU();
 		double d1 = (double) iicon.getMaxU();
@@ -57,17 +117,17 @@ public class RenderBlockEnderstoneDiode implements ISimpleBlockRenderingHandler 
 		double d12 = (double) (z + 0);
 		double d13 = (double) y + d4;
 
-		if (modelId == 2) {
+		if (side == 2) {
 			d5 = d6 = (double) (x + 0);
 			d7 = d8 = (double) (x + 1);
 			d9 = d12 = (double) (z + 1);
 			d10 = d11 = (double) (z + 0);
-		} else if (modelId == 3) {
+		} else if (side == 3) {
 			d5 = d8 = (double) (x + 0);
 			d6 = d7 = (double) (x + 1);
 			d9 = d10 = (double) (z + 0);
 			d11 = d12 = (double) (z + 1);
-		} else if (modelId == 1) {
+		} else if (side == 1) {
 			d5 = d8 = (double) (x + 1);
 			d6 = d7 = (double) (x + 0);
 			d9 = d10 = (double) (z + 1);
@@ -78,7 +138,6 @@ public class RenderBlockEnderstoneDiode implements ISimpleBlockRenderingHandler 
 		tessellator.addVertexWithUV(d7, d13, d11, d0, d3);
 		tessellator.addVertexWithUV(d6, d13, d10, d1, d3);
 		tessellator.addVertexWithUV(d5, d13, d9, d1, d2);
-		return true;
 	}
 
 	@Override

@@ -43,20 +43,19 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 		return !World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) ? false : super.canBlockStay(world, x, y, z);
 	}
 
-	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
-		int l = p_149674_1_.getBlockMetadata(p_149674_2_, p_149674_3_, p_149674_4_);
+	public void updateTick(World world, int x, int y, int z, Random random) {
+		int l = world.getBlockMetadata(x, y, z);
 
-		if (!this.func_149910_g(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, l)) {
-			boolean flag = this.isGettingInput(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, l);
+		if (!this.func_149910_g(world, x, y, z, l)) {
+			boolean flag = this.isGettingInput(world, x, y, z, l);
 
 			if (this.isRepeaterPowered && !flag) {
-				p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, this.getBlockUnpowered(), l, 2);
+				world.setBlock(x, y, z, this.getBlockUnpowered(), l, 2);
 			} else if (!this.isRepeaterPowered) {
-				p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, this.getBlockPowered(), l, 2);
+				world.setBlock(x, y, z, this.getBlockPowered(), l, 2);
 
 				if (!flag) {
-					p_149674_1_.scheduleBlockUpdateWithPriority(p_149674_2_, p_149674_3_, p_149674_4_,
-							this.getBlockPowered(), this.func_149899_k(l), -1);
+					world.scheduleBlockUpdateWithPriority(x, y, z, this.getBlockPowered(), this.func_149899_k(l), -1);
 				}
 			}
 		}
@@ -65,18 +64,14 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		return side == 0
-				? (this.isRepeaterPowered ? Blocks.redstone_torch.getBlockTextureFromSide(side)
-						: Blocks.unlit_redstone_torch.getBlockTextureFromSide(side))
+				? (this.isRepeaterPowered ? TooMuchNature.lit_enderstone_torch.getBlockTextureFromSide(side)
+						: TooMuchNature.unlit_enderstone_torch.getBlockTextureFromSide(side))
 				: (side == 1 ? this.blockIcon : TooMuchNature.end_stone_double_slab.getBlockTextureFromSide(1));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
 		return side != 0 && side != 1;
-	}
-
-	public int getRenderType() {
-		return 1942;
 	}
 
 	protected boolean func_149905_c(int powered) {
@@ -116,186 +111,148 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 		}
 	}
 
-	protected void func_149897_b(World p_149897_1_, int p_149897_2_, int p_149897_3_, int p_149897_4_,
-			Block p_149897_5_) {
-		int l = p_149897_1_.getBlockMetadata(p_149897_2_, p_149897_3_, p_149897_4_);
+	protected void func_149897_b(World world, int x, int y, int z, Block block) {
+		int l = world.getBlockMetadata(x, y, z);
 
-		if (!this.func_149910_g(p_149897_1_, p_149897_2_, p_149897_3_, p_149897_4_, l)) {
-			boolean flag = this.isGettingInput(p_149897_1_, p_149897_2_, p_149897_3_, p_149897_4_, l);
+		if (!this.func_149910_g(world, x, y, z, l)) {
+			boolean flag = this.isGettingInput(world, x, y, z, l);
 
 			if ((this.isRepeaterPowered && !flag || !this.isRepeaterPowered && flag)
-					&& !p_149897_1_.isBlockTickScheduledThisTick(p_149897_2_, p_149897_3_, p_149897_4_, this)) {
+					&& !world.isBlockTickScheduledThisTick(x, y, z, this)) {
 				byte b0 = -1;
 
-				if (this.func_149912_i(p_149897_1_, p_149897_2_, p_149897_3_, p_149897_4_, l)) {
+				if (this.func_149912_i(world, x, y, z, l)) {
 					b0 = -3;
 				} else if (this.isRepeaterPowered) {
 					b0 = -2;
 				}
 
-				p_149897_1_.scheduleBlockUpdateWithPriority(p_149897_2_, p_149897_3_, p_149897_4_, this,
-						this.func_149901_b(l), b0);
+				world.scheduleBlockUpdateWithPriority(x, y, z, this, this.func_149901_b(l), b0);
 			}
 		}
 	}
 
-	public boolean func_149910_g(IBlockAccess p_149910_1_, int p_149910_2_, int p_149910_3_, int p_149910_4_,
-			int p_149910_5_) {
+	public boolean func_149910_g(IBlockAccess world, int x, int y, int z, int side) {
 		return false;
 	}
 
-	protected boolean isGettingInput(World p_149900_1_, int p_149900_2_, int p_149900_3_, int p_149900_4_,
-			int p_149900_5_) {
-		return this.getInputStrength(p_149900_1_, p_149900_2_, p_149900_3_, p_149900_4_, p_149900_5_) > 0;
+	protected boolean isGettingInput(World world, int x, int y, int z, int side) {
+		return this.getInputStrength(world, x, y, z, side) > 0;
 	}
 
-	/**
-	 * Returns the signal strength at one input of the block. Args: world, X, Y,
-	 * Z, side
-	 */
-	protected int getInputStrength(World p_149903_1_, int p_149903_2_, int p_149903_3_, int p_149903_4_,
-			int p_149903_5_) {
-		int i1 = getDirection(p_149903_5_);
-		int j1 = p_149903_2_ + Direction.offsetX[i1];
-		int k1 = p_149903_4_ + Direction.offsetZ[i1];
-		int l1 = p_149903_1_.getIndirectPowerLevelTo(j1, p_149903_3_, k1, Direction.directionToFacing[i1]);
+	protected int getInputStrength(World world, int x, int y, int z, int side) {
+		int i1 = getDirection(side);
+		int j1 = x + Direction.offsetX[i1];
+		int k1 = z + Direction.offsetZ[i1];
+		int l1 = world.getIndirectPowerLevelTo(j1, y, k1, Direction.directionToFacing[i1]);
 		return l1 >= 15 ? l1
-				: Math.max(l1, p_149903_1_.getBlock(j1, p_149903_3_, k1) == TooMuchNature.enderstone_wire
-						? p_149903_1_.getBlockMetadata(j1, p_149903_3_, k1) : 0);
+				: Math.max(l1, world.getBlock(j1, y, k1) == TooMuchNature.enderstone_wire
+						? world.getBlockMetadata(j1, y, k1) : 0);
 	}
 
-	protected int func_149902_h(IBlockAccess p_149902_1_, int p_149902_2_, int p_149902_3_, int p_149902_4_,
-			int p_149902_5_) {
-		int i1 = getDirection(p_149902_5_);
+	protected int func_149902_h(IBlockAccess world, int x, int y, int z, int side) {
+		int i1 = getDirection(side);
 
 		switch (i1) {
 		case 0:
 		case 2:
-			return Math.max(this.func_149913_i(p_149902_1_, p_149902_2_ - 1, p_149902_3_, p_149902_4_, 4),
-					this.func_149913_i(p_149902_1_, p_149902_2_ + 1, p_149902_3_, p_149902_4_, 5));
+			return Math.max(this.func_149913_i(world, x - 1, y, z, 4), this.func_149913_i(world, x + 1, y, z, 5));
 		case 1:
 		case 3:
-			return Math.max(this.func_149913_i(p_149902_1_, p_149902_2_, p_149902_3_, p_149902_4_ + 1, 3),
-					this.func_149913_i(p_149902_1_, p_149902_2_, p_149902_3_, p_149902_4_ - 1, 2));
+			return Math.max(this.func_149913_i(world, x, y, z + 1, 3), this.func_149913_i(world, x, y, z - 1, 2));
 		default:
 			return 0;
 		}
 	}
 
-	protected int func_149913_i(IBlockAccess p_149913_1_, int p_149913_2_, int p_149913_3_, int p_149913_4_,
-			int p_149913_5_) {
-		Block block = p_149913_1_.getBlock(p_149913_2_, p_149913_3_, p_149913_4_);
-		return this.func_149908_a(block) ? (block == TooMuchNature.enderstone_wire
-				? p_149913_1_.getBlockMetadata(p_149913_2_, p_149913_3_, p_149913_4_)
-				: p_149913_1_.isBlockProvidingPowerTo(p_149913_2_, p_149913_3_, p_149913_4_, p_149913_5_)) : 0;
+	protected int func_149913_i(IBlockAccess world, int x, int y, int z, int side) {
+		Block block = world.getBlock(x, y, z);
+		return this.func_149908_a(block) ? (block == TooMuchNature.enderstone_wire ? world.getBlockMetadata(x, y, z)
+				: world.isBlockProvidingPowerTo(x, y, z, side)) : 0;
 	}
 
-	/**
-	 * Can this block provide power. Only wire currently seems to have this
-	 * change based on its state.
-	 */
 	public boolean canProvidePower() {
 		return true;
 	}
 
-	/**
-	 * Called when the block is placed in the world.
-	 */
-	public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_,
-			EntityLivingBase p_149689_5_, ItemStack p_149689_6_) {
-		int l = ((MathHelper.floor_double((double) (p_149689_5_.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3) + 2) % 4;
-		p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, l, 3);
-		boolean flag = this.isGettingInput(p_149689_1_, p_149689_2_, p_149689_3_, p_149689_4_, l);
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase,
+			ItemStack itemStack) {
+		int l = ((MathHelper.floor_double((double) (entityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3) + 2) % 4;
+		world.setBlockMetadataWithNotify(x, y, z, l, 3);
+		boolean flag = this.isGettingInput(world, x, y, z, l);
 
 		if (flag) {
-			p_149689_1_.scheduleBlockUpdate(p_149689_2_, p_149689_3_, p_149689_4_, this, 1);
+			world.scheduleBlockUpdate(x, y, z, this, 1);
 		}
 	}
 
-	/**
-	 * Called whenever the block is added into the world. Args: world, x, y, z
-	 */
-	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
-		this.func_149911_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+	public void onBlockAdded(World world, int x, int y, int z) {
+		this.func_149911_e(world, x, y, z);
 	}
 
-	protected void func_149911_e(World p_149911_1_, int p_149911_2_, int p_149911_3_, int p_149911_4_) {
-		int l = getDirection(p_149911_1_.getBlockMetadata(p_149911_2_, p_149911_3_, p_149911_4_));
+	protected void func_149911_e(World world, int x, int y, int z) {
+		int l = getDirection(world.getBlockMetadata(x, y, z));
 
 		if (l == 1) {
-			p_149911_1_.notifyBlockOfNeighborChange(p_149911_2_ + 1, p_149911_3_, p_149911_4_, this);
-			p_149911_1_.notifyBlocksOfNeighborChange(p_149911_2_ + 1, p_149911_3_, p_149911_4_, this, 4);
+			world.notifyBlockOfNeighborChange(x + 1, y, z, this);
+			world.notifyBlocksOfNeighborChange(x + 1, y, z, this, 4);
 		}
 
 		if (l == 3) {
-			p_149911_1_.notifyBlockOfNeighborChange(p_149911_2_ - 1, p_149911_3_, p_149911_4_, this);
-			p_149911_1_.notifyBlocksOfNeighborChange(p_149911_2_ - 1, p_149911_3_, p_149911_4_, this, 5);
+			world.notifyBlockOfNeighborChange(x - 1, y, z, this);
+			world.notifyBlocksOfNeighborChange(x - 1, y, z, this, 5);
 		}
 
 		if (l == 2) {
-			p_149911_1_.notifyBlockOfNeighborChange(p_149911_2_, p_149911_3_, p_149911_4_ + 1, this);
-			p_149911_1_.notifyBlocksOfNeighborChange(p_149911_2_, p_149911_3_, p_149911_4_ + 1, this, 2);
+			world.notifyBlockOfNeighborChange(x, y, z + 1, this);
+			world.notifyBlocksOfNeighborChange(x, y, z + 1, this, 2);
 		}
 
 		if (l == 0) {
-			p_149911_1_.notifyBlockOfNeighborChange(p_149911_2_, p_149911_3_, p_149911_4_ - 1, this);
-			p_149911_1_.notifyBlocksOfNeighborChange(p_149911_2_, p_149911_3_, p_149911_4_ - 1, this, 3);
+			world.notifyBlockOfNeighborChange(x, y, z - 1, this);
+			world.notifyBlocksOfNeighborChange(x, y, z - 1, this, 3);
 		}
 	}
 
-	/**
-	 * Called right before the block is destroyed by a player. Args: world, x,
-	 * y, z, metaData
-	 */
-	public void onBlockDestroyedByPlayer(World p_149664_1_, int p_149664_2_, int p_149664_3_, int p_149664_4_,
-			int p_149664_5_) {
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int side) {
 		if (this.isRepeaterPowered) {
-			p_149664_1_.notifyBlocksOfNeighborChange(p_149664_2_ + 1, p_149664_3_, p_149664_4_, this);
-			p_149664_1_.notifyBlocksOfNeighborChange(p_149664_2_ - 1, p_149664_3_, p_149664_4_, this);
-			p_149664_1_.notifyBlocksOfNeighborChange(p_149664_2_, p_149664_3_, p_149664_4_ + 1, this);
-			p_149664_1_.notifyBlocksOfNeighborChange(p_149664_2_, p_149664_3_, p_149664_4_ - 1, this);
-			p_149664_1_.notifyBlocksOfNeighborChange(p_149664_2_, p_149664_3_ - 1, p_149664_4_, this);
-			p_149664_1_.notifyBlocksOfNeighborChange(p_149664_2_, p_149664_3_ + 1, p_149664_4_, this);
+			world.notifyBlocksOfNeighborChange(x + 1, y, z, this);
+			world.notifyBlocksOfNeighborChange(x - 1, y, z, this);
+			world.notifyBlocksOfNeighborChange(x, y, z + 1, this);
+			world.notifyBlocksOfNeighborChange(x, y, z - 1, this);
+			world.notifyBlocksOfNeighborChange(x, y - 1, z, this);
+			world.notifyBlocksOfNeighborChange(x, y + 1, z, this);
 		}
 
-		super.onBlockDestroyedByPlayer(p_149664_1_, p_149664_2_, p_149664_3_, p_149664_4_, p_149664_5_);
+		super.onBlockDestroyedByPlayer(world, x, y, z, side);
 	}
 
-	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
-	 * or not to render the shared face of two adjacent blocks and also whether
-	 * the player can attach torches, redstone wire, etc to this block.
-	 */
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
-	protected boolean func_149908_a(Block p_149908_1_) {
-		return p_149908_1_.canProvidePower();
+	protected boolean func_149908_a(Block block) {
+		return block.canProvidePower();
 	}
 
-	protected int func_149904_f(IBlockAccess p_149904_1_, int p_149904_2_, int p_149904_3_, int p_149904_4_,
-			int p_149904_5_) {
+	protected int func_149904_f(IBlockAccess world, int x, int y, int z, int side) {
 		return 15;
 	}
 
 	public static boolean isRedstoneRepeaterBlockID(Block block) {
 		return ((BlockEnderstoneDiode) TooMuchNature.enderstone_repeater_unpowered).func_149907_e(block)
-				|| Blocks.unpowered_comparator.func_149907_e(block);
+				|| TooMuchNature.enderstone_comparator_unpowered.func_149907_e(block);
 	}
 
 	public boolean func_149907_e(Block block) {
 		return block == this.getBlockPowered() || block == this.getBlockUnpowered();
 	}
 
-	public boolean func_149912_i(World p_149912_1_, int p_149912_2_, int p_149912_3_, int p_149912_4_,
-			int p_149912_5_) {
-		int i1 = getDirection(p_149912_5_);
+	public boolean func_149912_i(World world, int x, int t, int z, int side) {
+		int i1 = getDirection(side);
 
-		if (isRedstoneRepeaterBlockID(p_149912_1_.getBlock(p_149912_2_ - Direction.offsetX[i1], p_149912_3_,
-				p_149912_4_ - Direction.offsetZ[i1]))) {
-			int j1 = p_149912_1_.getBlockMetadata(p_149912_2_ - Direction.offsetX[i1], p_149912_3_,
-					p_149912_4_ - Direction.offsetZ[i1]);
+		if (isRedstoneRepeaterBlockID(world.getBlock(x - Direction.offsetX[i1], t, z - Direction.offsetZ[i1]))) {
+			int j1 = world.getBlockMetadata(x - Direction.offsetX[i1], t, z - Direction.offsetZ[i1]);
 			int k1 = getDirection(j1);
 			return k1 != i1;
 		} else {
@@ -303,11 +260,11 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 		}
 	}
 
-	protected int func_149899_k(int p_149899_1_) {
-		return this.func_149901_b(p_149899_1_);
+	protected int func_149899_k(int par1) {
+		return this.func_149901_b(par1);
 	}
 
-	protected abstract int func_149901_b(int p_149901_1_);
+	protected abstract int func_149901_b(int par1);
 
 	protected abstract BlockEnderstoneDiode getBlockPowered();
 
