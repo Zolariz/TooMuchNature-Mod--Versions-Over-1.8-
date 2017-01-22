@@ -19,7 +19,8 @@ package com.slarmods.tmnmod.proxy;
 
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndFire;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndLever;
-import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndPlanksTable;
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockTSFTable;
+import com.slarmods.tmnmod.client.renderer.block.inventory.RenderInvBlockEnderDispenser;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderPiston;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderPistonExtension;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderstoneComparator;
@@ -33,7 +34,6 @@ import com.slarmods.tmnmod.client.renderer.entity.RenderZebra;
 import com.slarmods.tmnmod.client.renderer.item.ItemRenderEnderPistol;
 import com.slarmods.tmnmod.client.renderer.item.block.ItemBlockEndWoodTableRenderer;
 import com.slarmods.tmnmod.client.renderer.item.block.ItemRenderBlockEndWoodChest;
-import com.slarmods.tmnmod.client.renderer.item.block.ItemRenderEnderPiston;
 import com.slarmods.tmnmod.client.renderer.tileentity.TileEntityEndWoodChestRenderer;
 import com.slarmods.tmnmod.client.renderer.tileentity.TileEntityRendererEnderPiston;
 import com.slarmods.tmnmod.entity.EntityHippopotamus;
@@ -41,9 +41,11 @@ import com.slarmods.tmnmod.entity.EntityKangaroo;
 import com.slarmods.tmnmod.entity.EntityLonghorn;
 import com.slarmods.tmnmod.entity.EntityZebra;
 import com.slarmods.tmnmod.entity.projectile.EntityEnderGunBullet;
+import com.slarmods.tmnmod.item.TMNItems;
 import com.slarmods.tmnmod.tileentity.TileEntityEndWoodChest;
 import com.slarmods.tmnmod.tileentity.TileEntityEnderPiston;
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.client.model.ModelEnderBullet;
 import com.slarmods.tmnmod.client.model.ModelHippopotamus;
 import com.slarmods.tmnmod.client.model.ModelKangaroo;
@@ -53,13 +55,14 @@ import com.slarmods.tmnmod.client.model.ModelZebra;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.IItemRenderer.ItemRenderType;
 import net.minecraftforge.client.MinecraftForgeClient;
 
-public class ClientProxy extends CommonProxy {
+public class ClientProxy extends CommonProxy implements IProxy {
 
 	@Override
 	public void registerRenders() {
@@ -77,7 +80,7 @@ public class ClientProxy extends CommonProxy {
 		// Block
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneWire());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEndPlanksTable());
+		RenderingRegistry.registerBlockHandler(new RenderBlockTSFTable());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneRepeater());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderPiston());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneComparator());
@@ -85,10 +88,13 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderPistonExtension());
 
 		// Item
-		MinecraftForgeClient.registerItemRenderer(TooMuchNature.ender_pistol, new ItemRenderEnderPistol());
+		MinecraftForgeClient.registerItemRenderer(TMNItems.ender_pistol, new ItemRenderEnderPistol());
 
 		// Item Block
-		
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(TMNBlocks.end_wood_chest),
+				new ItemRenderBlockEndWoodChest());
+		RenderingRegistry.registerBlockHandler(new RenderInvBlockEnderDispenser());
+
 		// TileEntity
 		TileEntitySpecialRenderer renderEndWoodChest = new TileEntityEndWoodChestRenderer();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEndWoodChest.class, renderEndWoodChest);

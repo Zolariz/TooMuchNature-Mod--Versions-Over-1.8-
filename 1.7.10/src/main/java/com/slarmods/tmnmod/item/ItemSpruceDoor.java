@@ -18,6 +18,7 @@
 package com.slarmods.tmnmod.item;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -44,10 +45,10 @@ public class ItemSpruceDoor extends Item {
 			return false;
 		} else {
 			++y;
-			Block block = TooMuchNature.cherry_door_block;
+			Block block = TMNBlocks.cherry_door_block;
 
 			if (this.doorMaterial == Material.wood) {
-				block = TooMuchNature.cherry_door_block;
+				block = TMNBlocks.cherry_door_block;
 			}
 
 			if (player.canPlayerEdit(x, y, z, side, itemstack) && player.canPlayerEdit(x, y + 1, z, side, itemstack)) {

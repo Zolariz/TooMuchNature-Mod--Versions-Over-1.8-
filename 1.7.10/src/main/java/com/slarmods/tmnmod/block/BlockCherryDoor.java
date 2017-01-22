@@ -20,6 +20,7 @@ package com.slarmods.tmnmod.block;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,7 +29,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.IconFlipped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -290,7 +290,7 @@ public class BlockCherryDoor extends Block {
 	}
 
 	public Item getItemDropped(int meta, Random random, int fortune) {
-		return (meta & 8) != 0 ? null : TooMuchNature.item_cherry_door;
+		return (meta & 8) != 0 ? null : TMNItems.item_cherry_door;
 	}
 
 	public MovingObjectPosition collisionRayTrace(World par1World, int par2X, int par3Y, int par4Z, Vec3 par5,
@@ -329,7 +329,7 @@ public class BlockCherryDoor extends Block {
 
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z) {
-		return TooMuchNature.item_cherry_door;
+		return TMNItems.item_cherry_door;
 	}
 
 	public void onBlockHarvested(World par1World, int par2X, int par3Y, int par4Z, int par5, EntityPlayer par6Player) {

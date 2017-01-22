@@ -1,27 +1,31 @@
 package com.slarmods.tmnmod.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import static net.minecraftforge.common.util.ForgeDirection.DOWN;
+import static net.minecraftforge.common.util.ForgeDirection.EAST;
+import static net.minecraftforge.common.util.ForgeDirection.NORTH;
+import static net.minecraftforge.common.util.ForgeDirection.SOUTH;
+import static net.minecraftforge.common.util.ForgeDirection.UP;
+import static net.minecraftforge.common.util.ForgeDirection.WEST;
+
 import java.util.IdentityHashMap;
 import java.util.Map.Entry;
 import java.util.Random;
-import com.google.common.collect.Maps;
-import com.slarmods.tmnmod.TooMuchNature;
 
+import com.google.common.collect.Maps;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldProviderEnd;
 import net.minecraftforge.common.util.ForgeDirection;
-import static net.minecraftforge.common.util.ForgeDirection.*;
 
 public class BlockEndFire extends Block {
 	@Deprecated
@@ -59,7 +63,7 @@ public class BlockEndFire extends Block {
 	}
 
 	public int getRenderType() {
-		return 1940;
+		return BlockRenderingIDs.endFireRenderID;
 	}
 
 	public int quantityDropped(Random random) {
@@ -251,7 +255,7 @@ public class BlockEndFire extends Block {
 	 */
 	public void onBlockAdded(World world, int x, int y, int z) {
 		if (world.provider.dimensionId > 0
-				|| !((BlockLowerEndPortal) TooMuchNature.lower_end_portal).canPlaceBlockAt(world, x, y, z)) {
+				|| !((BlockLowerEndPortal) TMNBlocks.lower_end_portal).canPlaceBlockAt(world, x, y, z)) {
 			if (!World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) && !this.canNeighborBurn(world, x, y, z)) {
 				world.setBlockToAir(x, y, z);
 			} else {
@@ -277,7 +281,7 @@ public class BlockEndFire extends Block {
 		float f2;
 
 		if (!World.doesBlockHaveSolidTopSurface(world, x, y - 1, z)
-				&& !((BlockEndFire) TooMuchNature.end_fire).canCatchFire(world, x, y - 1, z, UP)) {
+				&& !((BlockEndFire) TMNBlocks.end_fire).canCatchFire(world, x, y - 1, z, UP)) {
 			if (Blocks.fire.canCatchFire(world, x - 1, y, z, EAST)) {
 				for (l = 0; l < 2; ++l) {
 					f = (float) x + random.nextFloat() * 0.1F;
@@ -287,7 +291,7 @@ public class BlockEndFire extends Block {
 				}
 			}
 
-			if (((BlockEndFire) TooMuchNature.end_fire).canCatchFire(world, x + 1, y, z, WEST)) {
+			if (((BlockEndFire) TMNBlocks.end_fire).canCatchFire(world, x + 1, y, z, WEST)) {
 				for (l = 0; l < 2; ++l) {
 					f = (float) (x + 1) - random.nextFloat() * 0.1F;
 					f1 = (float) y + random.nextFloat();
@@ -296,7 +300,7 @@ public class BlockEndFire extends Block {
 				}
 			}
 
-			if (((BlockEndFire) TooMuchNature.end_fire).canCatchFire(world, x, y, z - 1, SOUTH)) {
+			if (((BlockEndFire) TMNBlocks.end_fire).canCatchFire(world, x, y, z - 1, SOUTH)) {
 				for (l = 0; l < 2; ++l) {
 					f = (float) x + random.nextFloat();
 					f1 = (float) y + random.nextFloat();
@@ -305,7 +309,7 @@ public class BlockEndFire extends Block {
 				}
 			}
 
-			if (((BlockEndFire) TooMuchNature.end_fire).canCatchFire(world, x, y, z + 1, NORTH)) {
+			if (((BlockEndFire) TMNBlocks.end_fire).canCatchFire(world, x, y, z + 1, NORTH)) {
 				for (l = 0; l < 2; ++l) {
 					f = (float) x + random.nextFloat();
 					f1 = (float) y + random.nextFloat();
@@ -314,7 +318,7 @@ public class BlockEndFire extends Block {
 				}
 			}
 
-			if (((BlockEndFire) TooMuchNature.end_fire).canCatchFire(world, x, y + 1, z, DOWN)) {
+			if (((BlockEndFire) TMNBlocks.end_fire).canCatchFire(world, x, y + 1, z, DOWN)) {
 				for (l = 0; l < 2; ++l) {
 					f = (float) x + random.nextFloat();
 					f1 = (float) (y + 1) - random.nextFloat() * 0.1F;

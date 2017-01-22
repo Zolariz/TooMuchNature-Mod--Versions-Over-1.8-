@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -60,7 +61,7 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 						int l1 = j + j1;
 						int i2 = k + i1 * b1 - l * b0;
 						boolean flag = j1 < 0;
-						this.worldServerInstance.setBlock(k1, l1, i2, flag ? TooMuchNature.end_obsidian : Blocks.air);
+						this.worldServerInstance.setBlock(k1, l1, i2, flag ? TMNBlocks.end_obsidian : Blocks.air);
 					}
 				}
 			}
@@ -104,9 +105,8 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 					double d6 = (double) l1 + 0.5D - entity.posZ;
 
 					for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2) {
-						if (this.worldServerInstance.getBlock(k1, i2, l1) == TooMuchNature.lower_end_portal) {
-							while (this.worldServerInstance.getBlock(k1, i2 - 1,
-									l1) == TooMuchNature.lower_end_portal) {
+						if (this.worldServerInstance.getBlock(k1, i2, l1) == TMNBlocks.lower_end_portal) {
+							while (this.worldServerInstance.getBlock(k1, i2 - 1, l1) == TMNBlocks.lower_end_portal) {
 								--i2;
 							}
 
@@ -137,19 +137,19 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 			d4 = (double) k + 0.5D;
 			int j2 = -1;
 
-			if (this.worldServerInstance.getBlock(i - 1, j, k) == TooMuchNature.lower_end_portal) {
+			if (this.worldServerInstance.getBlock(i - 1, j, k) == TMNBlocks.lower_end_portal) {
 				j2 = 2;
 			}
 
-			if (this.worldServerInstance.getBlock(i + 1, j, k) == TooMuchNature.lower_end_portal) {
+			if (this.worldServerInstance.getBlock(i + 1, j, k) == TMNBlocks.lower_end_portal) {
 				j2 = 0;
 			}
 
-			if (this.worldServerInstance.getBlock(i, j, k - 1) == TooMuchNature.lower_end_portal) {
+			if (this.worldServerInstance.getBlock(i, j, k - 1) == TMNBlocks.lower_end_portal) {
 				j2 = 3;
 			}
 
-			if (this.worldServerInstance.getBlock(i, j, k + 1) == TooMuchNature.lower_end_portal) {
+			if (this.worldServerInstance.getBlock(i, j, k + 1) == TMNBlocks.lower_end_portal) {
 				j2 = 1;
 			}
 
@@ -395,7 +395,7 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 						j3 = j5 + l2;
 						i4 = j2 + (i3 - 1) * l5 - k2 * k5;
 						flag = l2 < 0;
-						this.worldServerInstance.setBlock(k3, j3, i4, flag ? TooMuchNature.end_obsidian : Blocks.air);
+						this.worldServerInstance.setBlock(k3, j3, i4, flag ? TMNBlocks.end_obsidian : Blocks.air);
 					}
 				}
 			}
@@ -409,7 +409,7 @@ public class EnderlandsDimensionTeleporter extends Teleporter {
 					i4 = j2 + (i3 - 1) * l5;
 					flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
 					this.worldServerInstance.setBlock(k3, j3, i4,
-							flag ? TooMuchNature.end_obsidian : TooMuchNature.lower_end_portal, 0, 2);
+							flag ? TMNBlocks.end_obsidian : TMNBlocks.lower_end_portal, 0, 2);
 				}
 			}
 

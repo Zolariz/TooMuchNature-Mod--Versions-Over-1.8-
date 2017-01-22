@@ -87,20 +87,20 @@ public class BlockCherrySlab extends BlockSlab {
 
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int par1, int par2) {
-		return TooMuchNature.cherry_planks.getIcon(par1, par2 & 7);
+		return TMNBlocks.cherry_planks.getIcon(par1, par2 & 7);
 	}
 
 	public Item getItemDropped(int meta, Random random, int fortune) {
-		return Item.getItemFromBlock(TooMuchNature.cherry_slab);
+		return Item.getItemFromBlock(TMNBlocks.cherry_slab);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z) {
-		return Item.getItemFromBlock(TooMuchNature.cherry_slab);
+		return Item.getItemFromBlock(TMNBlocks.cherry_slab);
 	}
 
 	protected ItemStack createStackedBlock(int stackedBlock) {
-		return new ItemStack(Item.getItemFromBlock(TooMuchNature.cherry_slab), 2, stackedBlock & 7);
+		return new ItemStack(Item.getItemFromBlock(TMNBlocks.cherry_slab), 2, stackedBlock & 7);
 	}
 
 	public String func_150002_b(int llength) {
@@ -113,7 +113,7 @@ public class BlockCherrySlab extends BlockSlab {
 
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs creativeTab, List list) {
-		if (item != Item.getItemFromBlock(TooMuchNature.cherry_double_slab)) {
+		if (item != Item.getItemFromBlock(TMNBlocks.cherry_double_slab)) {
 			for (int i = 0; i < slab.length; ++i) {
 				list.add(new ItemStack(item, 1, i));
 			}

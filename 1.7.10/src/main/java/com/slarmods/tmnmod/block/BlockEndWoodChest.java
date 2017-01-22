@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
 import com.slarmods.tmnmod.tileentity.TileEntityEndWoodChest;
 
 import net.minecraft.block.Block;
@@ -51,7 +52,7 @@ public class BlockEndWoodChest extends BlockContainer {
 	}
 
 	public int getRenderType() {
-		return 1945;
+		return 22;
 	}
 
 	public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_,
@@ -291,8 +292,8 @@ public class BlockEndWoodChest extends BlockContainer {
 	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_,
 			Block p_149695_5_) {
 		super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
-		TileEntityEndWoodChest TileEntityEndWoodChest = (TileEntityEndWoodChest) p_149695_1_.getTileEntity(p_149695_2_, p_149695_3_,
-				p_149695_4_);
+		TileEntityEndWoodChest TileEntityEndWoodChest = (TileEntityEndWoodChest) p_149695_1_.getTileEntity(p_149695_2_,
+				p_149695_3_, p_149695_4_);
 
 		if (TileEntityEndWoodChest != null) {
 			TileEntityEndWoodChest.updateContainingBlockInfo();
@@ -301,8 +302,8 @@ public class BlockEndWoodChest extends BlockContainer {
 
 	public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_,
 			int p_149749_6_) {
-		TileEntityEndWoodChest TileEntityEndWoodChest = (TileEntityEndWoodChest) p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_,
-				p_149749_4_);
+		TileEntityEndWoodChest TileEntityEndWoodChest = (TileEntityEndWoodChest) p_149749_1_.getTileEntity(p_149749_2_,
+				p_149749_3_, p_149749_4_);
 
 		if (TileEntityEndWoodChest != null) {
 			for (int i1 = 0; i1 < TileEntityEndWoodChest.getSizeInventory(); ++i1) {
@@ -372,26 +373,21 @@ public class BlockEndWoodChest extends BlockContainer {
 		} else if (func_149953_o(world, x, y, z)) {
 			return null;
 		} else if (world.getBlock(x - 1, y, z) == this
-				&& (world.isSideSolid(x - 1, y + 1, z, DOWN)
-						|| func_149953_o(world, x - 1, y, z))) {
+				&& (world.isSideSolid(x - 1, y + 1, z, DOWN) || func_149953_o(world, x - 1, y, z))) {
 			return null;
 		} else if (world.getBlock(x + 1, y, z) == this
-				&& (world.isSideSolid(x + 1, y + 1, z, DOWN)
-						|| func_149953_o(world, x + 1, y, z))) {
+				&& (world.isSideSolid(x + 1, y + 1, z, DOWN) || func_149953_o(world, x + 1, y, z))) {
 			return null;
 		} else if (world.getBlock(x, y, z - 1) == this
-				&& (world.isSideSolid(x, y + 1, z - 1, DOWN)
-						|| func_149953_o(world, x, y, z - 1))) {
+				&& (world.isSideSolid(x, y + 1, z - 1, DOWN) || func_149953_o(world, x, y, z - 1))) {
 			return null;
 		} else if (world.getBlock(x, y, z + 1) == this
-				&& (world.isSideSolid(x, y + 1, z + 1, DOWN)
-						|| func_149953_o(world, x, y, z + 1))) {
+				&& (world.isSideSolid(x, y + 1, z + 1, DOWN) || func_149953_o(world, x, y, z + 1))) {
 			return null;
 		} else {
 			if (world.getBlock(x - 1, y, z) == this) {
 				object = new InventoryLargeChest("container.end_wood_chest_double",
-						(TileEntityEndWoodChest) world.getTileEntity(x - 1, y, z),
-						(IInventory) object);
+						(TileEntityEndWoodChest) world.getTileEntity(x - 1, y, z), (IInventory) object);
 			}
 
 			if (world.getBlock(x + 1, y, z) == this) {
@@ -401,8 +397,7 @@ public class BlockEndWoodChest extends BlockContainer {
 
 			if (world.getBlock(x, y, z - 1) == this) {
 				object = new InventoryLargeChest("container.end_wood_chest_double",
-						(TileEntityEndWoodChest) world.getTileEntity(x, y, z - 1),
-						(IInventory) object);
+						(TileEntityEndWoodChest) world.getTileEntity(x, y, z - 1), (IInventory) object);
 			}
 
 			if (world.getBlock(x, y, z + 1) == this) {
@@ -471,6 +466,6 @@ public class BlockEndWoodChest extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon("planks_end_oak");
+		this.blockIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "planks_end_oak");
 	}
 }

@@ -18,7 +18,9 @@
 package com.slarmods.tmnmod.crafting;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.crafting.remover.RecipeRemover;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
@@ -31,24 +33,23 @@ public class TMNCrafting {
 
 		RecipeRemover.removeRecipe();
 
-		GameRegistry.addRecipe(new ItemStack(TooMuchNature.kangaroo_helm),
-				new Object[] { "###", "# #", "   ", '#', TooMuchNature.kangaroo_skin });
-		GameRegistry.addRecipe(new ItemStack(TooMuchNature.kangaroo_helm),
-				new Object[] { "   ", "###", "# #", '#', TooMuchNature.kangaroo_skin });
-		GameRegistry.addRecipe(new ItemStack(TooMuchNature.kangaroo_boots),
-				new Object[] { "# #", "# #", "   ", '#', TooMuchNature.kangaroo_skin });
-		GameRegistry.addRecipe(new ItemStack(TooMuchNature.kangaroo_boots),
-				new Object[] { "   ", "# #", "# #", '#', TooMuchNature.kangaroo_skin });
-		GameRegistry.addRecipe(new ItemStack(TooMuchNature.kangaroo_chest),
-				new Object[] { "# #", "###", "###", '#', TooMuchNature.kangaroo_skin });
-		GameRegistry.addRecipe(new ItemStack(TooMuchNature.kangaroo_leggings),
-				new Object[] { "###", "# #", "# #", '#', TooMuchNature.kangaroo_skin });
+		GameRegistry.addRecipe(new ItemStack(TMNItems.kangaroo_helm),
+				new Object[] { "###", "# #", "   ", '#', TMNItems.kangaroo_skin });
+		GameRegistry.addRecipe(new ItemStack(TMNItems.kangaroo_helm),
+				new Object[] { "   ", "###", "# #", '#', TMNItems.kangaroo_skin });
+		GameRegistry.addRecipe(new ItemStack(TMNItems.kangaroo_boots),
+				new Object[] { "# #", "# #", "   ", '#', TMNItems.kangaroo_skin });
+		GameRegistry.addRecipe(new ItemStack(TMNItems.kangaroo_boots),
+				new Object[] { "   ", "# #", "# #", '#', TMNItems.kangaroo_skin });
+		GameRegistry.addRecipe(new ItemStack(TMNItems.kangaroo_chest),
+				new Object[] { "# #", "###", "###", '#', TMNItems.kangaroo_skin });
+		GameRegistry.addRecipe(new ItemStack(TMNItems.kangaroo_leggings),
+				new Object[] { "###", "# #", "# #", '#', TMNItems.kangaroo_skin });
 
-		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wooden_button),
-				new Object[] { TooMuchNature.cherry_planks });
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wooden_button), new Object[] { TMNBlocks.cherry_planks });
 
-		GameRegistry.addShapelessRecipe(new ItemStack(TooMuchNature.cherry_planks, 4),
-				new Object[] { TooMuchNature.cherry_log });
+		GameRegistry.addShapelessRecipe(new ItemStack(TMNBlocks.cherry_planks, 4),
+				new Object[] { TMNBlocks.cherry_log });
 
 		GameRegistry.addRecipe(new ItemStack(Items.stick, 6), new Object[] { "   ", "###", "###", '#', Items.stick });
 		GameRegistry.addRecipe(new ItemStack(Items.stick, 6), new Object[] { "###", "###", "   ", '#', Items.stick });
@@ -66,40 +67,40 @@ public class TMNCrafting {
 				new Object[] { "#X#", "#X#", "   ", Character.valueOf('X'), new ItemStack(Blocks.planks, 1, 0),
 						Character.valueOf('#'), new ItemStack(Items.stick, 1, 0), });
 
-		GameRegistry.addShapedRecipe(new ItemStack(TooMuchNature.cherry_fence, 3),
+		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.cherry_fence, 3),
 				new Object[] { "   ", "#X#", "#X#", Character.valueOf('#'),
-						new ItemStack(TooMuchNature.cherry_planks, 1, 0), Character.valueOf('X'),
+						new ItemStack(TMNBlocks.cherry_planks, 1, 0), Character.valueOf('X'),
 						new ItemStack(Items.stick, 1, 0), });
-		GameRegistry.addShapedRecipe(new ItemStack(TooMuchNature.cherry_fence, 3),
+		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.cherry_fence, 3),
 				new Object[] { "#X#", "#X#", "   ", Character.valueOf('#'),
-						new ItemStack(TooMuchNature.cherry_planks, 1, 0), Character.valueOf('X'),
+						new ItemStack(TMNBlocks.cherry_planks, 1, 0), Character.valueOf('X'),
 						new ItemStack(Items.stick, 1, 0), });
-		GameRegistry.addShapedRecipe(new ItemStack(TooMuchNature.cherry_fence_gate, 1),
+		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.cherry_fence_gate, 1),
 				new Object[] { "   ", "#X#", "#X#", Character.valueOf('X'),
-						new ItemStack(TooMuchNature.cherry_planks, 1, 0), Character.valueOf('#'),
+						new ItemStack(TMNBlocks.cherry_planks, 1, 0), Character.valueOf('#'),
 						new ItemStack(Items.stick, 1, 0), });
-		GameRegistry.addShapedRecipe(new ItemStack(TooMuchNature.cherry_fence_gate, 1),
+		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.cherry_fence_gate, 1),
 				new Object[] { "#X#", "#X#", "   ", Character.valueOf('X'),
-						new ItemStack(TooMuchNature.cherry_planks, 1, 0), Character.valueOf('#'),
+						new ItemStack(TMNBlocks.cherry_planks, 1, 0), Character.valueOf('#'),
 						new ItemStack(Items.stick, 1, 0), });
 
 		GameRegistry.addShapedRecipe(new ItemStack(Blocks.crafting_table, 1),
-				new Object[] { "##", "##", Character.valueOf('#'), new ItemStack(TooMuchNature.cherry_planks, 1, 0) });
+				new Object[] { "##", "##", Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
 
 		GameRegistry.addShapedRecipe(new ItemStack(Items.stick, 4),
-				new Object[] { "# ", "# ", Character.valueOf('#'), new ItemStack(TooMuchNature.cherry_planks, 1, 0) });
+				new Object[] { "# ", "# ", Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
 
 		GameRegistry.addShapedRecipe(new ItemStack(Items.stick, 4),
-				new Object[] { " #", " #", Character.valueOf('#'), new ItemStack(TooMuchNature.cherry_planks, 1, 0) });
+				new Object[] { " #", " #", Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
 
-		GameRegistry.addShapedRecipe(new ItemStack(TooMuchNature.item_cherry_door, 1), new Object[] { "## ", "## ",
-				"## ", Character.valueOf('#'), new ItemStack(TooMuchNature.cherry_planks, 1, 0) });
+		GameRegistry.addShapedRecipe(new ItemStack(TMNItems.item_cherry_door, 1), new Object[] { "## ", "## ", "## ",
+				Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
 
-		GameRegistry.addShapedRecipe(new ItemStack(TooMuchNature.item_cherry_door, 1), new Object[] { " ##", " ##",
-				" ##", Character.valueOf('#'), new ItemStack(TooMuchNature.cherry_planks, 1, 0) });
+		GameRegistry.addShapedRecipe(new ItemStack(TMNItems.item_cherry_door, 1), new Object[] { " ##", " ##", " ##",
+				Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
 
-		GameRegistry.addShapedRecipe(new ItemStack(TooMuchNature.cherry_slab, 3), new Object[] { "###", "   ", "   ",
-				Character.valueOf('#'), new ItemStack(TooMuchNature.cherry_planks, 1, 0) });
+		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.cherry_slab, 3), new Object[] { "###", "   ", "   ",
+				Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
 
 	}
 }

@@ -47,14 +47,14 @@ public class BlockCherryFence extends BlockFence {
 
 	public boolean canConnectFenceTo(IBlockAccess p_149826_1_, int p_149826_2_, int p_149826_3_, int p_149826_4_) {
 		Block block = p_149826_1_.getBlock(p_149826_2_, p_149826_3_, p_149826_4_);
-		return block != this && block != TooMuchNature.cherry_fence_gate
+		return block != this && block != TMNBlocks.cherry_fence_gate
 				? (block.getMaterial().isOpaque() && block.renderAsNormalBlock() ? block.getMaterial() != Material.gourd
 						: false)
 				: true;
 	}
 
 	public static boolean func_149825_a(Block block) {
-		return block == TooMuchNature.cherry_fence;
+		return block == TMNBlocks.cherry_fence;
 	}
 
 	@SideOnly(Side.CLIENT)

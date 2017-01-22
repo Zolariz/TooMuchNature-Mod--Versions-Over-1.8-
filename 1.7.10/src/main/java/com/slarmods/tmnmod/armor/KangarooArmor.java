@@ -18,6 +18,7 @@
 package com.slarmods.tmnmod.armor;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
@@ -27,7 +28,7 @@ public class KangarooArmor extends ItemArmor {
 
 	public KangarooArmor(ArmorMaterial material, int id, int slot) {
 		super(material, id, slot);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureItems);
+		this.setCreativeTab(TooMuchNature.tabTooMuchNatureMisc);
 
 		if (slot == 0) {
 			this.setTextureName(TooMuchNature.modid + ":kangaroo_helmet");
@@ -41,10 +42,10 @@ public class KangarooArmor extends ItemArmor {
 	}
 
 	public String getArmorTexture(ItemStack itemstack, Entity entity, int slot, String type) {
-		if (itemstack.getItem() == TooMuchNature.kangaroo_helm || itemstack.getItem() == TooMuchNature.kangaroo_chest
-				|| itemstack.getItem() == TooMuchNature.kangaroo_boots) {
+		if (itemstack.getItem() == TMNItems.kangaroo_helm || itemstack.getItem() == TMNItems.kangaroo_chest
+				|| itemstack.getItem() == TMNItems.kangaroo_boots) {
 			return TooMuchNature.modid + ":textures/model/armor/kangaroo_layer_1.png";
-		} else if (itemstack.getItem() == TooMuchNature.kangaroo_leggings) {
+		} else if (itemstack.getItem() == TMNItems.kangaroo_leggings) {
 			return TooMuchNature.modid + ":textures/model/armor/kangaroo_layer_2.png";
 		} else
 			return null;

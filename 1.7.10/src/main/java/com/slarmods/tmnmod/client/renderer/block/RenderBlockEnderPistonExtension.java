@@ -3,6 +3,7 @@ package com.slarmods.tmnmod.client.renderer.block;
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.block.BlockEnderPistonBase;
 import com.slarmods.tmnmod.block.BlockEnderPistonExtension;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
@@ -231,7 +232,7 @@ public class RenderBlockEnderPistonExtension implements ISimpleBlockRenderingHan
 
 	@Override
 	public int getRenderId() {
-		return 1948;
+		return BlockRenderingIDs.enderPistonExtensionRenderID;
 	}
 
 }

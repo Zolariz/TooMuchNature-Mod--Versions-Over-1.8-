@@ -36,7 +36,7 @@ public class BlockTMNBush extends Block implements IPlantable {
 	}
 
 	protected boolean canPlaceBlockOn(Block block) {
-		return block == Blocks.grass || block == TooMuchNature.cherry_grass || block == Blocks.dirt
+		return block == Blocks.grass || block == TMNBlocks.cherry_grass || block == Blocks.dirt
 				|| block == Blocks.farmland;
 	}
 
@@ -98,9 +98,9 @@ public class BlockTMNBush extends Block implements IPlantable {
 			return Nether;
 		if (this == Blocks.sapling)
 			return Plains;
-		if (this == TooMuchNature.cherry_sapling)
+		if (this == TMNBlocks.cherry_sapling)
 			return Plains;
-		if (this == TooMuchNature.crops_cherry)
+		if (this == TMNBlocks.crops_cherry)
 			return Crop;
 		return Plains;
 	}

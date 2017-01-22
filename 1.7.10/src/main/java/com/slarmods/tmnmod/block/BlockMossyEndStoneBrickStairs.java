@@ -27,7 +27,7 @@ public class BlockMossyEndStoneBrickStairs extends BlockStairs {
 	private final int idk;
 
 	public BlockMossyEndStoneBrickStairs(Block block, int par2) {
-		super(TooMuchNature.end_stone_bricks, par2);
+		super(TMNBlocks.end_stone_bricks, par2);
 		this.blockModel = block;
 		this.idk = par2;
 		this.setHardness(1.5F);

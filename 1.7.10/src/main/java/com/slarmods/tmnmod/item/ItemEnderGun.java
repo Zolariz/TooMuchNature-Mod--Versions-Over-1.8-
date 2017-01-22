@@ -25,7 +25,7 @@ public class ItemEnderGun extends Item {
 		super();
 		setMaxDamage(0);
 		maxStackSize = 1;
-		setCreativeTab(TooMuchNature.tabTooMuchNatureWeapons);
+		setCreativeTab(TooMuchNature.tabTooMuchNatureMisc);
 	}
 	
 	@SideOnly(Side.CLIENT)

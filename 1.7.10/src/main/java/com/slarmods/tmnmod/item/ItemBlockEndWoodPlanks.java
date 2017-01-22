@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockEndWoodPlanks extends ItemBlock {
 
-	final static String[] planks = new String[] { "end_oak", "dark_end_oak" };
+	final static String[] planks = new String[] { "end_oak", "dark_end_oak", "light_end_oak" };
 
 	public ItemBlockEndWoodPlanks(Block block) {
 		super(block);

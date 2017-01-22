@@ -5,6 +5,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderPiston;
 import com.slarmods.tmnmod.tileentity.TileEntityEnderPiston;
 
 import net.minecraft.block.Block;
@@ -58,74 +60,55 @@ public class BlockEnderPistonBase extends Block {
 		this.setBlockBounds(p_150070_1_, p_150070_2_, p_150070_3_, p_150070_4_, p_150070_5_, p_150070_6_);
 	}
 
-	/**
-	 * The type of render function that is called for this block
-	 */
 	public int getRenderType() {
-		return 1946;
+		return BlockRenderingIDs.enderPistonBaseRenderID;
 	}
 
-	/**
-	 * Gets the block's texture. Args: side, meta
-	 */
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-		int k = getPistonOrientation(p_149691_2_);
+	public IIcon getIcon(int side, int meta) {
+		int k = getPistonOrientation(meta);
 		return k > 5 ? this.topIcon
-				: (p_149691_1_ == k
-						? (!isExtended(p_149691_2_) && this.minX <= 0.0D && this.minY <= 0.0D && this.minZ <= 0.0D
+				: (side == k
+						? (!isExtended(meta) && this.minX <= 0.0D && this.minY <= 0.0D && this.minZ <= 0.0D
 								&& this.maxX >= 1.0D && this.maxY >= 1.0D && this.maxZ >= 1.0D ? this.topIcon
 										: this.innerTopIcon)
-						: (p_149691_1_ == Facing.oppositeSide[k] ? this.bottomIcon : this.blockIcon));
+						: (side == Facing.oppositeSide[k] ? this.bottomIcon : this.blockIcon));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public static IIcon getPistonBaseIcon(String icon) {
-		return icon == TooMuchNature.modid + ":" + "ender_piston_side" ? TooMuchNature.ender_piston_normal.blockIcon
-				: (icon == TooMuchNature.modid + ":" + "ender_piston_top_normal"
-						? TooMuchNature.ender_piston_normal.topIcon
+		return icon == TooMuchNature.modid + ":" + "ender_piston_side" ? TMNBlocks.ender_piston_normal.blockIcon
+				: (icon == TooMuchNature.modid + ":" + "ender_piston_top_normal" ? TMNBlocks.ender_piston_normal.topIcon
 						: (icon == TooMuchNature.modid + ":" + "ender_piston_top_sticky"
-								? TooMuchNature.ender_piston_sticky.topIcon
+								? TMNBlocks.ender_piston_sticky.topIcon
 								: (icon == TooMuchNature.modid + ":" + "ender_piston_inner"
-										? TooMuchNature.ender_piston_normal.innerTopIcon : null)));
+										? TMNBlocks.ender_piston_normal.innerTopIcon : null)));
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister p_149651_1_) {
-		this.blockIcon = p_149651_1_.registerIcon(TooMuchNature.modid + ":" + "ender_piston_side");
-		this.topIcon = p_149651_1_.registerIcon(this.isSticky ? TooMuchNature.modid + ":" + "ender_piston_top_sticky"
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		this.blockIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_piston_side");
+		this.topIcon = iconRegister.registerIcon(this.isSticky ? TooMuchNature.modid + ":" + "ender_piston_top_sticky"
 				: TooMuchNature.modid + ":" + "ender_piston_top_normal");
-		this.innerTopIcon = p_149651_1_.registerIcon(TooMuchNature.modid + ":" + "ender_piston_inner");
-		this.bottomIcon = p_149651_1_.registerIcon(TooMuchNature.modid + ":" + "ender_piston_bottom");
+		this.innerTopIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_piston_inner");
+		this.bottomIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_piston_bottom");
 	}
 
-	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
-	 * or not to render the shared face of two adjacent blocks and also whether
-	 * the player can attach torches, redstone wire, etc to this block.
-	 */
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
-	/**
-	 * Called upon block activation (right click on the block.)
-	 */
-	public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_,
-			EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
+			float hitY, float hitZ) {
 		return false;
 	}
 
-	/**
-	 * Called when the block is placed in the world.
-	 */
-	public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_,
-			EntityLivingBase p_149689_5_, ItemStack p_149689_6_) {
-		int l = determineOrientation(p_149689_1_, p_149689_2_, p_149689_3_, p_149689_4_, p_149689_5_);
-		p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, l, 2);
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingBase, ItemStack itemstack) {
+		int l = determineOrientation(world, x, y, z, livingBase);
+		world.setBlockMetadataWithNotify(x, y, z, l, 2);
 
-		if (!p_149689_1_.isRemote) {
-			this.updatePistonState(p_149689_1_, p_149689_2_, p_149689_3_, p_149689_4_);
+		if (!world.isRemote) {
+			this.updatePistonState(world, x, y, z);
 		}
 	}
 
@@ -269,8 +252,8 @@ public class BlockEnderPistonBase extends Block {
 				((TileEntityEnderPiston) tileentity1).clearPistonTileEntity();
 			}
 
-			p_149696_1_.setBlock(p_149696_2_, p_149696_3_, p_149696_4_, TooMuchNature.ender_piston_extension,
-					p_149696_6_, 3);
+			p_149696_1_.setBlock(p_149696_2_, p_149696_3_, p_149696_4_, TMNBlocks.ender_piston_extension, p_149696_6_,
+					3);
 			p_149696_1_.setTileEntity(p_149696_2_, p_149696_3_, p_149696_4_,
 					BlockEnderPistonMoving.getTileEntity(this, p_149696_6_, p_149696_6_, false, true));
 
@@ -282,7 +265,7 @@ public class BlockEnderPistonBase extends Block {
 				int i2 = p_149696_1_.getBlockMetadata(j1, k1, l1);
 				boolean flag1 = false;
 
-				if (block == TooMuchNature.ender_piston_extension) {
+				if (block == TMNBlocks.ender_piston_extension) {
 					TileEntity tileentity = p_149696_1_.getTileEntity(j1, k1, l1);
 
 					if (tileentity instanceof TileEntityEnderPiston) {
@@ -298,13 +281,13 @@ public class BlockEnderPistonBase extends Block {
 				}
 
 				if (!flag1 && block.getMaterial() != Material.air && canPushBlock(block, p_149696_1_, j1, k1, l1, false)
-						&& (block.getMobilityFlag() == 0 || block == TooMuchNature.ender_piston_normal
-								|| block == TooMuchNature.ender_piston_sticky)) {
+						&& (block.getMobilityFlag() == 0 || block == TMNBlocks.ender_piston_normal
+								|| block == TMNBlocks.ender_piston_sticky)) {
 					p_149696_2_ += Facing.offsetsXForSide[p_149696_6_];
 					p_149696_3_ += Facing.offsetsYForSide[p_149696_6_];
 					p_149696_4_ += Facing.offsetsZForSide[p_149696_6_];
-					p_149696_1_.setBlock(p_149696_2_, p_149696_3_, p_149696_4_, TooMuchNature.ender_piston_extension,
-							i2, 3);
+					p_149696_1_.setBlock(p_149696_2_, p_149696_3_, p_149696_4_, TMNBlocks.ender_piston_extension, i2,
+							3);
 					p_149696_1_.setTileEntity(p_149696_2_, p_149696_3_, p_149696_4_,
 							BlockEnderPistonMoving.getTileEntity(block, i2, p_149696_6_, false, false));
 					p_149696_1_.setBlockToAir(j1, k1, l1);
@@ -424,10 +407,10 @@ public class BlockEnderPistonBase extends Block {
 			int p_150080_4_, boolean p_150080_5_) {
 		if (block == Blocks.obsidian) {
 			return false;
-		} else if (block == TooMuchNature.end_obsidian) {
+		} else if (block == TMNBlocks.end_obsidian) {
 			return false;
 		} else {
-			if (block != TooMuchNature.ender_piston_normal && block != TooMuchNature.ender_piston_sticky) {
+			if (block != TMNBlocks.ender_piston_normal && block != TMNBlocks.ender_piston_sticky) {
 				if (block.getBlockHardness(p_150080_1_, p_150080_2_, p_150080_3_, p_150080_4_) == -1.0F) {
 					return false;
 				}
@@ -554,13 +537,13 @@ public class BlockEnderPistonBase extends Block {
 				int j3 = p_150079_1_.getBlockMetadata(k2, l2, i3);
 
 				if (block1 == this && k2 == p_150079_2_ && l2 == p_150079_3_ && i3 == p_150079_4_) {
-					p_150079_1_.setBlock(i1, j1, k1, TooMuchNature.ender_piston_extension,
+					p_150079_1_.setBlock(i1, j1, k1, TMNBlocks.ender_piston_extension,
 							p_150079_5_ | (this.isSticky ? 8 : 0), 4);
 					p_150079_1_.setTileEntity(i1, j1, k1,
-							BlockEnderPistonMoving.getTileEntity(TooMuchNature.ender_piston_head,
+							BlockEnderPistonMoving.getTileEntity(TMNBlocks.ender_piston_head,
 									p_150079_5_ | (this.isSticky ? 8 : 0), p_150079_5_, true, false));
 				} else {
-					p_150079_1_.setBlock(i1, j1, k1, TooMuchNature.ender_piston_extension, j3, 4);
+					p_150079_1_.setBlock(i1, j1, k1, TMNBlocks.ender_piston_extension, j3, 4);
 					p_150079_1_.setTileEntity(i1, j1, k1,
 							BlockEnderPistonMoving.getTileEntity(block1, j3, p_150079_5_, true, false));
 				}

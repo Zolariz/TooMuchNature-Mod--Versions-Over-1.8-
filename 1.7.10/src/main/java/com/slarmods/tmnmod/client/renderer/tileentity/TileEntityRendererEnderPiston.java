@@ -1,5 +1,11 @@
 package com.slarmods.tmnmod.client.renderer.tileentity;
 
+import org.lwjgl.opengl.GL11;
+
+import com.slarmods.tmnmod.block.BlockEnderPistonBase;
+import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.tileentity.TileEntityEnderPiston;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -10,14 +16,8 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import org.lwjgl.opengl.GL11;
-
-import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.BlockEnderPistonBase;
-import com.slarmods.tmnmod.tileentity.TileEntityEnderPiston;
 
 @SideOnly(Side.CLIENT)
 public class TileEntityRendererEnderPiston extends TileEntitySpecialRenderer {
@@ -51,15 +51,15 @@ public class TileEntityRendererEnderPiston extends TileEntitySpecialRenderer {
 							+ tileEntityEnderPiston.func_145859_d(side)));
 			tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 
-			if (block == TooMuchNature.ender_piston_head && tileEntityEnderPiston.func_145860_a(side) < 0.5F) {
+			if (block == TMNBlocks.ender_piston_head && tileEntityEnderPiston.func_145860_a(side) < 0.5F) {
 				this.renderBlocks.renderPistonExtensionAllFaces(block, tileEntityEnderPiston.xCoord,
 						tileEntityEnderPiston.yCoord, tileEntityEnderPiston.zCoord, false);
 			} else if (tileEntityEnderPiston.func_145867_d() && !tileEntityEnderPiston.isExtending()) {
-				TooMuchNature.ender_piston_head.func_150086_a(((BlockEnderPistonBase) block).getPistonExtensionTexture());
-				this.renderBlocks.renderPistonExtensionAllFaces(TooMuchNature.ender_piston_head,
+				TMNBlocks.ender_piston_head.func_150086_a(((BlockEnderPistonBase) block).getPistonExtensionTexture());
+				this.renderBlocks.renderPistonExtensionAllFaces(TMNBlocks.ender_piston_head,
 						tileEntityEnderPiston.xCoord, tileEntityEnderPiston.yCoord, tileEntityEnderPiston.zCoord,
 						tileEntityEnderPiston.func_145860_a(side) < 0.5F);
-				TooMuchNature.ender_piston_head.func_150087_e();
+				TMNBlocks.ender_piston_head.func_150087_e();
 				tessellator.setTranslation((double) ((float) x - (float) tileEntityEnderPiston.xCoord),
 						(double) ((float) y - (float) tileEntityEnderPiston.yCoord),
 						(double) ((float) z - (float) tileEntityEnderPiston.zCoord));

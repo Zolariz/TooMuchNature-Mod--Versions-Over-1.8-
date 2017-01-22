@@ -93,11 +93,11 @@ public class BlockCherryGrass extends Block implements IGrowable {
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
 		this.blockIcon = iconRegister
-				.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_side");
+				.registerIcon(this.getTextureName() + "_side");
 		this.field_149991_b = iconRegister
-				.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_top");
+				.registerIcon(this.getTextureName() + "_top");
 		this.field_149993_M = iconRegister
-				.registerIcon(TooMuchNature.modid + ":" + this.getTextureName().substring(23) + "_side_snowed");
+				.registerIcon(this.getTextureName() + "_side_snowed");
 	}
 
 	public void func_149853_b(World world, Random random, int x, int y, int z) {
@@ -115,7 +115,7 @@ public class BlockCherryGrass extends Block implements IGrowable {
 					j1 += (random.nextInt(3) - 1) * random.nextInt(3) / 2;
 					k1 += random.nextInt(3) - 1;
 
-					if (world.getBlock(i1, j1 - 1, k1) == TooMuchNature.cherry_grass
+					if (world.getBlock(i1, j1 - 1, k1) == TMNBlocks.cherry_grass
 							&& !world.getBlock(i1, j1, k1).isNormalCube()) {
 						++l1;
 						continue;

@@ -19,6 +19,7 @@ package com.slarmods.tmnmod.client.renderer.block;
 
 import com.slarmods.tmnmod.block.BlockEnderstoneDiode;
 import com.slarmods.tmnmod.block.BlockEnderstoneRepeater;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
@@ -177,6 +178,6 @@ public class RenderBlockEnderstoneRepeater implements ISimpleBlockRenderingHandl
 
 	@Override
 	public int getRenderId() {
-		return 1943;
+		return BlockRenderingIDs.enderstoneRepeaterRenderID;
 	}
 }

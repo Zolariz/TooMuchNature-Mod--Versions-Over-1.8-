@@ -17,7 +17,7 @@
 
 package com.slarmods.tmnmod.proxy;
 
-public class ServerProxy extends CommonProxy {
+public class ServerProxy extends CommonProxy implements IProxy {
 
 	@Override
 	public void registerRenders() {

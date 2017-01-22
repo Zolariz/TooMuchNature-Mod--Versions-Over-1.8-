@@ -15,12 +15,13 @@ import net.minecraftforge.common.util.ForgeDirection;
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
 
 public class BlockEndLever extends Block {
 
 	public BlockEndLever() {
 		super(Material.circuits);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks);
+		this.setCreativeTab(TooMuchNature.tabEnderstone);
 	}
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
@@ -36,7 +37,7 @@ public class BlockEndLever extends Block {
 	}
 
 	public int getRenderType() {
-		return 1947;
+		return BlockRenderingIDs.endLeverRenderID;
 	}
 
 	public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side) {

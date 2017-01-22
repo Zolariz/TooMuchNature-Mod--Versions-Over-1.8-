@@ -4,6 +4,8 @@ import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.block.BlockEnderstoneDiode;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -40,24 +42,24 @@ public class BlockEnderstoneRepeater extends BlockEnderstoneDiode {
 	}
 
 	protected BlockEnderstoneDiode getBlockPowered() {
-		return (BlockEnderstoneDiode) TooMuchNature.enderstone_repeater_powered;
+		return (BlockEnderstoneDiode) TMNBlocks.enderstone_repeater_powered;
 	}
 
 	protected BlockEnderstoneDiode getBlockUnpowered() {
-		return (BlockEnderstoneDiode) TooMuchNature.enderstone_repeater_unpowered;
+		return (BlockEnderstoneDiode) TMNBlocks.enderstone_repeater_unpowered;
 	}
 
 	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return Items.repeater;
+		return TMNItems.enderstone_repeater;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z) {
-		return Items.repeater;
+		return TMNItems.enderstone_repeater;
 	}
 
 	public int getRenderType() {
-		return 1943;
+		return BlockRenderingIDs.enderstoneRepeaterRenderID;
 	}
 
 	public boolean func_149910_g(IBlockAccess world, int x, int y, int z, int side) {
@@ -116,7 +118,7 @@ public class BlockEnderstoneRepeater extends BlockEnderstoneDiode {
 				}
 			}
 
-			world.spawnParticle("reddust", d0 + d3, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
+			world.spawnParticle("reddust", d0 + d3, d1, d2 + d4, 0.0D, 5.0D, 1.5D);
 		}
 	}
 }

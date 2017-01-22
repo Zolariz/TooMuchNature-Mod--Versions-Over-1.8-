@@ -1,6 +1,7 @@
 package com.slarmods.tmnmod.item;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -50,7 +51,7 @@ public class ItemFlintAndEndstone extends Item {
 			if (world.isAirBlock(x, y, z)) {
 				world.playSoundEffect((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D, "fire.ignite", 1.0F,
 						itemRand.nextFloat() * 0.4F + 0.8F);
-				world.setBlock(x, y, z, TooMuchNature.end_fire);
+				world.setBlock(x, y, z, TMNBlocks.end_fire);
 			}
 
 			itemstack.damageItem(1, player);

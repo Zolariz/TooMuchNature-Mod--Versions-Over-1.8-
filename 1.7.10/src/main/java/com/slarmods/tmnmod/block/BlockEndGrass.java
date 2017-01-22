@@ -1,24 +1,23 @@
 package com.slarmods.tmnmod.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.IGrowable;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.util.IIcon;
-import net.minecraft.world.ColorizerGrass;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.slarmods.tmnmod.TooMuchNature;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 public class BlockEndGrass extends Block implements IGrowable {
 	private static final Logger logger = LogManager.getLogger();
@@ -26,8 +25,6 @@ public class BlockEndGrass extends Block implements IGrowable {
 	private IIcon topTexture;
 	@SideOnly(Side.CLIENT)
 	private IIcon sideSnowed;
-	@SideOnly(Side.CLIENT)
-	private IIcon side;
 
 	public BlockEndGrass(Material material) {
 		super(Material.grass);
@@ -39,13 +36,13 @@ public class BlockEndGrass extends Block implements IGrowable {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata) {
 		return side == 1 ? this.topTexture
-				: (side == 0 ? TooMuchNature.end_dirt.getBlockTextureFromSide(side) : this.blockIcon);
+				: (side == 0 ? TMNBlocks.end_dirt.getBlockTextureFromSide(side) : this.blockIcon);
 	}
 
 	public void updateTick(World world, int x, int y, int z, Random random) {
 		if (!world.isRemote) {
 			if (world.getBlockLightValue(x, y + 1, z) < 4 && world.getBlockLightOpacity(x, y + 1, z) > 2) {
-				world.setBlock(x, y, z, TooMuchNature.end_dirt);
+				world.setBlock(x, y, z, TMNBlocks.end_dirt);
 			} else if (world.getBlockLightValue(x, y + 1, z) >= 9) {
 				for (int l = 0; l < 4; ++l) {
 					int i1 = x + random.nextInt(3) - 1;
@@ -53,10 +50,10 @@ public class BlockEndGrass extends Block implements IGrowable {
 					int k1 = z + random.nextInt(3) - 1;
 					Block block = world.getBlock(i1, j1 + 1, k1);
 
-					if (world.getBlock(i1, j1, k1) == TooMuchNature.end_dirt && world.getBlockMetadata(i1, j1, k1) == 0
+					if (world.getBlock(i1, j1, k1) == TMNBlocks.end_dirt && world.getBlockMetadata(i1, j1, k1) == 0
 							&& world.getBlockLightValue(i1, j1 + 1, k1) >= 4
 							&& world.getBlockLightOpacity(i1, j1 + 1, k1) <= 2) {
-						world.setBlock(i1, j1, k1, TooMuchNature.end_grass);
+						world.setBlock(i1, j1, k1, TMNBlocks.end_grass);
 					}
 				}
 			}
@@ -64,7 +61,7 @@ public class BlockEndGrass extends Block implements IGrowable {
 	}
 
 	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return TooMuchNature.end_dirt.getItemDropped(0, random, fortune);
+		return TMNBlocks.end_dirt.getItemDropped(0, random, fortune);
 	}
 
 	public boolean func_149851_a(World world, int x, int y, int z, boolean doesGrowOnDirt) {
@@ -80,7 +77,7 @@ public class BlockEndGrass extends Block implements IGrowable {
 		if (side == 1) {
 			return this.topTexture;
 		} else if (side == 0) {
-			return TooMuchNature.end_dirt.getBlockTextureFromSide(side);
+			return TMNBlocks.end_dirt.getBlockTextureFromSide(side);
 		} else {
 			Material material = blockAccess.getBlock(x, y + 1, z).getMaterial();
 			return material != Material.snow && material != Material.craftedSnow ? this.blockIcon : this.sideSnowed;
@@ -109,7 +106,7 @@ public class BlockEndGrass extends Block implements IGrowable {
 					j1 += (random.nextInt(3) - 1) * random.nextInt(3) / 2;
 					k1 += random.nextInt(3) - 1;
 
-					if (world.getBlock(i1, j1 - 1, k1) == TooMuchNature.end_grass
+					if (world.getBlock(i1, j1 - 1, k1) == TMNBlocks.end_grass
 							&& !world.getBlock(i1, j1, k1).isNormalCube()) {
 						++l1;
 						continue;

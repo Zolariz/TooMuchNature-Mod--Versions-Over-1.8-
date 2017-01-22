@@ -3,13 +3,19 @@ package com.slarmods.tmnmod.block;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.IGrowable;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class BlockCherryCrops extends BlockCrops {
 
@@ -24,6 +30,10 @@ public class BlockCherryCrops extends BlockCrops {
 			this.iconArray[i] = iconRegister
 					.registerIcon(TooMuchNature.modid + ":" + this.getUnlocalizedName().substring(5) + "_stage_" + i);
 		}
+	}
+
+	protected boolean canPlaceBlockOn(Block block) {
+		return block == Blocks.farmland;
 	}
 
 	public IIcon getIcon(int side, int metadata) {
@@ -43,10 +53,14 @@ public class BlockCherryCrops extends BlockCrops {
 	}
 
 	protected Item func_149866_i() {
-		return TooMuchNature.cherry_seeds;
+		return TMNItems.cherry_seeds;
 	}
-	
+
 	protected Item func_149865_P() {
-		return TooMuchNature.cherry;
+		return TMNItems.cherry;
+	}
+
+	public int getRenderType() {
+		return 6;
 	}
 }

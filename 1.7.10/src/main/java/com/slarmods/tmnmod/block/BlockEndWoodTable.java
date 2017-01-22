@@ -3,6 +3,7 @@ package com.slarmods.tmnmod.block;
 import java.util.List;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,7 +22,7 @@ import net.minecraft.world.World;
 
 public class BlockEndWoodTable extends Block {
 
-	public static final String[] tablePlanks = new String[] { "end_oak", "dark_end_oak" };
+	public static final String[] tablePlanks = new String[] { "end_oak", "dark_end_oak", "light_end_oak" };
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icon;
@@ -35,7 +36,7 @@ public class BlockEndWoodTable extends Block {
 	}
 
 	public int getRenderType() {
-		return 1944;
+		return BlockRenderingIDs.tsfTableRenderID;
 	}
 
 	public boolean isOpaqueCube() {
@@ -52,8 +53,8 @@ public class BlockEndWoodTable extends Block {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-		return this.icon[p_149691_2_ % this.tablePlanks.length];
+	public IIcon getIcon(int side, int meta) {
+		return this.icon[meta % this.tablePlanks.length];
 	}
 
 	public int damageDropped(int damageDrop) {
@@ -64,6 +65,7 @@ public class BlockEndWoodTable extends Block {
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list) {
 		list.add(new ItemStack(item, 1, 0));
 		list.add(new ItemStack(item, 1, 1));
+		list.add(new ItemStack(item, 1, 2));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -75,8 +77,8 @@ public class BlockEndWoodTable extends Block {
 		}
 	}
 	
-	public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_)
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingBase, ItemStack itemstack)
     {
-        super.onBlockPlacedBy(p_149689_1_, p_149689_2_, p_149689_3_, p_149689_4_, p_149689_5_, p_149689_6_);
+        super.onBlockPlacedBy(world, x, y, z, livingBase, itemstack);
     }
 }

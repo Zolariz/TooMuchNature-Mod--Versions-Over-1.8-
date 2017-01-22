@@ -17,15 +17,14 @@
 
 package com.slarmods.tmnmod.client.renderer.block;
 
-import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.block.BlockEnderstoneComparator;
+import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRedstoneDiode;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
@@ -53,10 +52,10 @@ public class RenderBlockEnderstoneComparator implements ISimpleBlockRenderingHan
 		IIcon iicon;
 
 		if (BlockEnderstoneComparator.func_149969_d(l)) {
-			iicon = TooMuchNature.lit_enderstone_torch.getBlockTextureFromSide(0);
+			iicon = TMNBlocks.lit_enderstone_torch.getBlockTextureFromSide(0);
 		} else {
 			d1 -= 0.1875D;
-			iicon = TooMuchNature.unlit_enderstone_torch.getBlockTextureFromSide(0);
+			iicon = TMNBlocks.unlit_enderstone_torch.getBlockTextureFromSide(0);
 		}
 
 		switch (i1) {
@@ -147,6 +146,6 @@ public class RenderBlockEnderstoneComparator implements ISimpleBlockRenderingHan
 
 	@Override
 	public int getRenderId() {
-		return 1942;
+		return BlockRenderingIDs.enderstoneComparatorRenderID;
 	}
 }

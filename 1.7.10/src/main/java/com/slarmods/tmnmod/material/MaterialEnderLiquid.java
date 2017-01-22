@@ -5,8 +5,8 @@ import net.minecraft.block.material.Material;
 
 public class MaterialEnderLiquid extends Material {
 
-	public MaterialEnderLiquid(MapColor p_i2114_1_) {
-		super(p_i2114_1_);
+	public MaterialEnderLiquid(MapColor mapColor) {
+		super(mapColor);
 		this.setReplaceable();
 		this.setNoPushMobility();
 	}

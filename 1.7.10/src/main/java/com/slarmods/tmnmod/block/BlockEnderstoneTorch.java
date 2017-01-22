@@ -1,19 +1,16 @@
 package com.slarmods.tmnmod.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.slarmods.tmnmod.TooMuchNature;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -135,7 +132,7 @@ public class BlockEnderstoneTorch extends BlockTorch {
 
 		if (this.isLit) {
 			if (flag) {
-				p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, TooMuchNature.unlit_enderstone_torch,
+				p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, TMNBlocks.unlit_enderstone_torch,
 						p_149674_1_.getBlockMetadata(p_149674_2_, p_149674_3_, p_149674_4_), 3);
 
 				if (this.func_150111_a(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, true)) {
@@ -152,7 +149,7 @@ public class BlockEnderstoneTorch extends BlockTorch {
 				}
 			}
 		} else if (!flag && !this.func_150111_a(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, false)) {
-			p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, TooMuchNature.lit_enderstone_torch,
+			p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, TMNBlocks.lit_enderstone_torch,
 					p_149674_1_.getBlockMetadata(p_149674_2_, p_149674_3_, p_149674_4_), 3);
 		}
 	}
@@ -181,7 +178,7 @@ public class BlockEnderstoneTorch extends BlockTorch {
 	}
 
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Item.getItemFromBlock(TooMuchNature.lit_enderstone_torch);
+		return Item.getItemFromBlock(TMNBlocks.lit_enderstone_torch);
 	}
 
 	/**
@@ -208,15 +205,15 @@ public class BlockEnderstoneTorch extends BlockTorch {
 			double d4 = 0.27000001072883606D;
 
 			if (l == 1) {
-				p_149734_1_.spawnParticle("reddust", d0 - d4, d1 + d3, d2, 0.0D, 0.0D, 0.0D);
+				p_149734_1_.spawnParticle("reddust", d0 - d4, d1 + d3, d2, 0.0D, 5.0D, 1.5D);
 			} else if (l == 2) {
-				p_149734_1_.spawnParticle("reddust", d0 + d4, d1 + d3, d2, 0.0D, 0.0D, 0.0D);
+				p_149734_1_.spawnParticle("reddust", d0 + d4, d1 + d3, d2, 0.0D, 5.0D, 1.5D);
 			} else if (l == 3) {
-				p_149734_1_.spawnParticle("reddust", d0, d1 + d3, d2 - d4, 0.0D, 0.0D, 0.0D);
+				p_149734_1_.spawnParticle("reddust", d0, d1 + d3, d2 - d4, 0.0D, 5.0D, 1.5D);
 			} else if (l == 4) {
-				p_149734_1_.spawnParticle("reddust", d0, d1 + d3, d2 + d4, 0.0D, 0.0D, 0.0D);
+				p_149734_1_.spawnParticle("reddust", d0, d1 + d3, d2 + d4, 0.0D, 5.0D, 1.5D);
 			} else {
-				p_149734_1_.spawnParticle("reddust", d0, d1, d2, 0.0D, 0.0D, 0.0D);
+				p_149734_1_.spawnParticle("reddust", d0, d1, d2, 0.0D, 5.0D, 1.5D);
 			}
 		}
 	}
@@ -226,11 +223,11 @@ public class BlockEnderstoneTorch extends BlockTorch {
 	 */
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
-		return Item.getItemFromBlock(TooMuchNature.lit_enderstone_torch);
+		return Item.getItemFromBlock(TMNBlocks.lit_enderstone_torch);
 	}
 
 	public boolean isAssociatedBlock(Block p_149667_1_) {
-		return p_149667_1_ == TooMuchNature.unlit_enderstone_torch || p_149667_1_ == TooMuchNature.lit_enderstone_torch;
+		return p_149667_1_ == TMNBlocks.unlit_enderstone_torch || p_149667_1_ == TMNBlocks.lit_enderstone_torch;
 	}
 
 	static class Toggle {

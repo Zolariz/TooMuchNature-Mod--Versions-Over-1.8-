@@ -64,9 +64,9 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		return side == 0
-				? (this.isRepeaterPowered ? TooMuchNature.lit_enderstone_torch.getBlockTextureFromSide(side)
-						: TooMuchNature.unlit_enderstone_torch.getBlockTextureFromSide(side))
-				: (side == 1 ? this.blockIcon : TooMuchNature.end_stone_double_slab.getBlockTextureFromSide(1));
+				? (this.isRepeaterPowered ? TMNBlocks.lit_enderstone_torch.getBlockTextureFromSide(side)
+						: TMNBlocks.unlit_enderstone_torch.getBlockTextureFromSide(side))
+				: (side == 1 ? this.blockIcon : TMNBlocks.end_stone_double_slab.getBlockTextureFromSide(1));
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -146,7 +146,7 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 		int k1 = z + Direction.offsetZ[i1];
 		int l1 = world.getIndirectPowerLevelTo(j1, y, k1, Direction.directionToFacing[i1]);
 		return l1 >= 15 ? l1
-				: Math.max(l1, world.getBlock(j1, y, k1) == TooMuchNature.enderstone_wire
+				: Math.max(l1, world.getBlock(j1, y, k1) == TMNBlocks.enderstone_wire
 						? world.getBlockMetadata(j1, y, k1) : 0);
 	}
 
@@ -167,7 +167,7 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 
 	protected int func_149913_i(IBlockAccess world, int x, int y, int z, int side) {
 		Block block = world.getBlock(x, y, z);
-		return this.func_149908_a(block) ? (block == TooMuchNature.enderstone_wire ? world.getBlockMetadata(x, y, z)
+		return this.func_149908_a(block) ? (block == TMNBlocks.enderstone_wire ? world.getBlockMetadata(x, y, z)
 				: world.isBlockProvidingPowerTo(x, y, z, side)) : 0;
 	}
 
@@ -240,8 +240,8 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 	}
 
 	public static boolean isRedstoneRepeaterBlockID(Block block) {
-		return ((BlockEnderstoneDiode) TooMuchNature.enderstone_repeater_unpowered).func_149907_e(block)
-				|| TooMuchNature.enderstone_comparator_unpowered.func_149907_e(block);
+		return ((BlockEnderstoneDiode) TMNBlocks.enderstone_repeater_unpowered).func_149907_e(block)
+				|| TMNBlocks.enderstone_comparator_unpowered.func_149907_e(block);
 	}
 
 	public boolean func_149907_e(Block block) {

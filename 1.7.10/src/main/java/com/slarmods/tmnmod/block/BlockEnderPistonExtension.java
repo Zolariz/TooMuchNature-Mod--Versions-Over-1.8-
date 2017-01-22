@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -42,7 +43,7 @@ public class BlockEnderPistonExtension extends Block {
 			Block block = world.getBlock(x - Facing.offsetsXForSide[i1], y - Facing.offsetsYForSide[i1],
 					z - Facing.offsetsZForSide[i1]);
 
-			if (block == TooMuchNature.ender_piston_normal || block == TooMuchNature.ender_piston_sticky) {
+			if (block == TMNBlocks.ender_piston_normal || block == TMNBlocks.ender_piston_sticky) {
 				world.setBlockToAir(x - Facing.offsetsXForSide[i1], y - Facing.offsetsYForSide[i1],
 						z - Facing.offsetsZForSide[i1]);
 			}
@@ -59,7 +60,7 @@ public class BlockEnderPistonExtension extends Block {
 		z += Facing.offsetsZForSide[i1];
 		Block block1 = world.getBlock(x, y, z);
 
-		if (block1 == TooMuchNature.ender_piston_normal || block1 == TooMuchNature.ender_piston_sticky) {
+		if (block1 == TMNBlocks.ender_piston_normal || block1 == TMNBlocks.ender_piston_sticky) {
 			side = world.getBlockMetadata(x, y, z);
 
 			if (BlockEnderPistonBase.isExtended(side)) {
@@ -101,7 +102,7 @@ public class BlockEnderPistonExtension extends Block {
 	}
 
 	public int getRenderType() {
-		return 1948;
+		return BlockRenderingIDs.enderPistonExtensionRenderID;
 	}
 
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
@@ -196,7 +197,7 @@ public class BlockEnderPistonExtension extends Block {
 		Block block1 = world.getBlock(x - Facing.offsetsXForSide[l], y - Facing.offsetsYForSide[l],
 				z - Facing.offsetsZForSide[l]);
 
-		if (block1 != TooMuchNature.ender_piston_normal && block1 != TooMuchNature.ender_piston_sticky) {
+		if (block1 != TMNBlocks.ender_piston_normal && block1 != TMNBlocks.ender_piston_sticky) {
 			world.setBlockToAir(x, y, z);
 		} else {
 			block1.onNeighborBlockChange(world, x - Facing.offsetsXForSide[l], y - Facing.offsetsYForSide[l],
@@ -211,7 +212,7 @@ public class BlockEnderPistonExtension extends Block {
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z) {
 		int l = world.getBlockMetadata(x, y, z);
-		return (l & 8) != 0 ? Item.getItemFromBlock(TooMuchNature.ender_piston_sticky)
-				: Item.getItemFromBlock(TooMuchNature.ender_piston_normal);
+		return (l & 8) != 0 ? Item.getItemFromBlock(TMNBlocks.ender_piston_sticky)
+				: Item.getItemFromBlock(TMNBlocks.ender_piston_normal);
 	}
 }

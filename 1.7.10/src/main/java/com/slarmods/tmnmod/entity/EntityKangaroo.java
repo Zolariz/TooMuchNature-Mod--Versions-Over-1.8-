@@ -18,6 +18,7 @@
 package com.slarmods.tmnmod.entity;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
@@ -31,11 +32,9 @@ import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class EntityKangaroo extends EntityAnimal {
@@ -85,7 +84,7 @@ public class EntityKangaroo extends EntityAnimal {
 	}
 
 	protected Item getDropItem() {
-		return TooMuchNature.kangaroo_skin;
+		return TMNItems.kangaroo_skin;
 	}
 
 	protected void dropFewItems(boolean drop, int i) {
@@ -93,16 +92,16 @@ public class EntityKangaroo extends EntityAnimal {
 		int k;
 
 		for (k = 0; k < j; ++k) {
-			this.dropItem(TooMuchNature.kangaroo_skin, 1);
+			this.dropItem(TMNItems.kangaroo_skin, 1);
 		}
 
 		j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + i);
 
 		for (k = 0; k < j; ++k) {
 			if (this.isBurning()) {
-				this.dropItem(TooMuchNature.cooked_kangaroo, 1);
+				this.dropItem(TMNItems.cooked_kangaroo, 1);
 			} else {
-				this.dropItem(TooMuchNature.raw_kangaroo, 1);
+				this.dropItem(TMNItems.raw_kangaroo, 1);
 			}
 		}
 	}

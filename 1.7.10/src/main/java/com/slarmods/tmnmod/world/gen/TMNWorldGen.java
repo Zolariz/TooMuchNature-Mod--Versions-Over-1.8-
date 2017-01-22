@@ -3,6 +3,7 @@ package com.slarmods.tmnmod.world.gen;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
@@ -30,7 +31,7 @@ public class TMNWorldGen implements IWorldGenerator {
 	}
 
 	public void generateEnd(World world, Random random, int x, int z) {
-		generateOre(TooMuchNature.end_obsidian, world, random, x, z, 1, 3, 5, 0, 100, Blocks.end_stone);
+		
 	}
 
 	public void generateOverworld(World world, Random random, int x, int z) {

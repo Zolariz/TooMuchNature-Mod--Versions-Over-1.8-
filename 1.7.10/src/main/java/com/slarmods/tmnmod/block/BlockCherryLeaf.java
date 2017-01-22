@@ -1,7 +1,7 @@
 /**
 	Copyright (C) <2016>  <TheSlarFab>
 
-    This file is part of the TheSlarFab TooMuchNature Mod; as such, 
+    This file is part of the TheSlarFab TooMuchNatventure Mod; as such, 
     you can redistribute it and/or modify it under the terms of the GNU
     General Public License as published by the Free Software Foundation,
     either version 3 of the License, or (at your option) any later version.
@@ -20,14 +20,13 @@ package com.slarmods.tmnmod.block;
 import java.util.List;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -45,7 +44,7 @@ public class BlockCherryLeaf extends BlockTMNLeaves {
 
 	protected void func_150124_c(World world, int x, int y, int z, int drop, int itemDrop) {
 		if ((drop & 3) == 0 && world.rand.nextInt(itemDrop) == 0) {
-			this.dropBlockAsItem(world, x, y, z, new ItemStack(TooMuchNature.cherry, 1, 0));
+			this.dropBlockAsItem(world, x, y, z, new ItemStack(TMNItems.cherry, 1, 0));
 		}
 	}
 

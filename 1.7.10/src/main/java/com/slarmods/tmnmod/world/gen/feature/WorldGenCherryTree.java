@@ -21,6 +21,7 @@ import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.block.BlockCherrySapling;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
@@ -102,7 +103,7 @@ public class WorldGenCherryTree extends WorldGenAbstractTree {
 				Block block2 = world.getBlock(x, y - 1, z);
 
 				boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP,
-						(BlockCherrySapling) TooMuchNature.cherry_sapling);
+						(BlockCherrySapling) TMNBlocks.cherry_sapling);
 				if (isSoil && y < 256 - l - 1) {
 					block2.onPlantGrow(world, x, y - 1, z, x, y, z);
 					b0 = 3;
@@ -126,7 +127,7 @@ public class WorldGenCherryTree extends WorldGenAbstractTree {
 									Block block1 = world.getBlock(i2, k1, k2);
 
 									if (block1.isAir(world, i2, k1, k2) || block1.isLeaves(world, i2, k1, k2)) {
-										this.setBlockAndNotifyAdequately(world, i2, k1, k2, TooMuchNature.cherry_leaf,
+										this.setBlockAndNotifyAdequately(world, i2, k1, k2, TMNBlocks.cherry_leaf,
 												this.metaLeaves);
 									}
 								}
@@ -138,8 +139,7 @@ public class WorldGenCherryTree extends WorldGenAbstractTree {
 						block = world.getBlock(x, y + k1, z);
 
 						if (block.isAir(world, x, y + k1, z) || block.isLeaves(world, x, y + k1, z)) {
-							this.setBlockAndNotifyAdequately(world, x, y + k1, z, TooMuchNature.cherry_log,
-									this.metaWood);
+							this.setBlockAndNotifyAdequately(world, x, y + k1, z, TMNBlocks.cherry_log, this.metaWood);
 
 							if (this.vinesGrow && k1 > 0) {
 								if (random.nextInt(3) > 0 && world.isAirBlock(x - 1, y + k1, z)) {

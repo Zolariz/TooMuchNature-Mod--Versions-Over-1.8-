@@ -1,5 +1,7 @@
 package com.slarmods.tmnmod.client.renderer.block;
 
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -208,6 +210,6 @@ public class RenderBlockEndLever implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public int getRenderId() {
-		return 1947;
+		return BlockRenderingIDs.endLeverRenderID;
 	}
 }

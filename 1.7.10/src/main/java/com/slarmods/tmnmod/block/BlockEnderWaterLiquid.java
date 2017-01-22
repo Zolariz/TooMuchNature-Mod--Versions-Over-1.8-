@@ -450,7 +450,7 @@ public abstract class BlockEnderWaterLiquid extends Block {
 		Vec3 vec3 = null;
 
 		if (p_149802_4_ == Material.water) {
-			vec3 = ((BlockEnderWaterLiquid) TooMuchNature.ender_water_dynamic).getFlowVector(p_149802_0_, p_149802_1_,
+			vec3 = ((BlockEnderWaterLiquid) TMNBlocks.ender_water_dynamic).getFlowVector(p_149802_0_, p_149802_1_,
 					p_149802_2_, p_149802_3_);
 		}
 
@@ -502,7 +502,7 @@ public abstract class BlockEnderWaterLiquid extends Block {
 					int l = p_149805_1_.getBlockMetadata(p_149805_2_, p_149805_3_, p_149805_4_);
 
 					if (l == 0) {
-						p_149805_1_.setBlock(p_149805_2_, p_149805_3_, p_149805_4_, TooMuchNature.end_obsidian);
+						p_149805_1_.setBlock(p_149805_2_, p_149805_3_, p_149805_4_, TMNBlocks.end_obsidian);
 					} else if (l <= 4) {
 						p_149805_1_.setBlock(p_149805_2_, p_149805_3_, p_149805_4_, Blocks.end_stone);
 					}
@@ -535,8 +535,8 @@ public abstract class BlockEnderWaterLiquid extends Block {
 	@SideOnly(Side.CLIENT)
 	public static IIcon getLiquidIcon(String icon) {
 		return icon == (TooMuchNature.modid + ":" + "ender_water_flow")
-				? TooMuchNature.ender_water_dynamic.iconLiquid[1]
+				? TMNBlocks.ender_water_dynamic.iconLiquid[1]
 				: icon == (TooMuchNature.modid + ":" + "ender_water_still")
-						? TooMuchNature.ender_water_static.iconLiquid[0] : null;
+						? TMNBlocks.ender_water_static.iconLiquid[0] : null;
 	}
 }

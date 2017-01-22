@@ -66,20 +66,20 @@ public class BlockEndStoneSlab extends BlockSlab {
 
 		return k == 0 ? (side != 1 && side != 0 ? this.field_150007_M : this.blockIcon)
 				: (k == 1 ? Blocks.end_stone.getBlockTextureFromSide(side)
-						: (k == 2 ? TooMuchNature.end_stone_bricks.getBlockTextureFromSide(side) : this.blockIcon));
+						: (k == 2 ? TMNBlocks.end_stone_bricks.getBlockTextureFromSide(side) : this.blockIcon));
 	}
 
 	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return Item.getItemFromBlock(TooMuchNature.end_stone_slab);
+		return Item.getItemFromBlock(TMNBlocks.end_stone_slab);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z) {
-		return Item.getItemFromBlock(TooMuchNature.end_stone_slab);
+		return Item.getItemFromBlock(TMNBlocks.end_stone_slab);
 	}
 
 	protected ItemStack createStackedBlock(int stackedBlock) {
-		return new ItemStack(Item.getItemFromBlock(TooMuchNature.end_stone_slab), 2, stackedBlock & 7);
+		return new ItemStack(Item.getItemFromBlock(TMNBlocks.end_stone_slab), 2, stackedBlock & 7);
 	}
 
 	public String func_150002_b(int slabLength) {
@@ -96,7 +96,7 @@ public class BlockEndStoneSlab extends BlockSlab {
 	 */
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs creativeTab, List list) {
-		if (item != Item.getItemFromBlock(TooMuchNature.end_stone_double_slab)) {
+		if (item != Item.getItemFromBlock(TMNBlocks.end_stone_double_slab)) {
 			for (int i = 0; i < slab.length; ++i) {
 				list.add(new ItemStack(item, 1, i));
 			}

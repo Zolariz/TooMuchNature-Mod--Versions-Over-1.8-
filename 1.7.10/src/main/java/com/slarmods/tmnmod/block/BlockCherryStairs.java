@@ -27,7 +27,7 @@ public class BlockCherryStairs extends BlockStairs {
 	private final int idk;
 
 	public BlockCherryStairs(Block block, int par2) {
-		super(TooMuchNature.cherry_planks, par2);
+		super(TMNBlocks.cherry_planks, par2);
 		this.blockModel = block;
 		this.idk = par2;
 		this.setHardness(2.0F);

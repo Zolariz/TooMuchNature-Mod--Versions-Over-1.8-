@@ -33,7 +33,7 @@ import net.minecraft.util.IIcon;
 
 public class BlockEndWood extends Block {
 
-	public static final String[] planks = new String[] { "end_oak", "dark_end_oak" };
+	public static final String[] planks = new String[] { "end_oak", "dark_end_oak", "light_end_oak" };
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iiicon;
@@ -61,6 +61,7 @@ public class BlockEndWood extends Block {
 	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list) {
 		list.add(new ItemStack(item, 1, 0));
 		list.add(new ItemStack(item, 1, 1));
+		list.add(new ItemStack(item, 1, 2));
 	}
 
 	@SideOnly(Side.CLIENT)

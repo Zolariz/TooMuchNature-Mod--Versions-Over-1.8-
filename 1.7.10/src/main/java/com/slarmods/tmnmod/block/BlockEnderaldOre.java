@@ -3,6 +3,7 @@ package com.slarmods.tmnmod.block;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -22,7 +23,7 @@ public class BlockEnderaldOre extends Block {
 	}
 
 	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return TooMuchNature.enderald;
+		return TMNItems.enderald;
 	}
 
 	public int quantityDropped(Random random) {

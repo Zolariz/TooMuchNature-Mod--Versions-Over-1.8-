@@ -1,6 +1,7 @@
 package com.slarmods.tmnmod.item;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +13,7 @@ import net.minecraft.world.World;
 public class ItemEnderstone extends Item {
 
 	public ItemEnderstone() {
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks);
+		this.setCreativeTab(TooMuchNature.tabEnderstone);
 	}
 
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,
@@ -50,9 +51,9 @@ public class ItemEnderstone extends Item {
 		if (!player.canPlayerEdit(x, y, z, side, itemstack)) {
 			return false;
 		} else {
-			if (TooMuchNature.enderstone_wire.canPlaceBlockAt(world, x, y, z)) {
+			if (TMNBlocks.enderstone_wire.canPlaceBlockAt(world, x, y, z)) {
 				--itemstack.stackSize;
-				world.setBlock(x, y, z, TooMuchNature.enderstone_wire);
+				world.setBlock(x, y, z, TMNBlocks.enderstone_wire);
 			}
 
 			return true;

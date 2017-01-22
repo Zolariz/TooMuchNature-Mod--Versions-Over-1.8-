@@ -3,6 +3,7 @@ package com.slarmods.tmnmod.world.biome;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.world.biome.ender.BiomeGenEnderlands;
 import com.slarmods.tmnmod.world.biome.ender.BiomeGenEnderlandsRiver;
 import com.slarmods.tmnmod.world.biome.ender.decorator.EnderBiomeDecorator;
@@ -91,12 +92,12 @@ public class EnderBiomes extends BiomeGenBase {
 				Block block2 = replacableBlock[i2];
 
 				if (block2 != null && block2.getMaterial() != Material.air) {
-					if (block2 == TooMuchNature.end_stone_smooth) {
+					if (block2 == TMNBlocks.end_stone_smooth) {
 						if (k == -1) {
 							if (l <= 0) {
 								block = null;
 								b0 = 0;
-								block1 = TooMuchNature.end_stone_smooth;
+								block1 = TMNBlocks.end_stone_smooth;
 							} else if (l1 >= 59 && l1 <= 64) {
 								block = this.topBlock;
 								b0 = (byte) (this.field_150604_aj & 255);
@@ -120,7 +121,7 @@ public class EnderBiomes extends BiomeGenBase {
 								aByte[i2] = b0;
 							} else if (l1 < 56 - l) {
 								block = null;
-								block1 = TooMuchNature.end_stone_smooth;
+								block1 = TMNBlocks.end_stone_smooth;
 								replacableBlock[i2] = Blocks.gravel;
 							} else {
 								replacableBlock[i2] = block1;

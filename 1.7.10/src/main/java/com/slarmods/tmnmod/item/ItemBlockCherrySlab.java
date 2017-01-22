@@ -18,6 +18,7 @@
 package com.slarmods.tmnmod.item;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
@@ -26,7 +27,7 @@ import net.minecraft.item.ItemSlab;
 public class ItemBlockCherrySlab extends ItemSlab {
 	
 	public ItemBlockCherrySlab(Block block) {
-		super(block, (BlockSlab) TooMuchNature.cherry_slab, (BlockSlab) TooMuchNature.cherry_double_slab, false);
+		super(block, (BlockSlab) TMNBlocks.cherry_slab, (BlockSlab) TMNBlocks.cherry_double_slab, false);
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
 	}

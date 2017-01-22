@@ -1,6 +1,7 @@
 package com.slarmods.tmnmod.world.biome.ender;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import net.minecraft.world.biome.BiomeGenBase;
 
@@ -13,8 +14,8 @@ public class BiomeGenEnderlands extends BiomeGenBase {
 		this.setTemperatureRainfall(0.7F, 0.8F);
 		this.setHeight(height_LowPlains);
 
-		this.topBlock = TooMuchNature.end_grass;
-		this.fillerBlock = TooMuchNature.end_dirt;
+		this.topBlock = TMNBlocks.end_grass;
+		this.fillerBlock = TMNBlocks.end_dirt;
 	}
 
 	@Override

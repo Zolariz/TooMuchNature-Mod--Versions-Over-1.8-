@@ -181,7 +181,7 @@ public abstract class BlockTMNLeaves extends BlockLeavesBase implements IShearab
 	}
 
 	public Item getItemDropped(int drop, Random random, int fortune) {
-		return Item.getItemFromBlock(TooMuchNature.cherry_sapling);
+		return Item.getItemFromBlock(TMNBlocks.cherry_sapling);
 	}
 
 	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int a, float b, int c) {

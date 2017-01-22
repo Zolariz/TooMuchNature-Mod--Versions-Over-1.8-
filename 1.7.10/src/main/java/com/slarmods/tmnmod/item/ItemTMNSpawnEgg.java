@@ -53,7 +53,7 @@ public class ItemTMNSpawnEgg extends Item {
 		super();
 		setHasSubtypes(true);
 		setTextureName(TooMuchNature.modid + ":" + "spawn_egg");
-		setCreativeTab(TooMuchNature.tabTooMuchNatureMobs);
+		setCreativeTab(TooMuchNature.tabTooMuchNatureMisc);
 	}
 
 	@Override

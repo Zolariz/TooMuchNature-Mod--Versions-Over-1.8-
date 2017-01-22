@@ -49,7 +49,7 @@ public class BlockCherrySapling extends BlockBush implements IGrowable {
 	public BlockCherrySapling() {
 		float f = 0.4F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks);
 	}
 
 	public void updateTick(World world, int x, int y, int z, Random random) {
@@ -89,7 +89,7 @@ public class BlockCherrySapling extends BlockBush implements IGrowable {
 
 		switch (l) {
 		case 0:
-			object = new WorldGenCherryTree(TooMuchNature.cherry_log, TooMuchNature.cherry_leaf, 0, 0, false, 4, 6,
+			object = new WorldGenCherryTree(TMNBlocks.cherry_log, TMNBlocks.cherry_leaf, 0, 0, false, 4, 6,
 					false);
 			break;
 		case 1:

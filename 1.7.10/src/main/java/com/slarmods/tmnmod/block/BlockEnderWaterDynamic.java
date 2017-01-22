@@ -102,7 +102,7 @@ public class BlockEnderWaterDynamic extends BlockEnderWaterLiquid {
 
 		if (this.func_149809_q(world, x, y - 1, z)) {
 			if (this.blockMaterial == Material.lava && world.getBlock(x, y - 1, z).getMaterial() == Material.water) {
-				world.setBlock(x, y - 1, z, TooMuchNature.end_stone_smooth);
+				world.setBlock(x, y - 1, z, TMNBlocks.end_stone_smooth);
 				this.func_149799_m(world, x, y - 1, z);
 				return;
 			}

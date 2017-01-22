@@ -24,7 +24,7 @@ public class BlockEndObsidian extends BlockStone {
 	}
 
 	public Item getItemDropped(int meta, Random random, int fortune) {
-		return Item.getItemFromBlock(TooMuchNature.end_obsidian);
+		return Item.getItemFromBlock(TMNBlocks.end_obsidian);
 	}
 
 	public MapColor getMapColor(int color) {

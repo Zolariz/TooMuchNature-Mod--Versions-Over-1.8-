@@ -8,6 +8,8 @@ import java.util.Random;
 import java.util.Set;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -52,7 +54,7 @@ public class BlockEnderstoneWire extends Block {
 	}
 
 	public int getRenderType() {
-		return 1941;
+		return BlockRenderingIDs.enderstoneWireRenderID;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -265,7 +267,7 @@ public class BlockEnderstoneWire extends Block {
 	}
 
 	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return TooMuchNature.enderstone_dust;
+		return TMNItems.enderstone_dust;
 	}
 
 	public int isProvidingStrongPower(IBlockAccess world, int x, int y, int z, int side) {
@@ -326,7 +328,7 @@ public class BlockEnderstoneWire extends Block {
 	public static boolean isPowerProviderOrWire(IBlockAccess world, int x, int y, int z, int side) {
 		Block block = world.getBlock(x, y, z);
 
-		if (block == TooMuchNature.enderstone_wire) {
+		if (block == TMNBlocks.enderstone_wire) {
 			return true;
 		} else if (!Blocks.unpowered_repeater.func_149907_e(block)) {
 			return block.canConnectRedstone(world, x, y, z, side);
@@ -352,7 +354,7 @@ public class BlockEnderstoneWire extends Block {
 			}
 
 			float f2 = f * f * 0.7F - 0.5F;
-			float f3 = f * f * 0.6F - 0.7F;//BlockRedstoneWire
+			float f3 = f * f * 0.6F - 0.7F;
 
 			if (f2 < 0.0F) {
 				f2 = 0.0F;
@@ -379,7 +381,7 @@ public class BlockEnderstoneWire extends Block {
 
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z) {
-		return TooMuchNature.enderstone_dust; //BlockRedstoneWire
+		return TMNItems.enderstone_dust;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -392,10 +394,10 @@ public class BlockEnderstoneWire extends Block {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public static IIcon getEnderstoneWireIcon(String icon) {
-		return icon == "redstone_dust_line_overlay" ? crossIcon
-				: icon == "redstone_dust_cross_overlay" ? lineIcon
-						: icon == "redstone_dust_line" ? crossOverlayIcon
-								: icon == "redstone_dust_cross" ? lineOverlayIcon : null;
+	public static IIcon getRedstoneWireIcon(String icon) {
+		return icon.equals("cross") ? TMNBlocks.enderstone_wire.crossIcon
+				: (icon.equals("line") ? TMNBlocks.enderstone_wire.lineIcon
+						: (icon.equals("cross_overlay") ? TMNBlocks.enderstone_wire.crossOverlayIcon
+								: (icon.equals("line_overlay") ? TMNBlocks.enderstone_wire.lineOverlayIcon : null)));
 	}
 }

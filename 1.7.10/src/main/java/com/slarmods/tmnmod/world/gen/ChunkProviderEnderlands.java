@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
@@ -163,9 +164,9 @@ public class ChunkProviderEnderlands implements IChunkProvider {
 
 							for (int k3 = 0; k3 < 4; ++k3) {
 								if ((d15 += d16) > 0.0D) {
-									p_147424_3_[j3 += short1] = TooMuchNature.end_stone_smooth;
+									p_147424_3_[j3 += short1] = TMNBlocks.end_stone_smooth;
 								} else if (k2 * 8 + l2 < b0) {
-									p_147424_3_[j3 += short1] = Blocks.water;
+									p_147424_3_[j3 += short1] = TMNBlocks.ender_water_static;
 								} else {
 									p_147424_3_[j3 += short1] = null;
 								}

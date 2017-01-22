@@ -53,83 +53,47 @@ public class BlockEnderPistonMoving extends Block {
 		}
 	}
 
-	/**
-	 * Checks to see if its valid to put this block at the specified
-	 * coordinates. Args: world, x, y, z
-	 */
-	public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_) {
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
 		return false;
 	}
 
-	/**
-	 * checks to see if you can place this block can be placed on that side of a
-	 * block: BlockLever overrides
-	 */
-	public boolean canPlaceBlockOnSide(World p_149707_1_, int p_149707_2_, int p_149707_3_, int p_149707_4_,
-			int p_149707_5_) {
+	public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side) {
 		return false;
 	}
 
-	/**
-	 * The type of render function that is called for this block
-	 */
 	public int getRenderType() {
 		return -1;
 	}
 
-	/**
-	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
-	 * or not to render the shared face of two adjacent blocks and also whether
-	 * the player can attach torches, redstone wire, etc to this block.
-	 */
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
-	/**
-	 * If this block doesn't render as an ordinary block it will return False
-	 * (examples: signs, buttons, stairs, etc)
-	 */
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
 
-	/**
-	 * Called upon block activation (right click on the block.)
-	 */
-	public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_,
-			EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
-		if (!p_149727_1_.isRemote && p_149727_1_.getTileEntity(p_149727_2_, p_149727_3_, p_149727_4_) == null) {
-			p_149727_1_.setBlockToAir(p_149727_2_, p_149727_3_, p_149727_4_);
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7,
+			float par8, float par9) {
+		if (!world.isRemote && world.getTileEntity(x, y, z) == null) {
+			world.setBlockToAir(x, y, z);
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+	public Item getItemDropped(int meta, Random random, int fortune) {
 		return null;
 	}
 
-	/**
-	 * Drops the block items with a specified chance of dropping the specified
-	 * items
-	 */
-	public void dropBlockAsItemWithChance(World p_149690_1_, int p_149690_2_, int p_149690_3_, int p_149690_4_,
-			int p_149690_5_, float p_149690_6_, int p_149690_7_) {
-		super.dropBlockAsItemWithChance(p_149690_1_, p_149690_2_, p_149690_3_, p_149690_4_, p_149690_5_, p_149690_6_,
-				p_149690_7_);
+	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int par5, float par6, int par7) {
+		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, par7);
 	}
 
-	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which
-	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
-	 * neighbor Block
-	 */
-	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_,
-			Block p_149695_5_) {
-		if (!p_149695_1_.isRemote) {
-			p_149695_1_.getTileEntity(p_149695_2_, p_149695_3_, p_149695_4_);
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
+		if (!world.isRemote) {
+			world.getTileEntity(x, y, z);
 		}
 	}
 
@@ -161,14 +125,8 @@ public class BlockEnderPistonMoving extends Block {
 		}
 	}
 
-	/**
-	 * Updates the blocks bounds based on its current state. Args: world, x, y,
-	 * z
-	 */
-	public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_,
-			int p_149719_4_) {
-		TileEntityEnderPiston TileEntityEnderPiston = this.func_149963_e(p_149719_1_, p_149719_2_, p_149719_3_,
-				p_149719_4_);
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
+		TileEntityEnderPiston TileEntityEnderPiston = this.func_149963_e(world, x, y, z);
 
 		if (TileEntityEnderPiston != null) {
 			Block block = TileEntityEnderPiston.getStoredBlockID();
@@ -177,7 +135,7 @@ public class BlockEnderPistonMoving extends Block {
 				return;
 			}
 
-			block.setBlockBoundsBasedOnState(p_149719_1_, p_149719_2_, p_149719_3_, p_149719_4_);
+			block.setBlockBoundsBasedOnState(world, x, y, z);
 			float f = TileEntityEnderPiston.func_145860_a(0.0F);
 
 			if (TileEntityEnderPiston.isExtending()) {
@@ -226,23 +184,19 @@ public class BlockEnderPistonMoving extends Block {
 		}
 	}
 
-	private TileEntityEnderPiston func_149963_e(IBlockAccess p_149963_1_, int p_149963_2_, int p_149963_3_,
-			int p_149963_4_) {
-		TileEntity tileentity = p_149963_1_.getTileEntity(p_149963_2_, p_149963_3_, p_149963_4_);
+	private TileEntityEnderPiston func_149963_e(IBlockAccess world, int x, int y, int z) {
+		TileEntity tileentity = world.getTileEntity(x, y, z);
 		return tileentity instanceof TileEntityEnderPiston ? (TileEntityEnderPiston) tileentity : null;
 	}
 
-	/**
-	 * Gets an item for the block being called on. Args: world, x, y, z
-	 */
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
+	public Item getItem(World world, int x, int y, int z) {
 		return Item.getItemById(0);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister p_149651_1_) {
-		this.blockIcon = p_149651_1_.registerIcon(TooMuchNature.modid + ":" + "ender_piston_top_normal");
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		this.blockIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_piston_top_normal");
 	}
 
 	@Override

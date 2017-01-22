@@ -46,13 +46,13 @@ public class BlockEndDirt extends Block {
 				Material material = blockAccess.getBlock(x, y + 1, z).getMaterial();
 
 				if (material == Material.snow || material == Material.craftedSnow) {
-					return TooMuchNature.end_grass.getIcon(blockAccess, x, y, z,
+					return TMNBlocks.end_grass.getIcon(blockAccess, x, y, z,
 							side);
 				}
 
 				Block block = blockAccess.getBlock(x, y + 1, z);
 
-				if (block != TooMuchNature.end_dirt && block != TooMuchNature.end_grass) {
+				if (block != TMNBlocks.end_dirt && block != TMNBlocks.end_grass) {
 					return this.field_150010_M;
 				}
 			}

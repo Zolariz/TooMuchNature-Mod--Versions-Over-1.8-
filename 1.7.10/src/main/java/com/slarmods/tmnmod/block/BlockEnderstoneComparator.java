@@ -5,6 +5,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+import com.slarmods.tmnmod.item.TMNItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -20,139 +22,114 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockEnderstoneComparator extends BlockEnderstoneDiode implements ITileEntityProvider {
-	
-	public BlockEnderstoneComparator(boolean p_i45399_1_) {
-		super(p_i45399_1_);
+
+	public BlockEnderstoneComparator(boolean isPowerred) {
+		super(isPowerred);
 		this.isBlockContainer = true;
 	}
 
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Items.comparator;
+	public Item getItemDropped(int meta, Random random, int fortune) {
+		return TMNItems.enderstone_comparator;
 	}
 
-	/**
-	 * Gets an item for the block being called on. Args: world, x, y, z
-	 */
 	@SideOnly(Side.CLIENT)
-	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_) {
-		return Items.comparator;
+	public Item getItem(World world, int x, int y, int z) {
+		return TMNItems.enderstone_comparator;
 	}
 
-	protected int func_149901_b(int p_149901_1_) {
+	protected int func_149901_b(int par1) {
 		return 2;
 	}
 
 	protected BlockEnderstoneDiode getBlockPowered() {
-		return (BlockEnderstoneDiode) TooMuchNature.enderstone_comparator_powered;
+		return (BlockEnderstoneDiode) TMNBlocks.enderstone_comparator_powered;
 	}
 
 	protected BlockEnderstoneDiode getBlockUnpowered() {
-		return (BlockEnderstoneDiode) TooMuchNature.enderstone_comparator_unpowered;
+		return (BlockEnderstoneDiode) TMNBlocks.enderstone_comparator_unpowered;
 	}
 
-	/**
-	 * The type of render function that is called for this block
-	 */
 	public int getRenderType() {
-		return 1942;
+		return BlockRenderingIDs.enderstoneComparatorRenderID;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		boolean flag = this.isRepeaterPowered || (meta & 8) != 0;
 		return side == 0
-				? (flag ? TooMuchNature.lit_enderstone_torch.getBlockTextureFromSide(side)
-						: TooMuchNature.unlit_enderstone_torch.getBlockTextureFromSide(side))
-				: (side == 1 ? (flag ? TooMuchNature.enderstone_comparator_powered.blockIcon : this.blockIcon)
-						: TooMuchNature.end_stone_slab.getBlockTextureFromSide(1));
+				? (flag ? TMNBlocks.lit_enderstone_torch.getBlockTextureFromSide(side)
+						: TMNBlocks.unlit_enderstone_torch.getBlockTextureFromSide(side))
+				: (side == 1 ? (flag ? TMNBlocks.enderstone_comparator_powered.blockIcon : this.blockIcon)
+						: TMNBlocks.end_stone_slab.getBlockTextureFromSide(1));
 	}
 
-	protected boolean func_149905_c(int p_149905_1_) {
-		return this.isRepeaterPowered || (p_149905_1_ & 8) != 0;
+	protected boolean func_149905_c(int getPowered) {
+		return this.isRepeaterPowered || (getPowered & 8) != 0;
 	}
 
-	protected int func_149904_f(IBlockAccess p_149904_1_, int p_149904_2_, int p_149904_3_, int p_149904_4_,
-			int p_149904_5_) {
-		return this.getTileEntityComparator(p_149904_1_, p_149904_2_, p_149904_3_, p_149904_4_).getOutputSignal();
+	protected int func_149904_f(IBlockAccess world, int x, int y, int z, int side) {
+		return this.getTileEntityComparator(world, x, y, z).getOutputSignal();
 	}
 
-	private int getOutputStrength(World p_149970_1_, int p_149970_2_, int p_149970_3_, int p_149970_4_,
-			int p_149970_5_) {
-		return !this.func_149969_d(p_149970_5_)
-				? this.getInputStrength(p_149970_1_, p_149970_2_, p_149970_3_, p_149970_4_, p_149970_5_)
-				: Math.max(
-						this.getInputStrength(p_149970_1_, p_149970_2_, p_149970_3_, p_149970_4_, p_149970_5_)
-								- this.func_149902_h(p_149970_1_, p_149970_2_, p_149970_3_, p_149970_4_, p_149970_5_),
-						0);
+	private int getOutputStrength(World world, int x, int y, int z, int side) {
+		return !this.func_149969_d(side) ? this.getInputStrength(world, x, y, z, side)
+				: Math.max(this.getInputStrength(world, x, y, z, side) - this.func_149902_h(world, x, y, z, side), 0);
 	}
 
 	public static boolean func_149969_d(int p_149969_1_) {
 		return (p_149969_1_ & 4) == 4;
 	}
 
-	protected boolean isGettingInput(World p_149900_1_, int p_149900_2_, int p_149900_3_, int p_149900_4_,
-			int p_149900_5_) {
-		int i1 = this.getInputStrength(p_149900_1_, p_149900_2_, p_149900_3_, p_149900_4_, p_149900_5_);
+	protected boolean isGettingInput(World world, int x, int y, int z, int side) {
+		int i1 = this.getInputStrength(world, x, y, z, side);
 
 		if (i1 >= 15) {
 			return true;
 		} else if (i1 == 0) {
 			return false;
 		} else {
-			int j1 = this.func_149902_h(p_149900_1_, p_149900_2_, p_149900_3_, p_149900_4_, p_149900_5_);
+			int j1 = this.func_149902_h(world, x, y, z, side);
 			return j1 == 0 ? true : i1 >= j1;
 		}
 	}
 
-	/**
-	 * Returns the signal strength at one input of the block. Args: world, X, Y,
-	 * Z, side
-	 */
-	protected int getInputStrength(World p_149903_1_, int p_149903_2_, int p_149903_3_, int p_149903_4_,
-			int p_149903_5_) {
-		int i1 = super.getInputStrength(p_149903_1_, p_149903_2_, p_149903_3_, p_149903_4_, p_149903_5_);
-		int j1 = getDirection(p_149903_5_);
-		int k1 = p_149903_2_ + Direction.offsetX[j1];
-		int l1 = p_149903_4_ + Direction.offsetZ[j1];
-		Block block = p_149903_1_.getBlock(k1, p_149903_3_, l1);
+	protected int getInputStrength(World world, int x, int y, int z, int side) {
+		int i1 = super.getInputStrength(world, x, y, z, side);
+		int j1 = getDirection(side);
+		int k1 = x + Direction.offsetX[j1];
+		int l1 = z + Direction.offsetZ[j1];
+		Block block = world.getBlock(k1, y, l1);
 
 		if (block.hasComparatorInputOverride()) {
-			i1 = block.getComparatorInputOverride(p_149903_1_, k1, p_149903_3_, l1, Direction.rotateOpposite[j1]);
+			i1 = block.getComparatorInputOverride(world, k1, y, l1, Direction.rotateOpposite[j1]);
 		} else if (i1 < 15 && block.isNormalCube()) {
 			k1 += Direction.offsetX[j1];
 			l1 += Direction.offsetZ[j1];
-			block = p_149903_1_.getBlock(k1, p_149903_3_, l1);
+			block = world.getBlock(k1, y, l1);
 
 			if (block.hasComparatorInputOverride()) {
-				i1 = block.getComparatorInputOverride(p_149903_1_, k1, p_149903_3_, l1, Direction.rotateOpposite[j1]);
+				i1 = block.getComparatorInputOverride(world, k1, y, l1, Direction.rotateOpposite[j1]);
 			}
 		}
 
 		return i1;
 	}
 
-	/**
-	 * Returns the blockTileEntity at given coordinates.
-	 */
-	public TileEntityComparator getTileEntityComparator(IBlockAccess p_149971_1_, int p_149971_2_, int p_149971_3_,
-			int p_149971_4_) {
-		return (TileEntityComparator) p_149971_1_.getTileEntity(p_149971_2_, p_149971_3_, p_149971_4_);
+	public TileEntityComparator getTileEntityComparator(IBlockAccess world, int x, int y, int z) {
+		return (TileEntityComparator) world.getTileEntity(x, y, z);
 	}
 
-	/**
-	 * Called upon block activation (right click on the block.)
-	 */
-	public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_,
-			EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
-		int i1 = p_149727_1_.getBlockMetadata(p_149727_2_, p_149727_3_, p_149727_4_);
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int side, float hitX,
+			float hitY, float hitZ) {
+		int i1 = world.getBlockMetadata(x, y, z);
 		boolean flag = this.isRepeaterPowered | (i1 & 8) != 0;
 		boolean flag1 = !this.func_149969_d(i1);
 		int j1 = flag1 ? 4 : 0;
 		j1 |= flag ? 8 : 0;
-		p_149727_1_.playSoundEffect((double) p_149727_2_ + 0.5D, (double) p_149727_3_ + 0.5D,
-				(double) p_149727_4_ + 0.5D, "random.click", 0.3F, flag1 ? 0.55F : 0.5F);
-		p_149727_1_.setBlockMetadataWithNotify(p_149727_2_, p_149727_3_, p_149727_4_, j1 | i1 & 3, 2);
-		this.func_149972_c(p_149727_1_, p_149727_2_, p_149727_3_, p_149727_4_, p_149727_1_.rand);
+		world.playSoundEffect((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D, "random.click", 0.3F,
+				flag1 ? 0.55F : 0.5F);
+		world.setBlockMetadataWithNotify(x, y, z, j1 | i1 & 3, 2);
+		this.func_149972_c(world, x, y, z, world.rand);
 		return true;
 	}
 
