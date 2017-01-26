@@ -5,7 +5,8 @@ import java.util.Random;
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.block.BlockEnderstoneDiode;
 import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
-import com.slarmods.tmnmod.item.TMNItems;
+import com.slarmods.tmnmod.init.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -42,11 +43,11 @@ public class BlockEnderstoneRepeater extends BlockEnderstoneDiode {
 	}
 
 	protected BlockEnderstoneDiode getBlockPowered() {
-		return (BlockEnderstoneDiode) TMNBlocks.enderstone_repeater_powered;
+		return TMNBlocks.enderstone_repeater_powered;
 	}
 
 	protected BlockEnderstoneDiode getBlockUnpowered() {
-		return (BlockEnderstoneDiode) TMNBlocks.enderstone_repeater_unpowered;
+		return TMNBlocks.enderstone_repeater_unpowered;
 	}
 
 	public Item getItemDropped(int metadata, Random random, int fortune) {

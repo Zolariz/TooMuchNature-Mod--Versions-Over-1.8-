@@ -1,8 +1,8 @@
 package com.slarmods.tmnmod.container;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.crafting.EnderWorkbenchCraftingManager;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

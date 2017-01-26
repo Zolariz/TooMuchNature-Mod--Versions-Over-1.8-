@@ -18,7 +18,7 @@
 package com.slarmods.tmnmod.armor;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.item.TMNItems;
+import com.slarmods.tmnmod.init.TMNItems;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;

@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.init.TMNBlocks;
 import com.slarmods.tmnmod.world.gen.feature.WorldGenCherryTree;
 
 import cpw.mods.fml.relauncher.Side;
@@ -49,7 +50,7 @@ public class BlockCherrySapling extends BlockBush implements IGrowable {
 	public BlockCherrySapling() {
 		float f = 0.4F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks);
+		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 	}
 
 	public void updateTick(World world, int x, int y, int z, Random random) {

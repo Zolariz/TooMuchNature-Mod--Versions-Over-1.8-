@@ -3,7 +3,7 @@ package com.slarmods.tmnmod.world.biome;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNBlocks;
 import com.slarmods.tmnmod.world.biome.ender.BiomeGenEnderlands;
 import com.slarmods.tmnmod.world.biome.ender.BiomeGenEnderlandsRiver;
 import com.slarmods.tmnmod.world.biome.ender.decorator.EnderBiomeDecorator;

@@ -1,9 +1,9 @@
 package com.slarmods.tmnmod.handler;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.container.ContainerEnderWorkbench;
 import com.slarmods.tmnmod.gui.GuiEnderWorkbench;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;

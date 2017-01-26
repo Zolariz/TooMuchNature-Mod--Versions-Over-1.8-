@@ -18,7 +18,7 @@
 package com.slarmods.tmnmod.item;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;

@@ -3,9 +3,9 @@ package com.slarmods.tmnmod.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
-public class ItemEnderPiston extends ItemBlock {
+public class ItemBlockEnderPiston extends ItemBlock {
 
-	public ItemEnderPiston(Block block) {
+	public ItemBlockEnderPiston(Block block) {
 		super(block);
 	}
 

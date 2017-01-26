@@ -1,7 +1,7 @@
 package com.slarmods.tmnmod.creativetabs;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.item.TMNItems;
+import com.slarmods.tmnmod.init.TMNItems;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

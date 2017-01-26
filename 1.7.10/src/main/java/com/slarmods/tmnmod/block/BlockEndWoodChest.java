@@ -39,7 +39,7 @@ public class BlockEndWoodChest extends BlockContainer {
 	public BlockEndWoodChest(int p_i45397_1_) {
 		super(Material.wood);
 		this.field_149956_a = p_i45397_1_;
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks);
+		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 	}
 

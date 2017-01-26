@@ -18,8 +18,8 @@
 package com.slarmods.tmnmod.client.renderer.block;
 
 import com.slarmods.tmnmod.block.BlockEnderstoneComparator;
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;

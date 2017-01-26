@@ -18,6 +18,7 @@
 package com.slarmods.tmnmod.block;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;

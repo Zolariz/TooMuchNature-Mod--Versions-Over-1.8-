@@ -1,6 +1,52 @@
-package com.slarmods.tmnmod.block;
+package com.slarmods.tmnmod.init;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.block.BlockCherryCrops;
+import com.slarmods.tmnmod.block.BlockCherryDoor;
+import com.slarmods.tmnmod.block.BlockCherryFence;
+import com.slarmods.tmnmod.block.BlockCherryFenceGate;
+import com.slarmods.tmnmod.block.BlockCherryGrass;
+import com.slarmods.tmnmod.block.BlockCherryLeaf;
+import com.slarmods.tmnmod.block.BlockCherryLog;
+import com.slarmods.tmnmod.block.BlockCherrySapling;
+import com.slarmods.tmnmod.block.BlockCherrySlab;
+import com.slarmods.tmnmod.block.BlockCherryStairs;
+import com.slarmods.tmnmod.block.BlockCherryWood;
+import com.slarmods.tmnmod.block.BlockEndDirt;
+import com.slarmods.tmnmod.block.BlockEndDirtPath;
+import com.slarmods.tmnmod.block.BlockEndFire;
+import com.slarmods.tmnmod.block.BlockEndGrass;
+import com.slarmods.tmnmod.block.BlockEndLever;
+import com.slarmods.tmnmod.block.BlockEndObsidian;
+import com.slarmods.tmnmod.block.BlockEndStoneBrick;
+import com.slarmods.tmnmod.block.BlockEndStoneBrickStairs;
+import com.slarmods.tmnmod.block.BlockEndStoneSlab;
+import com.slarmods.tmnmod.block.BlockEndWood;
+import com.slarmods.tmnmod.block.BlockEndWoodChest;
+import com.slarmods.tmnmod.block.BlockEndWoodTable;
+import com.slarmods.tmnmod.block.BlockEnderBeacon;
+import com.slarmods.tmnmod.block.BlockEnderDispenser;
+import com.slarmods.tmnmod.block.BlockEnderDoublePlant;
+import com.slarmods.tmnmod.block.BlockEnderPistonBase;
+import com.slarmods.tmnmod.block.BlockEnderPistonExtension;
+import com.slarmods.tmnmod.block.BlockEnderPistonMoving;
+import com.slarmods.tmnmod.block.BlockEnderTallGrass;
+import com.slarmods.tmnmod.block.BlockEnderWaterDynamic;
+import com.slarmods.tmnmod.block.BlockEnderWaterLiquid;
+import com.slarmods.tmnmod.block.BlockEnderWaterStatic;
+import com.slarmods.tmnmod.block.BlockEnderWorkbench;
+import com.slarmods.tmnmod.block.BlockEnderaldOre;
+import com.slarmods.tmnmod.block.BlockEnderstoneComparator;
+import com.slarmods.tmnmod.block.BlockEnderstoneLamp;
+import com.slarmods.tmnmod.block.BlockEnderstoneRepeater;
+import com.slarmods.tmnmod.block.BlockEnderstoneTorch;
+import com.slarmods.tmnmod.block.BlockEnderstoneWire;
+import com.slarmods.tmnmod.block.BlockLowerEndPortal;
+import com.slarmods.tmnmod.block.BlockSmoothEndStone;
+import com.slarmods.tmnmod.block.BlockTMNLeaf1;
+import com.slarmods.tmnmod.block.BlockTMNLog1;
+import com.slarmods.tmnmod.block.BlockTMNSapling1;
+import com.slarmods.tmnmod.block.BlockWoodTable;
 import com.slarmods.tmnmod.item.ItemBlockCherryLeaf;
 import com.slarmods.tmnmod.item.ItemBlockCherryLog;
 import com.slarmods.tmnmod.item.ItemBlockCherryPlanks;
@@ -12,8 +58,10 @@ import com.slarmods.tmnmod.item.ItemBlockEndWoodPlanks;
 import com.slarmods.tmnmod.item.ItemBlockTMNLeaf1;
 import com.slarmods.tmnmod.item.ItemBlockTMNLog1;
 import com.slarmods.tmnmod.item.ItemBlockTMNSapling1;
-import com.slarmods.tmnmod.item.ItemEndWoodTable;
-import com.slarmods.tmnmod.item.ItemEnderPiston;
+import com.slarmods.tmnmod.item.ItemBlockEndWoodTable;
+import com.slarmods.tmnmod.item.ItemBlockEnderDoublePlant;
+import com.slarmods.tmnmod.item.ItemBlockEnderPiston;
+import com.slarmods.tmnmod.item.ItemBlockEnderTallgrass;
 import com.slarmods.tmnmod.item.ItemWoodTable;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -74,7 +122,7 @@ public class TMNBlocks {
 	public static Block cherry_grass;
 	public static Block end_obsidian;
 	public static Block end_stone_smooth;
-	public static Block end_fire;
+	public static BlockEndFire end_fire;
 	public static BlockLowerEndPortal lower_end_portal;
 	public static Block end_grass;
 	public static Block end_dirt;
@@ -95,8 +143,8 @@ public class TMNBlocks {
 	public static Block unlit_enderstone_torch;
 	public static Block lit_enderstone_torch;
 	public static Block end_lever;
-	public static Block enderstone_repeater_unpowered;
-	public static Block enderstone_repeater_powered;
+	public static BlockEnderstoneRepeater enderstone_repeater_unpowered;
+	public static BlockEnderstoneRepeater enderstone_repeater_powered;
 	public static BlockEnderstoneComparator enderstone_comparator_unpowered;
 	public static BlockEnderstoneComparator enderstone_comparator_powered;
 
@@ -113,7 +161,7 @@ public class TMNBlocks {
 	public static Block cherry_wood_table;
 
 	// Container Blocks
-	public static Block end_wood_chest;
+	public static BlockEndWoodChest end_wood_chest;
 
 	// Workbenches
 	public static Block ender_workbench;
@@ -126,6 +174,16 @@ public class TMNBlocks {
 	public static Block tmn_planks_double_slab_1;
 	public static Block tmn_planks_slab_1;
 
+	// Plant | Bush Blocks
+	public static BlockEnderTallGrass ender_tallgrass;
+	public static BlockEnderDoublePlant ender_double_plant;
+	public static Block ender_dead_bush;
+
+	// Light Provider
+	public static BlockEnderBeacon ender_beacon;
+	public static Block enderstone_lamp;
+	public static Block lit_enderstone_lamp;
+
 	public static void init() {
 		TMNBlocks.initBlocks();
 		TMNBlocks.registerBlocks();
@@ -137,20 +195,20 @@ public class TMNBlocks {
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "log");
 		cherry_leaf = new BlockCherryLeaf(Material.leaves).setBlockName("cherry_leaf")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "leaves");
 		cherry_sapling = new BlockCherrySapling().setBlockName("cherry_sapling")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks).setStepSound(Block.soundTypeGrass)
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGrass)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "sapling");
 
 		tmn_log_1 = new BlockTMNLog1(Material.wood).setBlockName("tmn_log_1")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "log");
 		tmn_leaf_1 = new BlockTMNLeaf1(Material.leaves).setBlockName("tmn_leaf_1")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "leaves");
 		tmn_sapling_1 = new BlockTMNSapling1().setBlockName("tmn_sapling_1")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks).setStepSound(Block.soundTypeGrass)
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGrass)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "sapling");
 
 		// Wood Blocks
@@ -163,16 +221,16 @@ public class TMNBlocks {
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "planks").setStepSound(Block.soundTypeWood);
 		cherry_fence = new BlockCherryFence(TooMuchNature.modid + ":" + "planks_cherry", Material.wood)
-				.setHardness(2.0F).setResistance(5.0F).setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setHardness(2.0F).setResistance(5.0F).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setStepSound(Block.soundTypeWood).setBlockName("cherry_fence");
 		cherry_fence_gate = new BlockCherryFenceGate().setHardness(2.0F).setResistance(5.0F)
-				.setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks)
+				.setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
 				.setBlockName("cherry_fence_gate").setBlockTextureName(TooMuchNature.modid + ":" + "planks");
 		cherry_stairs = new BlockCherryStairs(cherry_planks, 0).setBlockName("cherry_stairs")
 				.setBlockTextureName(TooMuchNature.modid + ":" + "planks");
 
 		wood_table = new BlockWoodTable(Material.wood).setBlockName("wood_table").setBlockTextureName("planks")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks);
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 
 		// Door Blocks
 		cherry_door_block = new BlockCherryDoor(Material.wood).setBlockName("door_cherry")
@@ -192,7 +250,7 @@ public class TMNBlocks {
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_obsidian");
 		end_stone_smooth = new BlockSmoothEndStone().setBlockName("smooth_end_stone").setHardness(1.5F)
 				.setResistance(10.0F).setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_smooth");
-		end_fire = new BlockEndFire(Material.fire).setBlockName("end_fire")
+		end_fire = (BlockEndFire) new BlockEndFire().setBlockName("end_fire").setLightLevel(1.0F)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_fire");
 		lower_end_portal = (BlockLowerEndPortal) new BlockLowerEndPortal().setBlockName("lower_end_portal")
 				.setBlockUnbreakable().setLightLevel(0.75F).setStepSound(Block.soundTypeGlass)
@@ -241,11 +299,11 @@ public class TMNBlocks {
 		// Circuit Blocks
 		enderstone_wire = (BlockEnderstoneWire) new BlockEnderstoneWire().setBlockName("enderstone_wire")
 				.setBlockTextureName("redstone_dust").setHardness(0.0F).setResistance(0.0F);
-		enderstone_repeater_unpowered = new BlockEnderstoneRepeater(false).setBlockName("enderstone_repeater_unlit")
-				.setStepSound(Block.soundTypeWood)
+		enderstone_repeater_unpowered = (BlockEnderstoneRepeater) new BlockEnderstoneRepeater(false)
+				.setBlockName("enderstone_repeater_unlit").setStepSound(Block.soundTypeWood)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_repeater_off");
-		enderstone_repeater_powered = new BlockEnderstoneRepeater(true).setBlockName("enderstone_repeater_lit")
-				.setStepSound(Block.soundTypeWood)
+		enderstone_repeater_powered = (BlockEnderstoneRepeater) new BlockEnderstoneRepeater(true)
+				.setBlockName("enderstone_repeater_lit").setStepSound(Block.soundTypeWood)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_repeater_on");
 		enderstone_comparator_unpowered = (BlockEnderstoneComparator) new BlockEnderstoneComparator(false)
 				.setBlockName("enderstone_comparator_unlit").setStepSound(Block.soundTypeWood)
@@ -264,11 +322,11 @@ public class TMNBlocks {
 				.setBlockTextureName(TooMuchNature.modid + ":" + "end_lever");
 
 		// Container Blocks
-		end_wood_chest = new BlockEndWoodChest(0).setBlockName("end_wood_chest").setStepSound(Block.soundTypeWood)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "planks_end_oak");
+		end_wood_chest = (BlockEndWoodChest) new BlockEndWoodChest(0).setBlockName("end_wood_chest")
+				.setStepSound(Block.soundTypeWood).setBlockTextureName(TooMuchNature.modid + ":" + "planks_end_oak");
 		ender_workbench = new BlockEnderWorkbench().setBlockName("ender_workbench").setStepSound(Block.soundTypeWood)
 				.setHardness(2.5F).setStepSound(Block.soundTypeWood)
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks);
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 
 		// Mechanical Blocks
 		ender_piston_sticky = (BlockEnderPistonBase) new BlockEnderPistonBase(true).setBlockName("sticky_ender_piston")
@@ -289,6 +347,20 @@ public class TMNBlocks {
 				.setCreativeTab(TooMuchNature.tabEnderstone).setHardness(5.0F).setResistance(10.0F)
 				.setStepSound(Block.soundTypeMetal).setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_block");
 
+		// Plant | Bush Blocks
+		ender_tallgrass = (BlockEnderTallGrass) new BlockEnderTallGrass().setBlockName("ender_tall_grass")
+				.setStepSound(Block.soundTypeGrass).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		ender_double_plant = (BlockEnderDoublePlant) new BlockEnderDoublePlant().setBlockName("ender_double_plant")
+				.setStepSound(Block.soundTypeGrass);
+
+		// Light Blocks
+		ender_beacon = (BlockEnderBeacon) new BlockEnderBeacon().setBlockName("ender_beacon")
+				.setBlockTextureName(TooMuchNature.modid + ":" + "lower_end_portal");
+		enderstone_lamp = new BlockEnderstoneLamp(false).setBlockName("enderstone_lamp")
+				.setCreativeTab(TooMuchNature.tabEnderstone).setHardness(0.3F).setStepSound(Block.soundTypeGlass)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_lamp_off");
+		lit_enderstone_lamp = new BlockEnderstoneLamp(true).setBlockName("lit_enderstone_lamp").setHardness(0.3F)
+				.setStepSound(Block.soundTypeGlass).setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_lamp_on");
 	}
 
 	public static void registerBlocks() {
@@ -296,7 +368,6 @@ public class TMNBlocks {
 
 		GameRegistry.registerBlock(enderald_block, enderald_block.getUnlocalizedName().substring(5));
 
-		// Wood Block Registers
 		GameRegistry.registerBlock(cherry_log, ItemBlockCherryLog.class, cherry_log.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(cherry_leaf, ItemBlockCherryLeaf.class,
 				cherry_leaf.getUnlocalizedName().substring(5));
@@ -320,10 +391,8 @@ public class TMNBlocks {
 		GameRegistry.registerBlock(tmn_sapling_1, ItemBlockTMNSapling1.class,
 				tmn_sapling_1.getUnlocalizedName().substring(5));
 
-		// Crops Registers
 		GameRegistry.registerBlock(crops_cherry, crops_cherry.getUnlocalizedName().substring(5));
 
-		// Enderlands Dimension Block Registers
 		GameRegistry.registerBlock(cherry_grass, cherry_grass.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_obsidian, end_obsidian.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_stone_smooth, end_stone_smooth.getUnlocalizedName().substring(5));
@@ -338,7 +407,7 @@ public class TMNBlocks {
 		GameRegistry.registerBlock(end_stone_bricks, ItemBlockEndStoneBrick.class,
 				end_stone_bricks.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_stone_brick_stairs, end_stone_brick_stairs.getUnlocalizedName().substring(5));
-		GameRegistry.registerBlock(end_wood_table, ItemEndWoodTable.class,
+		GameRegistry.registerBlock(end_wood_table, ItemBlockEndWoodTable.class,
 				end_wood_table.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(ender_water_dynamic, ender_water_dynamic.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(ender_water_static, ender_water_static.getUnlocalizedName().substring(5));
@@ -346,7 +415,6 @@ public class TMNBlocks {
 				end_wood_planks.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_dirt_path, end_dirt_path.getUnlocalizedName().substring(5));
 
-		// Circuit Block Registers
 		GameRegistry.registerBlock(enderstone_wire, enderstone_wire.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(enderstone_repeater_unpowered,
 				enderstone_repeater_unpowered.getUnlocalizedName().substring(5));
@@ -360,21 +428,26 @@ public class TMNBlocks {
 		GameRegistry.registerBlock(lit_enderstone_torch, lit_enderstone_torch.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(end_lever, end_lever.getUnlocalizedName().substring(5));
 
-		// Container Block Registers
 		GameRegistry.registerBlock(end_wood_chest, end_wood_chest.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(ender_workbench, ender_workbench.getUnlocalizedName().substring(5));
 
-		// Machine Block Registers
-		GameRegistry.registerBlock(ender_piston_sticky, ItemEnderPiston.class,
+		GameRegistry.registerBlock(ender_piston_sticky, ItemBlockEnderPiston.class,
 				ender_piston_sticky.getUnlocalizedName().substring(5));
-		GameRegistry.registerBlock(ender_piston_normal, ItemEnderPiston.class,
+		GameRegistry.registerBlock(ender_piston_normal, ItemBlockEnderPiston.class,
 				ender_piston_normal.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(ender_piston_head, ender_piston_head.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(ender_piston_extension, ender_piston_extension.getUnlocalizedName().substring(5));
-
 		GameRegistry.registerBlock(ender_dispenser, ender_dispenser.getUnlocalizedName().substring(5));
 
-		// Powered Block Registers
 		GameRegistry.registerBlock(enderstone_block, enderstone_block.getUnlocalizedName().substring(5));
+
+		GameRegistry.registerBlock(ender_tallgrass, ItemBlockEnderTallgrass.class,
+				ender_tallgrass.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(ender_double_plant, ItemBlockEnderDoublePlant.class,
+				ender_double_plant.getUnlocalizedName().substring(5));
+
+		GameRegistry.registerBlock(ender_beacon, ender_beacon.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(enderstone_lamp, enderstone_lamp.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(lit_enderstone_lamp, lit_enderstone_lamp.getUnlocalizedName().substring(5));
 	}
 }

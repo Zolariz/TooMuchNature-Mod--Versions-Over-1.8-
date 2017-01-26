@@ -18,9 +18,9 @@
 package com.slarmods.tmnmod.crafting;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.crafting.remover.RecipeRemover;
-import com.slarmods.tmnmod.item.TMNItems;
+import com.slarmods.tmnmod.init.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;

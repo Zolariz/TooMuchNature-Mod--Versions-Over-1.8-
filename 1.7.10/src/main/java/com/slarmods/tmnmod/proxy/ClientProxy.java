@@ -19,6 +19,8 @@ package com.slarmods.tmnmod.proxy;
 
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndFire;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEndLever;
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderBeacon;
+import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderDoublePlant;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockTSFTable;
 import com.slarmods.tmnmod.client.renderer.block.inventory.RenderInvBlockEnderDispenser;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderPiston;
@@ -41,11 +43,11 @@ import com.slarmods.tmnmod.entity.EntityKangaroo;
 import com.slarmods.tmnmod.entity.EntityLonghorn;
 import com.slarmods.tmnmod.entity.EntityZebra;
 import com.slarmods.tmnmod.entity.projectile.EntityEnderGunBullet;
-import com.slarmods.tmnmod.item.TMNItems;
+import com.slarmods.tmnmod.init.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNItems;
 import com.slarmods.tmnmod.tileentity.TileEntityEndWoodChest;
 import com.slarmods.tmnmod.tileentity.TileEntityEnderPiston;
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.client.model.ModelEnderBullet;
 import com.slarmods.tmnmod.client.model.ModelHippopotamus;
 import com.slarmods.tmnmod.client.model.ModelKangaroo;
@@ -86,6 +88,8 @@ public class ClientProxy extends CommonProxy implements IProxy {
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneComparator());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndLever());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderPistonExtension());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderDoublePlant());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderBeacon());
 
 		// Item
 		MinecraftForgeClient.registerItemRenderer(TMNItems.ender_pistol, new ItemRenderEnderPistol());

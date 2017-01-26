@@ -73,6 +73,12 @@ tile.ender_water_still.name=Ender Water
 tile.ender_water_flow.name=Ender Water
 tile.end_wood_planks.end_oak.name=End Oak Wood Planks
 tile.end_wood_planks.dark_end_oak.name=Dark End Oak Wood Planks
+tile.wood_table.oak.name=Oak Table
+tile.wood_table.spruce.name=Spruce Table
+tile.wood_table.birch.name=Birch Table
+tile.wood_table.jungle.name=Jungle Table
+tile.wood_table.acacia.name=Acacia Table
+tile.wood_table.big_oak.name=Dark Oak Table
 
 tile.fenceGate.name=Oak Fence Gate
 tile.fence.name=Oak Fence
@@ -87,8 +93,7 @@ entity.tmn.bear.name=Bear (Coming Soon)
 itemGroup.tmnblocks=TMN Blocks
 itemGroup.tmndecoblocks=TMN Decorations
 itemGroup.tmnitems=TMN Items
-itemGroup.tmnmobs=TMN Mobs
-itemGroup.tmnweapons=TMN Weapons
+itemGroup.tmnmisc=TMN Miscellaneous
 itemGroup.tmnenderstone=Enderstone
 
 container.end_wood_chest=End Wood Chest

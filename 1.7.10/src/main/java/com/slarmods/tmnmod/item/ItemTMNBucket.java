@@ -11,7 +11,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNItems;
 
 import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraftforge.common.MinecraftForge;

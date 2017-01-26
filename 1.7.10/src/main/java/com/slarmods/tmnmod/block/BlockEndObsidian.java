@@ -3,6 +3,7 @@ package com.slarmods.tmnmod.block;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.MapColor;

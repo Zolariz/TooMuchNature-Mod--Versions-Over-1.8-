@@ -3,7 +3,7 @@ package com.slarmods.tmnmod.block;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.item.TMNItems;
+import com.slarmods.tmnmod.init.TMNItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

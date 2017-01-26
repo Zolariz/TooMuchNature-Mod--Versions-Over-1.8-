@@ -4,25 +4,25 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemEndWoodTable extends ItemBlock {
+public class ItemBlockEnderDoublePlant extends ItemBlock {
 
-	final static String[] planks = new String[] { "end_oak", "dark_end_oak", "light_end_oak" };
+	public static final String[] doubleplant = new String[] { "sunflower", "grass", "fern" };
 
-	public ItemEndWoodTable(Block block) {
+	public ItemBlockEnderDoublePlant(Block block) {
 		super(block);
 		this.setHasSubtypes(true);
 	}
 
 	public String getUnlocalizedName(ItemStack itemstack) {
 		int i = itemstack.getItemDamage();
-		if (i < 0 || i >= planks.length) {
+		if (i < 0 || i >= doubleplant.length) {
 			i = 0;
 		}
 
-		return super.getUnlocalizedName() + "." + planks[i];
+		return super.getUnlocalizedName() + "." + doubleplant[i];
 	}
 
 	public int getMetadata(int metadata) {
-		return metadata;
+		return 7;
 	}
 }

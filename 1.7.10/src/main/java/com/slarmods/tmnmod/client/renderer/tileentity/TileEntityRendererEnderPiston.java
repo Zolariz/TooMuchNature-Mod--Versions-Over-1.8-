@@ -3,7 +3,7 @@ package com.slarmods.tmnmod.client.renderer.tileentity;
 import org.lwjgl.opengl.GL11;
 
 import com.slarmods.tmnmod.block.BlockEnderPistonBase;
-import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNBlocks;
 import com.slarmods.tmnmod.tileentity.TileEntityEnderPiston;
 
 import cpw.mods.fml.relauncher.Side;

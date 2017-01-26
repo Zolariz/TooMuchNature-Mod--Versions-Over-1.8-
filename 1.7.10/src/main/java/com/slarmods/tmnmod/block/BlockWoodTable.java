@@ -31,7 +31,7 @@ public class BlockWoodTable extends Block {
 		super(material);
 		this.setHardness(2.5F);
 		this.setResistance(5.0F);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureDecoBlocks);
+		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 		this.setStepSound(soundTypeWood);
 	}
 

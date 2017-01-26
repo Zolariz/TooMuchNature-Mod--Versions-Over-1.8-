@@ -19,8 +19,8 @@ package com.slarmods.tmnmod.client.renderer.block;
 
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.block.BlockEnderstoneWire;
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.relauncher.Side;

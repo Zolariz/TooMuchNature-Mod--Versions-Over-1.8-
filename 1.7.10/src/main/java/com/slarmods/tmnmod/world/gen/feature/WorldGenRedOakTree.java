@@ -21,7 +21,7 @@ import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.block.BlockTMNSapling1;
-import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

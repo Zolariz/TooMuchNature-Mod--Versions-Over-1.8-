@@ -1,8 +1,20 @@
-package com.slarmods.tmnmod.item;
+package com.slarmods.tmnmod.init;
 
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.armor.KangarooArmor;
-import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.item.ItemAcaciaDoor;
+import com.slarmods.tmnmod.item.ItemBirchDoor;
+import com.slarmods.tmnmod.item.ItemCherryDoor;
+import com.slarmods.tmnmod.item.ItemDarkOakDoor;
+import com.slarmods.tmnmod.item.ItemEnderGun;
+import com.slarmods.tmnmod.item.ItemEnderaldRoadTiller;
+import com.slarmods.tmnmod.item.ItemEnderstone;
+import com.slarmods.tmnmod.item.ItemFlintAndEndstone;
+import com.slarmods.tmnmod.item.ItemJungleDoor;
+import com.slarmods.tmnmod.item.ItemSpruceDoor;
+import com.slarmods.tmnmod.item.ItemTMNBucket;
+import com.slarmods.tmnmod.item.ItemTMNReed;
+import com.slarmods.tmnmod.item.ItemTMNSpawnEgg;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.material.Material;
@@ -12,8 +24,18 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemSword;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraftforge.common.util.EnumHelper;
 
 public class TMNItems {
+
+	/** Armor Materials */
+	public static final ArmorMaterial KangarooArmorMaterial = EnumHelper.addArmorMaterial("KangarooArmorMaterial", 14,
+			new int[] { 2, 5, 4, 2 }, 10);
+
+	/** Tool Materials */
+	public static final ToolMaterial ENDERALD = EnumHelper.addToolMaterial("ENDERALD", 3, 2261, 22, 7.0F, 30);
 
 	// Food Items
 	public static Item orange;
@@ -95,7 +117,7 @@ public class TMNItems {
 		TMNItems.initItems();
 		TMNItems.registerItems();
 	}
-	
+
 	public static void initItems() {
 
 		// Animal Items
@@ -149,7 +171,7 @@ public class TMNItems {
 				.setTextureName(TooMuchNature.modid + ":" + "ender_pistol");
 
 		// Melee Weapons
-		enderald_sword = new ItemSword(TooMuchNature.ENDERALD).setUnlocalizedName("enderald_sword")
+		enderald_sword = new ItemSword(ENDERALD).setUnlocalizedName("enderald_sword")
 				.setCreativeTab(TooMuchNature.tabTooMuchNatureMisc)
 				.setTextureName(TooMuchNature.modid + ":" + "enderald_sword");
 
@@ -171,8 +193,7 @@ public class TMNItems {
 				.setTextureName(TooMuchNature.modid + ":" + "enderstone_comparator");
 
 		// Bucket Items
-		ender_water_bucket = new ItemTMNBucket(TMNBlocks.ender_water_dynamic)
-				.setUnlocalizedName("ender_water_bucket")
+		ender_water_bucket = new ItemTMNBucket(TMNBlocks.ender_water_dynamic).setUnlocalizedName("ender_water_bucket")
 				.setTextureName(TooMuchNature.modid + ":" + "enderald_bucket_ender_water");
 		enderald_bucket = new ItemTMNBucket(Blocks.air).setUnlocalizedName("enderald_bucket")
 				.setTextureName(TooMuchNature.modid + ":" + "enderald_bucket");
@@ -195,13 +216,13 @@ public class TMNItems {
 				.setTextureName(TooMuchNature.modid + ":" + "cherry_white");
 
 		// Armor
-		kangaroo_helm = new KangarooArmor(TooMuchNature.KangarooArmorMaterial, kangaroo_helm_ID, 0)
+		kangaroo_helm = new KangarooArmor(KangarooArmorMaterial, kangaroo_helm_ID, 0)
 				.setUnlocalizedName("kangaroo_helmet");
-		kangaroo_chest = new KangarooArmor(TooMuchNature.KangarooArmorMaterial, kangaroo_helm_ID, 1)
+		kangaroo_chest = new KangarooArmor(KangarooArmorMaterial, kangaroo_helm_ID, 1)
 				.setUnlocalizedName("kangaroo_chestplate");
-		kangaroo_leggings = new KangarooArmor(TooMuchNature.KangarooArmorMaterial, kangaroo_helm_ID, 2)
+		kangaroo_leggings = new KangarooArmor(KangarooArmorMaterial, kangaroo_helm_ID, 2)
 				.setUnlocalizedName("kangaroo_leggings");
-		kangaroo_boots = new KangarooArmor(TooMuchNature.KangarooArmorMaterial, kangaroo_helm_ID, 3)
+		kangaroo_boots = new KangarooArmor(KangarooArmorMaterial, kangaroo_helm_ID, 3)
 				.setUnlocalizedName("kangaroo_boots");
 
 		// Spawn Eggs

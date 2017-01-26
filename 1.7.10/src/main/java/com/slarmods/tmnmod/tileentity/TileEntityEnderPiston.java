@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;

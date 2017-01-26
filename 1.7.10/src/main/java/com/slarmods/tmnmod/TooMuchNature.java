@@ -20,7 +20,6 @@ package com.slarmods.tmnmod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.command.server.CommandSummonTMN;
 import com.slarmods.tmnmod.crafting.TMNCrafting;
 import com.slarmods.tmnmod.creativetabs.TabTMNBlocks;
@@ -36,7 +35,8 @@ import com.slarmods.tmnmod.entity.list.TMNEntityList;
 import com.slarmods.tmnmod.entity.projectile.EntityEnderGunBullet;
 import com.slarmods.tmnmod.gui.GuiRegistry;
 import com.slarmods.tmnmod.handler.GuiHandler;
-import com.slarmods.tmnmod.item.TMNItems;
+import com.slarmods.tmnmod.init.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNItems;
 import com.slarmods.tmnmod.proxy.CommonProxy;
 import com.slarmods.tmnmod.world.biome.BiomesTMN;
 import com.slarmods.tmnmod.world.biome.EnderBiomes;
@@ -66,7 +66,6 @@ import net.minecraft.world.biome.BiomeGenBase;
 public class TooMuchNature {
 
 	public static final CreativeTabs tabTooMuchNatureBlocks = new TabTMNBlocks("tmnblocks");
-	public static final CreativeTabs tabTooMuchNatureDecoBlocks = new TabTMNDecoBlocks("tmndecoblocks");
 	public static final CreativeTabs tabTooMuchNatureItems = new TabTMNItems("tmnitems");
 	public static final CreativeTabs tabTooMuchNatureMisc = new TabTMNWeapons("tmnmisc");
 	public static final CreativeTabs tabEnderstone = new TabTMNEnderstone("tmnenderstone");
@@ -75,13 +74,6 @@ public class TooMuchNature {
 
 	@Instance(TooMuchNature.modid)
 	public static TooMuchNature instance;
-
-	/** Armor Materials */
-	public static final ArmorMaterial KangarooArmorMaterial = EnumHelper.addArmorMaterial("KangarooArmorMaterial", 14,
-			new int[] { 2, 5, 4, 2 }, 10);
-
-	/** Tool Materials */
-	public static final ToolMaterial ENDERALD = EnumHelper.addToolMaterial("ENDERALD", 3, 1000, 15.0F, 4.0F, 30);
 
 	// GUI IDs
 	public static final int guiIDEnderWorkbench = GuiRegistry.getNextAvailableGuiID();
@@ -130,25 +122,19 @@ public class TooMuchNature {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		// Proxy
 		proxy.registerRenders();
-
-		// Recipes
 		TMNCrafting.register();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		// Entity Spawning
 		EntityRegistry.addSpawn(EntityLonghorn.class, 6, 3, 4, EnumCreatureType.creature, BiomeGenBase.plains);
-
 		EntityRegistry.addSpawn(EntityZebra.class, 7, 3, 5, EnumCreatureType.creature, BiomeGenBase.savanna,
 				BiomeGenBase.savannaPlateau);
 	}
 
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event) {
-		// Server Command Registers
 		event.registerServerCommand(new CommandSummonTMN());
 	}
 }

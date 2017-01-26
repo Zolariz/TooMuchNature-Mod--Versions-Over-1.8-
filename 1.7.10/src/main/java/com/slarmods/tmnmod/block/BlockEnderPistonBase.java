@@ -7,6 +7,7 @@ import java.util.List;
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
 import com.slarmods.tmnmod.client.renderer.block.RenderBlockEnderPiston;
+import com.slarmods.tmnmod.init.TMNBlocks;
 import com.slarmods.tmnmod.tileentity.TileEntityEnderPiston;
 
 import net.minecraft.block.Block;

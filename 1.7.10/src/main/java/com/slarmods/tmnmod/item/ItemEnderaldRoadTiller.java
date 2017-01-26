@@ -1,8 +1,8 @@
 package com.slarmods.tmnmod.item;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.event.UseEnderRoadTillerEvent;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.relauncher.Side;

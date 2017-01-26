@@ -3,6 +3,7 @@ package com.slarmods.tmnmod.block;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

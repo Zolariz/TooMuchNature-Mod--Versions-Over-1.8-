@@ -3,7 +3,7 @@ package com.slarmods.tmnmod.world.gen;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.block.TMNBlocks;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;

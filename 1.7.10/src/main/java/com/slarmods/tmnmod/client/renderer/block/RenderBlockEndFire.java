@@ -26,8 +26,8 @@ import static net.minecraftforge.common.util.ForgeDirection.WEST;
 
 import com.slarmods.tmnmod.TooMuchNature;
 import com.slarmods.tmnmod.block.BlockEndFire;
-import com.slarmods.tmnmod.block.TMNBlocks;
 import com.slarmods.tmnmod.client.renderer.BlockRenderingIDs;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;

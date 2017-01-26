@@ -18,7 +18,7 @@
 package com.slarmods.tmnmod.entity;
 
 import com.slarmods.tmnmod.TooMuchNature;
-import com.slarmods.tmnmod.item.TMNItems;
+import com.slarmods.tmnmod.init.TMNItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;

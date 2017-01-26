@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
 import com.slarmods.tmnmod.TooMuchNature;
+import com.slarmods.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
@@ -146,8 +147,8 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 		int k1 = z + Direction.offsetZ[i1];
 		int l1 = world.getIndirectPowerLevelTo(j1, y, k1, Direction.directionToFacing[i1]);
 		return l1 >= 15 ? l1
-				: Math.max(l1, world.getBlock(j1, y, k1) == TMNBlocks.enderstone_wire
-						? world.getBlockMetadata(j1, y, k1) : 0);
+				: Math.max(l1,
+						world.getBlock(j1, y, k1) == TMNBlocks.enderstone_wire ? world.getBlockMetadata(j1, y, k1) : 0);
 	}
 
 	protected int func_149902_h(IBlockAccess world, int x, int y, int z, int side) {
@@ -240,7 +241,7 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 	}
 
 	public static boolean isRedstoneRepeaterBlockID(Block block) {
-		return ((BlockEnderstoneDiode) TMNBlocks.enderstone_repeater_unpowered).func_149907_e(block)
+		return TMNBlocks.enderstone_repeater_unpowered.func_149907_e(block)
 				|| TMNBlocks.enderstone_comparator_unpowered.func_149907_e(block);
 	}
 
