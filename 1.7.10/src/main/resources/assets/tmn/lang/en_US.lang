@@ -86,9 +86,7 @@ tile.fence.name=Oak Fence
 entity.tmn.kangaroo.name=Kangaroo
 entity.tmn.texas_longhorn.name=Texas Longhorn
 entity.tmn.zebra.name=Zebra
-entity.tmn.hippo.name=Hippopotamus
-entity.tmn.buffalo.name=Buffalo (Coming Soon)
-entity.tmn.bear.name=Bear (Coming Soon)
+entity.tmn.ender_slime.name=Ender Slime
 
 itemGroup.tmnblocks=TMN Blocks
 itemGroup.tmndecoblocks=TMN Decorations

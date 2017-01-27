@@ -16,4 +16,5 @@ public class BlockRenderingIDs {
 	public static int enderDispenserInvRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int doubleEnderPlantRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int enderBeaconRenderID = RenderingRegistry.getNextAvailableRenderId();
+	public static int enderSlimeBlockRenderID = RenderingRegistry.getNextAvailableRenderId();
 }

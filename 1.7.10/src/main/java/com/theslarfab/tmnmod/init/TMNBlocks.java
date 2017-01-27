@@ -30,6 +30,7 @@ import com.theslarfab.tmnmod.block.BlockEnderDoublePlant;
 import com.theslarfab.tmnmod.block.BlockEnderPistonBase;
 import com.theslarfab.tmnmod.block.BlockEnderPistonExtension;
 import com.theslarfab.tmnmod.block.BlockEnderPistonMoving;
+import com.theslarfab.tmnmod.block.BlockEnderSlime;
 import com.theslarfab.tmnmod.block.BlockEnderTallGrass;
 import com.theslarfab.tmnmod.block.BlockEnderWaterDynamic;
 import com.theslarfab.tmnmod.block.BlockEnderWaterLiquid;
@@ -183,6 +184,9 @@ public class TMNBlocks {
 	public static BlockEnderBeacon ender_beacon;
 	public static Block enderstone_lamp;
 	public static Block lit_enderstone_lamp;
+
+	// Bouncy Block
+	public static Block ender_slime_block;
 
 	public static void init() {
 		TMNBlocks.initBlocks();
@@ -360,7 +364,13 @@ public class TMNBlocks {
 				.setCreativeTab(TooMuchNature.tabEnderstone).setHardness(0.3F).setStepSound(Block.soundTypeGlass)
 				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_lamp_off");
 		lit_enderstone_lamp = new BlockEnderstoneLamp(true).setBlockName("lit_enderstone_lamp").setHardness(0.3F)
-				.setStepSound(Block.soundTypeGlass).setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_lamp_on");
+				.setStepSound(Block.soundTypeGlass)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_lamp_on");
+
+		// Bouncy Blocks
+		ender_slime_block = new BlockEnderSlime().setBlockName("ender_slime_block")
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "ender_slime_block");
 	}
 
 	public static void registerBlocks() {
@@ -449,5 +459,7 @@ public class TMNBlocks {
 		GameRegistry.registerBlock(ender_beacon, ender_beacon.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(enderstone_lamp, enderstone_lamp.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(lit_enderstone_lamp, lit_enderstone_lamp.getUnlocalizedName().substring(5));
+
+		GameRegistry.registerBlock(ender_slime_block, ender_slime_block.getUnlocalizedName().substring(5));
 	}
 }

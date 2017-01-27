@@ -18,6 +18,7 @@
 package com.theslarfab.tmnmod.proxy;
 
 import com.theslarfab.tmnmod.client.model.ModelEnderBullet;
+import com.theslarfab.tmnmod.client.model.ModelEnderSlime;
 import com.theslarfab.tmnmod.client.model.ModelHippopotamus;
 import com.theslarfab.tmnmod.client.model.ModelKangaroo;
 import com.theslarfab.tmnmod.client.model.ModelLonghorn;
@@ -28,13 +29,14 @@ import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderBeacon;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderDoublePlant;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderPiston;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderPistonExtension;
+import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderSlimeBlock;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderstoneComparator;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderstoneRepeater;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderstoneWire;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockTSFTable;
 import com.theslarfab.tmnmod.client.renderer.block.inventory.RenderInvBlockEnderDispenser;
 import com.theslarfab.tmnmod.client.renderer.entity.RenderEnderBullet;
-import com.theslarfab.tmnmod.client.renderer.entity.RenderHippopotamus;
+import com.theslarfab.tmnmod.client.renderer.entity.RenderEnderSlime;
 import com.theslarfab.tmnmod.client.renderer.entity.RenderKangaroo;
 import com.theslarfab.tmnmod.client.renderer.entity.RenderLonghorn;
 import com.theslarfab.tmnmod.client.renderer.entity.RenderZebra;
@@ -42,10 +44,10 @@ import com.theslarfab.tmnmod.client.renderer.item.ItemRenderEnderPistol;
 import com.theslarfab.tmnmod.client.renderer.item.block.ItemRenderBlockEndWoodChest;
 import com.theslarfab.tmnmod.client.renderer.tileentity.TileEntityEndWoodChestRenderer;
 import com.theslarfab.tmnmod.client.renderer.tileentity.TileEntityRendererEnderPiston;
-import com.theslarfab.tmnmod.entity.EntityHippopotamus;
 import com.theslarfab.tmnmod.entity.EntityKangaroo;
 import com.theslarfab.tmnmod.entity.EntityLonghorn;
 import com.theslarfab.tmnmod.entity.EntityZebra;
+import com.theslarfab.tmnmod.entity.monster.EntityEnderSlime;
 import com.theslarfab.tmnmod.entity.projectile.EntityEnderGunBullet;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 import com.theslarfab.tmnmod.init.TMNItems;
@@ -69,8 +71,8 @@ public class ClientProxy extends CommonProxy implements IProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLonghorn.class,
 				new RenderLonghorn(new ModelLonghorn(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityZebra.class, new RenderZebra(new ModelZebra(), 0.3F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityHippopotamus.class,
-				new RenderHippopotamus(new ModelHippopotamus(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEnderSlime.class,
+				new RenderEnderSlime(new ModelEnderSlime(0), new ModelEnderSlime(1), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnderGunBullet.class,
 				new RenderEnderBullet(new ModelEnderBullet(), 0.3F));
 
@@ -85,6 +87,7 @@ public class ClientProxy extends CommonProxy implements IProxy {
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderPistonExtension());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderDoublePlant());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderBeacon());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderSlimeBlock());
 
 		// Item
 		MinecraftForgeClient.registerItemRenderer(TMNItems.ender_pistol, new ItemRenderEnderPistol());

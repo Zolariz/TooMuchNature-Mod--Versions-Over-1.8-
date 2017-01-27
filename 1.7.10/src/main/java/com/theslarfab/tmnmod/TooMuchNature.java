@@ -20,21 +20,16 @@ package com.theslarfab.tmnmod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.theslarfab.tmnmod.gui.GuiRegistry;
-import com.theslarfab.tmnmod.handler.GuiHandler;
 import com.theslarfab.tmnmod.command.server.CommandSummonTMN;
 import com.theslarfab.tmnmod.crafting.TMNCrafting;
 import com.theslarfab.tmnmod.creativetabs.TabTMNBlocks;
 import com.theslarfab.tmnmod.creativetabs.TabTMNEnderstone;
 import com.theslarfab.tmnmod.creativetabs.TabTMNItems;
 import com.theslarfab.tmnmod.creativetabs.TabTMNWeapons;
-import com.theslarfab.tmnmod.entity.EntityHippopotamus;
-import com.theslarfab.tmnmod.entity.EntityKangaroo;
-import com.theslarfab.tmnmod.entity.EntityLonghorn;
-import com.theslarfab.tmnmod.entity.EntityZebra;
-import com.theslarfab.tmnmod.entity.list.TMNEntityList;
-import com.theslarfab.tmnmod.entity.projectile.EntityEnderGunBullet;
+import com.theslarfab.tmnmod.gui.GuiRegistry;
+import com.theslarfab.tmnmod.handler.GuiHandler;
 import com.theslarfab.tmnmod.init.TMNBlocks;
+import com.theslarfab.tmnmod.init.TMNEntities;
 import com.theslarfab.tmnmod.init.TMNItems;
 import com.theslarfab.tmnmod.proxy.CommonProxy;
 import com.theslarfab.tmnmod.world.biome.BiomesTMN;
@@ -50,12 +45,9 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.biome.BiomeGenBase;
 
 @Mod(modid = TooMuchNature.modid, version = TooMuchNature.version)
 public class TooMuchNature {
@@ -83,6 +75,7 @@ public class TooMuchNature {
 	public void preInit(FMLPreInitializationEvent event) {
 		TMNBlocks.init();
 		TMNItems.init();
+		TMNEntities.init();
 
 		// GUI Handlers
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
@@ -93,24 +86,7 @@ public class TooMuchNature {
 		// Biome Registers
 		BiomesTMN.init();
 		EnderBiomes.init();
-
-		// Entity Registers
-		int modEntityID = 0;
-		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++modEntityID, this.instance, 80, 3, false);
-		EntityRegistry.registerModEntity(EntityLonghorn.class, "texas_longhorn", ++modEntityID, this.instance, 80, 3,
-				false);
-		EntityRegistry.registerModEntity(EntityZebra.class, "zebra", ++modEntityID, this.instance, 80, 3, false);
-		EntityRegistry.registerModEntity(EntityHippopotamus.class, "hippo", ++modEntityID, this.instance, 80, 3, false);
-		EntityRegistry.registerModEntity(EntityEnderGunBullet.class, "ender_gun_bullet", ++modEntityID, this.instance,
-				80, 3, false);
-
-		// Spawn Egg Registers
-		TMNEntityList.addMapping(EntityKangaroo.class, "kangaroo", 0x558299, 0x997256);
-		TMNEntityList.addMapping(EntityLonghorn.class, "texas_longhorn", 0xEB7900, 0xADADAD);
-		TMNEntityList.addMapping(EntityZebra.class, "zebra", 0xFFFFFF, 0x212121);
-		TMNEntityList.addMapping(EntityHippopotamus.class, "hippo", 0xBB9FC4, 0x8E7B94);
-		TMNEntityList.addMapping(EntityEnderGunBullet.class, "ender_bullet");
-
+		
 		// WorldGen Registers
 		GameRegistry.registerWorldGenerator(new TMNWorldGen(), 0);
 	}
@@ -123,9 +99,7 @@ public class TooMuchNature {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		EntityRegistry.addSpawn(EntityLonghorn.class, 6, 3, 4, EnumCreatureType.creature, BiomeGenBase.plains);
-		EntityRegistry.addSpawn(EntityZebra.class, 7, 3, 5, EnumCreatureType.creature, BiomeGenBase.savanna,
-				BiomeGenBase.savannaPlateau);
+		TMNEntities.addEntitySpawn();
 	}
 
 	@EventHandler

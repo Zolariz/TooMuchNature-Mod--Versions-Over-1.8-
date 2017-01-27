@@ -72,6 +72,7 @@ public class RenderBlockEnderBeacon implements ISimpleBlockRenderingHandler {
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
 			RenderBlocks renderer) {
+		
 		float f = 0.1875F;
 		renderer.setOverrideBlockTexture(renderer.getBlockIcon(Blocks.glass));
 		renderer.setRenderBounds(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
