@@ -67,8 +67,10 @@ public class TooMuchNature {
 
 	public static final String modid = "tmn";
 	public static final String version = "v1.0-b1";
+	public static final String clientside = "com.theslarfab.tmnmod.proxy.ClientProxy";
+	public static final String serverside = "com.theslarfab.tmnmod.proxy.ServerProxy";
 
-	@SidedProxy(clientSide = "com.theslarfab.tmnmod.proxy.ClientProxy", serverSide = "com.theslarfab.tmnmod.proxy.ServerProxy")
+	@SidedProxy(clientSide = TooMuchNature.clientside, serverSide = TooMuchNature.serverside)
 	public static CommonProxy proxy;
 
 	@EventHandler
@@ -86,7 +88,7 @@ public class TooMuchNature {
 		// Biome Registers
 		BiomesTMN.init();
 		EnderBiomes.init();
-		
+
 		// WorldGen Registers
 		GameRegistry.registerWorldGenerator(new TMNWorldGen(), 0);
 	}
@@ -99,7 +101,7 @@ public class TooMuchNature {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		TMNEntities.addEntitySpawn();
+		TMNEntities.initEntitySpawn();
 	}
 
 	@EventHandler

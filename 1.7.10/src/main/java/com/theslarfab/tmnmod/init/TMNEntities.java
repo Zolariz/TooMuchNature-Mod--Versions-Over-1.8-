@@ -7,8 +7,10 @@ import com.theslarfab.tmnmod.entity.EntityLonghorn;
 import com.theslarfab.tmnmod.entity.EntityZebra;
 import com.theslarfab.tmnmod.entity.list.TMNEntityList;
 import com.theslarfab.tmnmod.entity.projectile.EntityEnderGunBullet;
+import com.theslarfab.tmnmod.entity.projectile.EntityEnderSlimeball;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 
@@ -19,18 +21,24 @@ public class TMNEntities {
 		TMNEntities.registerSpawnEggs();
 	}
 
+	public static void initEntitySpawn() {
+		TMNEntities.addEntitySpawn();
+	}
+
 	public static void registerEntities() {
-		int modEntityID = 0;
-		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++modEntityID, TooMuchNature.instance, 80, 3,
-				false);
-		EntityRegistry.registerModEntity(EntityLonghorn.class, "texas_longhorn", ++modEntityID, TooMuchNature.instance,
-				80, 3, false);
-		EntityRegistry.registerModEntity(EntityZebra.class, "zebra", ++modEntityID, TooMuchNature.instance, 80, 3,
-				false);
-		EntityRegistry.registerModEntity(EntityEnderSlime.class, "ender_slime", ++modEntityID, TooMuchNature.instance, 80,
-				3, false);
-		EntityRegistry.registerModEntity(EntityEnderGunBullet.class, "ender_gun_bullet", ++modEntityID,
-				TooMuchNature.instance, 80, 3, false);
+
+		int randomId = EntityRegistry.findGlobalUniqueEntityId();
+		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++randomId, TooMuchNature.instance, 80, 3,
+				true);
+		EntityRegistry.registerModEntity(EntityLonghorn.class, "texas_longhorn", ++randomId, TooMuchNature.instance, 80,
+				3, true);
+		EntityRegistry.registerModEntity(EntityZebra.class, "zebra", ++randomId, TooMuchNature.instance, 80, 3, true);
+		EntityRegistry.registerModEntity(EntityEnderSlime.class, "ender_slime", ++randomId, TooMuchNature.instance, 80,
+				3, true);
+		EntityRegistry.registerModEntity(EntityEnderGunBullet.class, "ender_gun_bullet", ++randomId,
+				TooMuchNature.instance, 80, 3, true);
+		EntityRegistry.registerModEntity(EntityEnderSlimeball.class, "ender_slimeball", ++randomId,
+				TooMuchNature.instance, 80, 3, true);
 	}
 
 	public static void registerSpawnEggs() {
@@ -39,6 +47,7 @@ public class TMNEntities {
 		TMNEntityList.addMapping(EntityZebra.class, "zebra", 0xFFFFFF, 0x212121);
 		TMNEntityList.addMapping(EntityEnderSlime.class, "ender_slime", 0xBB9FC4, 0x8E7B94);
 		TMNEntityList.addMapping(EntityEnderGunBullet.class, "ender_bullet");
+		TMNEntityList.addMapping(EntityEnderSlimeball.class, "ender_slimeball");
 	}
 
 	public static void addEntitySpawn() {

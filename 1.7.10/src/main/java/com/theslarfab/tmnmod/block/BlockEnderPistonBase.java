@@ -2,6 +2,9 @@ package com.theslarfab.tmnmod.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.theslarfab.tmnmod.TooMuchNature;
@@ -41,6 +44,9 @@ public class BlockEnderPistonBase extends Block {
 	/** Top icon of piston depends on (either sticky or normal) */
 	@SideOnly(Side.CLIENT)
 	private IIcon topIcon;
+
+	private List<Block> pushedBlockList = new ArrayList();
+	private List<int[]> pushedBlockData = new ArrayList();
 
 	public BlockEnderPistonBase(boolean isSticky) {
 		super(Material.piston);
@@ -345,9 +351,6 @@ public class BlockEnderPistonBase extends Block {
 		}
 	}
 
-	/**
-	 * Sets the block's bounds for rendering it as an item
-	 */
 	public void setBlockBoundsForItemRender() {
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
@@ -568,6 +571,64 @@ public class BlockEnderPistonBase extends Block {
 			}
 
 			return true;
+		}
+	}
+
+	private void pushBlocks(World world, int side, boolean extending) {
+		List<int[]> removedBlockCoords = new ArrayList();
+		List<Entity> launchedEntityList = new ArrayList();
+		for (int i = 0; i < this.pushedBlockList.size(); i++) {
+			boolean needsPusher = true;
+			Block block = (Block) this.pushedBlockList.get(i);
+			int blockX = ((int[]) this.pushedBlockData.get(i))[0];
+			int blockY = ((int[]) this.pushedBlockData.get(i))[1];
+			int blockZ = ((int[]) this.pushedBlockData.get(i))[2];
+			int blockMeta = ((int[]) this.pushedBlockData.get(i))[3];
+			int[] rearCoords = { blockX - net.minecraft.util.Facing.offsetsXForSide[side],
+					blockY - net.minecraft.util.Facing.offsetsYForSide[side],
+					blockZ - net.minecraft.util.Facing.offsetsZForSide[side] };
+			for (int j = 0; j < this.pushedBlockData.size(); j++) {
+				if ((rearCoords[0] == ((int[]) this.pushedBlockData.get(j))[0])
+						&& (rearCoords[1] == ((int[]) this.pushedBlockData.get(j))[1])
+						&& (rearCoords[2] == ((int[]) this.pushedBlockData.get(j))[2])) {
+					needsPusher = false;
+				}
+			}
+			if (needsPusher) {
+				removedBlockCoords.add(this.pushedBlockData.get(i));
+			}
+			blockX += net.minecraft.util.Facing.offsetsXForSide[side];
+			blockY += net.minecraft.util.Facing.offsetsYForSide[side];
+			blockZ += net.minecraft.util.Facing.offsetsZForSide[side];
+			if (block.getMobilityFlag() == 1) {
+				float chance = (block instanceof BlockSnow) ? -1.0F : 1.0F;
+				block.dropBlockAsItemWithChance(world, blockX, blockY, blockZ, blockMeta, chance, 0);
+				world.setBlockToAir(blockX, blockY, blockZ);
+			} else {
+				world.setBlock(blockX, blockY, blockZ, TMNBlocks.ender_piston_extension, blockMeta, 4);
+				world.setTileEntity(blockX, blockY, blockZ,
+						BlockEnderPistonMoving.getTileEntity(block, blockMeta, side, true, false));
+				world.notifyBlocksOfNeighborChange(blockX, blockY, blockZ, block);
+			}
+			if ((extending) && (block.equals(TMNBlocks.ender_slime_block))) {
+				Iterator entityIterator = world.getEntitiesWithinAABBExcludingEntity(null,
+						getCollisionBoundingBoxFromPool(world, blockX, blockY, blockZ)).iterator();
+				while (entityIterator.hasNext()) {
+					Entity entity = (Entity) entityIterator.next();
+					if (!launchedEntityList.contains(entity)) {
+						launchedEntityList.add(entity);
+					}
+				}
+			}
+		}
+		for (Entity entity : launchedEntityList) {
+			entity.motionX += net.minecraft.util.Facing.offsetsXForSide[side] * 1.1F;
+			entity.motionY += net.minecraft.util.Facing.offsetsYForSide[side] * 1.1F;
+			entity.motionZ += net.minecraft.util.Facing.offsetsZForSide[side] * 1.1F;
+		}
+		for (int[] blockCoords : removedBlockCoords) {
+			world.setBlockToAir(blockCoords[0], blockCoords[1], blockCoords[2]);
+			world.notifyBlocksOfNeighborChange(blockCoords[0], blockCoords[1], blockCoords[2], Blocks.air);
 		}
 	}
 }

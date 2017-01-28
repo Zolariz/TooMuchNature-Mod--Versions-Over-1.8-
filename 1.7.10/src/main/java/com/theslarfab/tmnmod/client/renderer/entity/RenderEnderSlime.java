@@ -14,10 +14,10 @@ import com.theslarfab.tmnmod.entity.monster.EntityEnderSlime;
 
 @SideOnly(Side.CLIENT)
 public class RenderEnderSlime extends RenderLiving {
-	
+
 	private static final ResourceLocation slimeTextures = new ResourceLocation(
 			TooMuchNature.modid + ":" + "textures/entity/slime/ender_slime.png");
-	
+
 	private ModelBase scaleAmount;
 
 	public RenderEnderSlime(ModelBase modelbase1, ModelBase modelbase2, float par3) {
@@ -25,17 +25,17 @@ public class RenderEnderSlime extends RenderLiving {
 		this.scaleAmount = modelbase2;
 	}
 
-	protected int shouldRenderPass(EntityEnderSlime enderSlime, int p_77032_2_, float p_77032_3_) {
+	protected int shouldRenderPass(EntityEnderSlime enderSlime, int renderPass, float transparency) {
 		if (enderSlime.isInvisible()) {
 			return 0;
-		} else if (p_77032_2_ == 0) {
+		} else if (renderPass == 0) {
 			this.setRenderPassModel(this.scaleAmount);
 			GL11.glEnable(GL11.GL_NORMALIZE);
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			return 1;
 		} else {
-			if (p_77032_2_ == 1) {
+			if (renderPass == 1) {
 				GL11.glDisable(GL11.GL_BLEND);
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			}

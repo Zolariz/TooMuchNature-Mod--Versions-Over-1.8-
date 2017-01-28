@@ -193,6 +193,20 @@ public class TMNBlocks {
 		TMNBlocks.registerBlocks();
 	}
 
+	public static final Block.SoundType soundTypeSlime = new Block.SoundType("slime", 1.0F, 1.0F) {
+		public String getBreakSound() {
+			return "mob.slime.big";
+		}
+
+		public String getStepResourcePath() {
+			return "mob.slime.small";
+		}
+
+		public String func_150496_b() {
+			return getBreakSound();
+		}
+	};
+
 	public static void initBlocks() {
 		// Trees
 		cherry_log = new BlockCherryLog(Material.wood).setBlockName("log_cherry")
@@ -369,8 +383,8 @@ public class TMNBlocks {
 
 		// Bouncy Blocks
 		ender_slime_block = new BlockEnderSlime().setBlockName("ender_slime_block")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "ender_slime_block");
+				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(soundTypeSlime)
+				.setBlockTextureName(TooMuchNature.modid + ":" + "ender_slime");
 	}
 
 	public static void registerBlocks() {

@@ -7,6 +7,7 @@ import com.theslarfab.tmnmod.item.ItemBirchDoor;
 import com.theslarfab.tmnmod.item.ItemCherryDoor;
 import com.theslarfab.tmnmod.item.ItemDarkOakDoor;
 import com.theslarfab.tmnmod.item.ItemEnderGun;
+import com.theslarfab.tmnmod.item.ItemEnderSlimeball;
 import com.theslarfab.tmnmod.item.ItemEnderaldRoadTiller;
 import com.theslarfab.tmnmod.item.ItemEnderstone;
 import com.theslarfab.tmnmod.item.ItemFlintAndEndstone;
@@ -113,6 +114,12 @@ public class TMNItems {
 	public static Item enderald_road_tiller;
 	public static Item enderald_shovel;
 
+	// Throwable Items
+	public static Item ender_slimeball;
+
+	// Ammo Items
+	Item none;
+
 	public static void init() {
 		TMNItems.initItems();
 		TMNItems.registerItems();
@@ -196,7 +203,7 @@ public class TMNItems {
 		ender_water_bucket = new ItemTMNBucket(TMNBlocks.ender_water_dynamic).setUnlocalizedName("ender_water_bucket")
 				.setTextureName(TooMuchNature.modid + ":" + "enderald_bucket_ender_water");
 		enderald_bucket = new ItemTMNBucket(Blocks.air).setUnlocalizedName("enderald_bucket")
-				.setTextureName(TooMuchNature.modid + ":" + "enderald_bucket");
+				.setTextureName(TooMuchNature.modid + ":" + "enderald_bucket_empty");
 
 		// Food
 		orange = new ItemFood(4, 0.5F, false).setUnlocalizedName("orange")
@@ -225,8 +232,12 @@ public class TMNItems {
 		kangaroo_boots = new KangarooArmor(KangarooArmorMaterial, kangaroo_helm_ID, 3)
 				.setUnlocalizedName("kangaroo_boots");
 
-		// Spawn Eggs
+		// Spawn Egg
 		tmn_spawn_egg = new ItemTMNSpawnEgg().setUnlocalizedName("tmn_spawn_egg");
+
+		// Throwable Items
+		ender_slimeball = new ItemEnderSlimeball().setUnlocalizedName("ender_slimeball")
+				.setTextureName(TooMuchNature.modid + ":" + "ender_slimeball");
 	}
 
 	public static void registerItems() {
@@ -273,5 +284,6 @@ public class TMNItems {
 
 		GameRegistry.registerItem(enderald_road_tiller, enderald_road_tiller.getUnlocalizedName().substring(5));
 
+		GameRegistry.registerItem(ender_slimeball, ender_slimeball.getUnlocalizedName().substring(5));
 	}
 }

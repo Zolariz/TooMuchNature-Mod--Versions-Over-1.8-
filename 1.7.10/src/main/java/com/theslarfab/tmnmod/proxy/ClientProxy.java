@@ -49,6 +49,7 @@ import com.theslarfab.tmnmod.entity.EntityLonghorn;
 import com.theslarfab.tmnmod.entity.EntityZebra;
 import com.theslarfab.tmnmod.entity.monster.EntityEnderSlime;
 import com.theslarfab.tmnmod.entity.projectile.EntityEnderGunBullet;
+import com.theslarfab.tmnmod.entity.projectile.EntityEnderSlimeball;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 import com.theslarfab.tmnmod.init.TMNItems;
 import com.theslarfab.tmnmod.tileentity.TileEntityEndWoodChest;
@@ -57,6 +58,7 @@ import com.theslarfab.tmnmod.tileentity.TileEntityEnderPiston;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -75,6 +77,8 @@ public class ClientProxy extends CommonProxy implements IProxy {
 				new RenderEnderSlime(new ModelEnderSlime(0), new ModelEnderSlime(1), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnderGunBullet.class,
 				new RenderEnderBullet(new ModelEnderBullet(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEnderSlimeball.class,
+				new RenderSnowball(TMNItems.ender_slimeball));
 
 		// Block
 		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
