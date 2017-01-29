@@ -31,6 +31,7 @@ import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderPiston;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderPistonExtension;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderSlimeBlock;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderstoneComparator;
+import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderstoneDiode;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderstoneRepeater;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderstoneWire;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockTSFTable;
@@ -81,17 +82,7 @@ public class ClientProxy extends CommonProxy implements IProxy {
 				new RenderSnowball(TMNItems.ender_slimeball));
 
 		// Block
-		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneWire());
-		RenderingRegistry.registerBlockHandler(new RenderBlockTSFTable());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneRepeater());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEnderPiston());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneComparator());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEndLever());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEnderPistonExtension());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEnderDoublePlant());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEnderBeacon());
-		RenderingRegistry.registerBlockHandler(new RenderBlockEnderSlimeBlock());
+		ClientProxy.registerBlockRenderers();
 
 		// Item
 		MinecraftForgeClient.registerItemRenderer(TMNItems.ender_pistol, new ItemRenderEnderPistol());
@@ -109,5 +100,20 @@ public class ClientProxy extends CommonProxy implements IProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderPiston.class, renderEnderPiston);
 		GameRegistry.registerTileEntity(TileEntityEnderPiston.class, "enderPiston");
 
+	}
+
+	public static void registerBlockRenderers() {
+		RenderingRegistry.registerBlockHandler(new RenderBlockEndFire());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneWire());
+		RenderingRegistry.registerBlockHandler(new RenderBlockTSFTable());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneRepeater());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderPiston());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneComparator());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEndLever());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderPistonExtension());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderDoublePlant());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderBeacon());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderSlimeBlock());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneDiode());
 	}
 }

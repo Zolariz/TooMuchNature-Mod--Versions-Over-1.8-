@@ -8,6 +8,7 @@ public class BlockRenderingIDs {
 	public static int enderPistonBaseRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int enderPistonExtensionRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int enderstoneComparatorRenderID = RenderingRegistry.getNextAvailableRenderId();
+	public static int enderstoneDiodeRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int enderstoneRepeaterRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int enderstoneWireRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int endFireRenderID = RenderingRegistry.getNextAvailableRenderId();

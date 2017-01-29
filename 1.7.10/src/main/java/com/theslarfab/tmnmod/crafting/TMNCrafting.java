@@ -51,22 +51,6 @@ public class TMNCrafting {
 		GameRegistry.addShapelessRecipe(new ItemStack(TMNBlocks.cherry_planks, 4),
 				new Object[] { TMNBlocks.cherry_log });
 
-		GameRegistry.addRecipe(new ItemStack(Items.stick, 6), new Object[] { "   ", "###", "###", '#', Items.stick });
-		GameRegistry.addRecipe(new ItemStack(Items.stick, 6), new Object[] { "###", "###", "   ", '#', Items.stick });
-
-		GameRegistry.addShapedRecipe(new ItemStack(Blocks.fence, 3),
-				new Object[] { "   ", "#X#", "#X#", Character.valueOf('#'), new ItemStack(Blocks.planks, 1, 0),
-						Character.valueOf('X'), new ItemStack(Items.stick, 1, 0), });
-		GameRegistry.addShapedRecipe(new ItemStack(Blocks.fence, 3),
-				new Object[] { "#X#", "#X#", "   ", Character.valueOf('#'), new ItemStack(Blocks.planks, 1, 0),
-						Character.valueOf('X'), new ItemStack(Items.stick, 1, 0), });
-		GameRegistry.addShapedRecipe(new ItemStack(Blocks.fence_gate, 1),
-				new Object[] { "   ", "#X#", "#X#", Character.valueOf('X'), new ItemStack(Blocks.planks, 1, 0),
-						Character.valueOf('#'), new ItemStack(Items.stick, 1, 0), });
-		GameRegistry.addShapedRecipe(new ItemStack(Blocks.fence_gate, 1),
-				new Object[] { "#X#", "#X#", "   ", Character.valueOf('X'), new ItemStack(Blocks.planks, 1, 0),
-						Character.valueOf('#'), new ItemStack(Items.stick, 1, 0), });
-
 		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.cherry_fence, 3),
 				new Object[] { "   ", "#X#", "#X#", Character.valueOf('#'),
 						new ItemStack(TMNBlocks.cherry_planks, 1, 0), Character.valueOf('X'),
@@ -93,8 +77,10 @@ public class TMNCrafting {
 		GameRegistry.addShapedRecipe(new ItemStack(Items.stick, 4),
 				new Object[] { " #", " #", Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
 
-		GameRegistry.addShapedRecipe(new ItemStack(TMNItems.item_cherry_door, 1), new Object[] { "## ", "## ", "## ",
-				Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
+		GameRegistry.addShapedRecipe(new ItemStack(TMNItems.item_cherry_door, 1),
+				new Object[] { "## ", "##&", "## ", Character.valueOf('#'),
+						new ItemStack(TMNBlocks.cherry_planks, 1, 0), Character.valueOf('&'),
+						new ItemStack(Items.wooden_door, 1, 0) });
 
 		GameRegistry.addShapedRecipe(new ItemStack(TMNItems.item_cherry_door, 1), new Object[] { " ##", " ##", " ##",
 				Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
@@ -102,5 +88,7 @@ public class TMNCrafting {
 		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.cherry_slab, 3), new Object[] { "###", "   ", "   ",
 				Character.valueOf('#'), new ItemStack(TMNBlocks.cherry_planks, 1, 0) });
 
+		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.enderald_block, 1), new Object[] { "###", "###", "###",
+				Character.valueOf('#'), new ItemStack(TMNItems.enderald, 1, 0) });
 	}
 }

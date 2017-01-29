@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
 import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -73,6 +74,10 @@ public abstract class BlockEnderstoneDiode extends BlockDirectional {
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
 		return side != 0 && side != 1;
+	}
+
+	public int getRenderType() {
+		return BlockRenderingIDs.enderstoneDiodeRenderID;
 	}
 
 	protected boolean func_149905_c(int powered) {

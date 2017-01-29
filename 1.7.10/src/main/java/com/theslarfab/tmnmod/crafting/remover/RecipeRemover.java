@@ -35,11 +35,6 @@ public class RecipeRemover {
 		Iterator<IRecipe> remover = recipes.iterator();
 		while (remover.hasNext()) {
 			ItemStack itemstack = remover.next().getRecipeOutput();
-			if (itemstack != null && itemstack.getItem() == Item.getItemFromBlock(Blocks.fence)) {
-				remover.remove();
-			} else if (itemstack != null && itemstack.getItem() == Item.getItemFromBlock(Blocks.fence_gate)) {
-				remover.remove();
-			}
 		}
 	}
 }
