@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.world.biome;
 
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 import com.theslarfab.tmnmod.world.biome.ender.BiomeGenEnderlands;
 import com.theslarfab.tmnmod.world.biome.ender.BiomeGenEnderlandsRiver;

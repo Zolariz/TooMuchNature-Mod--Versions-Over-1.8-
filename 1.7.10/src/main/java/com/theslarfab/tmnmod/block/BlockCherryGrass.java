@@ -5,7 +5,7 @@ import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.relauncher.Side;

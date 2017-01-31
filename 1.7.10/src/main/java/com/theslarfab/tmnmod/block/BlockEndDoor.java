@@ -1,34 +1,18 @@
-/**
-	Copyright (C) <2016>  <TheSlarFab>
-
-    This file is part of the TheSlarFab TooMuchNature Mod; as such, 
-    you can redistribute it and/or modify it under the terms of the GNU
-    General Public License as published by the Free Software Foundation,
-    either version 3 of the License, or (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 package com.theslarfab.tmnmod.block;
-
-import java.util.Random;
-
-import com.theslarfab.tmnmod.TooMuchNatventure;
-import com.theslarfab.tmnmod.init.TMNItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
+
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
+import com.theslarfab.tmnmod.init.TMNItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.IconFlipped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -37,54 +21,51 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockCherryDoor extends Block {
-
+public class BlockEndDoor extends Block {
 	@SideOnly(Side.CLIENT)
-	private IIcon[] field_150017_a;
+	private IIcon[] upperDoorIcon;
 	@SideOnly(Side.CLIENT)
-	private IIcon[] field_150016_b;
+	private IIcon[] lowerDoorIcon;
 
-	public BlockCherryDoor(Material wood) {
-		super(wood);
+	public BlockEndDoor(Material material) {
+		super(material);
 		float f = 0.5F;
 		float f1 = 1.0F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
-		this.setStepSound(Block.soundTypeWood);
-		this.setHardness(3.0F);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int par1, int par2) {
-		return this.field_150016_b[0];
+	public IIcon getIcon(int side, int meta) {
+		return this.lowerDoorIcon[0];
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(IBlockAccess par1BlockAccess, int par2, int par3, int par4, int par5) {
-		if (par5 != 1 && par5 != 0) {
-			int i1 = this.func_150012_g(par1BlockAccess, par2, par3, par4);
+	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+		if (side != 1 && side != 0) {
+			int i1 = this.func_150012_g(world, x, y, z);
 			int j1 = i1 & 3;
 			boolean flag = (i1 & 4) != 0;
 			boolean flag1 = false;
 			boolean flag2 = (i1 & 8) != 0;
 
 			if (flag) {
-				if (j1 == 0 && par5 == 2) {
+				if (j1 == 0 && side == 2) {
 					flag1 = !flag1;
-				} else if (j1 == 1 && par5 == 5) {
+				} else if (j1 == 1 && side == 5) {
 					flag1 = !flag1;
-				} else if (j1 == 2 && par5 == 3) {
+				} else if (j1 == 2 && side == 3) {
 					flag1 = !flag1;
-				} else if (j1 == 3 && par5 == 4) {
+				} else if (j1 == 3 && side == 4) {
 					flag1 = !flag1;
 				}
 			} else {
-				if (j1 == 0 && par5 == 5) {
+				if (j1 == 0 && side == 5) {
 					flag1 = !flag1;
-				} else if (j1 == 1 && par5 == 3) {
+				} else if (j1 == 1 && side == 3) {
 					flag1 = !flag1;
-				} else if (j1 == 2 && par5 == 4) {
+				} else if (j1 == 2 && side == 4) {
 					flag1 = !flag1;
-				} else if (j1 == 3 && par5 == 2) {
+				} else if (j1 == 3 && side == 2) {
 					flag1 = !flag1;
 				}
 
@@ -93,30 +74,28 @@ public class BlockCherryDoor extends Block {
 				}
 			}
 
-			return flag2 ? this.field_150017_a[flag1 ? 1 : 0] : this.field_150016_b[flag1 ? 1 : 0];
+			return flag2 ? this.upperDoorIcon[flag1 ? 1 : 0] : this.lowerDoorIcon[flag1 ? 1 : 0];
 		} else {
-			return this.field_150016_b[0];
+			return this.lowerDoorIcon[0];
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.field_150017_a = new IIcon[2];
-		this.field_150016_b = new IIcon[2];
-		this.field_150017_a[0] = iconRegister
-				.registerIcon(this.getTextureName() + "_upper");
-		this.field_150016_b[0] = iconRegister
-				.registerIcon(this.getTextureName() + "_lower");
-		this.field_150017_a[1] = new IconFlipped(this.field_150017_a[0], true, false);
-		this.field_150016_b[1] = new IconFlipped(this.field_150016_b[0], true, false);
+		this.upperDoorIcon = new IIcon[2];
+		this.lowerDoorIcon = new IIcon[2];
+		this.upperDoorIcon[0] = iconRegister.registerIcon(this.getTextureName() + "_upper");
+		this.lowerDoorIcon[0] = iconRegister.registerIcon(this.getTextureName() + "_lower");
+		this.upperDoorIcon[1] = new IconFlipped(this.upperDoorIcon[0], true, false);
+		this.lowerDoorIcon[1] = new IconFlipped(this.lowerDoorIcon[0], true, false);
 	}
 
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
-	public boolean getBlocksMovement(IBlockAccess blockAccess, int x, int y, int z) {
-		int l = this.func_150012_g(blockAccess, x, y, z);
+	public boolean getBlocksMovement(IBlockAccess world, int x, int y, int z) {
+		int l = this.func_150012_g(world, x, y, z);
 		return (l & 4) != 0;
 	}
 
@@ -125,7 +104,7 @@ public class BlockCherryDoor extends Block {
 	}
 
 	public int getRenderType() {
-		return 7;
+		return BlockRenderingIDs.endDoorRenderID;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -139,24 +118,24 @@ public class BlockCherryDoor extends Block {
 		return super.getCollisionBoundingBoxFromPool(world, x, y, z);
 	}
 
-	public void setBlockBoundsBasedOnState(IBlockAccess blockAccess, int x, int y, int z) {
-		this.func_150011_b(this.func_150012_g(blockAccess, x, y, z));
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
+		this.func_150011_b(this.func_150012_g(world, x, y, z));
 	}
 
-	public int func_150013_e(IBlockAccess blockAccess, int x, int y, int z) {
-		return this.func_150012_g(blockAccess, x, y, z) & 3;
+	public int func_150013_e(IBlockAccess world, int x, int y, int z) {
+		return this.func_150012_g(world, x, y, z) & 3;
 	}
 
-	public boolean func_150015_f(IBlockAccess blockAccess, int x, int y, int z) {
-		return (this.func_150012_g(blockAccess, x, y, z) & 4) != 0;
+	public boolean func_150015_f(IBlockAccess world, int x, int y, int z) {
+		return (this.func_150012_g(world, x, y, z) & 4) != 0;
 	}
 
-	private void func_150011_b(int par1) {
+	private void func_150011_b(int metadata) {
 		float f = 0.1875F;
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F);
-		int j = par1 & 3;
-		boolean flag = (par1 & 4) != 0;
-		boolean flag1 = (par1 & 16) != 0;
+		int j = metadata & 3;
+		boolean flag = (metadata & 4) != 0;
+		boolean flag1 = (metadata & 16) != 0;
 
 		if (j == 0) {
 			if (flag) {
@@ -202,35 +181,36 @@ public class BlockCherryDoor extends Block {
 	}
 
 	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
+
 	}
 
-	public boolean onBlockActivated(World par1World, int par2X, int par3Y, int par4Z, EntityPlayer par4Player, int par5,
-			float par6, float par7, float par8) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
+			float hitY, float hitZ) {
 		if (this.blockMaterial == Material.iron) {
-			return false; // Allow items to interact with the door
+			return false;
 		} else {
-			int i1 = this.func_150012_g(par1World, par2X, par3Y, par4Z);
+			int i1 = this.func_150012_g(world, x, y, z);
 			int j1 = i1 & 7;
 			j1 ^= 4;
 
 			if ((i1 & 8) == 0) {
-				par1World.setBlockMetadataWithNotify(par2X, par3Y, par4Z, j1, 2);
-				par1World.markBlockRangeForRenderUpdate(par2X, par3Y, par4Z, par2X, par3Y, par4Z);
+				world.setBlockMetadataWithNotify(x, y, z, j1, 2);
+				world.markBlockRangeForRenderUpdate(x, y, z, x, y, z);
 			} else {
-				par1World.setBlockMetadataWithNotify(par2X, par3Y - 1, par4Z, j1, 2);
-				par1World.markBlockRangeForRenderUpdate(par2X, par3Y - 1, par4Z, par2X, par3Y, par4Z);
+				world.setBlockMetadataWithNotify(x, y - 1, z, j1, 2);
+				world.markBlockRangeForRenderUpdate(x, y - 1, z, x, y, z);
 			}
 
-			par1World.playAuxSFXAtEntity(par4Player, 1003, par2X, par3Y, par4Z, 0);
+			world.playAuxSFXAtEntity(player, 1003, x, y, z, 0);
 			return true;
 		}
 	}
 
-	public void func_150014_a(World world, int x, int y, int z, boolean isNotified) {
+	public void func_150014_a(World world, int x, int y, int z, boolean side) {
 		int l = this.func_150012_g(world, x, y, z);
 		boolean flag1 = (l & 4) != 0;
 
-		if (flag1 != isNotified) {
+		if (flag1 != side) {
 			int i1 = l & 7;
 			i1 ^= 4;
 
@@ -290,13 +270,12 @@ public class BlockCherryDoor extends Block {
 	}
 
 	public Item getItemDropped(int meta, Random random, int fortune) {
-		return (meta & 8) != 0 ? null : TMNItems.item_cherry_door;
+		return (meta & 8) != 0 ? null : (this.blockMaterial == Material.iron ? Items.iron_door : TMNItems.item_end_oak_door);
 	}
 
-	public MovingObjectPosition collisionRayTrace(World par1World, int par2X, int par3Y, int par4Z, Vec3 par5,
-			Vec3 par6) {
-		this.setBlockBoundsBasedOnState(par1World, par2X, par3Y, par4Z);
-		return super.collisionRayTrace(par1World, par2X, par3Y, par4Z, par5, par6);
+	public MovingObjectPosition collisionRayTrace(World world, int x, int y, int z, Vec3 startVec, Vec3 endVec) {
+		this.setBlockBoundsBasedOnState(world, x, y, z);
+		return super.collisionRayTrace(world, x, y, z, startVec, endVec);
 	}
 
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
@@ -309,18 +288,18 @@ public class BlockCherryDoor extends Block {
 		return 1;
 	}
 
-	public int func_150012_g(IBlockAccess blockAccess, int x, int y, int z) {
-		int l = blockAccess.getBlockMetadata(x, y, z);
+	public int func_150012_g(IBlockAccess world, int x, int y, int z) {
+		int l = world.getBlockMetadata(x, y, z);
 		boolean flag = (l & 8) != 0;
 		int i1;
 		int j1;
 
 		if (flag) {
-			i1 = blockAccess.getBlockMetadata(x, y - 1, z);
+			i1 = world.getBlockMetadata(x, y - 1, z);
 			j1 = l;
 		} else {
 			i1 = l;
-			j1 = blockAccess.getBlockMetadata(x, y + 1, z);
+			j1 = world.getBlockMetadata(x, y + 1, z);
 		}
 
 		boolean flag1 = (j1 & 1) != 0;
@@ -329,13 +308,12 @@ public class BlockCherryDoor extends Block {
 
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z) {
-		return TMNItems.item_cherry_door;
+		return this.blockMaterial == Material.iron ? Items.iron_door : TMNItems.item_end_oak_door;
 	}
 
-	public void onBlockHarvested(World par1World, int par2X, int par3Y, int par4Z, int par5, EntityPlayer par6Player) {
-		if (par6Player.capabilities.isCreativeMode && (par5 & 8) != 0
-				&& par1World.getBlock(par2X, par3Y - 1, par4Z) == this) {
-			par1World.setBlockToAir(par2X, par3Y - 1, par4Z);
+	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
+		if (player.capabilities.isCreativeMode && (meta & 8) != 0 && world.getBlock(x, y - 1, z) == this) {
+			world.setBlockToAir(x, y - 1, z);
 		}
 	}
 }

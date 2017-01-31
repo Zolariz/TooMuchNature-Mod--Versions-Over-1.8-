@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.gui;
 
 import org.lwjgl.opengl.GL11;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.container.ContainerEnderWorkbench;
 
 import net.minecraft.client.Minecraft;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 public class GuiEnderWorkbench extends GuiContainer {
 
 	private ResourceLocation texture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/gui/container/ender_workbench.png");
+			TooMuchNatventure.modid + ":" + "textures/gui/container/ender_workbench.png");
 
 	public GuiEnderWorkbench(InventoryPlayer invPlayer, World world, int x, int y, int z) {
 		super(new ContainerEnderWorkbench(invPlayer, world, x, y, z));

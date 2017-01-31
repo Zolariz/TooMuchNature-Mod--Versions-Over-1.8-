@@ -1,4 +1,4 @@
-package com.theslarfab.tmnmod.client.renderer;
+package com.theslarfab.tmnmod.client.renderer.block;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
@@ -18,4 +18,5 @@ public class BlockRenderingIDs {
 	public static int doubleEnderPlantRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int enderBeaconRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public static int enderSlimeBlockRenderID = RenderingRegistry.getNextAvailableRenderId();
+	public static int endDoorRenderID = RenderingRegistry.getNextAvailableRenderId();
 }

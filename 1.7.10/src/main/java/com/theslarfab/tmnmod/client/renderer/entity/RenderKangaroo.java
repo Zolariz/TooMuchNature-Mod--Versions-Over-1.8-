@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.client.renderer.entity;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.client.model.ModelKangaroo;
 import com.theslarfab.tmnmod.entity.EntityKangaroo;
 
@@ -30,7 +30,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderKangaroo extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/entity/kangaroo/kangaroo.png");
+			TooMuchNatventure.modid + ":" + "textures/entity/kangaroo/kangaroo.png");
 
 	protected ModelKangaroo modelEntity;
 

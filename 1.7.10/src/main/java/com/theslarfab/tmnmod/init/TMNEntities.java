@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.init;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.entity.monster.EntityEnderSlime;
 import com.theslarfab.tmnmod.entity.EntityKangaroo;
 import com.theslarfab.tmnmod.entity.EntityLonghorn;
@@ -28,17 +28,17 @@ public class TMNEntities {
 	public static void registerEntities() {
 
 		int randomId = EntityRegistry.findGlobalUniqueEntityId();
-		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++randomId, TooMuchNature.instance, 80, 3,
+		EntityRegistry.registerModEntity(EntityKangaroo.class, "kangaroo", ++randomId, TooMuchNatventure.instance, 80, 3,
 				true);
-		EntityRegistry.registerModEntity(EntityLonghorn.class, "texas_longhorn", ++randomId, TooMuchNature.instance, 80,
+		EntityRegistry.registerModEntity(EntityLonghorn.class, "texas_longhorn", ++randomId, TooMuchNatventure.instance, 80,
 				3, true);
-		EntityRegistry.registerModEntity(EntityZebra.class, "zebra", ++randomId, TooMuchNature.instance, 80, 3, true);
-		EntityRegistry.registerModEntity(EntityEnderSlime.class, "ender_slime", ++randomId, TooMuchNature.instance, 80,
+		EntityRegistry.registerModEntity(EntityZebra.class, "zebra", ++randomId, TooMuchNatventure.instance, 80, 3, true);
+		EntityRegistry.registerModEntity(EntityEnderSlime.class, "ender_slime", ++randomId, TooMuchNatventure.instance, 80,
 				3, true);
 		EntityRegistry.registerModEntity(EntityEnderGunBullet.class, "ender_gun_bullet", ++randomId,
-				TooMuchNature.instance, 80, 3, true);
+				TooMuchNatventure.instance, 80, 3, true);
 		EntityRegistry.registerModEntity(EntityEnderSlimeball.class, "ender_slimeball", ++randomId,
-				TooMuchNature.instance, 80, 3, true);
+				TooMuchNatventure.instance, 80, 3, true);
 	}
 
 	public static void registerSpawnEggs() {

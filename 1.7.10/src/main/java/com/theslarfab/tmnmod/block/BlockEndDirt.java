@@ -4,7 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -26,7 +26,7 @@ public class BlockEndDirt extends Block {
 
 	public BlockEndDirt(Material material) {
 		super(Material.ground);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		this.setHarvestLevel("shovel", 0);
 	}
 

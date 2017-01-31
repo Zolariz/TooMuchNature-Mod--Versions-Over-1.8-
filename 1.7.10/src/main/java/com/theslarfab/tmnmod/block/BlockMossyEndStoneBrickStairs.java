@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.block;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -36,7 +36,7 @@ public class BlockMossyEndStoneBrickStairs extends BlockStairs {
 		this.setStepSound(block.stepSound);
 		this.setHarvestLevel("pickaxe", 0);
 		this.setLightOpacity(255);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		this.useNeighborBrightness = true;
 	}
 

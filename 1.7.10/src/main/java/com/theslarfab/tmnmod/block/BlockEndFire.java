@@ -12,7 +12,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 import com.google.common.collect.Maps;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.relauncher.Side;

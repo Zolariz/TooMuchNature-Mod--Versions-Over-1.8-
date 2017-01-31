@@ -1,7 +1,7 @@
 package com.theslarfab.tmnmod.block;
 
-import com.theslarfab.tmnmod.TooMuchNature;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.TooMuchNatventure;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,7 +21,7 @@ public class BlockEnderBeacon extends BlockContainer {
 	public BlockEnderBeacon() {
 		super(Material.glass);
 		this.setHardness(3.0F);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 	}
 
 	/**

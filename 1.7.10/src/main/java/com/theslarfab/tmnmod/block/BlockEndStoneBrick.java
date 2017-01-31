@@ -4,7 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -22,7 +22,7 @@ public class BlockEndStoneBrick extends Block {
 
 	public BlockEndStoneBrick() {
 		super(Material.rock);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 	}
 
 	@SideOnly(Side.CLIENT)

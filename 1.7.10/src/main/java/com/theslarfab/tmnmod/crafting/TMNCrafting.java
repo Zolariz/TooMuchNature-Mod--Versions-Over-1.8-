@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.crafting;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.crafting.remover.RecipeRemover;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 import com.theslarfab.tmnmod.init.TMNItems;
@@ -31,6 +31,7 @@ public class TMNCrafting {
 
 	public static void register() {
 
+		// Crafting
 		RecipeRemover.removeRecipe();
 
 		GameRegistry.addRecipe(new ItemStack(TMNItems.kangaroo_helm),
@@ -90,5 +91,11 @@ public class TMNCrafting {
 
 		GameRegistry.addShapedRecipe(new ItemStack(TMNBlocks.enderald_block, 1), new Object[] { "###", "###", "###",
 				Character.valueOf('#'), new ItemStack(TMNItems.enderald, 1, 0) });
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(TMNItems.enderald, 9),
+				new Object[] { TMNBlocks.enderald_block });
+		
+		// Smelting
+		GameRegistry.addSmelting(TMNItems.raw_kangaroo, new ItemStack(TMNItems.cooked_kangaroo, 1), 5);
 	}
 }

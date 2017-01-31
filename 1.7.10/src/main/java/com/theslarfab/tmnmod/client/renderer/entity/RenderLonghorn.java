@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.client.renderer.entity;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.client.model.ModelLonghorn;
 import com.theslarfab.tmnmod.entity.EntityLonghorn;
 
@@ -32,7 +32,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderLonghorn extends RenderLiving {
 
 	private static final ResourceLocation texture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/entity/cow/txlonghorn.png");
+			TooMuchNatventure.modid + ":" + "textures/entity/cow/txlonghorn.png");
 
 	protected ModelLonghorn modelEntity;
 

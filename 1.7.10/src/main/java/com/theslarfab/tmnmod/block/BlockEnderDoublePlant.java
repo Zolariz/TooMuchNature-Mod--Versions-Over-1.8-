@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.TooMuchNatventure;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.relauncher.Side;
@@ -30,8 +30,9 @@ import net.minecraftforge.common.IShearable;
 
 public class BlockEnderDoublePlant extends BlockEnderBush implements IGrowable, IShearable {
 
-	public static final String[] doubleTallgrassTexture = new String[] { TooMuchNature.modid + ":" + "ender_sunflower",
-			TooMuchNature.modid + ":" + "ender_grass", TooMuchNature.modid + ":" + "ender_fern" };
+	public static final String[] doubleTallgrassTexture = new String[] {
+			TooMuchNatventure.modid + ":" + "ender_sunflower", TooMuchNatventure.modid + ":" + "ender_grass",
+			TooMuchNatventure.modid + ":" + "ender_fern" };
 	@SideOnly(Side.CLIENT)
 	private IIcon[] doublePlantBottomIcons;
 	@SideOnly(Side.CLIENT)
@@ -187,15 +188,17 @@ public class BlockEnderDoublePlant extends BlockEnderBush implements IGrowable, 
 		this.doublePlantTopIcons = new IIcon[doubleTallgrassTexture.length];
 
 		for (int i = 0; i < this.doublePlantBottomIcons.length; ++i) {
-			this.doublePlantBottomIcons[i] = iconRegister
-					.registerIcon("ender_double_plant_" + doubleTallgrassTexture[i] + "_bottom");
-			this.doublePlantTopIcons[i] = iconRegister
-					.registerIcon("ender_double_plant_" + doubleTallgrassTexture[i] + "_top");
+			this.doublePlantBottomIcons[i] = iconRegister.registerIcon(
+					TooMuchNatventure.modid + ":" + "ender_double_plant_" + doubleTallgrassTexture[i] + "_bottom");
+			this.doublePlantTopIcons[i] = iconRegister.registerIcon(
+					TooMuchNatventure.modid + ":" + "ender_double_plant_" + doubleTallgrassTexture[i] + "_top");
 		}
 
 		this.sunflowerIcons = new IIcon[2];
-		this.sunflowerIcons[0] = iconRegister.registerIcon("double_plant_sunflower_front");
-		this.sunflowerIcons[1] = iconRegister.registerIcon("double_plant_sunflower_back");
+		this.sunflowerIcons[0] = iconRegister
+				.registerIcon(TooMuchNatventure.modid + ":" + "ender_double_plant_sunflower_front");
+		this.sunflowerIcons[1] = iconRegister
+				.registerIcon(TooMuchNatventure.modid + ":" + "ender_double_plant_sunflower_back");
 	}
 
 	@SideOnly(Side.CLIENT)

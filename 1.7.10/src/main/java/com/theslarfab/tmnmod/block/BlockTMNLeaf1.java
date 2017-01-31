@@ -19,7 +19,7 @@ package com.theslarfab.tmnmod.block;
 
 import java.util.List;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -70,7 +70,7 @@ public class BlockTMNLeaf1 extends BlockTMNLeaves {
 			this.field_150129_M[i] = new IIcon[leaftypes[i].length];
 
 			for (int j = 0; j < leaftypes[i].length; ++j) {
-				this.field_150129_M[i][j] = iconRegister.registerIcon(TooMuchNature.modid + ":" + leaftypes[i][j]);
+				this.field_150129_M[i][j] = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + leaftypes[i][j]);
 			}
 		}
 	}

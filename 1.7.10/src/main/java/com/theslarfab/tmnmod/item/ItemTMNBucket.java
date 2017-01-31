@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 import com.theslarfab.tmnmod.init.TMNItems;
 
@@ -24,7 +24,7 @@ public class ItemTMNBucket extends Item {
 	public ItemTMNBucket(Block block) {
 		this.maxStackSize = 1;
 		this.isFull = block;
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureMisc);
+		this.setCreativeTab(TooMuchNatventure.tabTMNMisc);
 	}
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {

@@ -5,7 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.tileentity.TileEntityEnderPiston;
 
 import net.minecraft.block.Block;
@@ -196,7 +196,7 @@ public class BlockEnderPistonMoving extends Block {
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_piston_top_normal");
+		this.blockIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "ender_piston_top_normal");
 	}
 
 	@Override

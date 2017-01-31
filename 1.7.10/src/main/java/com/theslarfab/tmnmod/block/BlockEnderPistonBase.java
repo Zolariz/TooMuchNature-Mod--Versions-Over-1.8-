@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.theslarfab.tmnmod.TooMuchNature;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.TooMuchNatventure;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderPiston;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 import com.theslarfab.tmnmod.tileentity.TileEntityEnderPiston;
@@ -84,21 +84,21 @@ public class BlockEnderPistonBase extends Block {
 
 	@SideOnly(Side.CLIENT)
 	public static IIcon getPistonBaseIcon(String icon) {
-		return icon == TooMuchNature.modid + ":" + "ender_piston_side" ? TMNBlocks.ender_piston_normal.blockIcon
-				: (icon == TooMuchNature.modid + ":" + "ender_piston_top_normal" ? TMNBlocks.ender_piston_normal.topIcon
-						: (icon == TooMuchNature.modid + ":" + "ender_piston_top_sticky"
+		return icon == TooMuchNatventure.modid + ":" + "ender_piston_side" ? TMNBlocks.ender_piston_normal.blockIcon
+				: (icon == TooMuchNatventure.modid + ":" + "ender_piston_top_normal" ? TMNBlocks.ender_piston_normal.topIcon
+						: (icon == TooMuchNatventure.modid + ":" + "ender_piston_top_sticky"
 								? TMNBlocks.ender_piston_sticky.topIcon
-								: (icon == TooMuchNature.modid + ":" + "ender_piston_inner"
+								: (icon == TooMuchNatventure.modid + ":" + "ender_piston_inner"
 										? TMNBlocks.ender_piston_normal.innerTopIcon : null)));
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_piston_side");
-		this.topIcon = iconRegister.registerIcon(this.isSticky ? TooMuchNature.modid + ":" + "ender_piston_top_sticky"
-				: TooMuchNature.modid + ":" + "ender_piston_top_normal");
-		this.innerTopIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_piston_inner");
-		this.bottomIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_piston_bottom");
+		this.blockIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "ender_piston_side");
+		this.topIcon = iconRegister.registerIcon(this.isSticky ? TooMuchNatventure.modid + ":" + "ender_piston_top_sticky"
+				: TooMuchNatventure.modid + ":" + "ender_piston_top_normal");
+		this.innerTopIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "ender_piston_inner");
+		this.bottomIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "ender_piston_bottom");
 	}
 
 	public boolean isOpaqueCube() {

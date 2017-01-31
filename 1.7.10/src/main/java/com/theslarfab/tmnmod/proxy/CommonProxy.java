@@ -17,9 +17,9 @@
 
 package com.theslarfab.tmnmod.proxy;
 
-public abstract class CommonProxy implements IProxy {
+public class CommonProxy implements IProxy {
 
-	public void registerRenders() {
+	public void init() {
 		
 	}
 }

@@ -20,7 +20,7 @@ package com.theslarfab.tmnmod.item;
 import java.util.Iterator;
 import java.util.List;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.entity.list.TMNEntityList;
 
 import cpw.mods.fml.relauncher.Side;
@@ -52,8 +52,8 @@ public class ItemTMNSpawnEgg extends Item {
 	public ItemTMNSpawnEgg() {
 		super();
 		setHasSubtypes(true);
-		setTextureName(TooMuchNature.modid + ":" + "spawn_egg");
-		setCreativeTab(TooMuchNature.tabTooMuchNatureMisc);
+		setTextureName(TooMuchNatventure.modid + ":" + "spawn_egg");
+		setCreativeTab(TooMuchNatventure.tabTMNMisc);
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class ItemTMNSpawnEgg extends Item {
 		String s = ("" + StatCollector.translateToLocal("item.tmn.spawn_egg.name")).trim();
 		String entityName = TMNEntityList.getStringFromID(stack.getItemDamage());
 		if (entityName != null) {
-			s = s + " " + StatCollector.translateToLocal("entity." + TooMuchNature.modid + "." + entityName + ".name");
+			s = s + " " + StatCollector.translateToLocal("entity." + TooMuchNatventure.modid + "." + entityName + ".name");
 		}
 		return s;
 	}

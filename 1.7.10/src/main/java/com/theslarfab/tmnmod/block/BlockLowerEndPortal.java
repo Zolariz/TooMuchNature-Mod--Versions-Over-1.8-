@@ -4,7 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -24,7 +24,7 @@ public class BlockLowerEndPortal extends BlockBreakable {
 	public static final int[][] field_150001_a = new int[][] { new int[0], { 3, 1 }, { 2, 0 } };
 
 	public BlockLowerEndPortal() {
-		super(TooMuchNature.modid + ":" + "lower_end_portal", Material.portal, false);
+		super(TooMuchNatventure.modid + ":" + "lower_end_portal", Material.portal, false);
 		this.setTickRandomly(true);
 	}
 

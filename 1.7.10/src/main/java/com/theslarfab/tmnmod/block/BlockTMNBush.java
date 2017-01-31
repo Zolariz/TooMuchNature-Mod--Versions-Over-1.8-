@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.block;
 
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -24,7 +24,7 @@ public class BlockTMNBush extends Block implements IPlantable {
 		this.setTickRandomly(true);
 		float f = 0.2F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 3.0F, 0.5F + f);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 	}
 
 	protected BlockTMNBush() {

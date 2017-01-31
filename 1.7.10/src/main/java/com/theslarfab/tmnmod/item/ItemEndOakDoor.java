@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.item;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -30,13 +30,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class ItemSpruceDoor extends Item {
+public class ItemEndOakDoor extends Item {
 	private Material doorMaterial;
 
-	public ItemSpruceDoor(Material p_i45334_1_) {
-		this.doorMaterial = p_i45334_1_;
+	public ItemEndOakDoor(Material material) {
+		this.doorMaterial = material;
 		this.maxStackSize = 1;
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 	}
 
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,
@@ -45,10 +44,10 @@ public class ItemSpruceDoor extends Item {
 			return false;
 		} else {
 			++y;
-			Block block = TMNBlocks.cherry_door_block;
+			Block block = TMNBlocks.end_oak_door;
 
 			if (this.doorMaterial == Material.wood) {
-				block = TMNBlocks.cherry_door_block;
+				block = TMNBlocks.end_oak_door;
 			}
 
 			if (player.canPlayerEdit(x, y, z, side, itemstack) && player.canPlayerEdit(x, y + 1, z, side, itemstack)) {
@@ -67,34 +66,32 @@ public class ItemSpruceDoor extends Item {
 		}
 	}
 
-	public static void placeDoorBlock(World par1World, int par2, int par3, int par4, int par5, Block par6Block) {
+	public static void placeDoorBlock(World world, int x, int y, int z, int side, Block block) {
 		byte b0 = 0;
 		byte b1 = 0;
 
-		if (par5 == 0) {
+		if (side == 0) {
 			b1 = 1;
 		}
 
-		if (par5 == 1) {
+		if (side == 1) {
 			b0 = -1;
 		}
 
-		if (par5 == 2) {
+		if (side == 2) {
 			b1 = -1;
 		}
 
-		if (par5 == 3) {
+		if (side == 3) {
 			b0 = 1;
 		}
 
-		int i1 = (par1World.getBlock(par2 - b0, par3, par4 - b1).isNormalCube() ? 1 : 0)
-				+ (par1World.getBlock(par2 - b0, par3 + 1, par4 - b1).isNormalCube() ? 1 : 0);
-		int j1 = (par1World.getBlock(par2 + b0, par3, par4 + b1).isNormalCube() ? 1 : 0)
-				+ (par1World.getBlock(par2 + b0, par3 + 1, par4 + b1).isNormalCube() ? 1 : 0);
-		boolean flag = par1World.getBlock(par2 - b0, par3, par4 - b1) == par6Block
-				|| par1World.getBlock(par2 - b0, par3 + 1, par4 - b1) == par6Block;
-		boolean flag1 = par1World.getBlock(par2 + b0, par3, par4 + b1) == par6Block
-				|| par1World.getBlock(par2 + b0, par3 + 1, par4 + b1) == par6Block;
+		int i1 = (world.getBlock(x - b0, y, z - b1).isNormalCube() ? 1 : 0)
+				+ (world.getBlock(x - b0, y + 1, z - b1).isNormalCube() ? 1 : 0);
+		int j1 = (world.getBlock(x + b0, y, z + b1).isNormalCube() ? 1 : 0)
+				+ (world.getBlock(x + b0, y + 1, z + b1).isNormalCube() ? 1 : 0);
+		boolean flag = world.getBlock(x - b0, y, z - b1) == block || world.getBlock(x - b0, y + 1, z - b1) == block;
+		boolean flag1 = world.getBlock(x + b0, y, z + b1) == block || world.getBlock(x + b0, y + 1, z + b1) == block;
 		boolean flag2 = false;
 
 		if (flag && !flag1) {
@@ -103,9 +100,9 @@ public class ItemSpruceDoor extends Item {
 			flag2 = true;
 		}
 
-		par1World.setBlock(par2, par3, par4, par6Block, par5, 2);
-		par1World.setBlock(par2, par3 + 1, par4, par6Block, 8 | (flag2 ? 1 : 0), 2);
-		par1World.notifyBlocksOfNeighborChange(par2, par3, par4, par6Block);
-		par1World.notifyBlocksOfNeighborChange(par2, par3 + 1, par4, par6Block);
+		world.setBlock(x, y, z, block, side, 2);
+		world.setBlock(x, y + 1, z, block, 8 | (flag2 ? 1 : 0), 2);
+		world.notifyBlocksOfNeighborChange(x, y, z, block);
+		world.notifyBlocksOfNeighborChange(x, y + 1, z, block);
 	}
 }

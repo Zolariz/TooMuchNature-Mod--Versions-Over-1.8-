@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.client.renderer.item;
 
 import org.lwjgl.opengl.GL11;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.client.model.item.ModelItemEnderPistol;
 
 import net.minecraft.client.Minecraft;
@@ -19,7 +19,7 @@ public class ItemRenderEnderPistol implements IItemRenderer {
 	private ModelItemEnderPistol ender_pistol;
 
 	public static ResourceLocation texture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/model/item/ender_pistol.png");
+			TooMuchNatventure.modid + ":" + "textures/model/item/ender_pistol.png");
 
 	public ItemRenderEnderPistol() {
 		ender_pistol = new ModelItemEnderPistol();

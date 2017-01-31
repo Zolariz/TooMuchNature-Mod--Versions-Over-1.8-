@@ -4,8 +4,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.TooMuchNatventure;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 import com.theslarfab.tmnmod.dispenser.BehaviorEnderDefaultDispenseItem;
 
 import net.minecraft.block.Block;
@@ -47,7 +47,7 @@ public class BlockEnderDispenser extends BlockContainer {
 
 	public BlockEnderDispenser() {
 		super(Material.rock);
-		this.setCreativeTab(TooMuchNature.tabEnderstone);
+		this.setCreativeTab(TooMuchNatventure.tabEnderstone);
 	}
 
 	/**
@@ -111,8 +111,8 @@ public class BlockEnderDispenser extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "end_furnace_side");
-		this.topIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "end_furnace_top");
+		this.blockIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "end_furnace_side");
+		this.topIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "end_furnace_top");
 		this.horizontalIcon = iconRegister.registerIcon(this.getTextureName() + "_front_horizontal");
 		this.verticalIcon = iconRegister.registerIcon(this.getTextureName() + "_front_vertical");
 	}

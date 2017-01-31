@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.block;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.relauncher.Side;
@@ -32,9 +32,9 @@ public class BlockEnderWorkbench extends Block {
 	}
 
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_workbench_side");
-		this.topIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_workbench_top");
-		this.frontIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "ender_workbench_front");
+		this.blockIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "ender_workbench_side");
+		this.topIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "ender_workbench_top");
+		this.frontIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "ender_workbench_front");
 	}
 
 	/*

@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.entity;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNItems;
 
 import net.minecraft.block.Block;
@@ -64,15 +64,15 @@ public class EntityKangaroo extends EntityAnimal {
 	}
 
 	protected String getLivingSound() {
-		return TooMuchNature.modid + ":" + "kangaroosay";
+		return TooMuchNatventure.modid + ":" + "kangaroosay";
 	}
 
 	protected String getHurtSound() {
-		return TooMuchNature.modid + ":" + "kangaroohurt";
+		return TooMuchNatventure.modid + ":" + "kangaroohurt";
 	}
 
 	protected String getDeathSound() {
-		return TooMuchNature.modid + ":" + "kangaroodeath";
+		return TooMuchNatventure.modid + ":" + "kangaroodeath";
 	}
 
 	protected void func_145780_a(int x, int y, int z, Block block) {

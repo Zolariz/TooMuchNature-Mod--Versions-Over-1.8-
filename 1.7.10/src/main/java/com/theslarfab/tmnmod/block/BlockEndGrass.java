@@ -5,7 +5,7 @@ import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.relauncher.Side;
@@ -30,7 +30,7 @@ public class BlockEndGrass extends Block implements IGrowable {
 	public BlockEndGrass(Material material) {
 		super(Material.grass);
 		this.setTickRandomly(true);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		this.setHarvestLevel("shovel", 0);
 	}
 

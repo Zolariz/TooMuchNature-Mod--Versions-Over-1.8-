@@ -19,7 +19,7 @@ package com.theslarfab.tmnmod.world.gen.feature;
 
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.block.BlockTMNSapling1;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 

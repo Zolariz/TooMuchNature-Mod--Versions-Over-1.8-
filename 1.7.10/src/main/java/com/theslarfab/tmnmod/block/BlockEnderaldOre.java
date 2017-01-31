@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.block;
 
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNItems;
 
 import net.minecraft.block.Block;
@@ -18,7 +18,7 @@ public class BlockEnderaldOre extends Block {
 	
 	public BlockEnderaldOre(Material material) {
 		super(Material.rock);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		this.setHarvestLevel("pickaxe", 2);
 	}
 

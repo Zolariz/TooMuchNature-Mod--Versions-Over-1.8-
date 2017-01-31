@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -26,8 +26,8 @@ import net.minecraftforge.common.IShearable;
 
 public class BlockEnderTallGrass extends BlockEnderBush implements IGrowable, IShearable {
 
-	private static final String[] tallgrass = new String[] { (TooMuchNature.modid + ":" + "ender_deadbush"),
-			(TooMuchNature.modid + ":" + "ender_tallgrass"), (TooMuchNature.modid + ":" + "ender_fern") };
+	private static final String[] tallgrass = new String[] { (TooMuchNatventure.modid + ":" + "ender_deadbush"),
+			(TooMuchNatventure.modid + ":" + "ender_tallgrass"), (TooMuchNatventure.modid + ":" + "ender_fern") };
 	@SideOnly(Side.CLIENT)
 	private IIcon[] tallgrassIcon;
 

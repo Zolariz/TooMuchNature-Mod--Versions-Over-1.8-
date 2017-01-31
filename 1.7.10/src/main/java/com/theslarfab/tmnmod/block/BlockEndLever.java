@@ -14,14 +14,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
-import com.theslarfab.tmnmod.TooMuchNature;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.TooMuchNatventure;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 
 public class BlockEndLever extends Block {
 
 	public BlockEndLever() {
 		super(Material.circuits);
-		this.setCreativeTab(TooMuchNature.tabEnderstone);
+		this.setCreativeTab(TooMuchNatventure.tabEnderstone);
 	}
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {

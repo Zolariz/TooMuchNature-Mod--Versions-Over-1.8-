@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.block;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -35,7 +35,7 @@ public class BlockCherryStairs extends BlockStairs {
 		this.setResistance(0.3F);
 		this.setStepSound(block.stepSound);
 		this.setLightOpacity(255);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		this.useNeighborBrightness = true;
 	}
 	

@@ -9,14 +9,14 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.entity.monster.EntityEnderSlime;
 
 @SideOnly(Side.CLIENT)
 public class RenderEnderSlime extends RenderLiving {
 
 	private static final ResourceLocation slimeTextures = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/entity/slime/ender_slime.png");
+			TooMuchNatventure.modid + ":" + "textures/entity/slime/ender_slime.png");
 
 	private ModelBase scaleAmount;
 

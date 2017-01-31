@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.container;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.crafting.EnderWorkbenchCraftingManager;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 

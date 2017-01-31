@@ -20,7 +20,7 @@ package com.theslarfab.tmnmod.proxy;
 public class ServerProxy extends CommonProxy implements IProxy {
 
 	@Override
-	public void registerRenders() {
+	public void init() {
 		
 	}
 }

@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.item;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -36,7 +36,6 @@ public class ItemBirchDoor extends Item {
 	public ItemBirchDoor(Material p_i45334_1_) {
 		this.doorMaterial = p_i45334_1_;
 		this.maxStackSize = 1;
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
 	}
 
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,

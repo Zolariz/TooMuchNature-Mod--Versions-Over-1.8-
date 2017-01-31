@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.item;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.entity.projectile.EntityEnderGunBullet;
 
 import cpw.mods.fml.relauncher.Side;
@@ -25,7 +25,7 @@ public class ItemEnderGun extends Item {
 		super();
 		setMaxDamage(0);
 		maxStackSize = 1;
-		setCreativeTab(TooMuchNature.tabTooMuchNatureMisc);
+		setCreativeTab(TooMuchNatventure.tabTMNMisc);
 	}
 	
 	@SideOnly(Side.CLIENT)

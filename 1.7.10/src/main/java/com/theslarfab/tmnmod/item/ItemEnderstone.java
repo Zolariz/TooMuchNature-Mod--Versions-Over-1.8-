@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.item;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 public class ItemEnderstone extends Item {
 
 	public ItemEnderstone() {
-		this.setCreativeTab(TooMuchNature.tabEnderstone);
+		this.setCreativeTab(TooMuchNatventure.tabEnderstone);
 	}
 
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,

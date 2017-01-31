@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.world.biome;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.gui.GuiRegistry;
 
 public class BiomeIDRegistry {

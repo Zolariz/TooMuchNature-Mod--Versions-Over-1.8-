@@ -5,8 +5,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Iterator;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.TooMuchNatventure;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 import com.theslarfab.tmnmod.tileentity.TileEntityEndWoodChest;
 
 import net.minecraft.block.Block;
@@ -39,7 +39,7 @@ public class BlockEndWoodChest extends BlockContainer {
 	public BlockEndWoodChest(int p_i45397_1_) {
 		super(Material.wood);
 		this.field_149956_a = p_i45397_1_;
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 	}
 
@@ -466,6 +466,6 @@ public class BlockEndWoodChest extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon(TooMuchNature.modid + ":" + "planks_end_oak");
+		this.blockIcon = iconRegister.registerIcon(TooMuchNatventure.modid + ":" + "planks_end_oak");
 	}
 }

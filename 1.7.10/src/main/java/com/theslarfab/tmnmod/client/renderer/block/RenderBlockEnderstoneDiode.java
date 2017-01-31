@@ -1,7 +1,5 @@
 package com.theslarfab.tmnmod.client.renderer.block;
 
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
-
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;

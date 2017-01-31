@@ -2,9 +2,8 @@ package com.theslarfab.tmnmod.client.renderer.block;
 
 import org.lwjgl.opengl.GL11;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.block.BlockEndWoodTable;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;

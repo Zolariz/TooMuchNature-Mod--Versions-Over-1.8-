@@ -4,7 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -528,16 +528,16 @@ public abstract class BlockEnderWaterLiquid extends Block {
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister p_149651_1_) {
 		if (this.blockMaterial == Material.water) {
-			this.iconLiquid = new IIcon[] { p_149651_1_.registerIcon(TooMuchNature.modid + ":" + "ender_water_still"),
-					p_149651_1_.registerIcon(TooMuchNature.modid + ":" + "ender_water_flow") };
+			this.iconLiquid = new IIcon[] { p_149651_1_.registerIcon(TooMuchNatventure.modid + ":" + "ender_water_still"),
+					p_149651_1_.registerIcon(TooMuchNatventure.modid + ":" + "ender_water_flow") };
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public static IIcon getLiquidIcon(String icon) {
-		return icon == (TooMuchNature.modid + ":" + "ender_water_flow")
+		return icon == (TooMuchNatventure.modid + ":" + "ender_water_flow")
 				? TMNBlocks.ender_water_dynamic.iconLiquid[1]
-				: icon == (TooMuchNature.modid + ":" + "ender_water_still")
+				: icon == (TooMuchNatventure.modid + ":" + "ender_water_still")
 						? TMNBlocks.ender_water_static.iconLiquid[0] : null;
 	}
 }

@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.block;
 
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.relauncher.Side;
@@ -31,7 +31,7 @@ public class BlockEnderstoneLamp extends Block {
 
 	public void registerBlockIcons(IIconRegister iconRegister) {
 		this.blockIcon = iconRegister
-				.registerIcon(TooMuchNature.modid + ":" + (this.isOn ? "enderstone_lamp_on" : "enderstone_lamp_off"));
+				.registerIcon(TooMuchNatventure.modid + ":" + (this.isOn ? "enderstone_lamp_on" : "enderstone_lamp_off"));
 	}
 
 	public void onBlockAdded(World world, int x, int y, int z) {

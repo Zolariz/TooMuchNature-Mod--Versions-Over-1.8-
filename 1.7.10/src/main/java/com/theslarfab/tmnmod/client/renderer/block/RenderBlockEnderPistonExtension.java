@@ -1,9 +1,8 @@
 package com.theslarfab.tmnmod.client.renderer.block;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.block.BlockEnderPistonBase;
 import com.theslarfab.tmnmod.block.BlockEnderPistonExtension;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
@@ -167,7 +166,7 @@ public class RenderBlockEnderPistonExtension implements ISimpleBlockRenderingHan
 
 	public void renderPistonRodUD(RenderBlocks renderer, double p_147763_1_, double p_147763_3_, double p_147763_5_,
 			double p_147763_7_, double p_147763_9_, double p_147763_11_, float p_147763_13_, double p_147763_14_) {
-		IIcon iicon = BlockEnderPistonBase.getPistonBaseIcon(TooMuchNature.modid + ":" + "ender_piston_side");
+		IIcon iicon = BlockEnderPistonBase.getPistonBaseIcon(TooMuchNatventure.modid + ":" + "ender_piston_side");
 
 		if (renderer.hasOverrideBlockTexture()) {
 			iicon = renderer.overrideBlockTexture;
@@ -187,7 +186,7 @@ public class RenderBlockEnderPistonExtension implements ISimpleBlockRenderingHan
 
 	public void renderPistonRodSN(RenderBlocks renderer, double p_147789_1_, double p_147789_3_, double p_147789_5_,
 			double p_147789_7_, double p_147789_9_, double p_147789_11_, float p_147789_13_, double p_147789_14_) {
-		IIcon iicon = BlockEnderPistonBase.getPistonBaseIcon(TooMuchNature.modid + ":" + "ender_piston_side");
+		IIcon iicon = BlockEnderPistonBase.getPistonBaseIcon(TooMuchNatventure.modid + ":" + "ender_piston_side");
 
 		if (renderer.hasOverrideBlockTexture()) {
 			iicon = renderer.overrideBlockTexture;
@@ -207,7 +206,7 @@ public class RenderBlockEnderPistonExtension implements ISimpleBlockRenderingHan
 
 	public void renderPistonRodEW(RenderBlocks renderer, double p_147738_1_, double p_147738_3_, double p_147738_5_,
 			double p_147738_7_, double p_147738_9_, double p_147738_11_, float p_147738_13_, double p_147738_14_) {
-		IIcon iicon = BlockEnderPistonBase.getPistonBaseIcon(TooMuchNature.modid + ":" + "ender_piston_side");
+		IIcon iicon = BlockEnderPistonBase.getPistonBaseIcon(TooMuchNatventure.modid + ":" + "ender_piston_side");
 
 		if (renderer.hasOverrideBlockTexture()) {
 			iicon = renderer.overrideBlockTexture;

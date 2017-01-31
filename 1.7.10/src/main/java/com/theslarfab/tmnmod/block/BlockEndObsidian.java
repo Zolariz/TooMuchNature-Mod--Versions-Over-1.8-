@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.block;
 
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.BlockStone;
@@ -16,7 +16,7 @@ public class BlockEndObsidian extends BlockStone {
 
 	public BlockEndObsidian(Material material) {
 		super();
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		this.setHarvestLevel("pickaxe", 3);
 	}
 

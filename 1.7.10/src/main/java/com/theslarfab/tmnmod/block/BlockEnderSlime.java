@@ -1,7 +1,7 @@
 package com.theslarfab.tmnmod.block;
 
-import com.theslarfab.tmnmod.TooMuchNature;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.TooMuchNatventure;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -19,7 +19,7 @@ public class BlockEnderSlime extends BlockBreakable {
 	private double maxHeight = 0.0D;
 
 	public BlockEnderSlime() {
-		super(TooMuchNature.modid + ":" + "ender_slime", Material.clay, false);
+		super(TooMuchNatventure.modid + ":" + "ender_slime", Material.clay, false);
 		this.slipperiness = 0.8F;
 	}
 

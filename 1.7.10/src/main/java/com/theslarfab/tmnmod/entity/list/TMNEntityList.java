@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
@@ -84,7 +84,7 @@ public class TMNEntityList {
 		} else if (!IDtoClassMapping.containsKey(entitiesAdded)) {
 			return entitiesAdded++;
 		} else {
-			TooMuchNature.logger.warn(
+			TooMuchNatventure.logger.warn(
 					String.format("ID Conflict: Entity ID %d already taken while getting ID for entity of class %s",
 							entitiesAdded, oclass));
 			while (IDtoClassMapping.containsKey(entitiesAdded)) {
@@ -110,14 +110,14 @@ public class TMNEntityList {
 			try {
 				entity.readFromNBT(compound);
 			} catch (Exception e) {
-				TooMuchNature.logger.error(String.format(
+				TooMuchNatventure.logger.error(String.format(
 						"An Entity %s has thrown an exception during loading, its state cannot be restored. Report this to the mod author",
 						compound.getString("id")));
 				e.printStackTrace();
 				entity = null;
 			}
 		} else {
-			TooMuchNature.logger.warn("Skipping Entity with id " + compound.getString("id"));
+			TooMuchNatventure.logger.warn("Skipping Entity with id " + compound.getString("id"));
 		}
 
 		return entity;

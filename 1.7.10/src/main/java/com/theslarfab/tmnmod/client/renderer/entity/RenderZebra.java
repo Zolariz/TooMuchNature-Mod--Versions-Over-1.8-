@@ -17,7 +17,7 @@
 
 package com.theslarfab.tmnmod.client.renderer.entity;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.client.model.ModelZebra;
 import com.theslarfab.tmnmod.entity.EntityZebra;
 
@@ -31,7 +31,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderZebra extends RenderLiving {//RenderArrow
 
 	private static final ResourceLocation texture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/entity/horse/zebra.png");
+			TooMuchNatventure.modid + ":" + "textures/entity/horse/zebra.png");
 
 	protected ModelZebra modelEntity;
 

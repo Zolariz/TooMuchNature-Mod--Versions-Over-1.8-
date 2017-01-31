@@ -5,8 +5,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.TooMuchNatventure;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -81,12 +81,12 @@ public class BlockEnderPistonExtension extends Block {
 		int k = getDirectionMeta(meta);
 		return side == k ? (this.pistonTexture != null ? this.pistonTexture
 				: ((meta & 8) != 0
-						? BlockEnderPistonBase.getPistonBaseIcon(TooMuchNature.modid + ":" + "ender_piston_top_sticky")
+						? BlockEnderPistonBase.getPistonBaseIcon(TooMuchNatventure.modid + ":" + "ender_piston_top_sticky")
 						: BlockEnderPistonBase
-								.getPistonBaseIcon(TooMuchNature.modid + ":" + "ender_piston_top_normal")))
+								.getPistonBaseIcon(TooMuchNatventure.modid + ":" + "ender_piston_top_normal")))
 				: (k < 6 && side == Facing.oppositeSide[k]
-						? BlockEnderPistonBase.getPistonBaseIcon(TooMuchNature.modid + ":" + "ender_piston_top_normal")
-						: BlockEnderPistonBase.getPistonBaseIcon(TooMuchNature.modid + ":" + "ender_piston_side"));
+						? BlockEnderPistonBase.getPistonBaseIcon(TooMuchNatventure.modid + ":" + "ender_piston_top_normal")
+						: BlockEnderPistonBase.getPistonBaseIcon(TooMuchNatventure.modid + ":" + "ender_piston_side"));
 	}
 
 	@SideOnly(Side.CLIENT)

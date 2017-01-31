@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.gui;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 

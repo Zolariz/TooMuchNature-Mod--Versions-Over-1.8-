@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.block;
 
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNItems;
 
 import cpw.mods.fml.relauncher.Side;
@@ -28,7 +28,7 @@ public class BlockCherryCrops extends BlockCrops {
 
 		for (int i = 0; i < this.iconArray.length; i++) {
 			this.iconArray[i] = iconRegister
-					.registerIcon(TooMuchNature.modid + ":" + this.getUnlocalizedName().substring(5) + "_stage_" + i);
+					.registerIcon(TooMuchNatventure.modid + ":" + this.getUnlocalizedName().substring(5) + "_stage_" + i);
 		}
 	}
 

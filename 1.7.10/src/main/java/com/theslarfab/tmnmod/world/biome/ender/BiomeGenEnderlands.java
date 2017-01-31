@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.world.biome.ender;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.world.biome.BiomeGenBase;

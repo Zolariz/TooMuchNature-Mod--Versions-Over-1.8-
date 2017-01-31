@@ -2,7 +2,7 @@ package com.theslarfab.tmnmod.client.renderer.block.inventory;
 
 import org.lwjgl.opengl.GL11;
 
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
+import com.theslarfab.tmnmod.client.renderer.block.BlockRenderingIDs;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;

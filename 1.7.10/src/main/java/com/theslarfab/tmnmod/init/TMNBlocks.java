@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.init;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.block.BlockCherryCrops;
 import com.theslarfab.tmnmod.block.BlockCherryDoor;
 import com.theslarfab.tmnmod.block.BlockCherryFence;
@@ -36,6 +36,7 @@ import com.theslarfab.tmnmod.block.BlockEnderWaterDynamic;
 import com.theslarfab.tmnmod.block.BlockEnderWaterLiquid;
 import com.theslarfab.tmnmod.block.BlockEnderWaterStatic;
 import com.theslarfab.tmnmod.block.BlockEnderWorkbench;
+import com.theslarfab.tmnmod.block.BlockEndDoor;
 import com.theslarfab.tmnmod.block.BlockEnderaldOre;
 import com.theslarfab.tmnmod.block.BlockEnderstoneComparator;
 import com.theslarfab.tmnmod.block.BlockEnderstoneLamp;
@@ -96,25 +97,6 @@ public class TMNBlocks {
 	public static Block cherry_fence;
 	public static Block cherry_fence_gate;
 	public static Block cherry_door_block;
-
-	// Fence | Fence Gate Blocks
-	public static Block spruce_fence;
-	public static Block birch_fence;
-	public static Block jungle_fence;
-	public static Block acacia_fence;
-	public static Block dark_oak_fence;
-	public static Block spruce_fence_gate;
-	public static Block birch_fence_gate;
-	public static Block jungle_fence_gate;
-	public static Block acacia_fence_gate;
-	public static Block dark_oak_fence_gate;
-
-	// Door Blocks
-	public static Block spruce_door;
-	public static Block birch_door;
-	public static Block jungle_door;
-	public static Block acacia_door;
-	public static Block dark_oak_door;
 
 	// Crop Blocks
 	public static Block crops_cherry;
@@ -188,12 +170,23 @@ public class TMNBlocks {
 	// Bouncy Block
 	public static Block ender_slime_block;
 
+	// Door Blocks
+	public static Block end_oak_door;
+	public static Block dark_end_oak_door;
+	public static Block light_end_oak_door;
+
+	public static Block enderald_door;
+
+	// Soil Blocks
+	public static Block end_farmland;
+
 	public static void init() {
 		TMNBlocks.initBlocks();
 		TMNBlocks.registerBlocks();
 	}
 
 	public static final Block.SoundType soundTypeSlime = new Block.SoundType("slime", 1.0F, 1.0F) {
+
 		public String getBreakSound() {
 			return "mob.slime.big";
 		}
@@ -210,50 +203,50 @@ public class TMNBlocks {
 	public static void initBlocks() {
 		// Trees
 		cherry_log = new BlockCherryLog(Material.wood).setBlockName("log_cherry")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "log");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "log");
 		cherry_leaf = new BlockCherryLeaf(Material.leaves).setBlockName("cherry_leaf")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "leaves");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "leaves");
 		cherry_sapling = new BlockCherrySapling().setBlockName("cherry_sapling")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGrass)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "sapling");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks).setStepSound(Block.soundTypeGrass)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "sapling");
 
 		tmn_log_1 = new BlockTMNLog1(Material.wood).setBlockName("tmn_log_1")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "log");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "log");
 		tmn_leaf_1 = new BlockTMNLeaf1(Material.leaves).setBlockName("tmn_leaf_1")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "leaves");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "leaves");
 		tmn_sapling_1 = new BlockTMNSapling1().setBlockName("tmn_sapling_1")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGrass)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "sapling");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks).setStepSound(Block.soundTypeGrass)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "sapling");
 
 		// Wood Blocks
 		cherry_planks = new BlockCherryWood(Material.wood).setBlockName("cherry_planks")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "planks").setStepSound(Block.soundTypeWood);
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "planks").setStepSound(Block.soundTypeWood);
 		cherry_double_slab = new BlockCherrySlab(Material.wood, true).setBlockName("double_cherry_slab")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "planks").setStepSound(Block.soundTypeWood);
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "planks").setStepSound(Block.soundTypeWood);
 		cherry_slab = new BlockCherrySlab(Material.wood, false).setBlockName("cherry_slab")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "planks").setStepSound(Block.soundTypeWood);
-		cherry_fence = new BlockCherryFence(TooMuchNature.modid + ":" + "planks_cherry", Material.wood)
-				.setHardness(2.0F).setResistance(5.0F).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "planks").setStepSound(Block.soundTypeWood);
+		cherry_fence = new BlockCherryFence(TooMuchNatventure.modid + ":" + "planks_cherry", Material.wood)
+				.setHardness(2.0F).setResistance(5.0F).setCreativeTab(TooMuchNatventure.tabTMNBlocks)
 				.setStepSound(Block.soundTypeWood).setBlockName("cherry_fence");
 		cherry_fence_gate = new BlockCherryFenceGate().setHardness(2.0F).setResistance(5.0F)
-				.setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockName("cherry_fence_gate").setBlockTextureName(TooMuchNature.modid + ":" + "planks");
+				.setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockName("cherry_fence_gate").setBlockTextureName(TooMuchNatventure.modid + ":" + "planks");
 		cherry_stairs = new BlockCherryStairs(cherry_planks, 0).setBlockName("cherry_stairs")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "planks");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "planks");
 
 		wood_table = new BlockWoodTable(Material.wood).setBlockName("wood_table").setBlockTextureName("planks")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 
 		// Door Blocks
 		cherry_door_block = new BlockCherryDoor(Material.wood).setBlockName("door_cherry")
 				.setStepSound(Block.soundTypeWood).setHardness(3.0F)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "door_cherry");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "door_cherry");
 
 		// Crops
 		crops_cherry = new BlockCherryCrops().setBlockName("cherries").setStepSound(Block.soundTypeGrass);
@@ -261,130 +254,137 @@ public class TMNBlocks {
 		// Dimension-Related Blocks
 		cherry_grass = new BlockCherryGrass(Material.grass).setBlockName("cherry_flower_grass").setHardness(0.6F)
 				.setStepSound(Block.soundTypeGrass)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "cherry_flower_grass");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "cherry_flower_grass");
 		end_obsidian = new BlockEndObsidian(Material.rock).setBlockName("end_obsidian").setHardness(50.0F)
 				.setResistance(2000.0F).setStepSound(Block.soundTypePiston)
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_obsidian");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_obsidian");
 		end_stone_smooth = new BlockSmoothEndStone().setBlockName("smooth_end_stone").setHardness(1.5F)
-				.setResistance(10.0F).setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_smooth");
+				.setResistance(10.0F).setBlockTextureName(TooMuchNatventure.modid + ":" + "end_stone_smooth");
 		end_fire = (BlockEndFire) new BlockEndFire().setBlockName("end_fire").setLightLevel(1.0F)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_fire");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_fire");
 		lower_end_portal = (BlockLowerEndPortal) new BlockLowerEndPortal().setBlockName("lower_end_portal")
 				.setBlockUnbreakable().setLightLevel(0.75F).setStepSound(Block.soundTypeGlass)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "lower_end_portal");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "lower_end_portal");
 		end_grass = new BlockEndGrass(Material.grass).setBlockName("end_grass").setHardness(0.6F)
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGrass)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_grass");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks).setStepSound(Block.soundTypeGrass)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_grass");
 		end_dirt = new BlockEndDirt(Material.ground).setBlockName("end_dirt").setHardness(0.5F)
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(Block.soundTypeGravel)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_dirt");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks).setStepSound(Block.soundTypeGravel)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_dirt");
 		end_stone_double_slab = new BlockEndStoneSlab(true).setBlockName("end_stone_double_slab").setHardness(1.5F)
-				.setResistance(10.0F).setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_smooth_slab");
+				.setResistance(10.0F).setBlockTextureName(TooMuchNatventure.modid + ":" + "end_stone_smooth_slab");
 		end_stone_slab = new BlockEndStoneSlab(false).setBlockName("end_stone_slab").setHardness(1.5F)
-				.setResistance(10.0F).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_smooth_slab");
+				.setResistance(10.0F).setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_stone_smooth_slab");
 		end_stone_bricks = new BlockEndStoneBrick().setBlockName("end_stone_brick").setHardness(1.5F)
-				.setResistance(10.0F).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_bricks");
+				.setResistance(10.0F).setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_stone_bricks");
 		end_stone_brick_stairs = new BlockEndStoneBrickStairs(end_stone_bricks, 0)
 				.setBlockName("end_stone_brick_stairs")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_stone_bricks");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_stone_bricks");
 		end_wood_table = new BlockEndWoodTable(Material.wood).setBlockName("end_wood_table")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "planks");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "planks");
 		end_wood_planks = new BlockEndWood(Material.wood).setBlockName("end_wood_planks")
-				.setStepSound(Block.soundTypeWood).setBlockTextureName(TooMuchNature.modid + ":" + "planks");
+				.setStepSound(Block.soundTypeWood).setBlockTextureName(TooMuchNatventure.modid + ":" + "planks");
 		end_dirt_path = new BlockEndDirtPath().setBlockName("end_dirt_path").setStepSound(Block.soundTypeGravel)
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_dirt_path");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_dirt_path");
 
 		// Blocks
 		enderald_block = new BlockCompressed(MapColor.cyanColor).setBlockName("enderald_block").setHardness(5.0F)
-				.setResistance(10.0F).setStepSound(Block.soundTypeMetal)
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderald_block");
+				.setResistance(10.0F).setStepSound(Block.soundTypeMetal).setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderald_block");
 
 		enderald_ore = new BlockEnderaldOre(Material.rock).setBlockName("enderald_ore").setHardness(3.0F)
-				.setResistance(5.0F).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderald_ore");
+				.setResistance(5.0F).setCreativeTab(TooMuchNatventure.tabTMNBlocks)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderald_ore");
 
 		// Liquid Blocks
 		ender_water_dynamic = (BlockEnderWaterLiquid) new BlockEnderWaterDynamic(Material.water)
-				.setBlockName("ender_water_flow").setBlockTextureName(TooMuchNature.modid + ":" + "ender_water_flow");
+				.setBlockName("ender_water_flow")
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "ender_water_flow");
 		ender_water_static = (BlockEnderWaterLiquid) new BlockEnderWaterStatic(Material.water)
-				.setBlockName("ender_water_still").setBlockTextureName(TooMuchNature.modid + ":" + "ender_water_still");
+				.setBlockName("ender_water_still")
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "ender_water_still");
 
 		// Circuit Blocks
 		enderstone_wire = (BlockEnderstoneWire) new BlockEnderstoneWire().setBlockName("enderstone_wire")
 				.setBlockTextureName("redstone_dust").setHardness(0.0F).setResistance(0.0F);
 		enderstone_repeater_unpowered = (BlockEnderstoneRepeater) new BlockEnderstoneRepeater(false)
 				.setBlockName("enderstone_repeater_unlit").setStepSound(Block.soundTypeWood)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_repeater_off");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_repeater_off");
 		enderstone_repeater_powered = (BlockEnderstoneRepeater) new BlockEnderstoneRepeater(true)
 				.setBlockName("enderstone_repeater_lit").setStepSound(Block.soundTypeWood)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_repeater_on");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_repeater_on");
 		enderstone_comparator_unpowered = (BlockEnderstoneComparator) new BlockEnderstoneComparator(false)
 				.setBlockName("enderstone_comparator_unlit").setStepSound(Block.soundTypeWood)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_comparator_off");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_comparator_off");
 		enderstone_comparator_powered = (BlockEnderstoneComparator) new BlockEnderstoneComparator(true)
 				.setBlockName("enderstone_comparator_lit").setStepSound(Block.soundTypeWood)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_comparator_on");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_comparator_on");
 		unlit_enderstone_torch = new BlockEnderstoneTorch(false).setBlockName("enderstone_torch_unlit")
 				.setLightLevel(0.0F).setStepSound(Block.soundTypeWood)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_torch_off");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_torch_off");
 		lit_enderstone_torch = new BlockEnderstoneTorch(true).setBlockName("enderstone_torch_lit").setLightLevel(0.5F)
-				.setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNature.tabEnderstone)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_torch_on");
+				.setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNatventure.tabEnderstone)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_torch_on");
 		end_lever = new BlockEndLever().setBlockName("end_lever").setHardness(0.5F).setStepSound(Block.soundTypeWood)
-				.setCreativeTab(TooMuchNature.tabEnderstone)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "end_lever");
+				.setCreativeTab(TooMuchNatventure.tabEnderstone)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "end_lever");
 
 		// Container Blocks
 		end_wood_chest = (BlockEndWoodChest) new BlockEndWoodChest(0).setBlockName("end_wood_chest")
-				.setStepSound(Block.soundTypeWood).setBlockTextureName(TooMuchNature.modid + ":" + "planks_end_oak");
+				.setStepSound(Block.soundTypeWood)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "planks_end_oak");
 		ender_workbench = new BlockEnderWorkbench().setBlockName("ender_workbench").setStepSound(Block.soundTypeWood)
-				.setHardness(2.5F).setStepSound(Block.soundTypeWood)
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+				.setHardness(2.5F).setStepSound(Block.soundTypeWood).setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 
 		// Mechanical Blocks
 		ender_piston_sticky = (BlockEnderPistonBase) new BlockEnderPistonBase(true).setBlockName("sticky_ender_piston")
-				.setStepSound(Block.soundTypePiston).setCreativeTab(TooMuchNature.tabEnderstone);
+				.setStepSound(Block.soundTypePiston).setCreativeTab(TooMuchNatventure.tabEnderstone);
 		ender_piston_normal = (BlockEnderPistonBase) new BlockEnderPistonBase(false).setBlockName("ender_piston")
-				.setStepSound(Block.soundTypePiston).setCreativeTab(TooMuchNature.tabEnderstone);
+				.setStepSound(Block.soundTypePiston).setCreativeTab(TooMuchNatventure.tabEnderstone);
 		ender_piston_head = (BlockEnderPistonExtension) new BlockEnderPistonExtension()
 				.setBlockName("ender_piston_head").setStepSound(Block.soundTypePiston);
 		ender_piston_extension = (BlockEnderPistonMoving) new BlockEnderPistonMoving()
 				.setBlockName("ender_piston_extension").setStepSound(Block.soundTypePiston);
 
 		ender_dispenser = new BlockEnderDispenser().setBlockName("ender_dispenser")
-				.setCreativeTab(TooMuchNature.tabEnderstone).setHardness(3.0F).setResistance(5.0F)
-				.setStepSound(Block.soundTypePiston).setBlockTextureName(TooMuchNature.modid + ":" + "ender_dispenser");
+				.setCreativeTab(TooMuchNatventure.tabEnderstone).setHardness(3.0F).setResistance(5.0F)
+				.setStepSound(Block.soundTypePiston)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "ender_dispenser");
 
 		// Power Provider Block
 		enderstone_block = new BlockCompressedPowered(MapColor.cyanColor).setBlockName("enderstone_block")
-				.setCreativeTab(TooMuchNature.tabEnderstone).setHardness(5.0F).setResistance(10.0F)
-				.setStepSound(Block.soundTypeMetal).setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_block");
+				.setCreativeTab(TooMuchNatventure.tabEnderstone).setHardness(5.0F).setResistance(10.0F)
+				.setStepSound(Block.soundTypeMetal)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_block");
 
 		// Plant | Bush Blocks
 		ender_tallgrass = (BlockEnderTallGrass) new BlockEnderTallGrass().setBlockName("ender_tall_grass")
-				.setStepSound(Block.soundTypeGrass).setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+				.setStepSound(Block.soundTypeGrass).setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		ender_double_plant = (BlockEnderDoublePlant) new BlockEnderDoublePlant().setBlockName("ender_double_plant")
 				.setStepSound(Block.soundTypeGrass);
 
 		// Light Blocks
 		ender_beacon = (BlockEnderBeacon) new BlockEnderBeacon().setBlockName("ender_beacon")
-				.setBlockTextureName(TooMuchNature.modid + ":" + "lower_end_portal");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "lower_end_portal");
 		enderstone_lamp = new BlockEnderstoneLamp(false).setBlockName("enderstone_lamp")
-				.setCreativeTab(TooMuchNature.tabEnderstone).setHardness(0.3F).setStepSound(Block.soundTypeGlass)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_lamp_off");
+				.setCreativeTab(TooMuchNatventure.tabEnderstone).setHardness(0.3F).setStepSound(Block.soundTypeGlass)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_lamp_off");
 		lit_enderstone_lamp = new BlockEnderstoneLamp(true).setBlockName("lit_enderstone_lamp").setHardness(0.3F)
 				.setStepSound(Block.soundTypeGlass)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "enderstone_lamp_on");
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "enderstone_lamp_on");
 
 		// Bouncy Blocks
 		ender_slime_block = new BlockEnderSlime().setBlockName("ender_slime_block")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks).setStepSound(soundTypeSlime)
-				.setBlockTextureName(TooMuchNature.modid + ":" + "ender_slime");
+				.setCreativeTab(TooMuchNatventure.tabTMNBlocks).setStepSound(soundTypeSlime)
+				.setBlockTextureName(TooMuchNatventure.modid + ":" + "ender_slime");
+
+		// End Door Blocks
+		end_oak_door = new BlockEndDoor(Material.wood).setBlockName("door_end_oak").setHardness(3.0F)
+				.setStepSound(Block.soundTypeWood).setBlockTextureName(TooMuchNatventure.modid + ":" + "end_oak_door");
 	}
 
 	public static void registerBlocks() {
@@ -475,5 +475,7 @@ public class TMNBlocks {
 		GameRegistry.registerBlock(lit_enderstone_lamp, lit_enderstone_lamp.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerBlock(ender_slime_block, ender_slime_block.getUnlocalizedName().substring(5));
+
+		GameRegistry.registerBlock(end_oak_door, end_oak_door.getUnlocalizedName().substring(5));
 	}
 }

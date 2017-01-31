@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.item;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.event.UseEnderRoadTillerEvent;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
@@ -22,7 +22,7 @@ public class ItemEnderaldRoadTiller extends Item {
 	public ItemEnderaldRoadTiller() {
 		this.setMaxDamage(2261);
 		this.maxStackSize = 1;
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureMisc);
+		this.setCreativeTab(TooMuchNatventure.tabTMNMisc);
 	}
 
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,

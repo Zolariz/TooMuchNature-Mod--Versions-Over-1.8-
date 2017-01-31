@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.item;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.material.Material;
@@ -16,7 +16,6 @@ public class ItemFlintAndEndstone extends Item {
 	public ItemFlintAndEndstone() {
 		this.maxStackSize = 1;
 		this.setMaxDamage(64);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureItems);
 	}
 
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,

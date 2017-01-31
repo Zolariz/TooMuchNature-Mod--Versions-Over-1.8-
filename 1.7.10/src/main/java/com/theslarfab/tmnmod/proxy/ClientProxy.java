@@ -23,6 +23,7 @@ import com.theslarfab.tmnmod.client.model.ModelHippopotamus;
 import com.theslarfab.tmnmod.client.model.ModelKangaroo;
 import com.theslarfab.tmnmod.client.model.ModelLonghorn;
 import com.theslarfab.tmnmod.client.model.ModelZebra;
+import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEndDoor;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEndFire;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEndLever;
 import com.theslarfab.tmnmod.client.renderer.block.RenderBlockEnderBeacon;
@@ -67,8 +68,15 @@ import net.minecraftforge.client.MinecraftForgeClient;
 public class ClientProxy extends CommonProxy implements IProxy {
 
 	@Override
-	public void registerRenders() {
-		// Entity
+	public void init() {
+		ClientProxy.registerEntityRenderers();
+		ClientProxy.registerBlockRenderers();
+		ClientProxy.registrtItemRenderers();
+		ClientProxy.registerItemBlockRenderers();
+		ClientProxy.registerTileEntityRenderers();
+	}
+
+	public static void registerEntityRenderers() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityKangaroo.class,
 				new RenderKangaroo(new ModelKangaroo(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLonghorn.class,
@@ -80,26 +88,6 @@ public class ClientProxy extends CommonProxy implements IProxy {
 				new RenderEnderBullet(new ModelEnderBullet(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnderSlimeball.class,
 				new RenderSnowball(TMNItems.ender_slimeball));
-
-		// Block
-		ClientProxy.registerBlockRenderers();
-
-		// Item
-		MinecraftForgeClient.registerItemRenderer(TMNItems.ender_pistol, new ItemRenderEnderPistol());
-
-		// Item Block
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(TMNBlocks.end_wood_chest),
-				new ItemRenderBlockEndWoodChest());
-		RenderingRegistry.registerBlockHandler(new RenderInvBlockEnderDispenser());
-
-		// TileEntity
-		TileEntitySpecialRenderer renderEndWoodChest = new TileEntityEndWoodChestRenderer();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEndWoodChest.class, renderEndWoodChest);
-
-		TileEntitySpecialRenderer renderEnderPiston = new TileEntityRendererEnderPiston();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderPiston.class, renderEnderPiston);
-		GameRegistry.registerTileEntity(TileEntityEnderPiston.class, "enderPiston");
-
 	}
 
 	public static void registerBlockRenderers() {
@@ -115,5 +103,25 @@ public class ClientProxy extends CommonProxy implements IProxy {
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderBeacon());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderSlimeBlock());
 		RenderingRegistry.registerBlockHandler(new RenderBlockEnderstoneDiode());
+		RenderingRegistry.registerBlockHandler(new RenderBlockEndDoor());
+	}
+
+	public static void registrtItemRenderers() {
+		MinecraftForgeClient.registerItemRenderer(TMNItems.ender_pistol, new ItemRenderEnderPistol());
+	}
+
+	public static void registerItemBlockRenderers() {
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(TMNBlocks.end_wood_chest),
+				new ItemRenderBlockEndWoodChest());
+		RenderingRegistry.registerBlockHandler(new RenderInvBlockEnderDispenser());
+	}
+
+	public static void registerTileEntityRenderers() {
+		TileEntitySpecialRenderer renderEndWoodChest = new TileEntityEndWoodChestRenderer();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEndWoodChest.class, renderEndWoodChest);
+
+		TileEntitySpecialRenderer renderEnderPiston = new TileEntityRendererEnderPiston();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEnderPiston.class, renderEnderPiston);
+		GameRegistry.registerTileEntity(TileEntityEnderPiston.class, "enderPiston");
 	}
 }

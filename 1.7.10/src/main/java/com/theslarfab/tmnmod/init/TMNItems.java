@@ -1,18 +1,18 @@
 package com.theslarfab.tmnmod.init;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.armor.KangarooArmor;
 import com.theslarfab.tmnmod.item.ItemAcaciaDoor;
 import com.theslarfab.tmnmod.item.ItemBirchDoor;
 import com.theslarfab.tmnmod.item.ItemCherryDoor;
 import com.theslarfab.tmnmod.item.ItemDarkOakDoor;
+import com.theslarfab.tmnmod.item.ItemEndOakDoor;
 import com.theslarfab.tmnmod.item.ItemEnderGun;
 import com.theslarfab.tmnmod.item.ItemEnderSlimeball;
 import com.theslarfab.tmnmod.item.ItemEnderaldRoadTiller;
 import com.theslarfab.tmnmod.item.ItemEnderstone;
 import com.theslarfab.tmnmod.item.ItemFlintAndEndstone;
 import com.theslarfab.tmnmod.item.ItemJungleDoor;
-import com.theslarfab.tmnmod.item.ItemSpruceDoor;
 import com.theslarfab.tmnmod.item.ItemTMNBucket;
 import com.theslarfab.tmnmod.item.ItemTMNReed;
 import com.theslarfab.tmnmod.item.ItemTMNSpawnEgg;
@@ -64,12 +64,6 @@ public class TMNItems {
 
 	// Door Items
 	public static Item item_cherry_door;
-	public static Item item_spruce_door;
-	public static Item item_birch_door;
-	public static Item item_jungle_door;
-	public static Item item_acacia_door;
-	public static Item item_dark_oak_door;
-	public static Item item_ender_door;
 
 	// Crop Seeds
 	public static Item cherry_seeds;
@@ -116,6 +110,14 @@ public class TMNItems {
 
 	// Throwable Items
 	public static Item ender_slimeball;
+	
+	//Ender Door Items
+	public static Item item_end_oak_door;
+	public static Item item_birch_door;
+	public static Item item_jungle_door;
+	public static Item item_acacia_door;
+	public static Item item_dark_oak_door;
+	public static Item item_ender_door;
 
 	// Ammo Items
 	Item none;
@@ -128,99 +130,80 @@ public class TMNItems {
 	public static void initItems() {
 
 		// Animal Items
-		kangaroo_skin = new Item().setUnlocalizedName("kangaroo_skin")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "kangaroo_hide");
+		kangaroo_skin = new Item().setUnlocalizedName("kangaroo_skin").setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "kangaroo_hide");
 
 		// Door Items
 		item_cherry_door = new ItemCherryDoor(Material.wood).setUnlocalizedName("cherry_door")
-				.setCreativeTab(TooMuchNature.tabEnderstone).setTextureName(TooMuchNature.modid + ":" + "cherry_door");
-		item_spruce_door = new ItemSpruceDoor(Material.wood).setUnlocalizedName("spruce_door")
-				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNature.modid + ":" + "cherry_door");
-		item_birch_door = new ItemBirchDoor(Material.wood).setUnlocalizedName("birch_door")
-				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNature.modid + ":" + "cherry_door");
-		item_jungle_door = new ItemJungleDoor(Material.wood).setUnlocalizedName("jungle_door")
-				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNature.modid + ":" + "cherry_door");
-		item_acacia_door = new ItemAcaciaDoor(Material.wood).setUnlocalizedName("acacia_door")
-				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNature.modid + ":" + "cherry_door");
-		item_dark_oak_door = new ItemDarkOakDoor(Material.wood).setUnlocalizedName("dark_oak_door")
-				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNature.modid + ":" + "cherry_door");
+				.setCreativeTab(TooMuchNatventure.tabEnderstone).setTextureName(TooMuchNatventure.modid + ":" + "cherry_door");
 
 		// Dimension-Related Items
 		end_stone_and_steel = new ItemFlintAndEndstone().setUnlocalizedName("flint_and_endstone")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureMisc)
-				.setTextureName(TooMuchNature.modid + ":" + "end_stone_and_steel");
+				.setCreativeTab(TooMuchNatventure.tabTMNMisc)
+				.setTextureName(TooMuchNatventure.modid + ":" + "end_stone_and_steel");
 
 		// Items
-		ruby = new Item().setUnlocalizedName("ruby").setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName("ruby");
+		ruby = new Item().setUnlocalizedName("ruby").setCreativeTab(TooMuchNatventure.tabTMNItems).setTextureName("ruby");
 
-		sapphire = new Item().setUnlocalizedName("sapphire").setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "sapphire");
+		sapphire = new Item().setUnlocalizedName("sapphire").setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "sapphire");
 
-		titanium_ingot = new Item().setUnlocalizedName("titanium_ingot")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "titanium_ingot");
+		titanium_ingot = new Item().setUnlocalizedName("titanium_ingot").setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "titanium_ingot");
 
-		platinum_ingot = new Item().setUnlocalizedName("platinum_ingot")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "platinum_ingot");
+		platinum_ingot = new Item().setUnlocalizedName("platinum_ingot").setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "platinum_ingot");
 
-		enderald = new Item().setUnlocalizedName("enderald").setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "enderald");
+		enderald = new Item().setUnlocalizedName("enderald").setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "enderald");
 
 		// Circuit Items
 		enderstone_dust = new ItemEnderstone().setUnlocalizedName("enderstone_dust")
-				.setTextureName(TooMuchNature.modid + ":" + "enderstone_dust");
+				.setTextureName(TooMuchNatventure.modid + ":" + "enderstone_dust");
 
 		// Shooting Weapons
 		ender_pistol = new ItemEnderGun().setUnlocalizedName("ender_gun")
-				.setTextureName(TooMuchNature.modid + ":" + "ender_pistol");
+				.setTextureName(TooMuchNatventure.modid + ":" + "ender_pistol");
 
 		// Melee Weapons
 		enderald_sword = new ItemSword(ENDERALD).setUnlocalizedName("enderald_sword")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureMisc)
-				.setTextureName(TooMuchNature.modid + ":" + "enderald_sword");
+				.setCreativeTab(TooMuchNatventure.tabTMNMisc).setTextureName(TooMuchNatventure.modid + ":" + "enderald_sword");
 
 		// Tools
 		enderald_road_tiller = new ItemEnderaldRoadTiller().setUnlocalizedName("enderald_road_tiller")
-				.setTextureName(TooMuchNature.modid + ":" + "enderald_road_tiller");
+				.setTextureName(TooMuchNatventure.modid + ":" + "enderald_road_tiller");
 
 		// Seeds
 		cherry_seeds = new ItemSeeds(TMNBlocks.crops_cherry, Blocks.farmland).setUnlocalizedName("seeds_cherry")
-				.setTextureName(TooMuchNature.modid + ":" + "seeds_cherry")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems);
+				.setTextureName(TooMuchNatventure.modid + ":" + "seeds_cherry").setCreativeTab(TooMuchNatventure.tabTMNItems);
 
 		// Reed Items
 		enderstone_repeater = new ItemTMNReed(TMNBlocks.enderstone_repeater_unpowered)
-				.setUnlocalizedName("enderstone_repeater").setCreativeTab(TooMuchNature.tabEnderstone)
-				.setTextureName(TooMuchNature.modid + ":" + "enderstone_repeater");
+				.setUnlocalizedName("enderstone_repeater").setCreativeTab(TooMuchNatventure.tabEnderstone)
+				.setTextureName(TooMuchNatventure.modid + ":" + "enderstone_repeater");
 		enderstone_comparator = new ItemTMNReed(TMNBlocks.enderstone_comparator_unpowered)
-				.setUnlocalizedName("enderstone_comparator").setCreativeTab(TooMuchNature.tabEnderstone)
-				.setTextureName(TooMuchNature.modid + ":" + "enderstone_comparator");
+				.setUnlocalizedName("enderstone_comparator").setCreativeTab(TooMuchNatventure.tabEnderstone)
+				.setTextureName(TooMuchNatventure.modid + ":" + "enderstone_comparator");
 
 		// Bucket Items
 		ender_water_bucket = new ItemTMNBucket(TMNBlocks.ender_water_dynamic).setUnlocalizedName("ender_water_bucket")
-				.setTextureName(TooMuchNature.modid + ":" + "enderald_bucket_ender_water");
+				.setTextureName(TooMuchNatventure.modid + ":" + "enderald_bucket_ender_water");
 		enderald_bucket = new ItemTMNBucket(Blocks.air).setUnlocalizedName("enderald_bucket")
-				.setTextureName(TooMuchNature.modid + ":" + "enderald_bucket_empty");
+				.setTextureName(TooMuchNatventure.modid + ":" + "enderald_bucket_empty");
 
 		// Food
-		orange = new ItemFood(4, 0.5F, false).setUnlocalizedName("orange")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "orange");
-		cherry = new ItemFood(2, 0.4F, false).setUnlocalizedName("cherry")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "cherry");
+		orange = new ItemFood(4, 0.5F, false).setUnlocalizedName("orange").setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "orange");
+		cherry = new ItemFood(2, 0.4F, false).setUnlocalizedName("cherry").setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "cherry");
 		raw_kangaroo = new ItemFood(5, 0.5F, true).setUnlocalizedName("raw_kangaroo")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "kangaroo_meat_raw");
+				.setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "kangaroo_meat_raw");
 		cooked_kangaroo = new ItemFood(12, 0.8F, true).setUnlocalizedName("cooked_kangaroo")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "kangaroo_meat_cooked");
+				.setCreativeTab(TooMuchNatventure.tabTMNItems)
+				.setTextureName(TooMuchNatventure.modid + ":" + "kangaroo_meat_cooked");
 		white_cherry = new ItemFood(2, 0.3F, false).setUnlocalizedName("white_cherry")
-				.setCreativeTab(TooMuchNature.tabTooMuchNatureItems)
-				.setTextureName(TooMuchNature.modid + ":" + "cherry_white");
+				.setCreativeTab(TooMuchNatventure.tabTMNItems).setTextureName(TooMuchNatventure.modid + ":" + "cherry_white");
 
 		// Armor
 		kangaroo_helm = new KangarooArmor(KangarooArmorMaterial, kangaroo_helm_ID, 0)
@@ -237,7 +220,20 @@ public class TMNItems {
 
 		// Throwable Items
 		ender_slimeball = new ItemEnderSlimeball().setUnlocalizedName("ender_slimeball")
-				.setTextureName(TooMuchNature.modid + ":" + "ender_slimeball");
+				.setTextureName(TooMuchNatventure.modid + ":" + "ender_slimeball");
+		
+		//End Doors
+		item_end_oak_door = new ItemEndOakDoor(Material.wood).setUnlocalizedName("end_oak_door")
+				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNatventure.modid + ":" + "cherry_door");
+		item_birch_door = new ItemBirchDoor(Material.wood).setUnlocalizedName("dark_end_oak_door")
+				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNatventure.modid + ":" + "cherry_door");
+		item_jungle_door = new ItemJungleDoor(Material.wood).setUnlocalizedName("light_end_oak_door")
+				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNatventure.modid + ":" + "cherry_door");
+		
+		item_acacia_door = new ItemAcaciaDoor(Material.wood).setUnlocalizedName("acacia_door")
+				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNatventure.modid + ":" + "cherry_door");
+		item_dark_oak_door = new ItemDarkOakDoor(Material.wood).setUnlocalizedName("dark_oak_door")
+				.setCreativeTab(CreativeTabs.tabRedstone).setTextureName(TooMuchNatventure.modid + ":" + "cherry_door");
 	}
 
 	public static void registerItems() {
@@ -263,11 +259,6 @@ public class TMNItems {
 		GameRegistry.registerItem(kangaroo_boots, kangaroo_boots.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerItem(item_cherry_door, item_cherry_door.getUnlocalizedName().substring(5));
-		GameRegistry.registerItem(item_spruce_door, item_spruce_door.getUnlocalizedName().substring(5));
-		GameRegistry.registerItem(item_birch_door, item_birch_door.getUnlocalizedName().substring(5));
-		GameRegistry.registerItem(item_jungle_door, item_jungle_door.getUnlocalizedName().substring(5));
-		GameRegistry.registerItem(item_acacia_door, item_acacia_door.getUnlocalizedName().substring(5));
-		GameRegistry.registerItem(item_dark_oak_door, item_dark_oak_door.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerItem(cherry_seeds, cherry_seeds.getUnlocalizedName().substring(5));
 
@@ -285,5 +276,11 @@ public class TMNItems {
 		GameRegistry.registerItem(enderald_road_tiller, enderald_road_tiller.getUnlocalizedName().substring(5));
 
 		GameRegistry.registerItem(ender_slimeball, ender_slimeball.getUnlocalizedName().substring(5));
+		
+		GameRegistry.registerItem(item_end_oak_door, item_end_oak_door.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_birch_door, item_birch_door.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_jungle_door, item_jungle_door.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_acacia_door, item_acacia_door.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item_dark_oak_door, item_dark_oak_door.getUnlocalizedName().substring(5));
 	}
 }

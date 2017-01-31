@@ -18,7 +18,6 @@
 package com.theslarfab.tmnmod.client.renderer.block;
 
 import com.theslarfab.tmnmod.block.BlockEnderstoneComparator;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;

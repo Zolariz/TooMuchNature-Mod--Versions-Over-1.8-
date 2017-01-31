@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import net.minecraft.block.Block;
@@ -51,7 +51,7 @@ public abstract class BlockTMNLeaves extends BlockLeavesBase implements IShearab
 	public BlockTMNLeaves() {
 		super(Material.leaves, false);
 		this.setTickRandomly(true);
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureBlocks);
+		this.setCreativeTab(TooMuchNatventure.tabTMNBlocks);
 		this.setHardness(0.2F);
 		this.setLightOpacity(1);
 		this.setStepSound(soundTypeGrass);

@@ -24,9 +24,8 @@ import static net.minecraftforge.common.util.ForgeDirection.SOUTH;
 import static net.minecraftforge.common.util.ForgeDirection.UP;
 import static net.minecraftforge.common.util.ForgeDirection.WEST;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.block.BlockEndFire;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
 import com.theslarfab.tmnmod.init.TMNBlocks;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;

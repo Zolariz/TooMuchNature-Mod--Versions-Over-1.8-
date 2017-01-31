@@ -2,10 +2,9 @@ package com.theslarfab.tmnmod.client.renderer.block;
 
 import org.lwjgl.opengl.GL11;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.block.BlockEnderPistonBase;
 import com.theslarfab.tmnmod.block.BlockEnderPistonExtension;
-import com.theslarfab.tmnmod.client.renderer.BlockRenderingIDs;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;

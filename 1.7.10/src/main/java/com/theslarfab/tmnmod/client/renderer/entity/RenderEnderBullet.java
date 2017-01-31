@@ -3,7 +3,7 @@ package com.theslarfab.tmnmod.client.renderer.entity;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.client.model.ModelEnderBullet;
 
 import net.minecraft.client.model.ModelBase;
@@ -16,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderEnderBullet extends Render {
 
 	private static final ResourceLocation texture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/entity/projectile/ender_bullet.png");
+			TooMuchNatventure.modid + ":" + "textures/entity/projectile/ender_bullet.png");
 
 	protected ModelEnderBullet modelEntity;
 	protected ModelBase mainModel;

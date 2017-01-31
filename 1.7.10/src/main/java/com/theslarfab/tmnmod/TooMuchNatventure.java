@@ -49,18 +49,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
-@Mod(modid = TooMuchNature.modid, version = TooMuchNature.version)
-public class TooMuchNature {
+@Mod(modid = TooMuchNatventure.modid, version = TooMuchNatventure.version)
+public class TooMuchNatventure {
 
-	public static final CreativeTabs tabTooMuchNatureBlocks = new TabTMNBlocks("tmnblocks");
-	public static final CreativeTabs tabTooMuchNatureItems = new TabTMNItems("tmnitems");
-	public static final CreativeTabs tabTooMuchNatureMisc = new TabTMNWeapons("tmnmisc");
+	public static final CreativeTabs tabTMNBlocks = new TabTMNBlocks("tmnblocks");
+	public static final CreativeTabs tabTMNItems = new TabTMNItems("tmnitems");
+	public static final CreativeTabs tabTMNMisc = new TabTMNWeapons("tmnmisc");
 	public static final CreativeTabs tabEnderstone = new TabTMNEnderstone("tmnenderstone");
 
-	public static final Logger logger = LogManager.getLogger(TooMuchNature.modid);
+	public static final Logger logger = LogManager.getLogger(TooMuchNatventure.modid);
 
-	@Instance(TooMuchNature.modid)
-	public static TooMuchNature instance;
+	@Instance(TooMuchNatventure.modid)
+	public static TooMuchNatventure instance;
 
 	// GUI IDs
 	public static final int guiIDEnderWorkbench = GuiRegistry.getNextAvailableGuiID();
@@ -70,7 +70,7 @@ public class TooMuchNature {
 	public static final String clientside = "com.theslarfab.tmnmod.proxy.ClientProxy";
 	public static final String serverside = "com.theslarfab.tmnmod.proxy.ServerProxy";
 
-	@SidedProxy(clientSide = TooMuchNature.clientside, serverSide = TooMuchNature.serverside)
+	@SidedProxy(clientSide = TooMuchNatventure.clientside, serverSide = TooMuchNatventure.serverside)
 	public static CommonProxy proxy;
 
 	@EventHandler
@@ -82,9 +82,6 @@ public class TooMuchNature {
 		// GUI Handlers
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 
-		// Smelting Registers
-		GameRegistry.addSmelting(TMNItems.raw_kangaroo, new ItemStack(TMNItems.cooked_kangaroo, 1), 5);
-
 		// Biome Registers
 		BiomesTMN.init();
 		EnderBiomes.init();
@@ -95,7 +92,7 @@ public class TooMuchNature {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		proxy.registerRenders();
+		proxy.init();
 		TMNCrafting.register();
 	}
 

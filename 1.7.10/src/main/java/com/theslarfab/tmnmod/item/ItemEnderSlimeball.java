@@ -1,6 +1,6 @@
 package com.theslarfab.tmnmod.item;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.entity.projectile.EntityEnderSlimeball;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,7 +14,7 @@ public class ItemEnderSlimeball extends Item {
 
 	public ItemEnderSlimeball() {
 		this.maxStackSize = 64;
-		this.setCreativeTab(TooMuchNature.tabTooMuchNatureMisc);
+		this.setCreativeTab(TooMuchNatventure.tabTMNItems);
 	}
 
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {

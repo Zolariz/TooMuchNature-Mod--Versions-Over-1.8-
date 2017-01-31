@@ -29,7 +29,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import com.theslarfab.tmnmod.TooMuchNature;
+import com.theslarfab.tmnmod.TooMuchNatventure;
 import com.theslarfab.tmnmod.block.BlockEndWoodChest;
 import com.theslarfab.tmnmod.client.model.tileentity.ModelTripleChest;
 import com.theslarfab.tmnmod.tileentity.TileEntityEndWoodChest;
@@ -41,11 +41,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class TileEntityEndWoodChestRenderer extends TileEntitySpecialRenderer {
 	private static final ResourceLocation tripleChestTexture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/entity/chest/end_wood_chest_triple.png");
+			TooMuchNatventure.modid + ":" + "textures/entity/chest/end_wood_chest_triple.png");
 	private static final ResourceLocation doubleChestTexture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/entity/chest/end_wood_chest_double.png");
+			TooMuchNatventure.modid + ":" + "textures/entity/chest/end_wood_chest_double.png");
 	private static final ResourceLocation chestTexture = new ResourceLocation(
-			TooMuchNature.modid + ":" + "textures/entity/chest/end_wood_chest.png");
+			TooMuchNatventure.modid + ":" + "textures/entity/chest/end_wood_chest.png");
 	private ModelChest singleChest = new ModelChest();
 	private ModelChest doubleChest = new ModelLargeChest();
 	private ModelChest tripleChest = new ModelTripleChest();
